@@ -1,0 +1,216 @@
+{
+  "timestamp": "2025-08-06T10:33:32.967556",
+  "python_version": "3.11.9",
+  "checks": {
+    "python_version": true,
+    "core_dependencies": {
+      "Flask": true,
+      "Flask-SocketIO": true,
+      "requests": true,
+      "python-dotenv": true,
+      "pandas": true,
+      "numpy": true,
+      "ta": true,
+      "aiohttp": true,
+      "websockets": true,
+      "schedule": true,
+      "pytz": true,
+      "PyYAML": true,
+      "psutil": true,
+      "eventlet": true,
+      "matplotlib": true
+    },
+    "version_compatibility": {
+      "Flask": {
+        "current": "not_installed",
+        "status": "missing",
+        "message": "Package not installed"
+      },
+      "Flask-SocketIO": {
+        "current": "5.3.6",
+        "status": "recommended",
+        "message": "Version 5.3.6 is recommended"
+      },
+      "requests": {
+        "current": "2.31.0",
+        "status": "recommended",
+        "message": "Version 2.31.0 is recommended"
+      },
+      "pandas": {
+        "current": "2.0.3",
+        "status": "compatible",
+        "message": "Version 2.0.3 is compatible"
+      },
+      "numpy": {
+        "current": "1.24.3",
+        "status": "recommended",
+        "message": "Version 1.24.3 is recommended"
+      },
+      "matplotlib": {
+        "current": "3.10.3",
+        "status": "compatible",
+        "message": "Version 3.10.3 is compatible"
+      }
+    },
+    "conflicts": [],
+    "optional_dependencies": {
+      "tkinter": true,
+      "PIL": true,
+      "scipy": true,
+      "scikit-learn": false,
+      "plotly": true,
+      "seaborn": true
+    },
+    "system_requirements": {
+      "Internet Connection": false,
+      "File System Write": true,
+      "Memory Available": true,
+      "Disk Space": true
+    }
+  },
+  "summary": {
+    "total_issues": 2,
+    "total_warnings": 2,
+    "total_success": 29
+  },
+  "issues": [
+    {
+      "message": "Flask is not installed",
+      "severity": "ERROR",
+      "timestamp": "2025-08-06T10:33:34.704914"
+    },
+    {
+      "message": "Internet Connection is not available",
+      "severity": "ERROR",
+      "timestamp": "2025-08-06T10:33:36.552484"
+    }
+  ],
+  "warnings": [
+    {
+      "message": "NumPy 1.24.x with pandas 2.0.x may have compatibility issues",
+      "timestamp": "2025-08-06T10:33:34.706912"
+    },
+    {
+      "message": "scikit-learn is not available (optional)",
+      "timestamp": "2025-08-06T10:33:35.296850"
+    }
+  ],
+  "success": [
+    {
+      "message": "Python 3.11 is compatible",
+      "timestamp": "2025-08-06T10:33:32.968553"
+    },
+    {
+      "message": "Flask is installed and importable",
+      "timestamp": "2025-08-06T10:33:33.136129"
+    },
+    {
+      "message": "Flask-SocketIO is installed and importable",
+      "timestamp": "2025-08-06T10:33:34.133033"
+    },
+    {
+      "message": "requests is installed and importable",
+      "timestamp": "2025-08-06T10:33:34.134003"
+    },
+    {
+      "message": "python-dotenv is installed and importable",
+      "timestamp": "2025-08-06T10:33:34.134003"
+    },
+    {
+      "message": "pandas is installed and importable",
+      "timestamp": "2025-08-06T10:33:34.134003"
+    },
+    {
+      "message": "numpy is installed and importable",
+      "timestamp": "2025-08-06T10:33:34.134003"
+    },
+    {
+      "message": "ta is installed and importable",
+      "timestamp": "2025-08-06T10:33:34.134003"
+    },
+    {
+      "message": "aiohttp is installed and importable",
+      "timestamp": "2025-08-06T10:33:34.135001"
+    },
+    {
+      "message": "websockets is installed and importable",
+      "timestamp": "2025-08-06T10:33:34.137019"
+    },
+    {
+      "message": "schedule is installed and importable",
+      "timestamp": "2025-08-06T10:33:34.138990"
+    },
+    {
+      "message": "pytz is installed and importable",
+      "timestamp": "2025-08-06T10:33:34.139576"
+    },
+    {
+      "message": "PyYAML is installed and importable",
+      "timestamp": "2025-08-06T10:33:34.139576"
+    },
+    {
+      "message": "psutil is installed and importable",
+      "timestamp": "2025-08-06T10:33:34.139576"
+    },
+    {
+      "message": "eventlet is installed and importable",
+      "timestamp": "2025-08-06T10:33:34.541400"
+    },
+    {
+      "message": "matplotlib is installed and importable",
+      "timestamp": "2025-08-06T10:33:34.703971"
+    },
+    {
+      "message": "Flask-SocketIO 5.3.6 is the recommended version",
+      "timestamp": "2025-08-06T10:33:34.704914"
+    },
+    {
+      "message": "requests 2.31.0 is the recommended version",
+      "timestamp": "2025-08-06T10:33:34.704914"
+    },
+    {
+      "message": "pandas 2.0.3 is compatible",
+      "timestamp": "2025-08-06T10:33:34.705915"
+    },
+    {
+      "message": "numpy 1.24.3 is the recommended version",
+      "timestamp": "2025-08-06T10:33:34.705915"
+    },
+    {
+      "message": "matplotlib 3.10.3 is compatible",
+      "timestamp": "2025-08-06T10:33:34.705915"
+    },
+    {
+      "message": "tkinter is available (optional)",
+      "timestamp": "2025-08-06T10:33:35.232994"
+    },
+    {
+      "message": "PIL is available (optional)",
+      "timestamp": "2025-08-06T10:33:35.232994"
+    },
+    {
+      "message": "scipy is available (optional)",
+      "timestamp": "2025-08-06T10:33:35.243968"
+    },
+    {
+      "message": "plotly is available (optional)",
+      "timestamp": "2025-08-06T10:33:35.301814"
+    },
+    {
+      "message": "seaborn is available (optional)",
+      "timestamp": "2025-08-06T10:33:35.364669"
+    },
+    {
+      "message": "File System Write is available",
+      "timestamp": "2025-08-06T10:33:36.552484"
+    },
+    {
+      "message": "Memory Available is available",
+      "timestamp": "2025-08-06T10:33:36.552484"
+    },
+    {
+      "message": "Disk Space is available",
+      "timestamp": "2025-08-06T10:33:36.552484"
+    }
+  ]
+}
