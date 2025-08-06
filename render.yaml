@@ -6,7 +6,9 @@ services:
     buildCommand: |
       chmod +x build.sh
       ./build.sh
-    startCommand: python main.py
+    startCommand: |
+      chmod +x start.sh
+      ./start.sh
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.0
@@ -20,5 +22,5 @@ services:
         value: production
       - key: FLASK_DEBUG
         value: false
-    healthCheckPath: /
+    healthCheckPath: /health
     autoDeploy: true 

@@ -11,6 +11,7 @@ deployment settings for cloud platforms like Render.
 import os
 import sys
 import logging
+import traceback
 from pathlib import Path
 
 # Add current directory to Python path
@@ -35,8 +36,20 @@ def create_app():
         os.makedirs('logs', exist_ok=True)
         os.makedirs('data', exist_ok=True)
         
-        # Import Flask app
-        from gui_app import app, socketio
+        logger.info("📁 Directories created successfully")
+        
+        # Import Flask app with detailed error handling
+        try:
+            from gui_app import app, socketio
+            logger.info("✅ Flask app imported successfully")
+        except ImportError as e:
+            logger.error(f"❌ Import error for Flask app: {e}")
+            logger.error(f"Traceback: {traceback.format_exc()}")
+            raise
+        except Exception as e:
+            logger.error(f"❌ Error importing Flask app: {e}")
+            logger.error(f"Traceback: {traceback.format_exc()}")
+            raise
         
         # Configure for production
         app.config['ENV'] = 'production'
@@ -46,12 +59,9 @@ def create_app():
         logger.info("✅ Flask application created successfully")
         return app, socketio
         
-    except ImportError as e:
-        logger.error(f"❌ Import error: {e}")
-        logger.info("Please ensure all dependencies are installed: pip install -r requirements.txt")
-        raise
     except Exception as e:
         logger.error(f"❌ Error creating Flask application: {e}")
+        logger.error(f"Traceback: {traceback.format_exc()}")
         raise
 
 def main():
@@ -93,6 +103,7 @@ def main():
         logger.info("🛑 Application stopped by user")
     except Exception as e:
         logger.error(f"❌ Fatal error: {e}")
+        logger.error(f"Traceback: {traceback.format_exc()}")
         sys.exit(1)
 
 if __name__ == '__main__':

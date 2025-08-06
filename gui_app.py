@@ -23,6 +23,7 @@ from flask import Flask, render_template, request, jsonify, redirect, url_for, f
 from flask_socketio import SocketIO, emit
 import webbrowser
 from dotenv import load_dotenv
+import traceback
 
 # Add parent directory to path for imports
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -57,7 +58,40 @@ load_dotenv()
 # Configure Flask app
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'your-secret-key-here')
-socketio = SocketIO(app, cors_allowed_origins="*")
+app.config['ENV'] = 'production'
+app.config['DEBUG'] = False
+app.config['TESTING'] = False
+
+# Configure SocketIO
+socketio = SocketIO(app, cors_allowed_origins="*", logger=True, engineio_logger=True)
+
+# Error handling middleware
+@app.errorhandler(500)
+def internal_error(error):
+    logger.error(f"Internal server error: {error}")
+    return jsonify({
+        'error': 'Internal server error',
+        'message': 'Something went wrong on our end',
+        'timestamp': datetime.now().isoformat()
+    }), 500
+
+@app.errorhandler(404)
+def not_found_error(error):
+    return jsonify({
+        'error': 'Not found',
+        'message': 'The requested resource was not found',
+        'timestamp': datetime.now().isoformat()
+    }), 404
+
+@app.errorhandler(Exception)
+def handle_exception(e):
+    logger.error(f"Unhandled exception: {e}")
+    logger.error(f"Traceback: {traceback.format_exc()}")
+    return jsonify({
+        'error': 'Server error',
+        'message': 'An unexpected error occurred',
+        'timestamp': datetime.now().isoformat()
+    }), 500
 
 # Configure logging
 config = get_config()
@@ -695,6 +729,51 @@ trading_bot = TradingBotGUI()
 def index():
     """Main dashboard"""
     return render_template('index.html')
+
+@app.route('/health')
+def health_check():
+    """Health check endpoint for deployment platforms"""
+    try:
+        return jsonify({
+            'status': 'healthy',
+            'timestamp': datetime.now().isoformat(),
+            'version': '1.0.0'
+        })
+    except Exception as e:
+        logger.error(f"Health check error: {e}")
+        return jsonify({
+            'status': 'unhealthy',
+            'error': str(e),
+            'timestamp': datetime.now().isoformat()
+        }), 500
+
+@app.route('/api/health')
+def api_health():
+    """API health check"""
+    try:
+        # Test basic functionality
+        api_key = os.getenv('PIONEX_API_KEY')
+        api_secret = os.getenv('PIONEX_SECRET_KEY')
+        
+        health_status = {
+            'status': 'healthy',
+            'timestamp': datetime.now().isoformat(),
+            'environment': {
+                'api_key_set': bool(api_key),
+                'api_secret_set': bool(api_secret),
+                'flask_env': app.config.get('ENV', 'unknown'),
+                'debug_mode': app.config.get('DEBUG', False)
+            }
+        }
+        
+        return jsonify(health_status)
+    except Exception as e:
+        logger.error(f"API health check error: {e}")
+        return jsonify({
+            'status': 'unhealthy',
+            'error': str(e),
+            'timestamp': datetime.now().isoformat()
+        }), 500
 
 @app.route('/api/balance')
 def api_balance():
