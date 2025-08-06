@@ -17,7 +17,7 @@ from pathlib import Path
 # Add current directory to Python path
 sys.path.insert(0, str(Path(__file__).parent))
 
-# Configure logging for production
+# Configure logging for production with ASCII-safe messages
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -36,18 +36,18 @@ def create_app():
         os.makedirs('logs', exist_ok=True)
         os.makedirs('data', exist_ok=True)
         
-        logger.info("📁 Directories created successfully")
+        logger.info("Directories created successfully")
         
         # Import Flask app with detailed error handling
         try:
             from gui_app import app, socketio
-            logger.info("✅ Flask app imported successfully")
+            logger.info("Flask app imported successfully")
         except ImportError as e:
-            logger.error(f"❌ Import error for Flask app: {e}")
+            logger.error(f"Import error for Flask app: {e}")
             logger.error(f"Traceback: {traceback.format_exc()}")
             raise
         except Exception as e:
-            logger.error(f"❌ Error importing Flask app: {e}")
+            logger.error(f"Error importing Flask app: {e}")
             logger.error(f"Traceback: {traceback.format_exc()}")
             raise
         
@@ -56,29 +56,29 @@ def create_app():
         app.config['DEBUG'] = False
         app.config['TESTING'] = False
         
-        logger.info("✅ Flask application created successfully")
+        logger.info("Flask application created successfully")
         return app, socketio
         
     except Exception as e:
-        logger.error(f"❌ Error creating Flask application: {e}")
+        logger.error(f"Error creating Flask application: {e}")
         logger.error(f"Traceback: {traceback.format_exc()}")
         raise
 
 def main():
     """Main entry point for production deployment"""
     try:
-        logger.info("🚀 Starting Pionex Trading Bot for Production...")
+        logger.info("Starting Pionex Trading Bot for Production...")
         
         # Check environment variables
         api_key = os.getenv('PIONEX_API_KEY')
         api_secret = os.getenv('PIONEX_SECRET_KEY')
         
         if not api_key or not api_secret:
-            logger.error("❌ Missing required environment variables: PIONEX_API_KEY, PIONEX_SECRET_KEY")
+            logger.error("Missing required environment variables: PIONEX_API_KEY, PIONEX_SECRET_KEY")
             logger.info("Please set these variables in your deployment environment")
             return
         
-        logger.info("✅ Environment variables check passed")
+        logger.info("Environment variables check passed")
         
         # Create Flask app
         app, socketio = create_app()
@@ -87,7 +87,7 @@ def main():
         port = int(os.environ.get('PORT', 5000))
         host = '0.0.0.0'  # Bind to all interfaces for production
         
-        logger.info(f"🌐 Starting server on {host}:{port}")
+        logger.info(f"Starting server on {host}:{port}")
         
         # Start the application with production settings
         socketio.run(
@@ -100,9 +100,9 @@ def main():
         )
         
     except KeyboardInterrupt:
-        logger.info("🛑 Application stopped by user")
+        logger.info("Application stopped by user")
     except Exception as e:
-        logger.error(f"❌ Fatal error: {e}")
+        logger.error(f"Fatal error: {e}")
         logger.error(f"Traceback: {traceback.format_exc()}")
         sys.exit(1)
 

@@ -1,0 +1,4 @@
+2025-08-06 12:49:49,849 - __main__ - INFO - Please set these variables in your deployment environment
+2025-08-06 12:51:53,227 - __main__ - INFO - Starting Pionex Trading Bot for Production...
+2025-08-06 12:51:53,227 - __main__ - ERROR - Missing required environment variables: PIONEX_API_KEY, PIONEX_SECRET_KEY
+2025-08-06 12:51:53,227 - __main__ - INFO - Please set these variables in your deployment environment
