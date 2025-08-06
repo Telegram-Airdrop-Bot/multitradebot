@@ -2,3 +2,207 @@
 2025-08-06 12:51:53,227 - __main__ - INFO - Starting Pionex Trading Bot for Production...
 2025-08-06 12:51:53,227 - __main__ - ERROR - Missing required environment variables: PIONEX_API_KEY, PIONEX_SECRET_KEY
 2025-08-06 12:51:53,227 - __main__ - INFO - Please set these variables in your deployment environment
+2025-08-06 12:53:12,932 - __main__ - INFO - Starting Pionex Trading Bot for Production...
+2025-08-06 12:53:12,933 - __main__ - INFO - Environment variables check passed
+2025-08-06 12:53:12,934 - __main__ - INFO - Directories created successfully
+2025-08-06 12:53:16,990 - __main__ - ERROR - Error importing Flask app: name 'logger' is not defined
+2025-08-06 12:53:16,992 - __main__ - ERROR - Traceback: Traceback (most recent call last):
+  File "C:\Users\WIN-10\Downloads\Compressed\pionex-trading-bot-main\pionex-trading-bot-main\main.py", line 43, in create_app
+    from gui_app import app, socketio
+  File "C:\Users\WIN-10\Downloads\Compressed\pionex-trading-bot-main\pionex-trading-bot-main\gui_app.py", line 38, in <module>
+    logger.info("Using SQLite database")
+    ^^^^^^
+NameError: name 'logger' is not defined
+
+2025-08-06 12:53:16,994 - __main__ - ERROR - Error creating Flask application: name 'logger' is not defined
+2025-08-06 12:53:16,995 - __main__ - ERROR - Traceback: Traceback (most recent call last):
+  File "C:\Users\WIN-10\Downloads\Compressed\pionex-trading-bot-main\pionex-trading-bot-main\main.py", line 43, in create_app
+    from gui_app import app, socketio
+  File "C:\Users\WIN-10\Downloads\Compressed\pionex-trading-bot-main\pionex-trading-bot-main\gui_app.py", line 38, in <module>
+    logger.info("Using SQLite database")
+    ^^^^^^
+NameError: name 'logger' is not defined
+
+2025-08-06 12:53:16,996 - __main__ - ERROR - Fatal error: name 'logger' is not defined
+2025-08-06 12:53:16,997 - __main__ - ERROR - Traceback: Traceback (most recent call last):
+  File "C:\Users\WIN-10\Downloads\Compressed\pionex-trading-bot-main\pionex-trading-bot-main\main.py", line 84, in main
+    app, socketio = create_app()
+                    ^^^^^^^^^^^^
+  File "C:\Users\WIN-10\Downloads\Compressed\pionex-trading-bot-main\pionex-trading-bot-main\main.py", line 43, in create_app
+    from gui_app import app, socketio
+  File "C:\Users\WIN-10\Downloads\Compressed\pionex-trading-bot-main\pionex-trading-bot-main\gui_app.py", line 38, in <module>
+    logger.info("Using SQLite database")
+    ^^^^^^
+NameError: name 'logger' is not defined
+
+2025-08-06 12:53:41,212 - __main__ - INFO - Starting Pionex Trading Bot for Production...
+2025-08-06 12:53:41,213 - __main__ - INFO - Environment variables check passed
+2025-08-06 12:53:41,213 - __main__ - INFO - Directories created successfully
+2025-08-06 12:53:42,703 - gui_app - INFO - Using SQLite database
+2025-08-06 12:53:44,368 - engineio.server - INFO - Server initialized for eventlet.
+2025-08-06 12:53:44,382 - database - INFO - Created data\trades.json
+2025-08-06 12:53:44,384 - database - INFO - Created data\settings.json
+2025-08-06 12:53:44,385 - database - INFO - Created data\portfolio.json
+2025-08-06 12:53:44,386 - database - INFO - Created data\logs.json
+2025-08-06 12:53:44,387 - database - INFO - Database initialized in data
+2025-08-06 12:53:44,398 - gui_app - INFO - WebSocket connection started
+2025-08-06 12:53:44,410 - __main__ - INFO - Flask app imported successfully
+2025-08-06 12:53:44,410 - __main__ - INFO - Flask application created successfully
+2025-08-06 12:53:44,410 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-08-06 12:53:45,492 - engineio.server - INFO - BF8UqbJd97q_71-PAAAA: Sending packet OPEN data {'sid': 'BF8UqbJd97q_71-PAAAA', 'upgrades': ['websocket'], 'pingTimeout': 20000, 'pingInterval': 25000, 'maxPayload': 1000000}
+2025-08-06 12:53:45,495 - engineio.server - INFO - ctGw0bP-Eic3Wd9PAAAB: Sending packet OPEN data {'sid': 'ctGw0bP-Eic3Wd9PAAAB', 'upgrades': ['websocket'], 'pingTimeout': 20000, 'pingInterval': 25000, 'maxPayload': 1000000}
+2025-08-06 12:53:45,517 - engineio.server - INFO - ctGw0bP-Eic3Wd9PAAAB: Received packet MESSAGE data 0
+2025-08-06 12:53:45,519 - socketio.server - INFO - emitting event "connected" to WPbCBC551eIR3eMRAAAC [/]
+2025-08-06 12:53:45,520 - engineio.server - INFO - ctGw0bP-Eic3Wd9PAAAB: Sending packet MESSAGE data 2["connected",{"data":"Connected to trading bot"}]
+2025-08-06 12:53:45,520 - engineio.server - INFO - ctGw0bP-Eic3Wd9PAAAB: Sending packet MESSAGE data 0{"sid":"WPbCBC551eIR3eMRAAAC"}
+2025-08-06 12:53:45,523 - engineio.server - INFO - BF8UqbJd97q_71-PAAAA: Received packet MESSAGE data 0
+2025-08-06 12:53:45,524 - socketio.server - INFO - emitting event "connected" to On5I7_lP2wJGYYt9AAAD [/]
+2025-08-06 12:53:45,524 - engineio.server - INFO - BF8UqbJd97q_71-PAAAA: Sending packet MESSAGE data 2["connected",{"data":"Connected to trading bot"}]
+2025-08-06 12:53:45,525 - engineio.server - INFO - BF8UqbJd97q_71-PAAAA: Sending packet MESSAGE data 0{"sid":"On5I7_lP2wJGYYt9AAAD"}
+2025-08-06 12:53:45,527 - engineio.server - INFO - ctGw0bP-Eic3Wd9PAAAB: Received request to upgrade to websocket
+2025-08-06 12:53:45,529 - engineio.server - INFO - BF8UqbJd97q_71-PAAAA: Received request to upgrade to websocket
+2025-08-06 12:53:45,545 - engineio.server - INFO - ctGw0bP-Eic3Wd9PAAAB: Upgrade to websocket successful
+2025-08-06 12:53:45,557 - engineio.server - INFO - BF8UqbJd97q_71-PAAAA: Upgrade to websocket successful
+2025-08-06 12:53:49,049 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_APIKEY)
+2025-08-06 12:53:49,563 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_APIKEY)
+2025-08-06 12:53:50,080 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_APIKEY)
+2025-08-06 12:53:50,896 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_APIKEY)
+2025-08-06 12:53:51,157 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_APIKEY)
+2025-08-06 12:53:51,441 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_APIKEY)
+2025-08-06 12:53:52,229 - engineio.server - INFO - fQIG9tPmUYlgyMlYAAAE: Sending packet OPEN data {'sid': 'fQIG9tPmUYlgyMlYAAAE', 'upgrades': ['websocket'], 'pingTimeout': 20000, 'pingInterval': 25000, 'maxPayload': 1000000}
+2025-08-06 12:53:52,737 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_APIKEY)
+2025-08-06 12:53:53,481 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_APIKEY)
+2025-08-06 12:53:53,484 - engineio.server - INFO - huIqRcWLwhmWJqWQAAAF: Sending packet OPEN data {'sid': 'huIqRcWLwhmWJqWQAAAF', 'upgrades': ['websocket'], 'pingTimeout': 20000, 'pingInterval': 25000, 'maxPayload': 1000000}
+2025-08-06 12:53:53,487 - engineio.server - INFO - fQIG9tPmUYlgyMlYAAAE: Received packet MESSAGE data 0
+2025-08-06 12:53:53,488 - socketio.server - INFO - emitting event "connected" to KzxaolTZEjZ2WZjvAAAG [/]
+2025-08-06 12:53:53,489 - engineio.server - INFO - fQIG9tPmUYlgyMlYAAAE: Sending packet MESSAGE data 2["connected",{"data":"Connected to trading bot"}]
+2025-08-06 12:53:53,490 - engineio.server - INFO - fQIG9tPmUYlgyMlYAAAE: Sending packet MESSAGE data 0{"sid":"KzxaolTZEjZ2WZjvAAAG"}
+2025-08-06 12:53:53,491 - engineio.server - INFO - fQIG9tPmUYlgyMlYAAAE: Received request to upgrade to websocket
+2025-08-06 12:53:53,499 - engineio.server - INFO - fQIG9tPmUYlgyMlYAAAE: Upgrade to websocket successful
+2025-08-06 12:53:53,506 - engineio.server - INFO - huIqRcWLwhmWJqWQAAAF: Received packet MESSAGE data 0
+2025-08-06 12:53:53,508 - socketio.server - INFO - emitting event "connected" to J-vAc5RihSmx5pjHAAAH [/]
+2025-08-06 12:53:53,509 - engineio.server - INFO - huIqRcWLwhmWJqWQAAAF: Sending packet MESSAGE data 2["connected",{"data":"Connected to trading bot"}]
+2025-08-06 12:53:53,509 - engineio.server - INFO - huIqRcWLwhmWJqWQAAAF: Sending packet MESSAGE data 0{"sid":"J-vAc5RihSmx5pjHAAAH"}
+2025-08-06 12:53:53,511 - engineio.server - INFO - huIqRcWLwhmWJqWQAAAF: Received request to upgrade to websocket
+2025-08-06 12:53:53,520 - engineio.server - INFO - huIqRcWLwhmWJqWQAAAF: Upgrade to websocket successful
+2025-08-06 12:54:10,502 - engineio.server - INFO - BF8UqbJd97q_71-PAAAA: Sending packet PING data None
+2025-08-06 12:54:10,503 - engineio.server - INFO - ctGw0bP-Eic3Wd9PAAAB: Sending packet PING data None
+2025-08-06 12:54:10,505 - engineio.server - INFO - BF8UqbJd97q_71-PAAAA: Received packet PONG data 
+2025-08-06 12:54:10,506 - engineio.server - INFO - ctGw0bP-Eic3Wd9PAAAB: Received packet PONG data 
+2025-08-06 12:55:58,417 - __main__ - INFO - Starting Pionex Trading Bot for Production...
+2025-08-06 12:55:58,417 - __main__ - ERROR - Missing required environment variables: PIONEX_API_KEY, PIONEX_SECRET_KEY
+2025-08-06 12:55:58,417 - __main__ - INFO - Please set these variables in your deployment environment
+2025-08-06 12:56:20,600 - __main__ - INFO - Starting Pionex Trading Bot for Production...
+2025-08-06 12:56:20,600 - __main__ - INFO - Environment variables check passed
+2025-08-06 12:56:20,601 - __main__ - INFO - Directories created successfully
+2025-08-06 12:56:22,036 - gui_app - INFO - Using SQLite database
+2025-08-06 12:56:22,861 - engineio.server - INFO - Server initialized for eventlet.
+2025-08-06 12:56:22,875 - database - INFO - Database initialized in data
+2025-08-06 12:56:22,888 - gui_app - INFO - WebSocket connection started
+2025-08-06 12:56:22,900 - __main__ - INFO - Flask app imported successfully
+2025-08-06 12:56:22,901 - __main__ - INFO - Flask application created successfully
+2025-08-06 12:56:22,901 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-08-06 12:56:25,505 - engineio.server - INFO - 2-8HwoAyBwPlmPm0AAAA: Sending packet OPEN data {'sid': '2-8HwoAyBwPlmPm0AAAA', 'upgrades': ['websocket'], 'pingTimeout': 20000, 'pingInterval': 25000, 'maxPayload': 1000000}
+2025-08-06 12:56:25,508 - engineio.server - INFO - dF1FWJT9OnRtSM99AAAB: Sending packet OPEN data {'sid': 'dF1FWJT9OnRtSM99AAAB', 'upgrades': ['websocket'], 'pingTimeout': 20000, 'pingInterval': 25000, 'maxPayload': 1000000}
+2025-08-06 12:56:25,510 - engineio.server - INFO - GsuUISwrYjMRcjqhAAAC: Sending packet OPEN data {'sid': 'GsuUISwrYjMRcjqhAAAC', 'upgrades': ['websocket'], 'pingTimeout': 20000, 'pingInterval': 25000, 'maxPayload': 1000000}
+2025-08-06 12:56:25,512 - engineio.server - INFO - 2-8HwoAyBwPlmPm0AAAA: Received packet MESSAGE data 0
+2025-08-06 12:56:25,513 - socketio.server - INFO - emitting event "connected" to DcG_v6yCzIfXKtxGAAAD [/]
+2025-08-06 12:56:25,514 - engineio.server - INFO - 2-8HwoAyBwPlmPm0AAAA: Sending packet MESSAGE data 2["connected",{"data":"Connected to trading bot"}]
+2025-08-06 12:56:25,515 - engineio.server - INFO - 2-8HwoAyBwPlmPm0AAAA: Sending packet MESSAGE data 0{"sid":"DcG_v6yCzIfXKtxGAAAD"}
+2025-08-06 12:56:25,517 - engineio.server - INFO - 2-8HwoAyBwPlmPm0AAAA: Received request to upgrade to websocket
+2025-08-06 12:56:25,519 - engineio.server - INFO - dF1FWJT9OnRtSM99AAAB: Received packet MESSAGE data 0
+2025-08-06 12:56:25,521 - socketio.server - INFO - emitting event "connected" to eYrAkfwM_0FOf9cHAAAE [/]
+2025-08-06 12:56:25,521 - engineio.server - INFO - dF1FWJT9OnRtSM99AAAB: Sending packet MESSAGE data 2["connected",{"data":"Connected to trading bot"}]
+2025-08-06 12:56:25,522 - engineio.server - INFO - dF1FWJT9OnRtSM99AAAB: Sending packet MESSAGE data 0{"sid":"eYrAkfwM_0FOf9cHAAAE"}
+2025-08-06 12:56:25,524 - engineio.server - INFO - dF1FWJT9OnRtSM99AAAB: Received request to upgrade to websocket
+2025-08-06 12:56:25,541 - engineio.server - INFO - dF1FWJT9OnRtSM99AAAB: Upgrade to websocket successful
+2025-08-06 12:56:25,547 - engineio.server - INFO - GsuUISwrYjMRcjqhAAAC: Received packet MESSAGE data 0
+2025-08-06 12:56:25,549 - socketio.server - INFO - emitting event "connected" to _WX2gG5MH4biN_SPAAAF [/]
+2025-08-06 12:56:25,550 - engineio.server - INFO - GsuUISwrYjMRcjqhAAAC: Sending packet MESSAGE data 2["connected",{"data":"Connected to trading bot"}]
+2025-08-06 12:56:25,550 - engineio.server - INFO - GsuUISwrYjMRcjqhAAAC: Sending packet MESSAGE data 0{"sid":"_WX2gG5MH4biN_SPAAAF"}
+2025-08-06 12:56:25,556 - engineio.server - INFO - GsuUISwrYjMRcjqhAAAC: Received request to upgrade to websocket
+2025-08-06 12:56:25,581 - engineio.server - INFO - GsuUISwrYjMRcjqhAAAC: Upgrade to websocket successful
+2025-08-06 12:56:25,595 - engineio.server - INFO - 2-8HwoAyBwPlmPm0AAAA: Upgrade to websocket successful
+2025-08-06 12:56:26,504 - engineio.server - INFO - U-qKeGunnqK0hCv_AAAG: Sending packet OPEN data {'sid': 'U-qKeGunnqK0hCv_AAAG', 'upgrades': ['websocket'], 'pingTimeout': 20000, 'pingInterval': 25000, 'maxPayload': 1000000}
+2025-08-06 12:56:26,509 - engineio.server - INFO - U-qKeGunnqK0hCv_AAAG: Received packet MESSAGE data 0
+2025-08-06 12:56:26,510 - socketio.server - INFO - emitting event "connected" to G56mHBKr9SsA2XbTAAAH [/]
+2025-08-06 12:56:26,511 - engineio.server - INFO - U-qKeGunnqK0hCv_AAAG: Sending packet MESSAGE data 2["connected",{"data":"Connected to trading bot"}]
+2025-08-06 12:56:26,511 - engineio.server - INFO - U-qKeGunnqK0hCv_AAAG: Sending packet MESSAGE data 0{"sid":"G56mHBKr9SsA2XbTAAAH"}
+2025-08-06 12:56:26,514 - engineio.server - INFO - U-qKeGunnqK0hCv_AAAG: Received request to upgrade to websocket
+2025-08-06 12:56:26,522 - engineio.server - INFO - U-qKeGunnqK0hCv_AAAG: Upgrade to websocket successful
+2025-08-06 12:56:48,655 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 12:56:49,172 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 12:56:49,953 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 12:56:50,205 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 12:56:51,763 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 12:56:52,024 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 12:56:52,281 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 12:56:52,793 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 12:56:53,316 - engineio.server - INFO - 2-8HwoAyBwPlmPm0AAAA: Sending packet PING data None
+2025-08-06 12:56:53,316 - engineio.server - INFO - GsuUISwrYjMRcjqhAAAC: Sending packet PING data None
+2025-08-06 12:56:53,317 - engineio.server - INFO - dF1FWJT9OnRtSM99AAAB: Sending packet PING data None
+2025-08-06 12:56:53,317 - engineio.server - INFO - U-qKeGunnqK0hCv_AAAG: Sending packet PING data None
+2025-08-06 12:56:53,325 - engineio.server - INFO - GsuUISwrYjMRcjqhAAAC: Received packet PONG data 
+2025-08-06 12:56:53,326 - engineio.server - INFO - U-qKeGunnqK0hCv_AAAG: Received packet PONG data 
+2025-08-06 12:56:53,327 - engineio.server - INFO - 2-8HwoAyBwPlmPm0AAAA: Received packet PONG data 
+2025-08-06 12:56:53,328 - engineio.server - INFO - dF1FWJT9OnRtSM99AAAB: Received packet PONG data 
+2025-08-06 12:57:16,420 - engineio.server - INFO - G-I1qzcjkE0yb_klAAAI: Sending packet OPEN data {'sid': 'G-I1qzcjkE0yb_klAAAI', 'upgrades': ['websocket'], 'pingTimeout': 20000, 'pingInterval': 25000, 'maxPayload': 1000000}
+2025-08-06 12:57:16,679 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 12:57:16,936 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 12:57:16,945 - engineio.server - INFO - G-I1qzcjkE0yb_klAAAI: Received packet MESSAGE data 0
+2025-08-06 12:57:16,946 - socketio.server - INFO - emitting event "connected" to xLhV-YKXQ_9dzUUNAAAJ [/]
+2025-08-06 12:57:16,947 - engineio.server - INFO - G-I1qzcjkE0yb_klAAAI: Sending packet MESSAGE data 2["connected",{"data":"Connected to trading bot"}]
+2025-08-06 12:57:16,950 - engineio.server - INFO - G-I1qzcjkE0yb_klAAAI: Sending packet MESSAGE data 0{"sid":"xLhV-YKXQ_9dzUUNAAAJ"}
+2025-08-06 12:57:16,952 - engineio.server - INFO - G-I1qzcjkE0yb_klAAAI: Received request to upgrade to websocket
+2025-08-06 12:57:16,962 - engineio.server - INFO - G-I1qzcjkE0yb_klAAAI: Upgrade to websocket successful
+2025-08-06 12:57:18,330 - engineio.server - INFO - 2-8HwoAyBwPlmPm0AAAA: Sending packet PING data None
+2025-08-06 12:57:18,331 - engineio.server - INFO - dF1FWJT9OnRtSM99AAAB: Sending packet PING data None
+2025-08-06 12:57:18,331 - engineio.server - INFO - GsuUISwrYjMRcjqhAAAC: Sending packet PING data None
+2025-08-06 12:57:18,331 - engineio.server - INFO - U-qKeGunnqK0hCv_AAAG: Sending packet PING data None
+2025-08-06 12:57:18,332 - engineio.server - INFO - U-qKeGunnqK0hCv_AAAG: Received packet PONG data 
+2025-08-06 12:57:18,333 - engineio.server - INFO - GsuUISwrYjMRcjqhAAAC: Received packet PONG data 
+2025-08-06 12:57:18,334 - engineio.server - INFO - 2-8HwoAyBwPlmPm0AAAA: Received packet PONG data 
+2025-08-06 12:57:18,334 - engineio.server - INFO - dF1FWJT9OnRtSM99AAAB: Received packet PONG data 
+2025-08-06 12:57:41,435 - engineio.server - INFO - G-I1qzcjkE0yb_klAAAI: Sending packet PING data None
+2025-08-06 12:57:41,441 - engineio.server - INFO - G-I1qzcjkE0yb_klAAAI: Received packet PONG data 
+2025-08-06 12:57:43,353 - engineio.server - INFO - U-qKeGunnqK0hCv_AAAG: Sending packet PING data None
+2025-08-06 12:57:43,354 - engineio.server - INFO - 2-8HwoAyBwPlmPm0AAAA: Sending packet PING data None
+2025-08-06 12:57:43,354 - engineio.server - INFO - dF1FWJT9OnRtSM99AAAB: Sending packet PING data None
+2025-08-06 12:57:43,355 - engineio.server - INFO - GsuUISwrYjMRcjqhAAAC: Sending packet PING data None
+2025-08-06 12:57:43,356 - engineio.server - INFO - GsuUISwrYjMRcjqhAAAC: Received packet PONG data 
+2025-08-06 12:57:43,357 - engineio.server - INFO - U-qKeGunnqK0hCv_AAAG: Received packet PONG data 
+2025-08-06 12:57:43,358 - engineio.server - INFO - 2-8HwoAyBwPlmPm0AAAA: Received packet PONG data 
+2025-08-06 12:57:43,358 - engineio.server - INFO - dF1FWJT9OnRtSM99AAAB: Received packet PONG data 
+2025-08-06 12:57:46,792 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 12:57:47,820 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 12:57:49,161 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 12:57:49,422 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 12:57:49,671 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 12:57:49,923 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 12:57:50,445 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 12:57:51,252 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 12:57:52,386 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 12:57:52,638 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 12:58:00,295 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 12:58:06,444 - engineio.server - INFO - G-I1qzcjkE0yb_klAAAI: Sending packet PING data None
+2025-08-06 12:58:06,445 - engineio.server - INFO - G-I1qzcjkE0yb_klAAAI: Received packet PONG data 
+2025-08-06 12:58:08,360 - engineio.server - INFO - GsuUISwrYjMRcjqhAAAC: Sending packet PING data None
+2025-08-06 12:58:08,360 - engineio.server - INFO - 2-8HwoAyBwPlmPm0AAAA: Sending packet PING data None
+2025-08-06 12:58:08,361 - engineio.server - INFO - dF1FWJT9OnRtSM99AAAB: Sending packet PING data None
+2025-08-06 12:58:08,361 - engineio.server - INFO - U-qKeGunnqK0hCv_AAAG: Sending packet PING data None
+2025-08-06 12:58:08,363 - engineio.server - INFO - 2-8HwoAyBwPlmPm0AAAA: Received packet PONG data 
+2025-08-06 12:58:08,363 - engineio.server - INFO - GsuUISwrYjMRcjqhAAAC: Received packet PONG data 
+2025-08-06 12:58:08,364 - engineio.server - INFO - U-qKeGunnqK0hCv_AAAG: Received packet PONG data 
+2025-08-06 12:58:08,365 - engineio.server - INFO - dF1FWJT9OnRtSM99AAAB: Received packet PONG data 
+2025-08-06 12:58:16,756 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 12:58:17,813 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 12:58:31,457 - engineio.server - INFO - G-I1qzcjkE0yb_klAAAI: Sending packet PING data None
+2025-08-06 12:58:31,459 - engineio.server - INFO - G-I1qzcjkE0yb_klAAAI: Received packet PONG data 
+2025-08-06 12:58:33,355 - engineio.server - INFO - 2-8HwoAyBwPlmPm0AAAA: Sending packet PING data None
+2025-08-06 12:58:33,356 - engineio.server - INFO - 2-8HwoAyBwPlmPm0AAAA: Received packet PONG data 
+2025-08-06 12:58:33,386 - engineio.server - INFO - U-qKeGunnqK0hCv_AAAG: Sending packet PING data None
+2025-08-06 12:58:33,386 - engineio.server - INFO - GsuUISwrYjMRcjqhAAAC: Sending packet PING data None
+2025-08-06 12:58:33,387 - engineio.server - INFO - dF1FWJT9OnRtSM99AAAB: Sending packet PING data None
+2025-08-06 12:58:33,389 - engineio.server - INFO - U-qKeGunnqK0hCv_AAAG: Received packet PONG data 
+2025-08-06 12:58:33,390 - engineio.server - INFO - GsuUISwrYjMRcjqhAAAC: Received packet PONG data 
+2025-08-06 12:58:33,390 - engineio.server - INFO - dF1FWJT9OnRtSM99AAAB: Received packet PONG data 

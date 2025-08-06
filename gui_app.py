@@ -28,6 +28,13 @@ import traceback
 # Add parent directory to path for imports
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+# Configure logging first
+logging.basicConfig(
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    level=logging.INFO
+)
+logger = logging.getLogger(__name__)
+
 from config_loader import get_config, reload_config
 from pionex_api import PionexAPI
 from trading_strategies import TradingStrategies
@@ -92,14 +99,6 @@ def handle_exception(e):
         'message': 'An unexpected error occurred',
         'timestamp': datetime.now().isoformat()
     }), 500
-
-# Configure logging
-config = get_config()
-logging.basicConfig(
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    level=getattr(logging, config.get('logging', {}).get('level', 'INFO'))
-)
-logger = logging.getLogger(__name__)
 
 class TradingBotGUI:
     def __init__(self):

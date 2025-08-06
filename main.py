@@ -17,6 +17,16 @@ from pathlib import Path
 # Add current directory to Python path
 sys.path.insert(0, str(Path(__file__).parent))
 
+# Load environment variables from .env file
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+    print("Environment variables loaded from .env file")
+except ImportError:
+    print("python-dotenv not installed, using system environment variables")
+except Exception as e:
+    print(f"Error loading .env file: {e}")
+
 # Configure logging for production with ASCII-safe messages
 logging.basicConfig(
     level=logging.INFO,

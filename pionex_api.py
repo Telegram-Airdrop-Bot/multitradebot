@@ -80,13 +80,7 @@ class PionexAPI:
             signature = hmac.new(self.secret_key.encode(), sign_str.encode(), hashlib.sha256).hexdigest()
             headers['PIONEX-KEY'] = self.api_key
             headers['PIONEX-SIGNATURE'] = signature
-        # Debug prints
-        print(f"[DEBUG] Request: {method.upper()} {url}")
-        print(f"[DEBUG] Headers: {headers}")
-        if method.upper() == 'GET':
-            print(f"[DEBUG] Params: {params}")
-        else:
-            print(f"[DEBUG] Body: {pyjson.dumps(params, separators=(',', ':')) if params else ''}")
+        
         last_exception = None
         for attempt in range(self.retry_attempts):
             try:
@@ -98,13 +92,18 @@ class PionexAPI:
                     response = self.session.delete(url, data=pyjson.dumps(params), headers=headers, timeout=self.timeout)
                 else:
                     raise ValueError(f"Unsupported HTTP method: {method}")
+                
                 if response.status_code == 200:
-                    data = response.json()
-                    if 'code' in data and data['code'] != 0:
-                        error_msg = data.get('msg', 'Unknown API error')
-                        self.logger.error(f"API error: {error_msg} (code: {data['code']})")
-                        return {'error': error_msg, 'code': data['code']}
-                    return data
+                    try:
+                        data = response.json()
+                        if 'code' in data and data['code'] != 0:
+                            error_msg = data.get('msg', 'Unknown API error')
+                            self.logger.error(f"API error: {error_msg} (code: {data['code']})")
+                            return {'error': error_msg, 'code': data['code']}
+                        return data
+                    except json.JSONDecodeError:
+                        self.logger.error(f"Invalid JSON response: {response.text}")
+                        return {'error': 'Invalid JSON response from API'}
                 elif response.status_code == 429:
                     retry_after = int(response.headers.get('Retry-After', 60))
                     self.logger.warning(f"Rate limited, waiting {retry_after}s")
@@ -149,8 +148,20 @@ class PionexAPI:
         return self._make_request('GET', '/api/v1/account/assets', signed=True)
 
     def get_positions(self) -> Dict:
-        """GET /api/v1/account/balances (as a proxy for positions)"""
-        return self._make_request('GET', '/api/v1/account/balances', signed=True)
+        """GET /api/v1/account/positions - Get current positions"""
+        try:
+            # Try the positions endpoint first
+            response = self._make_request('GET', '/api/v1/account/positions', signed=True)
+            
+            # If positions endpoint doesn't work, fallback to balances
+            if 'error' in response or 'code' in response and response['code'] != 0:
+                self.logger.warning("Positions endpoint failed, trying balances endpoint")
+                response = self._make_request('GET', '/api/v1/account/balances', signed=True)
+            
+            return response
+        except Exception as e:
+            self.logger.error(f"Error getting positions: {e}")
+            return {'error': f'Failed to get positions: {e}'}
 
     # --- Order Endpoints ---
     def place_order(self, symbol: str, side: str, order_type: str, quantity: float, price: str = None, client_order_id: str = None, **kwargs) -> Dict:
