@@ -4,7 +4,7 @@ import hashlib
 import time
 import json
 import logging
-from typing import Dict, Optional
+from typing import Dict, List, Optional
 from urllib.parse import urlencode
 import random
 import os
@@ -66,38 +66,27 @@ class PionexAPI:
             'Content-Type': 'application/json',
             'User-Agent': 'PionexTradingBot/1.0'
         }
-        
+        body = ''
         if signed:
             timestamp = str(int(time.time() * 1000))
             params['timestamp'] = timestamp
-            
-            # Create query string for signature (sorted alphabetically)
             sorted_items = sorted(params.items())
             query_string = '&'.join(f'{k}={v}' for k, v in sorted_items)
-            
-            # Create signature string according to Pionex documentation
-            # Format: METHOD + ENDPOINT + QUERY_STRING
-            sign_str = f"{method.upper()}{endpoint}?{query_string}"
-            
-            # Generate HMAC SHA256 signature
-            signature = hmac.new(
-                self.secret_key.encode('utf-8'),
-                sign_str.encode('utf-8'),
-                hashlib.sha256
-            ).hexdigest()
-            
-            # Add authentication headers according to Pionex documentation
+            path_url = f"{endpoint}?{query_string}" if query_string else endpoint
+            sign_str = f"{method.upper()}{path_url}"
+            if method.upper() in ['POST', 'DELETE']:
+                body = pyjson.dumps(params, separators=(',', ':')) if params else ''
+                sign_str += body
+            signature = hmac.new(self.secret_key.encode(), sign_str.encode(), hashlib.sha256).hexdigest()
             headers['PIONEX-KEY'] = self.api_key
             headers['PIONEX-SIGNATURE'] = signature
-            headers['PIONEX-TIMESTAMP'] = timestamp
-            
-            # Log signature for debugging
-            self.logger.info(f"Request URL: {url}")
-            self.logger.info(f"Request params: {params}")
-            self.logger.info(f"Signature string: {sign_str}")
-            self.logger.info(f"Generated signature: {signature}")
-            self.logger.info(f"Headers: {headers}")
-        
+        # Debug prints
+        print(f"[DEBUG] Request: {method.upper()} {url}")
+        print(f"[DEBUG] Headers: {headers}")
+        if method.upper() == 'GET':
+            print(f"[DEBUG] Params: {params}")
+        else:
+            print(f"[DEBUG] Body: {pyjson.dumps(params, separators=(',', ':')) if params else ''}")
         last_exception = None
         for attempt in range(self.retry_attempts):
             try:
@@ -109,22 +98,13 @@ class PionexAPI:
                     response = self.session.delete(url, data=pyjson.dumps(params), headers=headers, timeout=self.timeout)
                 else:
                     raise ValueError(f"Unsupported HTTP method: {method}")
-                
-                self.logger.info(f"Response status: {response.status_code}")
-                self.logger.info(f"Response text: {response.text}")
-                
                 if response.status_code == 200:
-                    try:
-                        data = response.json()
-                        # Check for Pionex API response format
-                        if 'code' in data and data['code'] != 0:
-                            error_msg = data.get('msg', 'Unknown API error')
-                            self.logger.error(f"API error: {error_msg} (code: {data['code']})")
-                            return {'error': error_msg, 'code': data['code']}
-                        return data
-                    except json.JSONDecodeError:
-                        self.logger.error(f"Invalid JSON response: {response.text}")
-                        return {'error': 'Invalid JSON response from API'}
+                    data = response.json()
+                    if 'code' in data and data['code'] != 0:
+                        error_msg = data.get('msg', 'Unknown API error')
+                        self.logger.error(f"API error: {error_msg} (code: {data['code']})")
+                        return {'error': error_msg, 'code': data['code']}
+                    return data
                 elif response.status_code == 429:
                     retry_after = int(response.headers.get('Retry-After', 60))
                     self.logger.warning(f"Rate limited, waiting {retry_after}s")
@@ -161,273 +141,55 @@ class PionexAPI:
 
     # --- Account Endpoints ---
     def get_balances(self) -> Dict:
-        """GET /api/v1/account/balances - Get account balance"""
-        try:
-            # Try multiple possible endpoints for Pionex API
-            possible_endpoints = [
-                '/api/v1/account/balances',
-                '/api/v1/account/balance',
-                '/api/v1/account/assets',
-                '/api/v1/account/account'
-            ]
-            
-            for endpoint in possible_endpoints:
-                try:
-                    self.logger.info(f"Trying endpoint: {endpoint}")
-                    response = self._make_request('GET', endpoint, signed=True)
-                    
-                    # Log the response for debugging
-                    self.logger.info(f"Balance API response from {endpoint}: {response}")
-                    
-                    # If API returns error, try next endpoint
-                    if 'error' in response:
-                        self.logger.warning(f"API error for {endpoint}: {response['error']}")
-                        continue
-                    
-                    # If successful, process the response
-                    balances = []
-                    if 'data' in response and 'balances' in response['data']:
-                        balances = response['data']['balances']
-                    elif 'data' in response and isinstance(response['data'], list):
-                        balances = response['data']
-                    
-                    # Convert Pionex format to our format
-                    formatted_balances = []
-                    for balance in balances:
-                        formatted_balances.append({
-                            'currency': balance.get('coin', balance.get('currency', '')),
-                            'available': float(balance.get('free', balance.get('available', 0))),
-                            'locked': float(balance.get('frozen', balance.get('locked', 0))),
-                            'total': float(balance.get('free', balance.get('available', 0))) + float(balance.get('frozen', balance.get('locked', 0)))
-                        })
-                    
-                    self.logger.info(f"Successfully got balances from {endpoint}")
-                    return {
-                        'success': True,
-                        'data': {
-                            'balances': formatted_balances,
-                            'total_count': len(formatted_balances)
-                        }
-                    }
-                    
-                except Exception as e:
-                    self.logger.warning(f"Error trying {endpoint}: {e}")
-                    continue
-            
-            # If all endpoints fail, return empty balance
-            self.logger.warning("All balance endpoints failed, returning empty balance")
-            return {
-                'success': True,
-                'data': {
-                    'balances': [],
-                    'total_count': 0
-                }
-            }
-            
-        except Exception as e:
-            self.logger.error(f"Error getting balances: {e}")
-            return {
-                'success': True,
-                'data': {
-                    'balances': [],
-                    'total_count': 0
-                }
-            }
+        """GET /api/v1/account/balances"""
+        return self._make_request('GET', '/api/v1/account/balances', signed=True)
 
     def get_assets(self) -> Dict:
         """GET /api/v1/account/assets"""
         return self._make_request('GET', '/api/v1/account/assets', signed=True)
 
     def get_positions(self) -> Dict:
-        """Get current positions using balances endpoint as proxy"""
-        try:
-            # For Pionex, we use balances endpoint to get account holdings
-            # Try multiple possible endpoints
-            possible_endpoints = [
-                '/api/v1/account/balances',
-                '/api/v1/account/balance',
-                '/api/v1/account/assets',
-                '/api/v1/account/account'
-            ]
-            
-            for endpoint in possible_endpoints:
-                try:
-                    self.logger.info(f"Trying endpoint for positions: {endpoint}")
-                    response = self._make_request('GET', endpoint, signed=True)
-                    
-                    # Log the response for debugging
-                    self.logger.info(f"Balance API response for positions from {endpoint}: {response}")
-                    
-                    # If API returns error, try next endpoint
-                    if 'error' in response:
-                        self.logger.warning(f"API error for {endpoint}: {response['error']}")
-                        continue
-                    
-                    # Process balances as positions
-                    positions = []
-                    balances = []
-                    
-                    if 'data' in response and 'balances' in response['data']:
-                        balances = response['data']['balances']
-                    elif 'data' in response and isinstance(response['data'], list):
-                        balances = response['data']
-                    
-                    for balance in balances:
-                        total = float(balance.get('free', balance.get('available', 0))) + float(balance.get('frozen', balance.get('locked', 0)))
-                        if total > 0:
-                            positions.append({
-                                'symbol': balance.get('coin', balance.get('currency', '')),
-                                'size': total,
-                                'available': float(balance.get('free', balance.get('available', 0))),
-                                'locked': float(balance.get('frozen', balance.get('locked', 0))),
-                                'entryPrice': 0,  # Not available in balance response
-                                'markPrice': 0,   # Not available in balance response
-                                'unrealizedPnl': 0,  # Not available in balance response
-                                'roe': 0,  # Not available in balance response
-                                'notional': total
-                            })
-                    
-                    self.logger.info(f"Successfully got positions from {endpoint}")
-                    return {
-                        'success': True,
-                        'data': {
-                            'positions': positions,
-                            'total_count': len(positions)
-                        }
-                    }
-                    
-                except Exception as e:
-                    self.logger.warning(f"Error trying {endpoint} for positions: {e}")
-                    continue
-            
-            # If all endpoints fail, return empty positions
-            self.logger.warning("All position endpoints failed, returning empty positions")
-            return {
-                'success': True,
-                'data': {
-                    'positions': [],
-                    'total_count': 0
-                }
-            }
-            
-        except Exception as e:
-            self.logger.error(f"Error getting positions: {e}")
-            return {
-                'success': True,
-                'data': {
-                    'positions': [],
-                    'total_count': 0
-                }
-            }
+        """GET /api/v1/account/balances (as a proxy for positions)"""
+        return self._make_request('GET', '/api/v1/account/balances', signed=True)
 
     # --- Order Endpoints ---
     def place_order(self, symbol: str, side: str, order_type: str, quantity: float, price: str = None, client_order_id: str = None, **kwargs) -> Dict:
-        """POST /api/v1/trade/order - Enhanced order placement"""
-        
-        # Convert symbol format for Pionex API
-        formatted_symbol = self._convert_symbol_format(symbol)
-        
-        # Generate client order ID if not provided
-        if not client_order_id:
-            import uuid
-            client_order_id = str(uuid.uuid4())
-        
-        # Base order parameters
+        """POST /api/v1/trade/order"""
         params = {
-            'clientOrderId': client_order_id,
-            'symbol': formatted_symbol,
+            'symbol': symbol,
             'side': side.upper(),
             'type': order_type.upper(),
-            'size': str(quantity)  # Pionex uses 'size' instead of 'quantity'
+            'quantity': quantity
         }
-        
-        # Add price for limit orders
-        if price and order_type.upper() in ['LIMIT', 'STOP_LIMIT']:
-            params['price'] = str(price)
-        
-        # Add stop loss and take profit
-        if 'stop_loss' in kwargs:
-            params['stopLoss'] = str(kwargs['stop_loss'])
-        if 'take_profit' in kwargs:
-            params['takeProfit'] = str(kwargs['take_profit'])
-        
-        # Add time in force parameters
-        if 'IOC' in kwargs and kwargs['IOC']:
-            params['IOC'] = True
-        if 'FOK' in kwargs and kwargs['FOK']:
-            params['FOK'] = True
-        if 'timeInForce' in kwargs:
-            params['timeInForce'] = kwargs['timeInForce']
-        
-        # Add leverage for futures
-        if 'leverage' in kwargs:
-            params['leverage'] = kwargs['leverage']
-        
-        # Add margin type
-        if 'marginType' in kwargs:
-            params['marginType'] = kwargs['marginType']
-        
-        # Add position side for futures
-        if 'positionSide' in kwargs:
-            params['positionSide'] = kwargs['positionSide']
-        
-        # Add reduce only flag
-        if 'reduceOnly' in kwargs:
-            params['reduceOnly'] = kwargs['reduceOnly']
-        
-        # Add post only flag
-        if 'postOnly' in kwargs:
-            params['postOnly'] = kwargs['postOnly']
-        
-        # Add iceberg quantity
-        if 'icebergQty' in kwargs:
-            params['icebergQty'] = str(kwargs['icebergQty'])
-        
-        # Add working type for stop orders
-        if 'workingType' in kwargs:
-            params['workingType'] = kwargs['workingType']
-        
-        # Add price protect
-        if 'priceProtect' in kwargs:
-            params['priceProtect'] = kwargs['priceProtect']
-        
-        # Add activation price for stop orders
-        if 'activationPrice' in kwargs:
-            params['activationPrice'] = str(kwargs['activationPrice'])
-        
-        # Add callback rate for trailing stop
-        if 'callbackRate' in kwargs:
-            params['callbackRate'] = str(kwargs['callbackRate'])
-        
-        self.logger.info(f"Placing order: {params}")
+        if price:
+            params['price'] = price
+        if client_order_id:
+            params['clientOrderId'] = client_order_id
+        params.update(kwargs)
         return self._make_request('POST', '/api/v1/trade/order', params, signed=True)
-    
+
     def get_order(self, order_id: int, symbol: str) -> Dict:
         """GET /api/v1/trade/order"""
-        formatted_symbol = self._convert_symbol_format(symbol)
-        params = {'orderId': order_id, 'symbol': formatted_symbol}
+        params = {'orderId': order_id, 'symbol': symbol}
         return self._make_request('GET', '/api/v1/trade/order', params, signed=True)
 
     def cancel_order(self, order_id: int, symbol: str) -> Dict:
         """DELETE /api/v1/trade/order"""
-        formatted_symbol = self._convert_symbol_format(symbol)
-        params = {'orderId': order_id, 'symbol': formatted_symbol}
+        params = {'orderId': order_id, 'symbol': symbol}
         return self._make_request('DELETE', '/api/v1/trade/order', params, signed=True)
 
     def get_open_orders(self, symbol: str = None) -> Dict:
         """GET /api/v1/trade/openOrders"""
         params = {}
         if symbol:
-            formatted_symbol = self._convert_symbol_format(symbol)
-            params['symbol'] = formatted_symbol
+            params['symbol'] = symbol
         return self._make_request('GET', '/api/v1/trade/openOrders', params, signed=True)
 
     def get_all_orders(self, symbol: str = None, limit: int = 100) -> Dict:
         """GET /api/v1/trade/allOrders"""
         params = {'limit': limit}
         if symbol:
-            formatted_symbol = self._convert_symbol_format(symbol)
-            params['symbol'] = formatted_symbol
+            params['symbol'] = symbol
         return self._make_request('GET', '/api/v1/trade/allOrders', params, signed=True)
 
     # --- Fills (Trade History) Endpoints ---
@@ -435,8 +197,7 @@ class PionexAPI:
         """GET /api/v1/trade/fills"""
         params = {}
         if symbol:
-            formatted_symbol = self._convert_symbol_format(symbol)
-            params['symbol'] = formatted_symbol
+            params['symbol'] = symbol
         if order_id:
             params['orderId'] = order_id
         return self._make_request('GET', '/api/v1/trade/fills', params, signed=True)
@@ -466,31 +227,8 @@ class PionexAPI:
         """GET /api/v1/common/symbols"""
         return self._make_request('GET', '/api/v1/common/symbols')
 
-    def _convert_symbol_format(self, symbol: str) -> str:
-        """Convert symbol format for Pionex API compatibility"""
-        # Remove any existing underscore
-        clean_symbol = symbol.replace('_', '')
-        
-        # Add underscore before USDT, USDC, BUSD, etc.
-        if clean_symbol.endswith('USDT'):
-            return clean_symbol[:-4] + '_USDT'
-        elif clean_symbol.endswith('USDC'):
-            return clean_symbol[:-4] + '_USDC'
-        elif clean_symbol.endswith('BUSD'):
-            return clean_symbol[:-4] + '_BUSD'
-        elif clean_symbol.endswith('BTC'):
-            return clean_symbol[:-3] + '_BTC'
-        elif clean_symbol.endswith('ETH'):
-            return clean_symbol[:-3] + '_ETH'
-        else:
-            # If no known suffix, return as is
-            return symbol
-
-    def get_klines(self, symbol: str, interval: str = '1M', limit: int = 100) -> Dict:
+    def get_klines(self, symbol: str, interval: str = '1H', limit: int = 100) -> Dict:
         """GET /api/v1/market/klines"""
-        # Convert symbol format for Pionex API
-        formatted_symbol = self._convert_symbol_format(symbol)
-        
         # Convert interval format to match Pionex API requirements
         interval_map = {
             '1m': '1M',
@@ -501,82 +239,62 @@ class PionexAPI:
             '4h': '4H',
             '8h': '8H',
             '12h': '12H',
-            '1d': '1D',
-            # Default intervals for Pionex
-            '1M': '1M',
-            '5M': '5M',
-            '15M': '15M',
-            '30M': '30M',
-            '1H': '1H',
-            '4H': '4H',
-            '8H': '8H',
-            '12H': '12H',
-            '1D': '1D'
+            '1d': '1D'
         }
 
         # Convert interval to proper format
-        api_interval = interval_map.get(interval.upper(), interval.upper())
+        api_interval = interval_map.get(interval.lower(), interval.upper())
 
         params = {
-            'symbol': formatted_symbol,
+            'symbol': symbol,
             'interval': api_interval,
             'limit': min(limit, 500)  # Ensure limit doesn't exceed 500
         }
 
-        self.logger.info(f"Fetching klines for {formatted_symbol} with interval {api_interval}")
-        
-        try:
-            response = self._make_request('GET', '/api/v1/market/klines', params)
-            
-            # Check for API errors
-            if 'error' in response:
-                self.logger.error(f"API error for {formatted_symbol}: {response['error']}")
-                return response
-            
-            # Handle the response structure according to documentation
-            if 'data' in response and isinstance(response['data'], dict) and 'klines' in response['data']:
-                self.logger.info(f"Successfully retrieved klines for {formatted_symbol}")
-                return response
-            elif 'data' in response and isinstance(response['data'], list):
-                # If data is directly a list, wrap it in the expected format
-                self.logger.info(f"Successfully retrieved klines list for {formatted_symbol}")
-                return {
-                    'result': True,
-                    'data': {'klines': response['data']},
-                    'timestamp': response.get('timestamp', int(time.time() * 1000))
-                }
-            else:
-                self.logger.warning(f"Unexpected response format for {formatted_symbol}: {response}")
-                return response
-                
-        except Exception as e:
-            self.logger.error(f"Exception in get_klines for {formatted_symbol}: {e}")
-            return {'error': f'Failed to fetch klines: {str(e)}'}
+        response = self._make_request('GET', '/api/v1/market/klines', params)
+
+        # Handle the response structure according to documentation
+        if 'data' in response and isinstance(response['data'], dict) and 'klines' in response['data']:
+            return response
+        elif 'data' in response and isinstance(response['data'], list):
+            # If data is directly a list, wrap it in the expected format
+            return {
+                'result': True,
+                'data': {'klines': response['data']},
+                'timestamp': response.get('timestamp', int(time.time() * 1000))
+            }
+
+        return response
 
     def get_ticker(self, symbol: str = None) -> Dict:
         """GET /api/v1/market/tickers"""
         params = {}
         if symbol:
-            formatted_symbol = self._convert_symbol_format(symbol)
-            params['symbol'] = formatted_symbol
+            params['symbol'] = symbol
         return self._make_request('GET', '/api/v1/market/tickers', params)
 
     def get_depth(self, symbol: str, limit: int = 100) -> Dict:
         """GET /api/v1/market/depth"""
-        formatted_symbol = self._convert_symbol_format(symbol)
-        params = {'symbol': formatted_symbol, 'limit': limit}
+        params = {'symbol': symbol, 'limit': limit}
         return self._make_request('GET', '/api/v1/market/depth', params)
 
     def get_trades(self, symbol: str, limit: int = 100) -> Dict:
         """GET /api/v1/market/trades"""
-        formatted_symbol = self._convert_symbol_format(symbol)
-        params = {'symbol': formatted_symbol, 'limit': limit}
-        return self._make_request('GET', '/api/v1/market/trades', params)
+        params = {'symbol': symbol, 'limit': limit}
+        
+        # Add debug logging
+        self.logger.info(f"Fetching trades for {symbol} with limit {limit}")
+        
+        response = self._make_request('GET', '/api/v1/market/trades', params)
+        
+        # Log the response for debugging
+        self.logger.info(f"Trades response for {symbol}: {response}")
+        
+        return response
 
     def get_ticker_price(self, symbol: str) -> Dict:
         """Get current ticker price for a symbol"""
-        formatted_symbol = self._convert_symbol_format(symbol)
-        params = {'symbol': formatted_symbol}
+        params = {'symbol': symbol}
         response = self._make_request('GET', '/api/v1/market/tickers', params)
 
         if 'error' in response:
@@ -584,11 +302,11 @@ class PionexAPI:
 
         if 'data' in response and isinstance(response['data'], dict) and 'tickers' in response['data']:
             for ticker in response['data']['tickers']:
-                if isinstance(ticker, dict) and ticker.get('symbol') == formatted_symbol:
+                if isinstance(ticker, dict) and ticker.get('symbol') == symbol:
                     return {'data': {'price': ticker.get('close', '0')}}
 
         # If not found in list, return error
-        return {'error': f"Symbol {formatted_symbol} not found in ticker data"}
+        return {'error': f"Symbol {symbol} not found in ticker data"}
 
     def get_trading_pairs(self) -> Dict:
         """Get trading pairs"""
@@ -618,15 +336,6 @@ class PionexAPI:
         except Exception as e:
             return {'error': f'Failed to get account info: {str(e)}'}
 
-    def test_connection(self) -> Dict:
-        try:
-            balance = self.get_balances()
-            if 'error' in balance:
-                return {'error': f"Authentication error: {balance['error']}"}
-            return {'status': 'connected'}
-        except Exception as e:
-            return {'error': f"Connection test failed: {str(e)}"}
-
     def get_account_balance(self) -> Dict:
         """Get account balance in a format expected by the GUI"""
         try:
@@ -642,10 +351,13 @@ class PionexAPI:
             frozen_balance = 0
             
             for balance in balances:
-                if balance.get('currency') == 'USDT':
-                    total_balance = float(balance.get('total', 0))
-                    available_balance = float(balance.get('available', 0))
+                # Pionex uses 'coin' instead of 'currency'
+                coin = balance.get('coin', balance.get('currency', ''))
+                if coin == 'USDT':
+                    # Pionex uses 'free' and 'frozen' instead of 'available' and 'frozen'
+                    available_balance = float(balance.get('free', balance.get('available', 0)))
                     frozen_balance = float(balance.get('frozen', 0))
+                    total_balance = available_balance + frozen_balance
                     break
             
             return {
@@ -657,6 +369,15 @@ class PionexAPI:
             
         except Exception as e:
             return {'error': f'Failed to get account balance: {str(e)}'}
+
+    def test_connection(self) -> Dict:
+        try:
+            balance = self.get_balances()
+            if 'error' in balance:
+                return {'error': f"Authentication error: {balance['error']}"}
+            return {'status': 'connected'}
+        except Exception as e:
+            return {'error': f"Connection test failed: {str(e)}"}
 
     def place_market_order(self, symbol: str, side: str, quantity: float, **kwargs) -> Dict:
         """Place market order with enhanced parameters"""
@@ -709,36 +430,162 @@ class PionexAPI:
         params.update(kwargs)
         return self.place_order(symbol, side, 'LIMIT', quantity, str(price), **params)
 
-    def get_real_time_price(self, symbol: str) -> float:
-        """Get real-time price for a symbol"""
+    def _convert_symbol_format(self, symbol: str) -> str:
+        """Convert symbol format for Pionex API compatibility"""
+        # Remove any existing underscore
+        clean_symbol = symbol.replace('_', '')
+        
+        # Add underscore before USDT, USDC, BUSD, etc.
+        if clean_symbol.endswith('USDT'):
+            return clean_symbol[:-4] + '_USDT'
+        elif clean_symbol.endswith('USDC'):
+            return clean_symbol[:-4] + '_USDC'
+        elif clean_symbol.endswith('BUSD'):
+            return clean_symbol[:-4] + '_BUSD'
+        elif clean_symbol.endswith('BTC'):
+            return clean_symbol[:-3] + '_BTC'
+        elif clean_symbol.endswith('ETH'):
+            return clean_symbol[:-3] + '_ETH'
+        else:
+            # If no known suffix, return as is
+            return symbol
+
+    def get_live_trades(self, symbol: str, limit: int = 50) -> Dict:
+        """Get live trades for a symbol"""
         try:
-            # Convert symbol format
+            # Convert symbol format if needed
             formatted_symbol = self._convert_symbol_format(symbol)
             
-            # Get ticker price
-            ticker_response = self.get_ticker_price(formatted_symbol)
+            trades_response = self.get_trades(formatted_symbol, limit)
             
-            if 'error' in ticker_response:
-                self.logger.error(f"Error getting real-time price for {symbol}: {ticker_response['error']}")
-                return 0.0
+            if 'error' in trades_response:
+                self.logger.error(f"Error getting trades for {symbol}: {trades_response['error']}")
+                return {'error': trades_response['error']}
             
-            if 'data' in ticker_response and 'price' in ticker_response['data']:
-                return float(ticker_response['data']['price'])
-            else:
-                self.logger.warning(f"No price data in response for {symbol}")
-                return 0.0
+            # Handle different response formats
+            trades = []
+            if 'data' in trades_response:
+                if isinstance(trades_response['data'], list):
+                    trades = trades_response['data']
+                elif isinstance(trades_response['data'], dict):
+                    # If data is a dict, look for trades array
+                    if 'trades' in trades_response['data']:
+                        trades = trades_response['data']['trades']
+                    else:
+                        trades = [trades_response['data']]  # Single trade
+            
+            # Format trades for GUI
+            formatted_trades = []
+            for trade in trades:
+                if isinstance(trade, dict):
+                    formatted_trade = {
+                        'id': trade.get('id', trade.get('tradeId', '')),
+                        'price': float(trade.get('price', 0)),
+                        'quantity': float(trade.get('qty', trade.get('quantity', 0))),
+                        'side': trade.get('side', 'UNKNOWN'),
+                        'time': trade.get('time', int(time.time() * 1000)),
+                        'symbol': symbol
+                    }
+                    formatted_trades.append(formatted_trade)
+            
+            return {
+                'success': True,
+                'data': {
+                    'trades': formatted_trades,
+                    'symbol': symbol,
+                    'count': len(formatted_trades),
+                    'timestamp': int(time.time() * 1000)
+                }
+            }
                 
         except Exception as e:
-            self.logger.error(f"Error getting real-time price for {symbol}: {e}")
-            return 0.0
+            self.logger.error(f"Error getting live trades for {symbol}: {e}")
+            return {
+                'success': False,
+                'error': str(e),
+                'data': {
+                    'trades': [],
+                    'symbol': symbol,
+                    'count': 0,
+                    'timestamp': int(time.time() * 1000)
+                }
+            }
+
+    def get_market_depth(self, symbol: str, limit: int = 20) -> Dict:
+        """Get market depth (order book) for a symbol"""
+        try:
+            depth_response = self.get_depth(symbol, limit)
+            
+            if 'error' in depth_response:
+                return {'error': depth_response['error']}
+            
+            if 'data' in depth_response:
+                depth_data = depth_response['data']
+                return {
+                    'symbol': symbol,
+                    'bids': depth_data.get('bids', []),
+                    'asks': depth_data.get('asks', []),
+                    'timestamp': depth_data.get('timestamp', int(time.time() * 1000))
+                }
+            else:
+                return {'error': 'No depth data available'}
+                
+        except Exception as e:
+            self.logger.error(f"Error getting market depth for {symbol}: {e}")
+            return {'error': str(e)}
+
+    def get_24hr_ticker(self, symbol: str = None) -> Dict:
+        """Get 24-hour ticker statistics"""
+        try:
+            if symbol:
+                ticker_response = self.get_ticker(symbol)
+            else:
+                ticker_response = self.get_ticker()
+            
+            if 'error' in ticker_response:
+                return {'error': ticker_response['error']}
+            
+            if 'data' in ticker_response:
+                return {
+                    'data': ticker_response['data'],
+                    'timestamp': int(time.time() * 1000)
+                }
+            else:
+                return {'error': 'No ticker data available'}
+                
+        except Exception as e:
+            self.logger.error(f"Error getting 24hr ticker: {e}")
+            return {'error': str(e)}
+
+    def get_klines_realtime(self, symbol: str, interval: str = '1m', limit: int = 100) -> Dict:
+        """Get real-time klines/candlestick data"""
+        try:
+            klines_response = self.get_klines(symbol, interval, limit)
+            
+            if 'error' in klines_response:
+                return {'error': klines_response['error']}
+            
+            if 'data' in klines_response:
+                klines_data = klines_response['data']
+                return {
+                    'symbol': symbol,
+                    'interval': interval,
+                    'klines': klines_data,
+                    'count': len(klines_data),
+                    'timestamp': int(time.time() * 1000)
+                }
+            else:
+                return {'error': 'No klines data available'}
+                
+        except Exception as e:
+            self.logger.error(f"Error getting real-time klines for {symbol}: {e}")
+            return {'error': str(e)}
 
     def get_real_time_market_data(self, symbol: str) -> Dict:
         """Get comprehensive real-time market data including price, volume, 24h change"""
         try:
-            formatted_symbol = self._convert_symbol_format(symbol)
-            
             # Get ticker data
-            ticker_response = self.get_ticker(formatted_symbol)
+            ticker_response = self.get_ticker(symbol)
             
             if 'error' in ticker_response:
                 return {'error': ticker_response['error']}
@@ -752,7 +599,7 @@ class PionexAPI:
                     if 'tickers' in ticker_response['data']:
                         # Find the specific symbol in tickers array
                         for ticker in ticker_response['data']['tickers']:
-                            if isinstance(ticker, dict) and ticker.get('symbol') == formatted_symbol:
+                            if isinstance(ticker, dict) and ticker.get('symbol') == symbol:
                                 ticker_data = ticker
                                 break
                     else:
@@ -761,13 +608,13 @@ class PionexAPI:
                 elif isinstance(ticker_response['data'], list):
                     # If data is a list, find the specific symbol
                     for ticker in ticker_response['data']:
-                        if isinstance(ticker, dict) and ticker.get('symbol') == formatted_symbol:
+                        if isinstance(ticker, dict) and ticker.get('symbol') == symbol:
                             ticker_data = ticker
                             break
             
             if not ticker_data:
                 # Try to get basic price data as fallback
-                price_response = self.get_ticker_price(formatted_symbol)
+                price_response = self.get_ticker_price(symbol)
                 if 'data' in price_response and 'price' in price_response['data']:
                     current_price = float(price_response['data']['price'])
                     return {
@@ -804,121 +651,91 @@ class PionexAPI:
             self.logger.error(f"Error getting real-time market data for {symbol}: {e}")
             return {'error': str(e)}
 
-    def get_live_trades(self, symbol: str, limit: int = 50) -> Dict:
-        """Get live trades for a symbol"""
+    def get_real_time_price(self, symbol: str) -> float:
+        """Get real-time price for a symbol"""
         try:
-            formatted_symbol = self._convert_symbol_format(symbol)
-            trades_response = self.get_trades(formatted_symbol, limit)
+            ticker_response = self.get_ticker_price(symbol)
             
-            if 'error' in trades_response:
-                return {'error': trades_response['error']}
+            if 'error' in ticker_response:
+                self.logger.error(f"Error getting real-time price for {symbol}: {ticker_response['error']}")
+                return 0.0
             
-            if 'data' in trades_response:
-                trades = trades_response['data']
-                return {
-                    'symbol': symbol,
-                    'trades': trades,
-                    'count': len(trades),
-                    'timestamp': int(time.time() * 1000)
-                }
+            if 'data' in ticker_response and 'price' in ticker_response['data']:
+                return float(ticker_response['data']['price'])
             else:
-                return {'error': 'No trades data available'}
+                self.logger.warning(f"No price data in response for {symbol}")
+                return 0.0
                 
         except Exception as e:
-            self.logger.error(f"Error getting live trades for {symbol}: {e}")
-            return {'error': str(e)}
+            self.logger.error(f"Error getting real-time price for {symbol}: {e}")
+            return 0.0
 
-    def get_market_depth(self, symbol: str, limit: int = 20) -> Dict:
-        """Get market depth (order book) for a symbol"""
+    def get_market_data(self, symbol: str) -> Dict:
+        """Get comprehensive market data for a symbol"""
         try:
-            formatted_symbol = self._convert_symbol_format(symbol)
-            depth_response = self.get_depth(formatted_symbol, limit)
-            
-            if 'error' in depth_response:
-                return {'error': depth_response['error']}
-            
-            if 'data' in depth_response:
-                depth_data = depth_response['data']
-                return {
-                    'symbol': symbol,
-                    'bids': depth_data.get('bids', []),
-                    'asks': depth_data.get('asks', []),
-                    'timestamp': depth_data.get('timestamp', int(time.time() * 1000))
-                }
-            else:
-                return {'error': 'No depth data available'}
-                
-        except Exception as e:
-            self.logger.error(f"Error getting market depth for {symbol}: {e}")
-            return {'error': str(e)}
-
-    def get_24hr_ticker(self, symbol: str = None) -> Dict:
-        """Get 24-hour ticker statistics"""
-        try:
-            if symbol:
-                formatted_symbol = self._convert_symbol_format(symbol)
-                ticker_response = self.get_ticker(formatted_symbol)
-            else:
-                ticker_response = self.get_ticker()
+            # Get ticker data
+            ticker_response = self.get_ticker(symbol)
             
             if 'error' in ticker_response:
                 return {'error': ticker_response['error']}
             
+            # Handle different response formats
+            ticker_data = None
+            
             if 'data' in ticker_response:
-                return {
-                    'data': ticker_response['data'],
-                    'timestamp': int(time.time() * 1000)
-                }
-            else:
-                return {'error': 'No ticker data available'}
-                
-        except Exception as e:
-            self.logger.error(f"Error getting 24hr ticker: {e}")
-            return {'error': str(e)}
-
-    def get_klines_realtime(self, symbol: str, interval: str = '1m', limit: int = 100) -> Dict:
-        """Get real-time klines/candlestick data"""
-        try:
-            formatted_symbol = self._convert_symbol_format(symbol)
-            klines_response = self.get_klines(formatted_symbol, interval, limit)
+                if isinstance(ticker_response['data'], dict):
+                    # If data is a dict, it might contain tickers array
+                    if 'tickers' in ticker_response['data']:
+                        # Find the specific symbol in tickers array
+                        for ticker in ticker_response['data']['tickers']:
+                            if isinstance(ticker, dict) and ticker.get('symbol') == symbol:
+                                ticker_data = ticker
+                                break
+                    else:
+                        # Data might be the ticker itself
+                        ticker_data = ticker_response['data']
+                elif isinstance(ticker_response['data'], list):
+                    # If data is a list, find the specific symbol
+                    for ticker in ticker_response['data']:
+                        if isinstance(ticker, dict) and ticker.get('symbol') == symbol:
+                            ticker_data = ticker
+                            break
             
-            if 'error' in klines_response:
-                return {'error': klines_response['error']}
-            
-            if 'data' in klines_response:
-                klines_data = klines_response['data']
-                return {
-                    'symbol': symbol,
-                    'interval': interval,
-                    'klines': klines_data,
-                    'count': len(klines_data),
-                    'timestamp': int(time.time() * 1000)
-                }
-            else:
-                return {'error': 'No klines data available'}
-                
-        except Exception as e:
-            self.logger.error(f"Error getting real-time klines for {symbol}: {e}")
-            return {'error': str(e)} 
-
-    def test_symbol_format(self, symbol: str) -> Dict:
-        """Test symbol format conversion"""
-        try:
-            original_symbol = symbol
-            formatted_symbol = self._convert_symbol_format(symbol)
+            if not ticker_data:
+                # Try to get basic price data as fallback
+                price_response = self.get_ticker_price(symbol)
+                if 'data' in price_response and 'price' in price_response['data']:
+                    current_price = float(price_response['data']['price'])
+                    return {
+                        'symbol': symbol,
+                        'price': current_price,
+                        'volume': 0,
+                        'quoteVolume': 0,
+                        'priceChange': 0,
+                        'priceChangePercent': 0,
+                        'high': current_price,
+                        'low': current_price,
+                        'open': current_price,
+                        'close': current_price,
+                        'timestamp': int(time.time() * 1000)
+                    }
+                else:
+                    return {'error': 'No data available'}
             
             return {
-                'original': original_symbol,
-                'formatted': formatted_symbol,
-                'conversion_correct': formatted_symbol != original_symbol,
-                'examples': {
-                    'BTCUSDT': self._convert_symbol_format('BTCUSDT'),
-                    'ETHUSDT': self._convert_symbol_format('ETHUSDT'),
-                    'DOTUSDT': self._convert_symbol_format('DOTUSDT'),
-                    'BTC_USDT': self._convert_symbol_format('BTC_USDT'),
-                    'ETH_USDT': self._convert_symbol_format('ETH_USDT'),
-                    'DOT_USDT': self._convert_symbol_format('DOT_USDT')
-                }
+                'symbol': symbol,
+                'price': float(ticker_data.get('price', ticker_data.get('close', 0))),
+                'volume': float(ticker_data.get('volume', 0)),
+                'quoteVolume': float(ticker_data.get('quoteVolume', 0)),
+                'priceChange': float(ticker_data.get('priceChange', 0)),
+                'priceChangePercent': float(ticker_data.get('priceChangePercent', 0)),
+                'high': float(ticker_data.get('high', 0)),
+                'low': float(ticker_data.get('low', 0)),
+                'open': float(ticker_data.get('open', 0)),
+                'close': float(ticker_data.get('close', 0)),
+                'timestamp': int(ticker_data.get('closeTime', time.time() * 1000))
             }
+                
         except Exception as e:
-            return {'error': f'Error testing symbol format: {str(e)}'} 
+            self.logger.error(f"Error getting real-time market data for {symbol}: {e}")
+            return {'error': str(e)} 

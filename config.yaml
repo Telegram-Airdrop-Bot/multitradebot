@@ -68,7 +68,7 @@ macd:
   signal: 9
   slow: 26
 margin_type: ISOLATED
-max_daily_loss: 100
+max_daily_loss: 10
 notifications:
   email:
     enabled: false
