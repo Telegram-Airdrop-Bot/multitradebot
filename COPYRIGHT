@@ -1,0 +1,169 @@
+COPYRIGHT NOTICE
+
+Copyright © 2024 Telegram-Airdrop-Bot
+All rights reserved.
+
+This software and associated documentation files (the "Software") are the property 
+of Telegram-Airdrop-Bot. The Software is provided for educational and research 
+purposes only.
+
+===============================================================================
+
+SOFTWARE: Pionex Trading Bot - Auto Trade Bot
+VERSION: 1.0.0
+AUTHOR: Telegram-Airdrop-Bot
+REPOSITORY: https://github.com/Telegram-Airdrop-Bot/autotradebot
+LICENSE: MIT License with Additional Terms
+
+===============================================================================
+
+COPYRIGHT HOLDER INFORMATION:
+- Name: Telegram-Airdrop-Bot
+- GitHub: https://github.com/Telegram-Airdrop-Bot
+- Repository: https://github.com/Telegram-Airdrop-Bot/autotradebot.git
+- Contact: Via GitHub Issues or Discussions
+
+===============================================================================
+
+COPYRIGHTED COMPONENTS:
+
+1. Core Application Files:
+   - gui_app.py - Main Flask web application
+   - pionex_api.py - Pionex API integration
+   - auto_trader.py - Automated trading engine
+   - trading_strategies.py - Trading algorithms
+   - database.py - Database management
+   - config_loader.py - Configuration management
+
+2. Web Interface:
+   - templates/index.html - Main web interface
+   - static/js/app.js - Frontend JavaScript
+   - static/css/style.css - Styling
+
+3. Documentation:
+   - README.md - Project documentation
+   - DEPENDENCY_STATUS.md - Dependency report
+   - QUICK_START.md - Quick start guide
+   - DEPLOYMENT_GUIDE.md - Deployment instructions
+
+4. Tools and Utilities:
+   - check_dependencies.py - Dependency checker
+   - fix_dependencies.py - Dependency fixer
+   - quick_dependency_check.py - Quick check tool
+
+5. Configuration:
+   - config.yaml - Configuration template
+   - requirements.txt - Dependencies list
+
+===============================================================================
+
+LICENSE TERMS:
+
+MIT License with Additional Terms for Trading Bot Software
+
+PERMITTED USES:
+- Personal use and research
+- Educational purposes
+- Commercial use with attribution
+- Modification for personal use
+- Distribution with source code
+
+REQUIRED ATTRIBUTION:
+When using, modifying, or distributing this software, you must include:
+```
+Copyright © 2024 Telegram-Airdrop-Bot
+https://github.com/Telegram-Airdrop-Bot/autotradebot
+```
+
+RESTRICTIONS:
+- No warranty provided
+- No liability for trading losses
+- Educational use only
+- Compliance with local laws required
+- API terms of service compliance required
+
+===============================================================================
+
+THIRD-PARTY COMPONENTS:
+
+This software uses the following third-party components:
+
+1. Flask (MIT License)
+   - Copyright (c) 2010 by the Pallets team
+   - https://github.com/pallets/flask
+
+2. Pionex API
+   - Copyright (c) Pionex
+   - https://pionex-doc.gitbook.io/apidocs/
+
+3. Technical Analysis Library (MIT License)
+   - Copyright (c) 2019-2020 Dario Lopez Padial
+   - https://github.com/bukosabino/ta
+
+4. Other Open Source Libraries:
+   - pandas (BSD License)
+   - numpy (BSD License)
+   - matplotlib (PSF License)
+   - requests (Apache License 2.0)
+   - PyYAML (MIT License)
+
+===============================================================================
+
+DISCLAIMERS:
+
+1. RISK DISCLAIMER:
+   This software is for educational and research purposes only.
+   Cryptocurrency trading involves significant financial risk.
+   Users acknowledge that they trade at their own risk.
+
+2. NO FINANCIAL ADVICE:
+   This software does not constitute financial advice.
+   Users should conduct their own research and consult with
+   financial advisors before making trading decisions.
+
+3. NO WARRANTY:
+   The software is provided "as is" without any warranty.
+   The authors disclaim all warranties, express or implied.
+
+4. LIMITATION OF LIABILITY:
+   In no event shall the authors be liable for any damages
+   arising from the use of this software.
+
+===============================================================================
+
+COMPLIANCE REQUIREMENTS:
+
+1. Local Laws:
+   Users are responsible for ensuring compliance with all
+   applicable laws and regulations in their jurisdiction.
+
+2. API Terms:
+   Users must comply with the terms of service of any
+   third-party APIs used by this software.
+
+3. Trading Regulations:
+   Users must comply with all applicable trading and
+   financial regulations in their jurisdiction.
+
+===============================================================================
+
+CONTACT INFORMATION:
+
+For questions regarding copyright, licensing, or usage:
+- GitHub Issues: https://github.com/Telegram-Airdrop-Bot/autotradebot/issues
+- GitHub Discussions: https://github.com/Telegram-Airdrop-Bot/autotradebot/discussions
+- Repository: https://github.com/Telegram-Airdrop-Bot/autotradebot.git
+
+===============================================================================
+
+UPDATES:
+
+This copyright notice may be updated from time to time.
+The latest version will always be available in the repository.
+
+Last Updated: 2024-08-06
+Version: 1.0.0
+
+===============================================================================
+
+Copyright © 2024 Telegram-Airdrop-Bot. All rights reserved. 
