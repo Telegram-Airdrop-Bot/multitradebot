@@ -30,7 +30,16 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from config_loader import get_config, reload_config
 from pionex_api import PionexAPI
 from trading_strategies import TradingStrategies
-from database import Database
+
+# Try to import database - fallback to simple database if SQLite is not available
+try:
+    from database import Database
+    logger.info("Using SQLite database")
+except ImportError as e:
+    logger.warning(f"SQLite database not available: {e}")
+    logger.info("Using simple JSON-based database")
+    from simple_database import SimpleDatabase as Database
+
 from auto_trader import get_auto_trader, start_auto_trading, stop_auto_trading, restart_auto_trading, get_auto_trading_status
 from futures_trading import (
     get_futures_trader, create_futures_grid, create_hedging_grid,

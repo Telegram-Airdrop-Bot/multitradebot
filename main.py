@@ -31,6 +31,11 @@ logger = logging.getLogger(__name__)
 def create_app():
     """Create and configure the Flask application for production"""
     try:
+        # Ensure required directories exist
+        os.makedirs('logs', exist_ok=True)
+        os.makedirs('data', exist_ok=True)
+        
+        # Import Flask app
         from gui_app import app, socketio
         
         # Configure for production
@@ -38,12 +43,13 @@ def create_app():
         app.config['DEBUG'] = False
         app.config['TESTING'] = False
         
-        # Ensure logs directory exists
-        os.makedirs('logs', exist_ok=True)
-        
         logger.info("✅ Flask application created successfully")
         return app, socketio
         
+    except ImportError as e:
+        logger.error(f"❌ Import error: {e}")
+        logger.info("Please ensure all dependencies are installed: pip install -r requirements.txt")
+        raise
     except Exception as e:
         logger.error(f"❌ Error creating Flask application: {e}")
         raise
