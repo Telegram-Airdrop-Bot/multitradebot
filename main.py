@@ -1,37 +1,93 @@
 #!/usr/bin/env python3
 """
-Pionex Trading Bot GUI - Main Entry Point
-Run this file to start the GUI application
+Pionex Trading Bot - Main Entry Point for Production
+Copyright © 2024 Telegram-Airdrop-Bot
+https://github.com/Telegram-Airdrop-Bot/autotradebot
+
+Production entry point for the Pionex Trading Bot with proper
+deployment settings for cloud platforms like Render.
 """
 
 import os
 import sys
+import logging
 from pathlib import Path
 
-# Add parent directory to path for imports
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+# Add current directory to Python path
+sys.path.insert(0, str(Path(__file__).parent))
+
+# Configure logging for production
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.StreamHandler(sys.stdout),
+        logging.FileHandler('logs/app.log') if os.path.exists('logs') else logging.NullHandler()
+    ]
+)
+
+logger = logging.getLogger(__name__)
+
+def create_app():
+    """Create and configure the Flask application for production"""
+    try:
+        from gui_app import app, socketio
+        
+        # Configure for production
+        app.config['ENV'] = 'production'
+        app.config['DEBUG'] = False
+        app.config['TESTING'] = False
+        
+        # Ensure logs directory exists
+        os.makedirs('logs', exist_ok=True)
+        
+        logger.info("✅ Flask application created successfully")
+        return app, socketio
+        
+    except Exception as e:
+        logger.error(f"❌ Error creating Flask application: {e}")
+        raise
 
 def main():
-    """Main entry point for the GUI"""
-    print("🚀 Starting Pionex Trading Bot GUI...")
-    
-    # Check if we're in the right directory
-    if not Path(__file__).parent.exists():
-        print("❌ GUI directory not found. Please run this from the project root.")
-        return 1
-    
-    # Import and run the GUI
+    """Main entry point for production deployment"""
     try:
-        from gui_app import main as gui_main
-        gui_main()
-        return 0
-    except ImportError as e:
-        print(f"❌ Import error: {e}")
-        print("Please ensure all dependencies are installed.")
-        return 1
+        logger.info("🚀 Starting Pionex Trading Bot for Production...")
+        
+        # Check environment variables
+        api_key = os.getenv('PIONEX_API_KEY')
+        api_secret = os.getenv('PIONEX_SECRET_KEY')
+        
+        if not api_key or not api_secret:
+            logger.error("❌ Missing required environment variables: PIONEX_API_KEY, PIONEX_SECRET_KEY")
+            logger.info("Please set these variables in your deployment environment")
+            return
+        
+        logger.info("✅ Environment variables check passed")
+        
+        # Create Flask app
+        app, socketio = create_app()
+        
+        # Get port from environment (for Render and other cloud platforms)
+        port = int(os.environ.get('PORT', 5000))
+        host = '0.0.0.0'  # Bind to all interfaces for production
+        
+        logger.info(f"🌐 Starting server on {host}:{port}")
+        
+        # Start the application with production settings
+        socketio.run(
+            app,
+            host=host,
+            port=port,
+            debug=False,
+            allow_unsafe_werkzeug=True,
+            log_output=True
+        )
+        
+    except KeyboardInterrupt:
+        logger.info("🛑 Application stopped by user")
     except Exception as e:
-        print(f"❌ Error starting GUI: {e}")
-        return 1
+        logger.error(f"❌ Fatal error: {e}")
+        sys.exit(1)
 
-if __name__ == "__main__":
-    sys.exit(main()) 
+if __name__ == '__main__':
+    main() 

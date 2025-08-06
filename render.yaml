@@ -1,26 +1,22 @@
 services:
   - type: web
-    name: pionex-trading-bot-gui
+    name: pionex-trading-bot
     env: python
     plan: free
     buildCommand: pip install -r requirements.txt
     startCommand: python main.py
     envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
       - key: PIONEX_API_KEY
-        value: your_actual_pionex_api_key
+        sync: false
       - key: PIONEX_SECRET_KEY
-        value: your_actual_pionex_secret_key
+        sync: false
       - key: SECRET_KEY
-        value: your_secure_random_secret_key_here
-      - key: DATABASE_URL
-        value: sqlite:///data/trading_bot.db
-      - key: LOG_LEVEL
-        value: INFO
-      - key: GUI_HOST
-        value: 0.0.0.0
-      - key: GUI_PORT
-        value: 10000
-      - key: GUI_DEBUG
+        generateValue: true
+      - key: FLASK_ENV
+        value: production
+      - key: FLASK_DEBUG
         value: false
-      - key: RENDER
-        value: true 
+    healthCheckPath: /
+    autoDeploy: true 

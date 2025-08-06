@@ -1232,10 +1232,6 @@ def handle_subscribe_price(data):
         # Subscribe to real-time price updates
         emit('price_update', {'symbol': symbol, 'price': trading_bot.get_real_time_price(symbol)})
 
-def open_browser():
-    """Open browser to the application"""
-    webbrowser.open('http://127.0.0.1:5000')
-
 def main():
     """Main entry point"""
     print("🚀 Starting Pionex Trading Bot GUI...")
@@ -1251,11 +1247,8 @@ def main():
     
     print("✅ Environment variables check passed")
     
-    # Open browser after a short delay
-    threading.Timer(1.5, open_browser).start()
-    
-    # Start Flask app
-    socketio.run(app, host='127.0.0.1', port=5000, debug=False)
+    # Start Flask app with production settings
+    socketio.run(app, host='0.0.0.0', port=int(os.environ.get('PORT', 5000)), debug=False, allow_unsafe_werkzeug=True)
 
 if __name__ == '__main__':
     main() 
