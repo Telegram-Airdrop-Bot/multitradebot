@@ -163,44 +163,64 @@ class PionexAPI:
     def get_balances(self) -> Dict:
         """GET /api/v1/account/balances - Get account balance"""
         try:
-            response = self._make_request('GET', '/api/v1/account/balances', signed=True)
+            # Try multiple possible endpoints for Pionex API
+            possible_endpoints = [
+                '/api/v1/account/balances',
+                '/api/v1/account/balance',
+                '/api/v1/account/assets',
+                '/api/v1/account/account'
+            ]
             
-            # Log the response for debugging
-            self.logger.info(f"Balance API response: {response}")
-            
-            # If API returns error, return empty balance
-            if 'error' in response:
-                self.logger.warning(f"API error for balance: {response['error']}")
-                return {
-                    'success': True,
-                    'data': {
-                        'balances': [],
-                        'total_count': 0
+            for endpoint in possible_endpoints:
+                try:
+                    self.logger.info(f"Trying endpoint: {endpoint}")
+                    response = self._make_request('GET', endpoint, signed=True)
+                    
+                    # Log the response for debugging
+                    self.logger.info(f"Balance API response from {endpoint}: {response}")
+                    
+                    # If API returns error, try next endpoint
+                    if 'error' in response:
+                        self.logger.warning(f"API error for {endpoint}: {response['error']}")
+                        continue
+                    
+                    # If successful, process the response
+                    balances = []
+                    if 'data' in response and 'balances' in response['data']:
+                        balances = response['data']['balances']
+                    elif 'data' in response and isinstance(response['data'], list):
+                        balances = response['data']
+                    
+                    # Convert Pionex format to our format
+                    formatted_balances = []
+                    for balance in balances:
+                        formatted_balances.append({
+                            'currency': balance.get('coin', balance.get('currency', '')),
+                            'available': float(balance.get('free', balance.get('available', 0))),
+                            'locked': float(balance.get('frozen', balance.get('locked', 0))),
+                            'total': float(balance.get('free', balance.get('available', 0))) + float(balance.get('frozen', balance.get('locked', 0)))
+                        })
+                    
+                    self.logger.info(f"Successfully got balances from {endpoint}")
+                    return {
+                        'success': True,
+                        'data': {
+                            'balances': formatted_balances,
+                            'total_count': len(formatted_balances)
+                        }
                     }
-                }
+                    
+                except Exception as e:
+                    self.logger.warning(f"Error trying {endpoint}: {e}")
+                    continue
             
-            # Process balance response according to Pionex documentation
-            balances = []
-            if 'data' in response and 'balances' in response['data']:
-                balances = response['data']['balances']
-            elif 'data' in response and isinstance(response['data'], list):
-                balances = response['data']
-            
-            # Convert Pionex format to our format
-            formatted_balances = []
-            for balance in balances:
-                formatted_balances.append({
-                    'currency': balance.get('coin', ''),
-                    'available': float(balance.get('free', 0)),
-                    'locked': float(balance.get('frozen', 0)),
-                    'total': float(balance.get('free', 0)) + float(balance.get('frozen', 0))
-                })
-            
+            # If all endpoints fail, return empty balance
+            self.logger.warning("All balance endpoints failed, returning empty balance")
             return {
                 'success': True,
                 'data': {
-                    'balances': formatted_balances,
-                    'total_count': len(formatted_balances)
+                    'balances': [],
+                    'total_count': 0
                 }
             }
             
@@ -222,52 +242,71 @@ class PionexAPI:
         """Get current positions using balances endpoint as proxy"""
         try:
             # For Pionex, we use balances endpoint to get account holdings
-            # This is more reliable than a dedicated positions endpoint
-            response = self._make_request('GET', '/api/v1/account/balances', signed=True)
+            # Try multiple possible endpoints
+            possible_endpoints = [
+                '/api/v1/account/balances',
+                '/api/v1/account/balance',
+                '/api/v1/account/assets',
+                '/api/v1/account/account'
+            ]
             
-            # Log the response for debugging
-            self.logger.info(f"Balance API response for positions: {response}")
-            
-            # If API returns error, return empty positions
-            if 'error' in response:
-                self.logger.warning(f"API error for balance: {response['error']}")
-                return {
-                    'success': True,
-                    'data': {
-                        'positions': [],
-                        'total_count': 0
+            for endpoint in possible_endpoints:
+                try:
+                    self.logger.info(f"Trying endpoint for positions: {endpoint}")
+                    response = self._make_request('GET', endpoint, signed=True)
+                    
+                    # Log the response for debugging
+                    self.logger.info(f"Balance API response for positions from {endpoint}: {response}")
+                    
+                    # If API returns error, try next endpoint
+                    if 'error' in response:
+                        self.logger.warning(f"API error for {endpoint}: {response['error']}")
+                        continue
+                    
+                    # Process balances as positions
+                    positions = []
+                    balances = []
+                    
+                    if 'data' in response and 'balances' in response['data']:
+                        balances = response['data']['balances']
+                    elif 'data' in response and isinstance(response['data'], list):
+                        balances = response['data']
+                    
+                    for balance in balances:
+                        total = float(balance.get('free', balance.get('available', 0))) + float(balance.get('frozen', balance.get('locked', 0)))
+                        if total > 0:
+                            positions.append({
+                                'symbol': balance.get('coin', balance.get('currency', '')),
+                                'size': total,
+                                'available': float(balance.get('free', balance.get('available', 0))),
+                                'locked': float(balance.get('frozen', balance.get('locked', 0))),
+                                'entryPrice': 0,  # Not available in balance response
+                                'markPrice': 0,   # Not available in balance response
+                                'unrealizedPnl': 0,  # Not available in balance response
+                                'roe': 0,  # Not available in balance response
+                                'notional': total
+                            })
+                    
+                    self.logger.info(f"Successfully got positions from {endpoint}")
+                    return {
+                        'success': True,
+                        'data': {
+                            'positions': positions,
+                            'total_count': len(positions)
+                        }
                     }
-                }
+                    
+                except Exception as e:
+                    self.logger.warning(f"Error trying {endpoint} for positions: {e}")
+                    continue
             
-            # Process balances as positions
-            positions = []
-            balances = []
-            
-            if 'data' in response and 'balances' in response['data']:
-                balances = response['data']['balances']
-            elif 'data' in response and isinstance(response['data'], list):
-                balances = response['data']
-            
-            for balance in balances:
-                total = float(balance.get('free', 0)) + float(balance.get('frozen', 0))
-                if total > 0:
-                    positions.append({
-                        'symbol': balance.get('coin', ''),
-                        'size': total,
-                        'available': float(balance.get('free', 0)),
-                        'locked': float(balance.get('frozen', 0)),
-                        'entryPrice': 0,  # Not available in balance response
-                        'markPrice': 0,   # Not available in balance response
-                        'unrealizedPnl': 0,  # Not available in balance response
-                        'roe': 0,  # Not available in balance response
-                        'notional': total
-                    })
-            
+            # If all endpoints fail, return empty positions
+            self.logger.warning("All position endpoints failed, returning empty positions")
             return {
                 'success': True,
                 'data': {
-                    'positions': positions,
-                    'total_count': len(positions)
+                    'positions': [],
+                    'total_count': 0
                 }
             }
             

@@ -1096,3 +1096,1179 @@ OSError: [WinError 10048] Only one usage of each socket address (protocol/networ
 2025-08-06 13:22:25,663 - engineio.server - INFO - CuykTOzvmsTnNtRkAAAG: Received packet PONG data 
 2025-08-06 13:22:25,945 - engineio.server - INFO - IL2hlmZXGR6gNq6UAAAK: Sending packet PING data None
 2025-08-06 13:22:25,946 - engineio.server - INFO - IL2hlmZXGR6gNq6UAAAK: Received packet PONG data 
+2025-08-06 13:22:42,204 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:22:42,204 - pionex_api - INFO - Balance API response for positions: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:22:42,205 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:22:42,205 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:22:42,206 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:22:43,538 - engineio.server - INFO - IL2hlmZXGR6gNq6UAAAK: Received packet MESSAGE data 1
+2025-08-06 13:22:43,959 - engineio.server - INFO - MzkgCZ6UHiydkV21AAAP: Sending packet OPEN data {'sid': 'MzkgCZ6UHiydkV21AAAP', 'upgrades': ['websocket'], 'pingTimeout': 20000, 'pingInterval': 25000, 'maxPayload': 1000000}
+2025-08-06 13:22:44,205 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:22:44,206 - pionex_api - INFO - Balance API response: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:22:44,209 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:22:44,448 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:22:44,449 - pionex_api - INFO - Balance API response for positions: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:22:44,449 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:22:44,449 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:22:44,450 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:22:48,297 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:22:48,298 - pionex_api - INFO - Balance API response for positions: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:22:48,298 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:22:48,299 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:22:48,299 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:22:49,687 - engineio.server - INFO - Bk4W1Xgg1uyAhjOPAAAA: Sending packet PING data None
+2025-08-06 13:22:49,687 - engineio.server - INFO - 4jcMdFvByahyau4oAAAB: Sending packet PING data None
+2025-08-06 13:22:49,688 - engineio.server - INFO - 4jcMdFvByahyau4oAAAB: Received packet PONG data 
+2025-08-06 13:22:49,689 - engineio.server - INFO - Bk4W1Xgg1uyAhjOPAAAA: Received packet PONG data 
+2025-08-06 13:22:49,719 - engineio.server - INFO - VBa2Qxgd5UUzoJJyAAAE: Sending packet PING data None
+2025-08-06 13:22:49,721 - engineio.server - INFO - VBa2Qxgd5UUzoJJyAAAE: Received packet PONG data 
+2025-08-06 13:22:50,636 - engineio.server - INFO - XeJ1HFddgiMsUgM6AAAH: Sending packet PING data None
+2025-08-06 13:22:50,637 - engineio.server - INFO - XeJ1HFddgiMsUgM6AAAH: Received packet PONG data 
+2025-08-06 13:22:50,684 - engineio.server - INFO - CuykTOzvmsTnNtRkAAAG: Sending packet PING data None
+2025-08-06 13:22:50,685 - engineio.server - INFO - CuykTOzvmsTnNtRkAAAG: Received packet PONG data 
+2025-08-06 13:23:07,743 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:23:07,744 - pionex_api - INFO - Balance API response for positions: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:23:07,744 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:23:07,744 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:23:07,745 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:23:08,976 - engineio.server - INFO - MzkgCZ6UHiydkV21AAAP: Sending packet PING data None
+2025-08-06 13:23:14,698 - engineio.server - INFO - Bk4W1Xgg1uyAhjOPAAAA: Sending packet PING data None
+2025-08-06 13:23:14,698 - engineio.server - INFO - 4jcMdFvByahyau4oAAAB: Sending packet PING data None
+2025-08-06 13:23:14,699 - engineio.server - INFO - Bk4W1Xgg1uyAhjOPAAAA: Received packet PONG data 
+2025-08-06 13:23:14,700 - engineio.server - INFO - 4jcMdFvByahyau4oAAAB: Received packet PONG data 
+2025-08-06 13:23:14,729 - engineio.server - INFO - VBa2Qxgd5UUzoJJyAAAE: Sending packet PING data None
+2025-08-06 13:23:14,730 - engineio.server - INFO - VBa2Qxgd5UUzoJJyAAAE: Received packet PONG data 
+2025-08-06 13:23:15,656 - engineio.server - INFO - XeJ1HFddgiMsUgM6AAAH: Sending packet PING data None
+2025-08-06 13:23:15,659 - engineio.server - INFO - XeJ1HFddgiMsUgM6AAAH: Received packet PONG data 
+2025-08-06 13:23:15,703 - engineio.server - INFO - CuykTOzvmsTnNtRkAAAG: Sending packet PING data None
+2025-08-06 13:23:15,704 - engineio.server - INFO - CuykTOzvmsTnNtRkAAAG: Received packet PONG data 
+2025-08-06 13:23:32,103 - engineio.server - INFO - MzkgCZ6UHiydkV21AAAP: Client is gone, closing socket
+2025-08-06 13:23:32,103 - engineio.server - INFO - MzkgCZ6UHiydkV21AAAP: Client is gone, closing socket
+2025-08-06 13:23:37,760 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:23:37,761 - pionex_api - INFO - Balance API response for positions: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:23:37,761 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:23:37,761 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:23:37,762 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:23:39,713 - engineio.server - INFO - Bk4W1Xgg1uyAhjOPAAAA: Sending packet PING data None
+2025-08-06 13:23:39,713 - engineio.server - INFO - 4jcMdFvByahyau4oAAAB: Sending packet PING data None
+2025-08-06 13:23:39,715 - engineio.server - INFO - Bk4W1Xgg1uyAhjOPAAAA: Received packet PONG data 
+2025-08-06 13:23:39,715 - engineio.server - INFO - 4jcMdFvByahyau4oAAAB: Received packet PONG data 
+2025-08-06 13:23:39,744 - engineio.server - INFO - VBa2Qxgd5UUzoJJyAAAE: Sending packet PING data None
+2025-08-06 13:23:39,745 - engineio.server - INFO - VBa2Qxgd5UUzoJJyAAAE: Received packet PONG data 
+2025-08-06 13:23:40,667 - engineio.server - INFO - XeJ1HFddgiMsUgM6AAAH: Sending packet PING data None
+2025-08-06 13:23:40,668 - engineio.server - INFO - XeJ1HFddgiMsUgM6AAAH: Received packet PONG data 
+2025-08-06 13:23:40,713 - engineio.server - INFO - CuykTOzvmsTnNtRkAAAG: Sending packet PING data None
+2025-08-06 13:23:40,714 - engineio.server - INFO - CuykTOzvmsTnNtRkAAAG: Received packet PONG data 
+2025-08-06 13:23:47,831 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:23:47,832 - pionex_api - INFO - Balance API response for positions: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:23:47,832 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:23:47,833 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:23:47,833 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:23:48,073 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:23:48,074 - pionex_api - INFO - Balance API response: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:23:48,074 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:23:49,749 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:23:49,750 - pionex_api - INFO - Balance API response: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:23:49,750 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:23:50,541 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:23:50,618 - pionex_api - INFO - Balance API response for positions: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:23:50,619 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:23:50,619 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:23:50,620 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:23:51,238 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:23:51,238 - pionex_api - INFO - Balance API response for positions: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:23:51,238 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:23:51,239 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:23:51,239 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:23:51,266 - engineio.server - INFO - ZhSevp7iOXnxp53nAAAQ: Sending packet OPEN data {'sid': 'ZhSevp7iOXnxp53nAAAQ', 'upgrades': ['websocket'], 'pingTimeout': 20000, 'pingInterval': 25000, 'maxPayload': 1000000}
+2025-08-06 13:23:51,272 - engineio.server - INFO - PTKpoj_r2ZDRXxFXAAAR: Sending packet OPEN data {'sid': 'PTKpoj_r2ZDRXxFXAAAR', 'upgrades': ['websocket'], 'pingTimeout': 20000, 'pingInterval': 25000, 'maxPayload': 1000000}
+2025-08-06 13:23:51,282 - engineio.server - INFO - PTKpoj_r2ZDRXxFXAAAR: Received packet MESSAGE data 0
+2025-08-06 13:23:51,283 - socketio.server - INFO - emitting event "connected" to WEfvPhpLOjEWaqTlAAAS [/]
+2025-08-06 13:23:51,284 - engineio.server - INFO - PTKpoj_r2ZDRXxFXAAAR: Sending packet MESSAGE data 2["connected",{"data":"Connected to trading bot"}]
+2025-08-06 13:23:51,285 - engineio.server - INFO - PTKpoj_r2ZDRXxFXAAAR: Sending packet MESSAGE data 0{"sid":"WEfvPhpLOjEWaqTlAAAS"}
+2025-08-06 13:23:51,363 - engineio.server - INFO - ZhSevp7iOXnxp53nAAAQ: Received packet MESSAGE data 0
+2025-08-06 13:23:51,364 - socketio.server - INFO - emitting event "connected" to -PWZDoV8F7ctBBi-AAAT [/]
+2025-08-06 13:23:51,364 - engineio.server - INFO - ZhSevp7iOXnxp53nAAAQ: Sending packet MESSAGE data 2["connected",{"data":"Connected to trading bot"}]
+2025-08-06 13:23:51,365 - engineio.server - INFO - ZhSevp7iOXnxp53nAAAQ: Sending packet MESSAGE data 0{"sid":"-PWZDoV8F7ctBBi-AAAT"}
+2025-08-06 13:23:51,368 - engineio.server - INFO - ZhSevp7iOXnxp53nAAAQ: Received request to upgrade to websocket
+2025-08-06 13:23:51,404 - engineio.server - INFO - ZhSevp7iOXnxp53nAAAQ: Upgrade to websocket successful
+2025-08-06 13:23:51,584 - engineio.server - INFO - PTKpoj_r2ZDRXxFXAAAR: Received request to upgrade to websocket
+2025-08-06 13:23:51,603 - engineio.server - INFO - PTKpoj_r2ZDRXxFXAAAR: Upgrade to websocket successful
+2025-08-06 13:23:54,205 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:23:54,206 - pionex_api - INFO - Balance API response: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:23:54,206 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:23:54,452 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:23:54,453 - pionex_api - INFO - Balance API response for positions: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:23:54,454 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:23:54,454 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:23:54,454 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:23:55,293 - engineio.server - INFO - PTKpoj_r2ZDRXxFXAAAR: Received packet MESSAGE data 1
+2025-08-06 13:23:55,571 - engineio.server - INFO - -dqUhPbJyFFYYzXzAAAU: Sending packet OPEN data {'sid': '-dqUhPbJyFFYYzXzAAAU', 'upgrades': ['websocket'], 'pingTimeout': 20000, 'pingInterval': 25000, 'maxPayload': 1000000}
+2025-08-06 13:23:55,816 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:23:55,817 - pionex_api - INFO - Balance API response: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:23:55,817 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:23:56,054 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:23:56,054 - pionex_api - INFO - Balance API response for positions: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:23:56,055 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:23:56,055 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:23:56,055 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:23:56,067 - engineio.server - INFO - -dqUhPbJyFFYYzXzAAAU: Received packet MESSAGE data 0
+2025-08-06 13:23:56,069 - socketio.server - INFO - emitting event "connected" to 2UufbsKDzlePu9OtAAAV [/]
+2025-08-06 13:23:56,070 - engineio.server - INFO - -dqUhPbJyFFYYzXzAAAU: Sending packet MESSAGE data 2["connected",{"data":"Connected to trading bot"}]
+2025-08-06 13:23:56,070 - engineio.server - INFO - -dqUhPbJyFFYYzXzAAAU: Sending packet MESSAGE data 0{"sid":"2UufbsKDzlePu9OtAAAV"}
+2025-08-06 13:23:56,083 - engineio.server - INFO - -dqUhPbJyFFYYzXzAAAU: Received request to upgrade to websocket
+2025-08-06 13:23:56,089 - engineio.server - INFO - -dqUhPbJyFFYYzXzAAAU: Upgrade to websocket successful
+2025-08-06 13:23:57,732 - gui_app - INFO - Fetching chart data for symbol: BTC_USDT -> BTC_USDT with timeframe: 5M
+2025-08-06 13:23:57,732 - gui_app - INFO - Trying interval 5M for BTC_USDT
+2025-08-06 13:23:57,736 - pionex_api - INFO - Fetching klines for BTC_USDT with interval 5M
+2025-08-06 13:23:58,002 - pionex_api - INFO - Successfully retrieved klines for BTC_USDT
+2025-08-06 13:23:58,003 - gui_app - INFO - Klines response for BTC_USDT with interval 5M: {'result': True, 'data': {'klines': [{'time': 1754464800000, 'open': '114214.00', 'close': '114220.76', 'high': '114249.99', 'low': '114194.48', 'volume': '9.213060'}, {'time': 1754464500000, 'open': '114251.92', 'close': '114214.00', 'high': '114251.92', 'low': '114199.37', 'volume': '20.955989'}, {'time': 1754464200000, 'open': '114127.57', 'close': '114251.92', 'high': '114290.02', 'low': '114124.29', 'volume': '41.450602'}, {'time': 1754463900000, 'open': '114137.94', 'close': '114127.57', 'high': '114139.75', 'low': '114085.52', 'volume': '9.945392'}, {'time': 1754463600000, 'open': '114084.92', 'close': '114137.94', 'high': '114137.95', 'low': '114019.66', 'volume': '23.944638'}, {'time': 1754463300000, 'open': '114121.86', 'close': '114084.92', 'high': '114121.87', 'low': '114034.89', 'volume': '10.197024'}, {'time': 1754463000000, 'open': '114146.73', 'close': '114121.86', 'high': '114171.68', 'low': '114106.02', 'volume': '15.814596'}, {'time': 1754462700000, 'open': '114057.55', 'close': '114146.73', 'high': '114200.00', 'low': '114057.55', 'volume': '20.420471'}, {'time': 1754462400000, 'open': '114065.53', 'close': '114057.55', 'high': '114139.75', 'low': '114057.54', 'volume': '20.706482'}, {'time': 1754462100000, 'open': '114009.33', 'close': '114065.53', 'high': '114096.28', 'low': '114006.42', 'volume': '13.956012'}, {'time': 1754461800000, 'open': '113988.00', 'close': '114009.33', 'high': '114058.54', 'low': '113938.00', 'volume': '19.579656'}, {'time': 1754461500000, 'open': '114073.92', 'close': '113988.00', 'high': '114073.92', 'low': '113933.91', 'volume': '17.163753'}, {'time': 1754461200000, 'open': '114060.00', 'close': '114073.92', 'high': '114099.58', 'low': '114051.90', 'volume': '12.184038'}, {'time': 1754460900000, 'open': '113994.15', 'close': '114060.00', 'high': '114082.52', 'low': '113944.96', 'volume': '12.256270'}, {'time': 1754460600000, 'open': '113933.23', 'close': '113994.15', 'high': '114021.42', 'low': '113933.23', 'volume': '11.754456'}, {'time': 1754460300000, 'open': '113986.66', 'close': '113933.23', 'high': '114080.00', 'low': '113933.23', 'volume': '22.256042'}, {'time': 1754460000000, 'open': '114148.01', 'close': '113986.66', 'high': '114180.00', 'low': '113986.65', 'volume': '16.070030'}, {'time': 1754459700000, 'open': '114146.21', 'close': '114148.01', 'high': '114160.03', 'low': '114137.40', 'volume': '17.901952'}, {'time': 1754459400000, 'open': '114211.53', 'close': '114146.21', 'high': '114211.54', 'low': '114117.65', 'volume': '29.415893'}, {'time': 1754459100000, 'open': '114244.54', 'close': '114211.53', 'high': '114320.00', 'low': '114184.53', 'volume': '26.009487'}, {'time': 1754458800000, 'open': '114397.01', 'close': '114244.54', 'high': '114416.00', 'low': '114221.33', 'volume': '55.847249'}, {'time': 1754458500000, 'open': '113986.65', 'close': '114397.01', 'high': '114417.02', 'low': '113971.29', 'volume': '104.453175'}, {'time': 1754458200000, 'open': '113927.19', 'close': '113986.65', 'high': '114016.56', 'low': '113927.19', 'volume': '12.735355'}, {'time': 1754457900000, 'open': '113884.48', 'close': '113927.19', 'high': '113994.25', 'low': '113829.23', 'volume': '17.510738'}, {'time': 1754457600000, 'open': '114057.02', 'close': '113884.48', 'high': '114088.46', 'low': '113810.98', 'volume': '24.838144'}, {'time': 1754457300000, 'open': '113927.69', 'close': '114057.02', 'high': '114138.78', 'low': '113906.83', 'volume': '53.111805'}, {'time': 1754457000000, 'open': '113815.94', 'close': '113927.69', 'high': '113927.69', 'low': '113815.93', 'volume': '37.174508'}, {'time': 1754456700000, 'open': '113517.58', 'close': '113815.94', 'high': '113815.94', 'low': '113517.57', 'volume': '51.640868'}, {'time': 1754456400000, 'open': '113429.22', 'close': '113517.58', 'high': '113517.58', 'low': '113384.81', 'volume': '17.486285'}, {'time': 1754456100000, 'open': '113420.35', 'close': '113429.22', 'high': '113436.90', 'low': '113409.04', 'volume': '24.551201'}, {'time': 1754455800000, 'open': '113420.63', 'close': '113420.35', 'high': '113473.78', 'low': '113420.34', 'volume': '16.624638'}, {'time': 1754455500000, 'open': '113408.66', 'close': '113420.63', 'high': '113441.14', 'low': '113373.91', 'volume': '7.078924'}, {'time': 1754455200000, 'open': '113395.79', 'close': '113408.66', 'high': '113408.67', 'low': '113384.06', 'volume': '10.028633'}, {'time': 1754454900000, 'open': '113467.99', 'close': '113395.79', 'high': '113467.99', 'low': '113355.13', 'volume': '7.956916'}, {'time': 1754454600000, 'open': '113464.21', 'close': '113467.99', 'high': '113479.54', 'low': '113446.23', 'volume': '10.514098'}, {'time': 1754454300000, 'open': '113478.89', 'close': '113464.21', 'high': '113494.11', 'low': '113464.20', 'volume': '4.414943'}, {'time': 1754454000000, 'open': '113436.74', 'close': '113478.89', 'high': '113488.38', 'low': '113427.02', 'volume': '20.823729'}, {'time': 1754453700000, 'open': '113389.17', 'close': '113436.74', 'high': '113459.13', 'low': '113386.89', 'volume': '17.764208'}, {'time': 1754453400000, 'open': '113443.58', 'close': '113389.17', 'high': '113479.18', 'low': '113387.81', 'volume': '20.903752'}, {'time': 1754453100000, 'open': '113468.92', 'close': '113443.58', 'high': '113497.07', 'low': '113430.90', 'volume': '7.491182'}, {'time': 1754452800000, 'open': '113509.98', 'close': '113468.92', 'high': '113582.70', 'low': '113462.38', 'volume': '20.603939'}, {'time': 1754452500000, 'open': '113568.11', 'close': '113509.98', 'high': '113579.96', 'low': '113509.97', 'volume': '18.060395'}, {'time': 1754452200000, 'open': '113611.29', 'close': '113568.11', 'high': '113611.30', 'low': '113548.47', 'volume': '24.061857'}, {'time': 1754451900000, 'open': '113539.99', 'close': '113611.29', 'high': '113611.30', 'low': '113534.02', 'volume': '9.700753'}, {'time': 1754451600000, 'open': '113496.43', 'close': '113539.99', 'high': '113540.00', 'low': '113469.44', 'volume': '13.247545'}, {'time': 1754451300000, 'open': '113448.09', 'close': '113496.43', 'high': '113517.58', 'low': '113448.09', 'volume': '30.702850'}, {'time': 1754451000000, 'open': '113432.02', 'close': '113448.09', 'high': '113487.38', 'low': '113425.37', 'volume': '12.026726'}, {'time': 1754450700000, 'open': '113477.87', 'close': '113432.02', 'high': '113504.63', 'low': '113400.00', 'volume': '24.194408'}, {'time': 1754450400000, 'open': '113574.40', 'close': '113477.87', 'high': '113574.41', 'low': '113463.81', 'volume': '16.186515'}, {'time': 1754450100000, 'open': '113618.39', 'close': '113574.40', 'high': '113618.39', 'low': '113522.54', 'volume': '9.536510'}, {'time': 1754449800000, 'open': '113604.80', 'close': '113618.39', 'high': '113650.00', 'low': '113604.79', 'volume': '8.036122'}, {'time': 1754449500000, 'open': '113523.54', 'close': '113604.80', 'high': '113650.00', 'low': '113500.00', 'volume': '15.020088'}, {'time': 1754449200000, 'open': '113623.23', 'close': '113523.54', 'high': '113658.13', 'low': '113523.53', 'volume': '11.114149'}, {'time': 1754448900000, 'open': '113675.02', 'close': '113623.23', 'high': '113686.33', 'low': '113596.73', 'volume': '7.908324'}, {'time': 1754448600000, 'open': '113613.91', 'close': '113675.02', 'high': '113682.26', 'low': '113604.04', 'volume': '8.259385'}, {'time': 1754448300000, 'open': '113668.03', 'close': '113613.91', 'high': '113668.03', 'low': '113566.35', 'volume': '11.543370'}, {'time': 1754448000000, 'open': '113599.58', 'close': '113668.03', 'high': '113712.61', 'low': '113566.86', 'volume': '11.258469'}, {'time': 1754447700000, 'open': '113692.55', 'close': '113599.58', 'high': '113700.00', 'low': '113542.91', 'volume': '7.772314'}, {'time': 1754447400000, 'open': '113678.30', 'close': '113692.55', 'high': '113729.72', 'low': '113648.44', 'volume': '14.082231'}, {'time': 1754447100000, 'open': '113714.00', 'close': '113678.30', 'high': '113714.00', 'low': '113640.38', 'volume': '6.582962'}, {'time': 1754446800000, 'open': '113695.62', 'close': '113714.00', 'high': '113714.00', 'low': '113662.85', 'volume': '5.211472'}, {'time': 1754446500000, 'open': '113626.23', 'close': '113695.62', 'high': '113739.06', 'low': '113611.29', 'volume': '9.381326'}, {'time': 1754446200000, 'open': '113623.40', 'close': '113626.23', 'high': '113626.24', 'low': '113491.76', 'volume': '18.818197'}, {'time': 1754445900000, 'open': '113772.54', 'close': '113623.40', 'high': '113772.54', 'low': '113623.39', 'volume': '24.038801'}, {'time': 1754445600000, 'open': '113820.78', 'close': '113772.54', 'high': '113833.88', 'low': '113772.54', 'volume': '6.556642'}, {'time': 1754445300000, 'open': '113798.31', 'close': '113820.78', 'high': '113880.00', 'low': '113798.30', 'volume': '14.536186'}, {'time': 1754445000000, 'open': '113673.83', 'close': '113798.31', 'high': '113826.21', 'low': '113673.82', 'volume': '13.927753'}, {'time': 1754444700000, 'open': '113792.91', 'close': '113673.83', 'high': '113853.24', 'low': '113673.82', 'volume': '12.124265'}, {'time': 1754444400000, 'open': '113724.90', 'close': '113792.91', 'high': '113877.50', 'low': '113724.89', 'volume': '12.621730'}, {'time': 1754444100000, 'open': '113674.42', 'close': '113724.90', 'high': '113748.95', 'low': '113604.38', 'volume': '18.541298'}, {'time': 1754443800000, 'open': '113594.10', 'close': '113674.42', 'high': '113737.19', 'low': '113589.92', 'volume': '32.514441'}, {'time': 1754443500000, 'open': '113685.08', 'close': '113594.10', 'high': '113685.08', 'low': '113588.77', 'volume': '17.223968'}, {'time': 1754443200000, 'open': '113732.51', 'close': '113685.08', 'high': '113740.00', 'low': '113620.00', 'volume': '31.792339'}, {'time': 1754442900000, 'open': '113851.45', 'close': '113732.51', 'high': '113893.01', 'low': '113712.60', 'volume': '13.290284'}, {'time': 1754442600000, 'open': '113914.45', 'close': '113851.45', 'high': '113945.14', 'low': '113830.42', 'volume': '16.862752'}, {'time': 1754442300000, 'open': '113899.21', 'close': '113914.45', 'high': '113935.69', 'low': '113860.00', 'volume': '18.799526'}, {'time': 1754442000000, 'open': '113879.69', 'close': '113899.21', 'high': '113899.21', 'low': '113771.39', 'volume': '13.661585'}, {'time': 1754441700000, 'open': '113864.14', 'close': '113879.69', 'high': '113879.70', 'low': '113804.76', 'volume': '11.272107'}, {'time': 1754441400000, 'open': '113760.20', 'close': '113864.14', 'high': '113915.22', 'low': '113748.67', 'volume': '23.326772'}, {'time': 1754441100000, 'open': '113937.28', 'close': '113760.20', 'high': '113937.29', 'low': '113760.20', 'volume': '55.351009'}, {'time': 1754440800000, 'open': '114027.17', 'close': '113937.28', 'high': '114027.17', 'low': '113926.90', 'volume': '22.208780'}, {'time': 1754440500000, 'open': '113882.85', 'close': '114027.17', 'high': '114027.17', 'low': '113871.31', 'volume': '25.958127'}, {'time': 1754440200000, 'open': '113948.54', 'close': '113882.85', 'high': '113953.57', 'low': '113882.85', 'volume': '22.218054'}, {'time': 1754439900000, 'open': '113986.36', 'close': '113948.54', 'high': '114000.00', 'low': '113928.93', 'volume': '20.829638'}, {'time': 1754439600000, 'open': '113997.62', 'close': '113986.36', 'high': '114032.72', 'low': '113970.66', 'volume': '10.088005'}, {'time': 1754439300000, 'open': '114049.90', 'close': '113997.62', 'high': '114049.91', 'low': '113952.60', 'volume': '20.448202'}, {'time': 1754439000000, 'open': '114034.51', 'close': '114049.90', 'high': '114059.21', 'low': '113955.03', 'volume': '20.469349'}, {'time': 1754438700000, 'open': '114100.00', 'close': '114034.51', 'high': '114100.00', 'low': '114016.55', 'volume': '10.037196'}, {'time': 1754438400000, 'open': '114129.76', 'close': '114100.00', 'high': '114139.38', 'low': '114044.12', 'volume': '26.874860'}, {'time': 1754438100000, 'open': '114153.70', 'close': '114129.76', 'high': '114153.70', 'low': '114114.30', 'volume': '9.047377'}, {'time': 1754437800000, 'open': '114136.36', 'close': '114153.70', 'high': '114179.03', 'low': '114131.09', 'volume': '12.060625'}, {'time': 1754437500000, 'open': '114170.42', 'close': '114136.36', 'high': '114171.71', 'low': '114136.36', 'volume': '8.785481'}, {'time': 1754437200000, 'open': '114109.97', 'close': '114170.42', 'high': '114228.43', 'low': '114109.97', 'volume': '25.721037'}, {'time': 1754436900000, 'open': '114080.43', 'close': '114109.97', 'high': '114114.30', 'low': '114080.43', 'volume': '8.921384'}, {'time': 1754436600000, 'open': '114044.63', 'close': '114080.43', 'high': '114098.75', 'low': '114040.00', 'volume': '16.088667'}, {'time': 1754436300000, 'open': '114061.40', 'close': '114044.63', 'high': '114077.56', 'low': '114020.00', 'volume': '9.227087'}, {'time': 1754436000000, 'open': '114085.76', 'close': '114061.40', 'high': '114111.56', 'low': '114022.98', 'volume': '13.582144'}, {'time': 1754435700000, 'open': '114087.19', 'close': '114085.76', 'high': '114140.68', 'low': '114067.21', 'volume': '21.778962'}, {'time': 1754435400000, 'open': '114040.97', 'close': '114087.19', 'high': '114087.52', 'low': '114040.97', 'volume': '24.962399'}, {'time': 1754435100000, 'open': '114072.00', 'close': '114040.97', 'high': '114074.27', 'low': '114040.96', 'volume': '9.363541'}]}, 'timestamp': 1754465039965}
+2025-08-06 13:23:58,014 - gui_app - INFO - Successfully got 100 data points with interval 5M
+2025-08-06 13:23:58,014 - gui_app - ERROR - Error getting chart data for BTC_USDT: 0
+2025-08-06 13:24:04,711 - engineio.server - INFO - 4jcMdFvByahyau4oAAAB: Sending packet PING data None
+2025-08-06 13:24:04,712 - engineio.server - INFO - Bk4W1Xgg1uyAhjOPAAAA: Sending packet PING data None
+2025-08-06 13:24:04,712 - engineio.server - INFO - 4jcMdFvByahyau4oAAAB: Received packet PONG data 
+2025-08-06 13:24:04,713 - engineio.server - INFO - Bk4W1Xgg1uyAhjOPAAAA: Received packet PONG data 
+2025-08-06 13:24:04,759 - engineio.server - INFO - VBa2Qxgd5UUzoJJyAAAE: Sending packet PING data None
+2025-08-06 13:24:04,762 - engineio.server - INFO - VBa2Qxgd5UUzoJJyAAAE: Received packet PONG data 
+2025-08-06 13:24:05,675 - engineio.server - INFO - XeJ1HFddgiMsUgM6AAAH: Sending packet PING data None
+2025-08-06 13:24:05,677 - engineio.server - INFO - XeJ1HFddgiMsUgM6AAAH: Received packet PONG data 
+2025-08-06 13:24:05,723 - engineio.server - INFO - CuykTOzvmsTnNtRkAAAG: Sending packet PING data None
+2025-08-06 13:24:05,726 - engineio.server - INFO - CuykTOzvmsTnNtRkAAAG: Received packet PONG data 
+2025-08-06 13:24:16,294 - engineio.server - INFO - ZhSevp7iOXnxp53nAAAQ: Sending packet PING data None
+2025-08-06 13:24:16,295 - engineio.server - INFO - ZhSevp7iOXnxp53nAAAQ: Received packet PONG data 
+2025-08-06 13:24:20,569 - engineio.server - INFO - -dqUhPbJyFFYYzXzAAAU: Sending packet PING data None
+2025-08-06 13:24:20,571 - engineio.server - INFO - -dqUhPbJyFFYYzXzAAAU: Received packet PONG data 
+2025-08-06 13:24:26,737 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:24:26,738 - pionex_api - INFO - Balance API response: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:24:26,738 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:24:27,828 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:24:27,829 - pionex_api - INFO - Balance API response for positions: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:24:27,829 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:24:27,830 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:24:27,830 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:24:29,718 - engineio.server - INFO - 4jcMdFvByahyau4oAAAB: Sending packet PING data None
+2025-08-06 13:24:29,718 - engineio.server - INFO - Bk4W1Xgg1uyAhjOPAAAA: Sending packet PING data None
+2025-08-06 13:24:29,720 - engineio.server - INFO - 4jcMdFvByahyau4oAAAB: Received packet PONG data 
+2025-08-06 13:24:29,720 - engineio.server - INFO - Bk4W1Xgg1uyAhjOPAAAA: Received packet PONG data 
+2025-08-06 13:24:29,780 - engineio.server - INFO - VBa2Qxgd5UUzoJJyAAAE: Sending packet PING data None
+2025-08-06 13:24:29,781 - engineio.server - INFO - VBa2Qxgd5UUzoJJyAAAE: Received packet PONG data 
+2025-08-06 13:24:30,702 - engineio.server - INFO - XeJ1HFddgiMsUgM6AAAH: Sending packet PING data None
+2025-08-06 13:24:30,703 - engineio.server - INFO - XeJ1HFddgiMsUgM6AAAH: Received packet PONG data 
+2025-08-06 13:24:30,748 - engineio.server - INFO - CuykTOzvmsTnNtRkAAAG: Sending packet PING data None
+2025-08-06 13:24:30,749 - engineio.server - INFO - CuykTOzvmsTnNtRkAAAG: Received packet PONG data 
+2025-08-06 13:24:41,299 - engineio.server - INFO - ZhSevp7iOXnxp53nAAAQ: Sending packet PING data None
+2025-08-06 13:24:41,300 - engineio.server - INFO - ZhSevp7iOXnxp53nAAAQ: Received packet PONG data 
+2025-08-06 13:24:45,587 - engineio.server - INFO - -dqUhPbJyFFYYzXzAAAU: Sending packet PING data None
+2025-08-06 13:24:45,589 - engineio.server - INFO - -dqUhPbJyFFYYzXzAAAU: Received packet PONG data 
+2025-08-06 13:24:47,745 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:24:47,746 - pionex_api - INFO - Balance API response: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:24:47,746 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:24:48,028 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:24:48,029 - pionex_api - INFO - Balance API response: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:24:48,029 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:24:49,339 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:24:49,340 - pionex_api - INFO - Balance API response for positions: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:24:49,340 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:24:49,341 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:24:49,342 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:24:50,429 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:24:50,430 - pionex_api - INFO - Balance API response for positions: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:24:50,430 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:24:50,430 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:24:50,431 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:24:51,747 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:24:51,747 - pionex_api - INFO - Balance API response: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:24:51,748 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:24:51,992 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:24:51,992 - pionex_api - INFO - Balance API response for positions: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:24:51,992 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:24:51,993 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:24:51,993 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:24:53,276 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:24:53,277 - pionex_api - INFO - Balance API response: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:24:53,277 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:24:53,527 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:24:53,527 - pionex_api - INFO - Balance API response for positions: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:24:53,527 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:24:53,528 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:24:53,528 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:24:54,030 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:24:54,030 - pionex_api - INFO - Balance API response: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:24:54,031 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:24:54,276 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:24:54,277 - pionex_api - INFO - Balance API response for positions: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:24:54,277 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:24:54,277 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:24:54,278 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:24:54,519 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:24:54,519 - pionex_api - INFO - Balance API response: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:24:54,520 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:24:54,772 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:24:54,773 - pionex_api - INFO - Balance API response for positions: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:24:54,773 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:24:54,774 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:24:54,775 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:24:54,776 - engineio.server - INFO - Bk4W1Xgg1uyAhjOPAAAA: Sending packet PING data None
+2025-08-06 13:24:54,776 - engineio.server - INFO - 4jcMdFvByahyau4oAAAB: Sending packet PING data None
+2025-08-06 13:24:54,777 - engineio.server - INFO - VBa2Qxgd5UUzoJJyAAAE: Sending packet PING data None
+2025-08-06 13:24:54,778 - engineio.server - INFO - 4jcMdFvByahyau4oAAAB: Received packet PONG data 
+2025-08-06 13:24:54,778 - engineio.server - INFO - Bk4W1Xgg1uyAhjOPAAAA: Received packet PONG data 
+2025-08-06 13:24:54,779 - engineio.server - INFO - VBa2Qxgd5UUzoJJyAAAE: Received packet PONG data 
+2025-08-06 13:24:55,713 - engineio.server - INFO - XeJ1HFddgiMsUgM6AAAH: Sending packet PING data None
+2025-08-06 13:24:55,714 - engineio.server - INFO - XeJ1HFddgiMsUgM6AAAH: Received packet PONG data 
+2025-08-06 13:24:55,760 - engineio.server - INFO - CuykTOzvmsTnNtRkAAAG: Sending packet PING data None
+2025-08-06 13:24:55,762 - engineio.server - INFO - CuykTOzvmsTnNtRkAAAG: Received packet PONG data 
+2025-08-06 13:24:56,745 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:24:56,746 - pionex_api - INFO - Balance API response: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:24:56,746 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:24:57,787 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:24:57,788 - pionex_api - INFO - Balance API response for positions: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:24:57,788 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:24:57,789 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:24:57,789 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:25:06,324 - engineio.server - INFO - ZhSevp7iOXnxp53nAAAQ: Sending packet PING data None
+2025-08-06 13:25:06,325 - engineio.server - INFO - ZhSevp7iOXnxp53nAAAQ: Received packet PONG data 
+2025-08-06 13:25:10,589 - engineio.server - INFO - -dqUhPbJyFFYYzXzAAAU: Sending packet PING data None
+2025-08-06 13:25:10,590 - engineio.server - INFO - -dqUhPbJyFFYYzXzAAAU: Received packet PONG data 
+2025-08-06 13:25:19,796 - engineio.server - INFO - Bk4W1Xgg1uyAhjOPAAAA: Sending packet PING data None
+2025-08-06 13:25:19,796 - engineio.server - INFO - 4jcMdFvByahyau4oAAAB: Sending packet PING data None
+2025-08-06 13:25:19,797 - engineio.server - INFO - VBa2Qxgd5UUzoJJyAAAE: Sending packet PING data None
+2025-08-06 13:25:19,798 - engineio.server - INFO - Bk4W1Xgg1uyAhjOPAAAA: Received packet PONG data 
+2025-08-06 13:25:19,799 - engineio.server - INFO - 4jcMdFvByahyau4oAAAB: Received packet PONG data 
+2025-08-06 13:25:19,800 - engineio.server - INFO - VBa2Qxgd5UUzoJJyAAAE: Received packet PONG data 
+2025-08-06 13:25:20,728 - engineio.server - INFO - XeJ1HFddgiMsUgM6AAAH: Sending packet PING data None
+2025-08-06 13:25:20,729 - engineio.server - INFO - XeJ1HFddgiMsUgM6AAAH: Received packet PONG data 
+2025-08-06 13:25:20,776 - engineio.server - INFO - CuykTOzvmsTnNtRkAAAG: Sending packet PING data None
+2025-08-06 13:25:20,777 - engineio.server - INFO - CuykTOzvmsTnNtRkAAAG: Received packet PONG data 
+2025-08-06 13:25:26,739 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:25:26,740 - pionex_api - INFO - Balance API response: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:25:26,740 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:25:27,808 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:25:27,808 - pionex_api - INFO - Balance API response for positions: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:25:27,809 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:25:27,809 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:25:27,810 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:25:31,342 - engineio.server - INFO - ZhSevp7iOXnxp53nAAAQ: Sending packet PING data None
+2025-08-06 13:25:31,343 - engineio.server - INFO - ZhSevp7iOXnxp53nAAAQ: Received packet PONG data 
+2025-08-06 13:25:35,597 - engineio.server - INFO - -dqUhPbJyFFYYzXzAAAU: Sending packet PING data None
+2025-08-06 13:25:35,598 - engineio.server - INFO - -dqUhPbJyFFYYzXzAAAU: Received packet PONG data 
+2025-08-06 13:25:44,805 - engineio.server - INFO - Bk4W1Xgg1uyAhjOPAAAA: Sending packet PING data None
+2025-08-06 13:25:44,805 - engineio.server - INFO - VBa2Qxgd5UUzoJJyAAAE: Sending packet PING data None
+2025-08-06 13:25:44,806 - engineio.server - INFO - 4jcMdFvByahyau4oAAAB: Sending packet PING data None
+2025-08-06 13:25:44,808 - engineio.server - INFO - 4jcMdFvByahyau4oAAAB: Received packet PONG data 
+2025-08-06 13:25:44,809 - engineio.server - INFO - Bk4W1Xgg1uyAhjOPAAAA: Received packet PONG data 
+2025-08-06 13:25:44,809 - engineio.server - INFO - VBa2Qxgd5UUzoJJyAAAE: Received packet PONG data 
+2025-08-06 13:25:45,753 - engineio.server - INFO - XeJ1HFddgiMsUgM6AAAH: Sending packet PING data None
+2025-08-06 13:25:45,754 - engineio.server - INFO - XeJ1HFddgiMsUgM6AAAH: Received packet PONG data 
+2025-08-06 13:25:45,785 - engineio.server - INFO - CuykTOzvmsTnNtRkAAAG: Sending packet PING data None
+2025-08-06 13:25:45,786 - engineio.server - INFO - CuykTOzvmsTnNtRkAAAG: Received packet PONG data 
+2025-08-06 13:25:47,763 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:25:47,763 - pionex_api - INFO - Balance API response: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:25:47,763 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:25:49,291 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:25:49,292 - pionex_api - INFO - Balance API response for positions: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:25:49,292 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:25:49,293 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:25:49,293 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:25:49,532 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:25:49,533 - pionex_api - INFO - Balance API response for positions: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:25:49,533 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:25:49,534 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:25:49,534 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:25:49,778 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:25:49,779 - pionex_api - INFO - Balance API response: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:25:49,779 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:25:51,076 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:25:51,076 - pionex_api - INFO - Balance API response for positions: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:25:51,077 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:25:51,077 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:25:51,077 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:25:51,314 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:25:51,315 - pionex_api - INFO - Balance API response: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:25:51,315 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:25:53,409 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:25:53,409 - pionex_api - INFO - Balance API response for positions: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:25:53,410 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:25:53,410 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:25:53,410 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:25:53,660 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:25:53,661 - pionex_api - INFO - Balance API response: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:25:53,661 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:25:53,910 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:25:53,911 - pionex_api - INFO - Balance API response for positions: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:25:53,911 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:25:53,911 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:25:53,912 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:25:54,154 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:25:54,155 - pionex_api - INFO - Balance API response: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:25:54,155 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:25:54,397 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:25:54,398 - pionex_api - INFO - Balance API response for positions: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:25:54,398 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:25:54,398 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:25:54,399 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:25:54,645 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:25:54,646 - pionex_api - INFO - Balance API response: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:25:54,646 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:25:56,351 - engineio.server - INFO - ZhSevp7iOXnxp53nAAAQ: Sending packet PING data None
+2025-08-06 13:25:56,352 - engineio.server - INFO - ZhSevp7iOXnxp53nAAAQ: Received packet PONG data 
+2025-08-06 13:25:56,727 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:25:56,728 - pionex_api - INFO - Balance API response: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:25:56,728 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:25:58,290 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:25:58,291 - pionex_api - INFO - Balance API response for positions: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:25:58,291 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:25:58,291 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:25:58,292 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:26:00,609 - engineio.server - INFO - -dqUhPbJyFFYYzXzAAAU: Sending packet PING data None
+2025-08-06 13:26:00,611 - engineio.server - INFO - -dqUhPbJyFFYYzXzAAAU: Received packet PONG data 
+2025-08-06 13:26:09,824 - engineio.server - INFO - Bk4W1Xgg1uyAhjOPAAAA: Sending packet PING data None
+2025-08-06 13:26:09,825 - engineio.server - INFO - VBa2Qxgd5UUzoJJyAAAE: Sending packet PING data None
+2025-08-06 13:26:09,825 - engineio.server - INFO - 4jcMdFvByahyau4oAAAB: Sending packet PING data None
+2025-08-06 13:26:09,827 - engineio.server - INFO - Bk4W1Xgg1uyAhjOPAAAA: Received packet PONG data 
+2025-08-06 13:26:09,827 - engineio.server - INFO - 4jcMdFvByahyau4oAAAB: Received packet PONG data 
+2025-08-06 13:26:09,828 - engineio.server - INFO - VBa2Qxgd5UUzoJJyAAAE: Received packet PONG data 
+2025-08-06 13:26:10,771 - engineio.server - INFO - XeJ1HFddgiMsUgM6AAAH: Sending packet PING data None
+2025-08-06 13:26:10,772 - engineio.server - INFO - XeJ1HFddgiMsUgM6AAAH: Received packet PONG data 
+2025-08-06 13:26:10,802 - engineio.server - INFO - CuykTOzvmsTnNtRkAAAG: Sending packet PING data None
+2025-08-06 13:26:10,803 - engineio.server - INFO - CuykTOzvmsTnNtRkAAAG: Received packet PONG data 
+2025-08-06 13:26:21,376 - engineio.server - INFO - ZhSevp7iOXnxp53nAAAQ: Sending packet PING data None
+2025-08-06 13:26:21,377 - engineio.server - INFO - ZhSevp7iOXnxp53nAAAQ: Received packet PONG data 
+2025-08-06 13:26:25,619 - engineio.server - INFO - -dqUhPbJyFFYYzXzAAAU: Sending packet PING data None
+2025-08-06 13:26:25,620 - engineio.server - INFO - -dqUhPbJyFFYYzXzAAAU: Received packet PONG data 
+2025-08-06 13:26:26,757 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:26:26,759 - pionex_api - INFO - Balance API response: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:26:26,760 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:26:27,790 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:26:27,790 - pionex_api - INFO - Balance API response for positions: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:26:27,791 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:26:27,791 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:26:27,792 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:26:34,837 - engineio.server - INFO - Bk4W1Xgg1uyAhjOPAAAA: Sending packet PING data None
+2025-08-06 13:26:34,837 - engineio.server - INFO - VBa2Qxgd5UUzoJJyAAAE: Sending packet PING data None
+2025-08-06 13:26:34,838 - engineio.server - INFO - 4jcMdFvByahyau4oAAAB: Sending packet PING data None
+2025-08-06 13:26:34,839 - engineio.server - INFO - 4jcMdFvByahyau4oAAAB: Received packet PONG data 
+2025-08-06 13:26:34,840 - engineio.server - INFO - Bk4W1Xgg1uyAhjOPAAAA: Received packet PONG data 
+2025-08-06 13:26:34,841 - engineio.server - INFO - VBa2Qxgd5UUzoJJyAAAE: Received packet PONG data 
+2025-08-06 13:26:35,786 - engineio.server - INFO - XeJ1HFddgiMsUgM6AAAH: Sending packet PING data None
+2025-08-06 13:26:35,787 - engineio.server - INFO - XeJ1HFddgiMsUgM6AAAH: Received packet PONG data 
+2025-08-06 13:26:35,817 - engineio.server - INFO - CuykTOzvmsTnNtRkAAAG: Sending packet PING data None
+2025-08-06 13:26:35,818 - engineio.server - INFO - CuykTOzvmsTnNtRkAAAG: Received packet PONG data 
+2025-08-06 13:26:46,389 - engineio.server - INFO - ZhSevp7iOXnxp53nAAAQ: Sending packet PING data None
+2025-08-06 13:26:46,390 - engineio.server - INFO - ZhSevp7iOXnxp53nAAAQ: Received packet PONG data 
+2025-08-06 13:26:47,749 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:26:47,749 - pionex_api - INFO - Balance API response: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:26:47,750 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:26:48,788 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:26:48,789 - pionex_api - INFO - Balance API response for positions: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:26:48,789 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:26:48,789 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:26:48,790 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:26:49,035 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:26:49,036 - pionex_api - INFO - Balance API response: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:26:49,036 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:26:49,277 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:26:49,278 - pionex_api - INFO - Balance API response for positions: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:26:49,278 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:26:49,279 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:26:49,279 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:26:49,527 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:26:49,528 - pionex_api - INFO - Balance API response: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:26:49,528 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:26:51,569 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:26:51,570 - pionex_api - INFO - Balance API response for positions: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:26:51,570 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:26:51,571 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:26:51,571 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:26:52,400 - engineio.server - INFO - -dqUhPbJyFFYYzXzAAAU: Sending packet PING data None
+2025-08-06 13:26:53,426 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:26:53,427 - pionex_api - INFO - Balance API response: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:26:53,427 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:26:53,705 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:26:53,706 - pionex_api - INFO - Balance API response for positions: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:26:53,706 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:26:53,706 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:26:53,707 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:26:53,957 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:26:53,958 - pionex_api - INFO - Balance API response: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:26:53,958 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:26:53,961 - engineio.server - INFO - -dqUhPbJyFFYYzXzAAAU: Received packet PONG data 
+2025-08-06 13:26:54,200 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:26:54,201 - pionex_api - INFO - Balance API response for positions: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:26:54,201 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:26:54,202 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:26:54,202 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:26:54,447 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:26:54,448 - pionex_api - INFO - Balance API response: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:26:54,448 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:26:54,692 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:26:54,692 - pionex_api - INFO - Balance API response for positions: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:26:54,692 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:26:54,693 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:26:54,693 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:26:56,746 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:26:56,747 - pionex_api - INFO - Balance API response: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:26:56,747 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:26:57,829 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:26:57,830 - pionex_api - INFO - Balance API response for positions: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:26:57,830 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:26:57,831 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:26:57,831 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:26:59,840 - engineio.server - INFO - VBa2Qxgd5UUzoJJyAAAE: Sending packet PING data None
+2025-08-06 13:26:59,841 - engineio.server - INFO - 4jcMdFvByahyau4oAAAB: Sending packet PING data None
+2025-08-06 13:26:59,842 - engineio.server - INFO - Bk4W1Xgg1uyAhjOPAAAA: Sending packet PING data None
+2025-08-06 13:26:59,843 - engineio.server - INFO - 4jcMdFvByahyau4oAAAB: Received packet PONG data 
+2025-08-06 13:26:59,844 - engineio.server - INFO - Bk4W1Xgg1uyAhjOPAAAA: Received packet PONG data 
+2025-08-06 13:26:59,844 - engineio.server - INFO - VBa2Qxgd5UUzoJJyAAAE: Received packet PONG data 
+2025-08-06 13:27:00,809 - engineio.server - INFO - XeJ1HFddgiMsUgM6AAAH: Sending packet PING data None
+2025-08-06 13:27:00,841 - engineio.server - INFO - CuykTOzvmsTnNtRkAAAG: Sending packet PING data None
+2025-08-06 13:27:00,896 - engineio.server - INFO - XeJ1HFddgiMsUgM6AAAH: Received packet PONG data 
+2025-08-06 13:27:00,898 - engineio.server - INFO - CuykTOzvmsTnNtRkAAAG: Received packet PONG data 
+2025-08-06 13:27:11,391 - engineio.server - INFO - ZhSevp7iOXnxp53nAAAQ: Sending packet PING data None
+2025-08-06 13:27:11,392 - engineio.server - INFO - ZhSevp7iOXnxp53nAAAQ: Received packet PONG data 
+2025-08-06 13:27:19,465 - engineio.server - INFO - -dqUhPbJyFFYYzXzAAAU: Sending packet PING data None
+2025-08-06 13:27:19,466 - engineio.server - INFO - -dqUhPbJyFFYYzXzAAAU: Received packet PONG data 
+2025-08-06 13:27:24,842 - engineio.server - INFO - Bk4W1Xgg1uyAhjOPAAAA: Sending packet PING data None
+2025-08-06 13:27:24,842 - engineio.server - INFO - VBa2Qxgd5UUzoJJyAAAE: Sending packet PING data None
+2025-08-06 13:27:24,843 - engineio.server - INFO - 4jcMdFvByahyau4oAAAB: Sending packet PING data None
+2025-08-06 13:27:24,844 - engineio.server - INFO - Bk4W1Xgg1uyAhjOPAAAA: Received packet PONG data 
+2025-08-06 13:27:24,845 - engineio.server - INFO - 4jcMdFvByahyau4oAAAB: Received packet PONG data 
+2025-08-06 13:27:24,846 - engineio.server - INFO - VBa2Qxgd5UUzoJJyAAAE: Received packet PONG data 
+2025-08-06 13:27:25,912 - engineio.server - INFO - CuykTOzvmsTnNtRkAAAG: Sending packet PING data None
+2025-08-06 13:27:25,912 - engineio.server - INFO - XeJ1HFddgiMsUgM6AAAH: Sending packet PING data None
+2025-08-06 13:27:25,914 - engineio.server - INFO - XeJ1HFddgiMsUgM6AAAH: Received packet PONG data 
+2025-08-06 13:27:25,914 - engineio.server - INFO - CuykTOzvmsTnNtRkAAAG: Received packet PONG data 
+2025-08-06 13:27:36,399 - engineio.server - INFO - ZhSevp7iOXnxp53nAAAQ: Sending packet PING data None
+2025-08-06 13:27:36,401 - engineio.server - INFO - ZhSevp7iOXnxp53nAAAQ: Received packet PONG data 
+2025-08-06 13:27:44,485 - engineio.server - INFO - -dqUhPbJyFFYYzXzAAAU: Sending packet PING data None
+2025-08-06 13:27:44,486 - engineio.server - INFO - -dqUhPbJyFFYYzXzAAAU: Received packet PONG data 
+2025-08-06 13:27:47,765 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:27:47,766 - pionex_api - INFO - Balance API response: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:27:47,766 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:27:48,803 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:27:48,803 - pionex_api - INFO - Balance API response for positions: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:27:48,804 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:27:48,804 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:27:48,805 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:27:49,046 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:27:49,047 - pionex_api - INFO - Balance API response: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:27:49,047 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:27:49,287 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:27:49,288 - pionex_api - INFO - Balance API response for positions: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:27:49,288 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:27:49,289 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:27:49,289 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:27:49,531 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:27:49,532 - pionex_api - INFO - Balance API response: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:27:49,533 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:27:51,570 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:27:51,571 - pionex_api - INFO - Balance API response for positions: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:27:51,571 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:27:51,572 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:27:51,572 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:27:51,818 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:27:51,819 - pionex_api - INFO - Balance API response for positions: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:27:51,820 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:27:51,821 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:27:51,822 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:27:52,075 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:27:52,076 - pionex_api - INFO - Balance API response: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:27:52,076 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:27:52,874 - engineio.server - INFO - VBa2Qxgd5UUzoJJyAAAE: Sending packet PING data None
+2025-08-06 13:27:52,875 - engineio.server - INFO - 4jcMdFvByahyau4oAAAB: Sending packet PING data None
+2025-08-06 13:27:52,876 - engineio.server - INFO - Bk4W1Xgg1uyAhjOPAAAA: Sending packet PING data None
+2025-08-06 13:27:52,876 - engineio.server - INFO - XeJ1HFddgiMsUgM6AAAH: Sending packet PING data None
+2025-08-06 13:27:52,877 - engineio.server - INFO - CuykTOzvmsTnNtRkAAAG: Sending packet PING data None
+2025-08-06 13:27:53,901 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:27:53,902 - pionex_api - INFO - Balance API response: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:27:53,902 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:27:54,146 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:27:54,147 - pionex_api - INFO - Balance API response for positions: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:27:54,147 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:27:54,147 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:27:54,147 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:27:55,162 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:27:55,162 - pionex_api - INFO - Balance API response: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:27:55,163 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:27:55,400 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:27:55,401 - pionex_api - INFO - Balance API response for positions: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:27:55,401 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:27:55,402 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:27:55,402 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:27:55,403 - engineio.server - INFO - Bk4W1Xgg1uyAhjOPAAAA: Received packet PONG data 
+2025-08-06 13:27:55,403 - engineio.server - INFO - 4jcMdFvByahyau4oAAAB: Received packet PONG data 
+2025-08-06 13:27:55,404 - engineio.server - INFO - VBa2Qxgd5UUzoJJyAAAE: Received packet PONG data 
+2025-08-06 13:27:55,405 - engineio.server - INFO - XeJ1HFddgiMsUgM6AAAH: Received packet PONG data 
+2025-08-06 13:27:55,405 - engineio.server - INFO - CuykTOzvmsTnNtRkAAAG: Received packet PONG data 
+2025-08-06 13:27:55,647 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:27:55,648 - pionex_api - INFO - Balance API response: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:27:55,648 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:27:55,891 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:27:55,892 - pionex_api - INFO - Balance API response for positions: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:27:55,892 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:27:55,893 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:27:55,893 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:28:01,404 - engineio.server - INFO - ZhSevp7iOXnxp53nAAAQ: Sending packet PING data None
+2025-08-06 13:28:01,405 - engineio.server - INFO - ZhSevp7iOXnxp53nAAAQ: Received packet PONG data 
+2025-08-06 13:28:09,479 - engineio.server - INFO - -dqUhPbJyFFYYzXzAAAU: Sending packet PING data None
+2025-08-06 13:28:09,480 - engineio.server - INFO - -dqUhPbJyFFYYzXzAAAU: Received packet PONG data 
+2025-08-06 13:28:20,657 - engineio.server - INFO - CuykTOzvmsTnNtRkAAAG: Sending packet PING data None
+2025-08-06 13:28:20,659 - engineio.server - INFO - Bk4W1Xgg1uyAhjOPAAAA: Sending packet PING data None
+2025-08-06 13:28:20,659 - engineio.server - INFO - 4jcMdFvByahyau4oAAAB: Sending packet PING data None
+2025-08-06 13:28:20,660 - engineio.server - INFO - VBa2Qxgd5UUzoJJyAAAE: Sending packet PING data None
+2025-08-06 13:28:20,660 - engineio.server - INFO - XeJ1HFddgiMsUgM6AAAH: Sending packet PING data None
+2025-08-06 13:28:20,662 - engineio.server - INFO - CuykTOzvmsTnNtRkAAAG: Received packet PONG data 
+2025-08-06 13:28:20,663 - engineio.server - INFO - VBa2Qxgd5UUzoJJyAAAE: Received packet PONG data 
+2025-08-06 13:28:20,664 - engineio.server - INFO - XeJ1HFddgiMsUgM6AAAH: Received packet PONG data 
+2025-08-06 13:28:20,665 - engineio.server - INFO - 4jcMdFvByahyau4oAAAB: Received packet PONG data 
+2025-08-06 13:28:20,666 - engineio.server - INFO - Bk4W1Xgg1uyAhjOPAAAA: Received packet PONG data 
+2025-08-06 13:28:26,407 - engineio.server - INFO - ZhSevp7iOXnxp53nAAAQ: Sending packet PING data None
+2025-08-06 13:28:26,409 - engineio.server - INFO - ZhSevp7iOXnxp53nAAAQ: Received packet PONG data 
+2025-08-06 13:28:34,484 - engineio.server - INFO - -dqUhPbJyFFYYzXzAAAU: Sending packet PING data None
+2025-08-06 13:28:34,485 - engineio.server - INFO - -dqUhPbJyFFYYzXzAAAU: Received packet PONG data 
+2025-08-06 13:28:45,680 - engineio.server - INFO - VBa2Qxgd5UUzoJJyAAAE: Sending packet PING data None
+2025-08-06 13:28:45,680 - engineio.server - INFO - Bk4W1Xgg1uyAhjOPAAAA: Sending packet PING data None
+2025-08-06 13:28:45,681 - engineio.server - INFO - 4jcMdFvByahyau4oAAAB: Sending packet PING data None
+2025-08-06 13:28:45,681 - engineio.server - INFO - CuykTOzvmsTnNtRkAAAG: Sending packet PING data None
+2025-08-06 13:28:45,682 - engineio.server - INFO - XeJ1HFddgiMsUgM6AAAH: Sending packet PING data None
+2025-08-06 13:28:45,683 - engineio.server - INFO - 4jcMdFvByahyau4oAAAB: Received packet PONG data 
+2025-08-06 13:28:45,684 - engineio.server - INFO - CuykTOzvmsTnNtRkAAAG: Received packet PONG data 
+2025-08-06 13:28:45,685 - engineio.server - INFO - VBa2Qxgd5UUzoJJyAAAE: Received packet PONG data 
+2025-08-06 13:28:45,685 - engineio.server - INFO - XeJ1HFddgiMsUgM6AAAH: Received packet PONG data 
+2025-08-06 13:28:45,686 - engineio.server - INFO - Bk4W1Xgg1uyAhjOPAAAA: Received packet PONG data 
+2025-08-06 13:28:47,772 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:28:47,773 - pionex_api - INFO - Balance API response: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:28:47,773 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:28:49,341 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:28:49,342 - pionex_api - INFO - Balance API response for positions: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:28:49,343 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:28:49,343 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:28:49,344 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:28:49,592 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:28:49,592 - pionex_api - INFO - Balance API response: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:28:49,592 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:28:50,007 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:28:50,009 - pionex_api - INFO - Balance API response for positions: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:28:50,009 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:28:50,009 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:28:50,010 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:28:50,257 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:28:50,258 - pionex_api - INFO - Balance API response: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:28:50,259 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:28:52,414 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:28:52,415 - pionex_api - INFO - Balance API response for positions: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:28:52,415 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:28:52,416 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:28:52,416 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:28:52,692 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:28:52,693 - pionex_api - INFO - Balance API response: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:28:52,693 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:28:53,221 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:28:53,221 - pionex_api - INFO - Balance API response for positions: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:28:53,222 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:28:53,222 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:28:53,223 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:28:53,224 - engineio.server - INFO - ZhSevp7iOXnxp53nAAAQ: Sending packet PING data None
+2025-08-06 13:28:54,618 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:28:54,619 - pionex_api - INFO - Balance API response: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:28:54,619 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:28:55,723 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:28:55,724 - pionex_api - INFO - Balance API response for positions: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:28:55,725 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:28:55,726 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:28:55,726 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:28:55,975 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:28:55,975 - pionex_api - INFO - Balance API response: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:28:55,975 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:28:55,979 - engineio.server - INFO - ZhSevp7iOXnxp53nAAAQ: Received packet PONG data 
+2025-08-06 13:28:56,227 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:28:56,227 - pionex_api - INFO - Balance API response for positions: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:28:56,228 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:28:56,228 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:28:56,228 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:28:56,507 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:28:56,507 - pionex_api - INFO - Balance API response: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:28:56,508 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:28:56,754 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:28:56,754 - pionex_api - INFO - Balance API response for positions: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:28:56,754 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:28:56,754 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:28:56,754 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:28:59,501 - engineio.server - INFO - -dqUhPbJyFFYYzXzAAAU: Sending packet PING data None
+2025-08-06 13:28:59,502 - engineio.server - INFO - -dqUhPbJyFFYYzXzAAAU: Received packet PONG data 
+2025-08-06 13:29:10,698 - engineio.server - INFO - CuykTOzvmsTnNtRkAAAG: Sending packet PING data None
+2025-08-06 13:29:10,699 - engineio.server - INFO - 4jcMdFvByahyau4oAAAB: Sending packet PING data None
+2025-08-06 13:29:10,700 - engineio.server - INFO - XeJ1HFddgiMsUgM6AAAH: Sending packet PING data None
+2025-08-06 13:29:10,700 - engineio.server - INFO - VBa2Qxgd5UUzoJJyAAAE: Sending packet PING data None
+2025-08-06 13:29:10,700 - engineio.server - INFO - Bk4W1Xgg1uyAhjOPAAAA: Sending packet PING data None
+2025-08-06 13:29:10,701 - engineio.server - INFO - CuykTOzvmsTnNtRkAAAG: Received packet PONG data 
+2025-08-06 13:29:10,702 - engineio.server - INFO - 4jcMdFvByahyau4oAAAB: Received packet PONG data 
+2025-08-06 13:29:10,702 - engineio.server - INFO - VBa2Qxgd5UUzoJJyAAAE: Received packet PONG data 
+2025-08-06 13:29:10,703 - engineio.server - INFO - XeJ1HFddgiMsUgM6AAAH: Received packet PONG data 
+2025-08-06 13:29:10,704 - engineio.server - INFO - Bk4W1Xgg1uyAhjOPAAAA: Received packet PONG data 
+2025-08-06 13:29:21,517 - engineio.server - INFO - ZhSevp7iOXnxp53nAAAQ: Sending packet PING data None
+2025-08-06 13:29:21,518 - engineio.server - INFO - ZhSevp7iOXnxp53nAAAQ: Received packet PONG data 
+2025-08-06 13:29:24,509 - engineio.server - INFO - -dqUhPbJyFFYYzXzAAAU: Sending packet PING data None
+2025-08-06 13:29:24,510 - engineio.server - INFO - -dqUhPbJyFFYYzXzAAAU: Received packet PONG data 
+2025-08-06 13:29:35,705 - engineio.server - INFO - XeJ1HFddgiMsUgM6AAAH: Sending packet PING data None
+2025-08-06 13:29:35,705 - engineio.server - INFO - CuykTOzvmsTnNtRkAAAG: Sending packet PING data None
+2025-08-06 13:29:35,706 - engineio.server - INFO - 4jcMdFvByahyau4oAAAB: Sending packet PING data None
+2025-08-06 13:29:35,707 - engineio.server - INFO - Bk4W1Xgg1uyAhjOPAAAA: Sending packet PING data None
+2025-08-06 13:29:35,709 - engineio.server - INFO - VBa2Qxgd5UUzoJJyAAAE: Sending packet PING data None
+2025-08-06 13:29:35,710 - engineio.server - INFO - 4jcMdFvByahyau4oAAAB: Received packet PONG data 
+2025-08-06 13:29:35,711 - engineio.server - INFO - CuykTOzvmsTnNtRkAAAG: Received packet PONG data 
+2025-08-06 13:29:35,712 - engineio.server - INFO - XeJ1HFddgiMsUgM6AAAH: Received packet PONG data 
+2025-08-06 13:29:35,712 - engineio.server - INFO - Bk4W1Xgg1uyAhjOPAAAA: Received packet PONG data 
+2025-08-06 13:29:35,713 - engineio.server - INFO - VBa2Qxgd5UUzoJJyAAAE: Received packet PONG data 
+2025-08-06 13:29:46,518 - engineio.server - INFO - ZhSevp7iOXnxp53nAAAQ: Sending packet PING data None
+2025-08-06 13:29:46,519 - engineio.server - INFO - ZhSevp7iOXnxp53nAAAQ: Received packet PONG data 
+2025-08-06 13:29:48,135 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:29:48,136 - pionex_api - INFO - Balance API response: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:29:48,136 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:29:49,170 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:29:49,171 - pionex_api - INFO - Balance API response for positions: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:29:49,171 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:29:49,171 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:29:49,172 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:29:50,076 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:29:50,077 - pionex_api - INFO - Balance API response: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:29:50,077 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:29:50,316 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:29:50,317 - pionex_api - INFO - Balance API response: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:29:50,317 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:29:50,557 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:29:50,559 - pionex_api - INFO - Balance API response for positions: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:29:50,559 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:29:50,559 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:29:50,560 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:29:52,138 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:29:52,139 - pionex_api - INFO - Balance API response: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:29:52,140 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:29:52,380 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:29:52,380 - pionex_api - INFO - Balance API response for positions: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:29:52,381 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:29:52,381 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:29:52,381 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:29:52,891 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:29:52,894 - pionex_api - INFO - Balance API response for positions: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:29:52,894 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:29:52,895 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:29:52,895 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:29:53,404 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:29:53,404 - pionex_api - INFO - Balance API response: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:29:53,405 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:29:55,089 - engineio.server - INFO - -dqUhPbJyFFYYzXzAAAU: Sending packet PING data None
+2025-08-06 13:29:55,333 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:29:55,334 - pionex_api - INFO - Balance API response for positions: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:29:55,334 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:29:55,334 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:29:55,335 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:29:55,580 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:29:55,580 - pionex_api - INFO - Balance API response: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:29:55,580 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:29:55,829 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:29:55,830 - pionex_api - INFO - Balance API response for positions: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:29:55,830 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:29:55,830 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:29:55,831 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:29:55,833 - engineio.server - INFO - -dqUhPbJyFFYYzXzAAAU: Received packet PONG data 
+2025-08-06 13:29:56,110 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:29:56,110 - pionex_api - INFO - Balance API response: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:29:56,111 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:29:56,395 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:29:56,395 - pionex_api - INFO - Balance API response for positions: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:29:56,396 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:29:56,396 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:29:56,397 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:30:00,711 - engineio.server - INFO - XeJ1HFddgiMsUgM6AAAH: Sending packet PING data None
+2025-08-06 13:30:00,711 - engineio.server - INFO - CuykTOzvmsTnNtRkAAAG: Sending packet PING data None
+2025-08-06 13:30:00,712 - engineio.server - INFO - Bk4W1Xgg1uyAhjOPAAAA: Sending packet PING data None
+2025-08-06 13:30:00,712 - engineio.server - INFO - VBa2Qxgd5UUzoJJyAAAE: Sending packet PING data None
+2025-08-06 13:30:00,713 - engineio.server - INFO - 4jcMdFvByahyau4oAAAB: Sending packet PING data None
+2025-08-06 13:30:00,714 - engineio.server - INFO - 4jcMdFvByahyau4oAAAB: Received packet PONG data 
+2025-08-06 13:30:00,715 - engineio.server - INFO - XeJ1HFddgiMsUgM6AAAH: Received packet PONG data 
+2025-08-06 13:30:00,717 - engineio.server - INFO - Bk4W1Xgg1uyAhjOPAAAA: Received packet PONG data 
+2025-08-06 13:30:00,718 - engineio.server - INFO - CuykTOzvmsTnNtRkAAAG: Received packet PONG data 
+2025-08-06 13:30:00,718 - engineio.server - INFO - VBa2Qxgd5UUzoJJyAAAE: Received packet PONG data 
+2025-08-06 13:30:11,535 - engineio.server - INFO - ZhSevp7iOXnxp53nAAAQ: Sending packet PING data None
+2025-08-06 13:30:11,536 - engineio.server - INFO - ZhSevp7iOXnxp53nAAAQ: Received packet PONG data 
+2025-08-06 13:30:21,105 - engineio.server - INFO - -dqUhPbJyFFYYzXzAAAU: Sending packet PING data None
+2025-08-06 13:30:21,106 - engineio.server - INFO - -dqUhPbJyFFYYzXzAAAU: Received packet PONG data 
+2025-08-06 13:30:31,197 - __main__ - INFO - Starting Pionex Trading Bot for Production...
+2025-08-06 13:30:31,197 - __main__ - INFO - Environment variables check passed
+2025-08-06 13:30:31,198 - __main__ - INFO - Directories created successfully
+2025-08-06 13:30:33,390 - gui_app - INFO - Using SQLite database
+2025-08-06 13:30:35,216 - engineio.server - INFO - Server initialized for eventlet.
+2025-08-06 13:30:35,233 - database - INFO - Database initialized in data
+2025-08-06 13:30:35,249 - gui_app - INFO - WebSocket connection started
+2025-08-06 13:30:35,262 - __main__ - INFO - Flask app imported successfully
+2025-08-06 13:30:35,263 - __main__ - INFO - Flask application created successfully
+2025-08-06 13:30:35,263 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-08-06 13:30:35,305 - engineio.server - INFO - oZnwLxqc_XcMzNfEAAAA: Sending packet OPEN data {'sid': 'oZnwLxqc_XcMzNfEAAAA', 'upgrades': ['websocket'], 'pingTimeout': 20000, 'pingInterval': 25000, 'maxPayload': 1000000}
+2025-08-06 13:30:35,332 - engineio.server - INFO - oZnwLxqc_XcMzNfEAAAA: Received packet MESSAGE data 0
+2025-08-06 13:30:35,333 - socketio.server - INFO - emitting event "connected" to 5JCto_FB3c18sMwcAAAB [/]
+2025-08-06 13:30:35,334 - engineio.server - INFO - oZnwLxqc_XcMzNfEAAAA: Sending packet MESSAGE data 2["connected",{"data":"Connected to trading bot"}]
+2025-08-06 13:30:35,334 - engineio.server - INFO - oZnwLxqc_XcMzNfEAAAA: Sending packet MESSAGE data 0{"sid":"5JCto_FB3c18sMwcAAAB"}
+2025-08-06 13:30:35,337 - engineio.server - INFO - oZnwLxqc_XcMzNfEAAAA: Received request to upgrade to websocket
+2025-08-06 13:30:35,348 - engineio.server - INFO - oZnwLxqc_XcMzNfEAAAA: Upgrade to websocket successful
+2025-08-06 13:30:35,496 - engineio.server - INFO - 6EpfGzLkwPTkDC-KAAAC: Sending packet OPEN data {'sid': '6EpfGzLkwPTkDC-KAAAC', 'upgrades': ['websocket'], 'pingTimeout': 20000, 'pingInterval': 25000, 'maxPayload': 1000000}
+2025-08-06 13:30:35,498 - engineio.server - INFO - PBIbU0wHyrCA0Qe5AAAD: Sending packet OPEN data {'sid': 'PBIbU0wHyrCA0Qe5AAAD', 'upgrades': ['websocket'], 'pingTimeout': 20000, 'pingInterval': 25000, 'maxPayload': 1000000}
+2025-08-06 13:30:35,501 - engineio.server - INFO - 6EpfGzLkwPTkDC-KAAAC: Received packet MESSAGE data 0
+2025-08-06 13:30:35,503 - socketio.server - INFO - emitting event "connected" to evfGH5HSr1KWZi0oAAAE [/]
+2025-08-06 13:30:35,503 - engineio.server - INFO - 6EpfGzLkwPTkDC-KAAAC: Sending packet MESSAGE data 2["connected",{"data":"Connected to trading bot"}]
+2025-08-06 13:30:35,504 - engineio.server - INFO - 6EpfGzLkwPTkDC-KAAAC: Sending packet MESSAGE data 0{"sid":"evfGH5HSr1KWZi0oAAAE"}
+2025-08-06 13:30:35,506 - engineio.server - INFO - 6EpfGzLkwPTkDC-KAAAC: Received request to upgrade to websocket
+2025-08-06 13:30:35,512 - engineio.server - INFO - 6EpfGzLkwPTkDC-KAAAC: Upgrade to websocket successful
+2025-08-06 13:30:35,513 - engineio.server - INFO - PBIbU0wHyrCA0Qe5AAAD: Received packet MESSAGE data 0
+2025-08-06 13:30:35,514 - socketio.server - INFO - emitting event "connected" to htpQDGjEsmjirhnmAAAF [/]
+2025-08-06 13:30:35,515 - engineio.server - INFO - PBIbU0wHyrCA0Qe5AAAD: Sending packet MESSAGE data 2["connected",{"data":"Connected to trading bot"}]
+2025-08-06 13:30:35,516 - engineio.server - INFO - PBIbU0wHyrCA0Qe5AAAD: Sending packet MESSAGE data 0{"sid":"htpQDGjEsmjirhnmAAAF"}
+2025-08-06 13:30:35,520 - engineio.server - INFO - PBIbU0wHyrCA0Qe5AAAD: Received request to upgrade to websocket
+2025-08-06 13:30:35,533 - engineio.server - INFO - PBIbU0wHyrCA0Qe5AAAD: Upgrade to websocket successful
+2025-08-06 13:30:36,505 - engineio.server - INFO - kQ7_2ksfMLdMzznJAAAG: Sending packet OPEN data {'sid': 'kQ7_2ksfMLdMzznJAAAG', 'upgrades': ['websocket'], 'pingTimeout': 20000, 'pingInterval': 25000, 'maxPayload': 1000000}
+2025-08-06 13:30:36,512 - engineio.server - INFO - kQ7_2ksfMLdMzznJAAAG: Received packet MESSAGE data 0
+2025-08-06 13:30:36,514 - socketio.server - INFO - emitting event "connected" to lCnOWPuNP35IoF5oAAAH [/]
+2025-08-06 13:30:36,514 - engineio.server - INFO - kQ7_2ksfMLdMzznJAAAG: Sending packet MESSAGE data 2["connected",{"data":"Connected to trading bot"}]
+2025-08-06 13:30:36,515 - engineio.server - INFO - kQ7_2ksfMLdMzznJAAAG: Sending packet MESSAGE data 0{"sid":"lCnOWPuNP35IoF5oAAAH"}
+2025-08-06 13:30:36,517 - engineio.server - INFO - kQ7_2ksfMLdMzznJAAAG: Received request to upgrade to websocket
+2025-08-06 13:30:36,522 - engineio.server - INFO - kQ7_2ksfMLdMzznJAAAG: Upgrade to websocket successful
+2025-08-06 13:30:37,501 - engineio.server - INFO - Ur53DBZTMR0RemPdAAAI: Sending packet OPEN data {'sid': 'Ur53DBZTMR0RemPdAAAI', 'upgrades': ['websocket'], 'pingTimeout': 20000, 'pingInterval': 25000, 'maxPayload': 1000000}
+2025-08-06 13:30:37,509 - engineio.server - INFO - Ur53DBZTMR0RemPdAAAI: Received packet MESSAGE data 0
+2025-08-06 13:30:37,510 - socketio.server - INFO - emitting event "connected" to pA_cKJfhPO91RvyeAAAJ [/]
+2025-08-06 13:30:37,511 - engineio.server - INFO - Ur53DBZTMR0RemPdAAAI: Sending packet MESSAGE data 2["connected",{"data":"Connected to trading bot"}]
+2025-08-06 13:30:37,512 - engineio.server - INFO - Ur53DBZTMR0RemPdAAAI: Sending packet MESSAGE data 0{"sid":"pA_cKJfhPO91RvyeAAAJ"}
+2025-08-06 13:30:37,513 - engineio.server - INFO - Ur53DBZTMR0RemPdAAAI: Received request to upgrade to websocket
+2025-08-06 13:30:37,523 - engineio.server - INFO - Ur53DBZTMR0RemPdAAAI: Upgrade to websocket successful
+2025-08-06 13:30:37,804 - engineio.server - INFO - c5INxw4yb-nhlK2TAAAK: Sending packet OPEN data {'sid': 'c5INxw4yb-nhlK2TAAAK', 'upgrades': ['websocket'], 'pingTimeout': 20000, 'pingInterval': 25000, 'maxPayload': 1000000}
+2025-08-06 13:30:37,812 - engineio.server - INFO - c5INxw4yb-nhlK2TAAAK: Received packet MESSAGE data 0
+2025-08-06 13:30:37,814 - socketio.server - INFO - emitting event "connected" to iI-eL1a6hnz2nBr4AAAL [/]
+2025-08-06 13:30:37,814 - engineio.server - INFO - c5INxw4yb-nhlK2TAAAK: Sending packet MESSAGE data 2["connected",{"data":"Connected to trading bot"}]
+2025-08-06 13:30:37,815 - engineio.server - INFO - c5INxw4yb-nhlK2TAAAK: Sending packet MESSAGE data 0{"sid":"iI-eL1a6hnz2nBr4AAAL"}
+2025-08-06 13:30:38,117 - engineio.server - INFO - c5INxw4yb-nhlK2TAAAK: Received request to upgrade to websocket
+2025-08-06 13:30:38,120 - engineio.server - INFO - c5INxw4yb-nhlK2TAAAK: Upgrade to websocket successful
+2025-08-06 13:30:38,493 - engineio.server - INFO - VAFMQwTWbXY-AYfmAAAM: Sending packet OPEN data {'sid': 'VAFMQwTWbXY-AYfmAAAM', 'upgrades': ['websocket'], 'pingTimeout': 20000, 'pingInterval': 25000, 'maxPayload': 1000000}
+2025-08-06 13:30:38,497 - engineio.server - INFO - VAFMQwTWbXY-AYfmAAAM: Received packet MESSAGE data 0
+2025-08-06 13:30:38,498 - socketio.server - INFO - emitting event "connected" to o6M3hd9QBDo1o74sAAAN [/]
+2025-08-06 13:30:38,499 - engineio.server - INFO - VAFMQwTWbXY-AYfmAAAM: Sending packet MESSAGE data 2["connected",{"data":"Connected to trading bot"}]
+2025-08-06 13:30:38,500 - engineio.server - INFO - VAFMQwTWbXY-AYfmAAAM: Sending packet MESSAGE data 0{"sid":"o6M3hd9QBDo1o74sAAAN"}
+2025-08-06 13:30:38,502 - engineio.server - INFO - VAFMQwTWbXY-AYfmAAAM: Received request to upgrade to websocket
+2025-08-06 13:30:38,512 - engineio.server - INFO - VAFMQwTWbXY-AYfmAAAM: Upgrade to websocket successful
+2025-08-06 13:30:45,611 - pionex_api - INFO - Trying endpoint for positions: /api/v1/account/balances
+2025-08-06 13:30:45,611 - pionex_api - INFO - Request URL: https://api.pionex.com/api/v1/account/balances
+2025-08-06 13:30:45,612 - pionex_api - INFO - Request params: {'timestamp': '1754465445611'}
+2025-08-06 13:30:45,612 - pionex_api - INFO - Signature string: GET/api/v1/account/balances?timestamp=1754465445611
+2025-08-06 13:30:45,612 - pionex_api - INFO - Generated signature: e1906ca5321a49f6ac89001ea57378e1e1db2df1bef9b466f98fc91f02dd3f54
+2025-08-06 13:30:45,612 - pionex_api - INFO - Headers: {'Content-Type': 'application/json', 'User-Agent': 'PionexTradingBot/1.0', 'PIONEX-KEY': '3E19KfDSumU6bE7ATuHojy6tNJRSVGJhHDsn8puzk1joKyCBBpyC34d8zMmPWevDup', 'PIONEX-SIGNATURE': 'e1906ca5321a49f6ac89001ea57378e1e1db2df1bef9b466f98fc91f02dd3f54', 'PIONEX-TIMESTAMP': '1754465445611'}
+2025-08-06 13:30:46,719 - pionex_api - INFO - Response status: 200
+2025-08-06 13:30:46,719 - pionex_api - INFO - Response text: {"result":true,"data":{"balances":[]},"timestamp":1754465448681}
+2025-08-06 13:30:46,720 - pionex_api - INFO - Balance API response for positions from /api/v1/account/balances: {'result': True, 'data': {'balances': []}, 'timestamp': 1754465448681}
+2025-08-06 13:30:46,720 - pionex_api - INFO - Successfully got positions from /api/v1/account/balances
+2025-08-06 13:30:46,720 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:30:46,721 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:30:47,515 - pionex_api - INFO - Trying endpoint: /api/v1/account/balances
+2025-08-06 13:30:47,515 - pionex_api - INFO - Request URL: https://api.pionex.com/api/v1/account/balances
+2025-08-06 13:30:47,516 - pionex_api - INFO - Request params: {'timestamp': '1754465447515'}
+2025-08-06 13:30:47,516 - pionex_api - INFO - Signature string: GET/api/v1/account/balances?timestamp=1754465447515
+2025-08-06 13:30:47,516 - pionex_api - INFO - Generated signature: e127ed52cb6ed1729a95bbd1f7d48229b5352e8f87c4308d4983b4291cba97df
+2025-08-06 13:30:47,516 - pionex_api - INFO - Headers: {'Content-Type': 'application/json', 'User-Agent': 'PionexTradingBot/1.0', 'PIONEX-KEY': '3E19KfDSumU6bE7ATuHojy6tNJRSVGJhHDsn8puzk1joKyCBBpyC34d8zMmPWevDup', 'PIONEX-SIGNATURE': 'e127ed52cb6ed1729a95bbd1f7d48229b5352e8f87c4308d4983b4291cba97df', 'PIONEX-TIMESTAMP': '1754465447515'}
+2025-08-06 13:30:47,773 - pionex_api - INFO - Response status: 200
+2025-08-06 13:30:47,773 - pionex_api - INFO - Response text: {"result":true,"data":{"balances":[]},"timestamp":1754465449736}
+2025-08-06 13:30:47,773 - pionex_api - INFO - Balance API response from /api/v1/account/balances: {'result': True, 'data': {'balances': []}, 'timestamp': 1754465449736}
+2025-08-06 13:30:47,773 - pionex_api - INFO - Successfully got balances from /api/v1/account/balances
+2025-08-06 13:30:47,776 - pionex_api - INFO - Trying endpoint: /api/v1/account/balances
+2025-08-06 13:30:47,777 - pionex_api - INFO - Request URL: https://api.pionex.com/api/v1/account/balances
+2025-08-06 13:30:47,777 - pionex_api - INFO - Request params: {'timestamp': '1754465447777'}
+2025-08-06 13:30:47,777 - pionex_api - INFO - Signature string: GET/api/v1/account/balances?timestamp=1754465447777
+2025-08-06 13:30:47,778 - pionex_api - INFO - Generated signature: 8d8b952b51acb0af828770b371f927f03ea6b15aaa9024b69bf9b6462de66a6f
+2025-08-06 13:30:47,778 - pionex_api - INFO - Headers: {'Content-Type': 'application/json', 'User-Agent': 'PionexTradingBot/1.0', 'PIONEX-KEY': '3E19KfDSumU6bE7ATuHojy6tNJRSVGJhHDsn8puzk1joKyCBBpyC34d8zMmPWevDup', 'PIONEX-SIGNATURE': '8d8b952b51acb0af828770b371f927f03ea6b15aaa9024b69bf9b6462de66a6f', 'PIONEX-TIMESTAMP': '1754465447777'}
+2025-08-06 13:30:48,040 - pionex_api - INFO - Response status: 200
+2025-08-06 13:30:48,042 - pionex_api - INFO - Response text: {"result":true,"data":{"balances":[]},"timestamp":1754465449993}
+2025-08-06 13:30:48,042 - pionex_api - INFO - Balance API response from /api/v1/account/balances: {'result': True, 'data': {'balances': []}, 'timestamp': 1754465449993}
+2025-08-06 13:30:48,043 - pionex_api - INFO - Successfully got balances from /api/v1/account/balances
+2025-08-06 13:30:48,297 - pionex_api - INFO - Response status: 200
+2025-08-06 13:30:48,298 - pionex_api - INFO - Response text: {"result":true,"data":{"tickers":[{"symbol":"BTC_USDT","time":1754465448126,"open":"114213.73","close":"114272.69","high":"115096.72","low":"112650.07","volume":"9299.144765","amount":"1057873912.42371702","count":471737}]},"timestamp":1754465450260}
+2025-08-06 13:30:48,299 - pionex_api - INFO - Trying endpoint for positions: /api/v1/account/balances
+2025-08-06 13:30:48,300 - pionex_api - INFO - Request URL: https://api.pionex.com/api/v1/account/balances
+2025-08-06 13:30:48,300 - pionex_api - INFO - Request params: {'timestamp': '1754465448300'}
+2025-08-06 13:30:48,301 - pionex_api - INFO - Signature string: GET/api/v1/account/balances?timestamp=1754465448300
+2025-08-06 13:30:48,301 - pionex_api - INFO - Generated signature: 9e0d22185560a3b50f91c36c353f4af4cf042cc902e287218e4783f4c2938ffc
+2025-08-06 13:30:48,301 - pionex_api - INFO - Headers: {'Content-Type': 'application/json', 'User-Agent': 'PionexTradingBot/1.0', 'PIONEX-KEY': '3E19KfDSumU6bE7ATuHojy6tNJRSVGJhHDsn8puzk1joKyCBBpyC34d8zMmPWevDup', 'PIONEX-SIGNATURE': '9e0d22185560a3b50f91c36c353f4af4cf042cc902e287218e4783f4c2938ffc', 'PIONEX-TIMESTAMP': '1754465448300'}
+2025-08-06 13:30:48,557 - pionex_api - INFO - Response status: 200
+2025-08-06 13:30:48,558 - pionex_api - INFO - Response text: {"result":true,"data":{"balances":[]},"timestamp":1754465450514}
+2025-08-06 13:30:48,560 - pionex_api - INFO - Balance API response for positions from /api/v1/account/balances: {'result': True, 'data': {'balances': []}, 'timestamp': 1754465450514}
+2025-08-06 13:30:48,561 - pionex_api - INFO - Successfully got positions from /api/v1/account/balances
+2025-08-06 13:30:48,561 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:30:48,561 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:30:48,564 - pionex_api - INFO - Trying endpoint: /api/v1/account/balances
+2025-08-06 13:30:48,564 - pionex_api - INFO - Request URL: https://api.pionex.com/api/v1/account/balances
+2025-08-06 13:30:48,565 - pionex_api - INFO - Request params: {'timestamp': '1754465448564'}
+2025-08-06 13:30:48,565 - pionex_api - INFO - Signature string: GET/api/v1/account/balances?timestamp=1754465448564
+2025-08-06 13:30:48,566 - pionex_api - INFO - Generated signature: 430ea9abec903ca2ee1fccb98eadd6290160339da81f731160da9a816ac9893f
+2025-08-06 13:30:48,566 - pionex_api - INFO - Headers: {'Content-Type': 'application/json', 'User-Agent': 'PionexTradingBot/1.0', 'PIONEX-KEY': '3E19KfDSumU6bE7ATuHojy6tNJRSVGJhHDsn8puzk1joKyCBBpyC34d8zMmPWevDup', 'PIONEX-SIGNATURE': '430ea9abec903ca2ee1fccb98eadd6290160339da81f731160da9a816ac9893f', 'PIONEX-TIMESTAMP': '1754465448564'}
+2025-08-06 13:30:48,821 - pionex_api - INFO - Response status: 200
+2025-08-06 13:30:48,822 - pionex_api - INFO - Response text: {"result":true,"data":{"balances":[]},"timestamp":1754465450784}
+2025-08-06 13:30:48,822 - pionex_api - INFO - Balance API response from /api/v1/account/balances: {'result': True, 'data': {'balances': []}, 'timestamp': 1754465450784}
+2025-08-06 13:30:48,822 - pionex_api - INFO - Successfully got balances from /api/v1/account/balances
+2025-08-06 13:30:48,824 - pionex_api - INFO - Trying endpoint for positions: /api/v1/account/balances
+2025-08-06 13:30:48,825 - pionex_api - INFO - Request URL: https://api.pionex.com/api/v1/account/balances
+2025-08-06 13:30:48,826 - pionex_api - INFO - Request params: {'timestamp': '1754465448825'}
+2025-08-06 13:30:48,827 - pionex_api - INFO - Signature string: GET/api/v1/account/balances?timestamp=1754465448825
+2025-08-06 13:30:48,827 - pionex_api - INFO - Generated signature: 36863b58385adf6a36bc2b8a05da4ee76cf67b788659e1e88b11c4df362579c3
+2025-08-06 13:30:48,828 - pionex_api - INFO - Headers: {'Content-Type': 'application/json', 'User-Agent': 'PionexTradingBot/1.0', 'PIONEX-KEY': '3E19KfDSumU6bE7ATuHojy6tNJRSVGJhHDsn8puzk1joKyCBBpyC34d8zMmPWevDup', 'PIONEX-SIGNATURE': '36863b58385adf6a36bc2b8a05da4ee76cf67b788659e1e88b11c4df362579c3', 'PIONEX-TIMESTAMP': '1754465448825'}
+2025-08-06 13:30:49,100 - pionex_api - INFO - Response status: 200
+2025-08-06 13:30:49,100 - pionex_api - INFO - Response text: {"result":true,"data":{"balances":[]},"timestamp":1754465451058}
+2025-08-06 13:30:49,101 - pionex_api - INFO - Balance API response for positions from /api/v1/account/balances: {'result': True, 'data': {'balances': []}, 'timestamp': 1754465451058}
+2025-08-06 13:30:49,101 - pionex_api - INFO - Successfully got positions from /api/v1/account/balances
+2025-08-06 13:30:49,101 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:30:49,102 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:30:49,390 - pionex_api - INFO - Response status: 200
+2025-08-06 13:30:49,390 - pionex_api - INFO - Response text: {"result":true,"data":{"tickers":[{"symbol":"DOT_USDT","time":1754465443723,"open":"3.623","close":"3.642","high":"3.706","low":"3.537","volume":"70176.0500","amount":"253789.74768310","count":31327}]},"timestamp":1754465451353}
+2025-08-06 13:30:49,661 - pionex_api - INFO - Response status: 200
+2025-08-06 13:30:49,661 - pionex_api - INFO - Response text: {"result":true,"data":{"tickers":[{"symbol":"BTC_USDT","time":1754465451439,"open":"114213.73","close":"114272.69","high":"115096.72","low":"112650.07","volume":"9299.230666","amount":"1057883728.56206071","count":471738}]},"timestamp":1754465451619}
+2025-08-06 13:30:49,663 - pionex_api - INFO - Trying endpoint for positions: /api/v1/account/balances
+2025-08-06 13:30:49,663 - pionex_api - INFO - Request URL: https://api.pionex.com/api/v1/account/balances
+2025-08-06 13:30:49,664 - pionex_api - INFO - Request params: {'timestamp': '1754465449663'}
+2025-08-06 13:30:49,664 - pionex_api - INFO - Signature string: GET/api/v1/account/balances?timestamp=1754465449663
+2025-08-06 13:30:49,664 - pionex_api - INFO - Generated signature: c071fc6273ce501ecaf715db800431a5b42f9f333be39590e78a2bd2c976244f
+2025-08-06 13:30:49,664 - pionex_api - INFO - Headers: {'Content-Type': 'application/json', 'User-Agent': 'PionexTradingBot/1.0', 'PIONEX-KEY': '3E19KfDSumU6bE7ATuHojy6tNJRSVGJhHDsn8puzk1joKyCBBpyC34d8zMmPWevDup', 'PIONEX-SIGNATURE': 'c071fc6273ce501ecaf715db800431a5b42f9f333be39590e78a2bd2c976244f', 'PIONEX-TIMESTAMP': '1754465449663'}
+2025-08-06 13:30:49,918 - pionex_api - INFO - Response status: 200
+2025-08-06 13:30:49,918 - pionex_api - INFO - Response text: {"result":true,"data":{"balances":[]},"timestamp":1754465451880}
+2025-08-06 13:30:49,919 - pionex_api - INFO - Balance API response for positions from /api/v1/account/balances: {'result': True, 'data': {'balances': []}, 'timestamp': 1754465451880}
+2025-08-06 13:30:49,919 - pionex_api - INFO - Successfully got positions from /api/v1/account/balances
+2025-08-06 13:30:49,919 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:30:49,920 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:30:49,922 - pionex_api - INFO - Trying endpoint: /api/v1/account/balances
+2025-08-06 13:30:49,923 - pionex_api - INFO - Request URL: https://api.pionex.com/api/v1/account/balances
+2025-08-06 13:30:49,923 - pionex_api - INFO - Request params: {'timestamp': '1754465449923'}
+2025-08-06 13:30:49,923 - pionex_api - INFO - Signature string: GET/api/v1/account/balances?timestamp=1754465449923
+2025-08-06 13:30:49,924 - pionex_api - INFO - Generated signature: a6a4f0a10ed8a953ce4319f52c4beda91c5ece16815e52ba066839da5d6834fc
+2025-08-06 13:30:49,924 - pionex_api - INFO - Headers: {'Content-Type': 'application/json', 'User-Agent': 'PionexTradingBot/1.0', 'PIONEX-KEY': '3E19KfDSumU6bE7ATuHojy6tNJRSVGJhHDsn8puzk1joKyCBBpyC34d8zMmPWevDup', 'PIONEX-SIGNATURE': 'a6a4f0a10ed8a953ce4319f52c4beda91c5ece16815e52ba066839da5d6834fc', 'PIONEX-TIMESTAMP': '1754465449923'}
+2025-08-06 13:30:50,727 - pionex_api - INFO - Response status: 200
+2025-08-06 13:30:50,729 - pionex_api - INFO - Response text: {"result":true,"data":{"balances":[]},"timestamp":1754465452668}
+2025-08-06 13:30:50,730 - pionex_api - INFO - Balance API response from /api/v1/account/balances: {'result': True, 'data': {'balances': []}, 'timestamp': 1754465452668}
+2025-08-06 13:30:50,730 - pionex_api - INFO - Successfully got balances from /api/v1/account/balances
+2025-08-06 13:30:51,023 - pionex_api - INFO - Response status: 200
+2025-08-06 13:30:51,023 - pionex_api - INFO - Response text: {"result":true,"data":{"trades":[{"symbol":"BTC_USDT","tradeId":"320000000652103356","price":"114272.69","size":"0.000002","side":"BUY","timestamp":1754465451523},{"symbol":"BTC_USDT","tradeId":"320000000652103355","price":"114272.68","size":"0.000001","side":"SELL","timestamp":1754465451511},{"symbol":"BTC_USDT","tradeId":"320000000652103354","price":"114272.69","size":"0.085901","side":"BUY","timestamp":1754465451113},{"symbol":"BTC_USDT","tradeId":"320000000652103353","price":"114272.69","size":"0.000001","side":"BUY","timestamp":1754465447643},{"symbol":"BTC_USDT","tradeId":"320000000652103352","price":"114272.69","size":"0.000001","side":"BUY","timestamp":1754465445145},{"symbol":"BTC_USDT","tradeId":"320000000652103351","price":"114272.68","size":"0.000002","side":"SELL","timestamp":1754465443733},{"symbol":"BTC_USDT","tradeId":"320000000652103350","price":"114272.69","size":"0.000003","side":"BUY","timestamp":1754465439349},{"symbol":"BTC_USDT","tradeId":"320000000652103349","price":"114272.69","size":"0.000002","side":"BUY","timestamp":1754465438032},{"symbol":"BTC_USDT","tradeId":"320000000652103348","price":"114272.69","size":"0.000002","side":"BUY","timestamp":1754465436098},{"symbol":"BTC_USDT","tradeId":"320000000652103347","price":"114272.69","size":"0.000002","side":"BUY","timestamp":1754465429664},{"symbol":"BTC_USDT","tradeId":"320000000652103346","price":"114272.69","size":"0.000001","side":"BUY","timestamp":1754465428848},{"symbol":"BTC_USDT","tradeId":"320000000652103345","price":"114272.69","size":"0.000002","side":"BUY","timestamp":1754465428186},{"symbol":"BTC_USDT","tradeId":"320000000652103344","price":"114272.69","size":"0.000001","side":"BUY","timestamp":1754465427682},{"symbol":"BTC_USDT","tradeId":"320000000652103343","price":"114272.69","size":"0.000001","side":"BUY","timestamp":1754465427241},{"symbol":"BTC_USDT","tradeId":"320000000652103342","price":"114272.69","size":"0.000010","side":"BUY","timestamp":1754465425947},{"symbol":"BTC_USDT","tradeId":"320000000652103341","price":"114272.69","size":"0.000003","side":"BUY","timestamp":1754465425747},{"symbol":"BTC_USDT","tradeId":"320000000652103340","price":"114272.69","size":"0.000001","side":"BUY","timestamp":1754465425245},{"symbol":"BTC_USDT","tradeId":"320000000652103339","price":"114272.68","size":"0.000001","side":"SELL","timestamp":1754465425034},{"symbol":"BTC_USDT","tradeId":"320000000652103338","price":"114272.69","size":"0.000002","side":"BUY","timestamp":1754465424257},{"symbol":"BTC_USDT","tradeId":"320000000652103337","price":"114272.69","size":"0.000001","side":"BUY","timestamp":1754465424212}]},"timestamp":1754465452962}
+2025-08-06 13:30:51,284 - pionex_api - INFO - Response status: 200
+2025-08-06 13:30:51,285 - pionex_api - INFO - Response text: {"result":true,"data":{"bids":[["114272.68","8.632458"],["114272.67","0.00169"],["114272.58","2.17855"],["114272.48","2.03132"],["114272.39","0.000065"],["114272.38","2.008389"],["114272.28","2.21537"],["114272.18","2.40054"],["114272.08","2.12423"],["114272.05","0.002145"],["114272.04","0.000065"],["114271.98","2.27404"],["114271.88","2.1331"],["114271.86","0.000065"],["114271.85","0.028587"],["114271.78","1.72542"],["114271.69","0.000065"],["114271.68","1.80334"],["114271.58","1.9185"],["114271.48","1.70211"]],"asks":[["114272.69","14.845482"],["114272.7","0.708383"],["114272.79","1.95498"],["114272.89","1.84702"],["114272.99","1.96105"],["114273.09","1.95957"],["114273.14","0.00013"],["114273.19","2.06597"],["114273.25","0.000195"],["114273.26","0.097981"],["114273.29","2.08292"],["114273.39","2.2345"],["114273.49","2.37731"],["114273.59","1.82361"],["114273.69","2.09497"],["114273.79","2.01458"],["114273.87","0.000065"],["114273.88","0.135304"],["114273.89","2.07273"],["114273.9","0.028496"]],"updateTime":1754465452972},"timestamp":1754465453245}
+2025-08-06 13:30:51,542 - pionex_api - INFO - Response status: 200
+2025-08-06 13:30:51,543 - pionex_api - INFO - Response text: {"result":true,"data":{"tickers":[{"symbol":"BTC_USDT","time":1754465451689,"open":"114213.73","close":"114272.69","high":"115096.72","low":"112650.07","volume":"9299.230669","amount":"1057883728.90487885","count":471740}]},"timestamp":1754465453497}
+2025-08-06 13:30:51,810 - pionex_api - INFO - Response status: 200
+2025-08-06 13:30:51,810 - pionex_api - INFO - Response text: {"result":true,"data":{"tickers":[{"symbol":"ETH_USDT","time":1754465452792,"open":"3639.17","close":"3645.00","high":"3694.05","low":"3546.52","volume":"181451.55340","amount":"654979942.26533508","count":901713}]},"timestamp":1754465453767}
+2025-08-06 13:30:51,812 - pionex_api - INFO - Trying endpoint for positions: /api/v1/account/balances
+2025-08-06 13:30:51,812 - pionex_api - INFO - Request URL: https://api.pionex.com/api/v1/account/balances
+2025-08-06 13:30:51,812 - pionex_api - INFO - Request params: {'timestamp': '1754465451812'}
+2025-08-06 13:30:51,813 - pionex_api - INFO - Signature string: GET/api/v1/account/balances?timestamp=1754465451812
+2025-08-06 13:30:51,813 - pionex_api - INFO - Generated signature: bb487b04fa562056fa2ae21c2b0de7838871b239e5d1dfec50f11af781fbcf5c
+2025-08-06 13:30:51,813 - pionex_api - INFO - Headers: {'Content-Type': 'application/json', 'User-Agent': 'PionexTradingBot/1.0', 'PIONEX-KEY': '3E19KfDSumU6bE7ATuHojy6tNJRSVGJhHDsn8puzk1joKyCBBpyC34d8zMmPWevDup', 'PIONEX-SIGNATURE': 'bb487b04fa562056fa2ae21c2b0de7838871b239e5d1dfec50f11af781fbcf5c', 'PIONEX-TIMESTAMP': '1754465451812'}
+2025-08-06 13:30:52,100 - pionex_api - INFO - Response status: 200
+2025-08-06 13:30:52,101 - pionex_api - INFO - Response text: {"result":true,"data":{"balances":[]},"timestamp":1754465454038}
+2025-08-06 13:30:52,101 - pionex_api - INFO - Balance API response for positions from /api/v1/account/balances: {'result': True, 'data': {'balances': []}, 'timestamp': 1754465454038}
+2025-08-06 13:30:52,101 - pionex_api - INFO - Successfully got positions from /api/v1/account/balances
+2025-08-06 13:30:52,101 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:30:52,102 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:30:52,376 - pionex_api - INFO - Response status: 200
+2025-08-06 13:30:52,376 - pionex_api - INFO - Response text: {"result":true,"data":{"tickers":[{"symbol":"ETH_USDT","time":1754465452792,"open":"3639.17","close":"3645.00","high":"3694.05","low":"3546.52","volume":"181451.55340","amount":"654979942.26533508","count":901713}]},"timestamp":1754465454331}
+2025-08-06 13:30:52,642 - pionex_api - INFO - Response status: 200
+2025-08-06 13:30:52,643 - pionex_api - INFO - Response text: {"result":true,"data":{"tickers":[{"symbol":"BTC_USDT","time":1754465451689,"open":"114213.73","close":"114272.69","high":"115096.72","low":"112650.07","volume":"9299.230669","amount":"1057883728.90487885","count":471740}]},"timestamp":1754465454601}
+2025-08-06 13:30:52,909 - pionex_api - INFO - Response status: 200
+2025-08-06 13:30:52,910 - pionex_api - INFO - Response text: {"result":true,"data":{"tickers":[{"symbol":"ETH_USDT","time":1754465452792,"open":"3639.17","close":"3645.00","high":"3694.05","low":"3546.52","volume":"181451.55340","amount":"654979942.26533508","count":901713}]},"timestamp":1754465454868}
+2025-08-06 13:30:53,174 - pionex_api - INFO - Response status: 200
+2025-08-06 13:30:53,175 - pionex_api - INFO - Response text: {"result":true,"data":{"tickers":[{"symbol":"DOT_USDT","time":1754465453908,"open":"3.623","close":"3.641","high":"3.706","low":"3.537","volume":"70178.0225","amount":"253796.92955560","count":31328}]},"timestamp":1754465455132}
+2025-08-06 13:30:53,469 - pionex_api - INFO - Response status: 200
+2025-08-06 13:30:53,469 - pionex_api - INFO - Response text: {"result":true,"data":{"tickers":[{"symbol":"DOT_USDT","time":1754465455166,"open":"3.623","close":"3.641","high":"3.706","low":"3.537","volume":"70183.5403","amount":"253817.01986540","count":31329}]},"timestamp":1754465455409}
+2025-08-06 13:30:53,471 - pionex_api - INFO - Trying endpoint: /api/v1/account/balances
+2025-08-06 13:30:53,471 - pionex_api - INFO - Request URL: https://api.pionex.com/api/v1/account/balances
+2025-08-06 13:30:53,471 - pionex_api - INFO - Request params: {'timestamp': '1754465453471'}
+2025-08-06 13:30:53,472 - pionex_api - INFO - Signature string: GET/api/v1/account/balances?timestamp=1754465453471
+2025-08-06 13:30:53,472 - pionex_api - INFO - Generated signature: 27f0f09148c628a267ea7bfe30b9112b664c786a0ee93c57bcfe9c7fc2510df7
+2025-08-06 13:30:53,472 - pionex_api - INFO - Headers: {'Content-Type': 'application/json', 'User-Agent': 'PionexTradingBot/1.0', 'PIONEX-KEY': '3E19KfDSumU6bE7ATuHojy6tNJRSVGJhHDsn8puzk1joKyCBBpyC34d8zMmPWevDup', 'PIONEX-SIGNATURE': '27f0f09148c628a267ea7bfe30b9112b664c786a0ee93c57bcfe9c7fc2510df7', 'PIONEX-TIMESTAMP': '1754465453471'}
+2025-08-06 13:30:53,729 - pionex_api - INFO - Response status: 200
+2025-08-06 13:30:53,730 - pionex_api - INFO - Response text: {"result":true,"data":{"balances":[]},"timestamp":1754465455689}
+2025-08-06 13:30:53,731 - pionex_api - INFO - Balance API response from /api/v1/account/balances: {'result': True, 'data': {'balances': []}, 'timestamp': 1754465455689}
+2025-08-06 13:30:53,731 - pionex_api - INFO - Successfully got balances from /api/v1/account/balances
+2025-08-06 13:30:54,088 - pionex_api - INFO - Response status: 200
+2025-08-06 13:30:54,089 - pionex_api - INFO - Response text: {"result":true,"data":{"tickers":[{"symbol":"BTC_USDT","time":1754465451689,"open":"114213.73","close":"114272.69","high":"115096.72","low":"112650.07","volume":"9299.230669","amount":"1057883728.90487885","count":471740}]},"timestamp":1754465456046}
+2025-08-06 13:30:54,361 - pionex_api - INFO - Response status: 200
+2025-08-06 13:30:54,361 - pionex_api - INFO - Response text: {"result":true,"data":{"tickers":[{"symbol":"BTC_USDT","time":1754465451689,"open":"114213.73","close":"114272.69","high":"115096.72","low":"112650.07","volume":"9299.230669","amount":"1057883728.90487885","count":471740}]},"timestamp":1754465456319}
+2025-08-06 13:30:54,625 - pionex_api - INFO - Response status: 200
+2025-08-06 13:30:54,625 - pionex_api - INFO - Response text: {"result":true,"data":{"trades":[{"symbol":"BTC_USDT","tradeId":"320000000652103357","price":"114272.68","size":"0.000005","side":"SELL","timestamp":1754465456308},{"symbol":"BTC_USDT","tradeId":"320000000652103356","price":"114272.69","size":"0.000002","side":"BUY","timestamp":1754465451523},{"symbol":"BTC_USDT","tradeId":"320000000652103355","price":"114272.68","size":"0.000001","side":"SELL","timestamp":1754465451511},{"symbol":"BTC_USDT","tradeId":"320000000652103354","price":"114272.69","size":"0.085901","side":"BUY","timestamp":1754465451113},{"symbol":"BTC_USDT","tradeId":"320000000652103353","price":"114272.69","size":"0.000001","side":"BUY","timestamp":1754465447643},{"symbol":"BTC_USDT","tradeId":"320000000652103352","price":"114272.69","size":"0.000001","side":"BUY","timestamp":1754465445145},{"symbol":"BTC_USDT","tradeId":"320000000652103351","price":"114272.68","size":"0.000002","side":"SELL","timestamp":1754465443733},{"symbol":"BTC_USDT","tradeId":"320000000652103350","price":"114272.69","size":"0.000003","side":"BUY","timestamp":1754465439349},{"symbol":"BTC_USDT","tradeId":"320000000652103349","price":"114272.69","size":"0.000002","side":"BUY","timestamp":1754465438032},{"symbol":"BTC_USDT","tradeId":"320000000652103348","price":"114272.69","size":"0.000002","side":"BUY","timestamp":1754465436098},{"symbol":"BTC_USDT","tradeId":"320000000652103347","price":"114272.69","size":"0.000002","side":"BUY","timestamp":1754465429664},{"symbol":"BTC_USDT","tradeId":"320000000652103346","price":"114272.69","size":"0.000001","side":"BUY","timestamp":1754465428848},{"symbol":"BTC_USDT","tradeId":"320000000652103345","price":"114272.69","size":"0.000002","side":"BUY","timestamp":1754465428186},{"symbol":"BTC_USDT","tradeId":"320000000652103344","price":"114272.69","size":"0.000001","side":"BUY","timestamp":1754465427682},{"symbol":"BTC_USDT","tradeId":"320000000652103343","price":"114272.69","size":"0.000001","side":"BUY","timestamp":1754465427241},{"symbol":"BTC_USDT","tradeId":"320000000652103342","price":"114272.69","size":"0.000010","side":"BUY","timestamp":1754465425947},{"symbol":"BTC_USDT","tradeId":"320000000652103341","price":"114272.69","size":"0.000003","side":"BUY","timestamp":1754465425747},{"symbol":"BTC_USDT","tradeId":"320000000652103340","price":"114272.69","size":"0.000001","side":"BUY","timestamp":1754465425245},{"symbol":"BTC_USDT","tradeId":"320000000652103339","price":"114272.68","size":"0.000001","side":"SELL","timestamp":1754465425034},{"symbol":"BTC_USDT","tradeId":"320000000652103338","price":"114272.69","size":"0.000002","side":"BUY","timestamp":1754465424257}]},"timestamp":1754465456587}
+2025-08-06 13:30:54,892 - pionex_api - INFO - Response status: 200
+2025-08-06 13:30:54,893 - pionex_api - INFO - Response text: {"result":true,"data":{"bids":[["114272.68","7.913617"],["114272.67","0.001885"],["114272.58","1.94941"],["114272.48","2.17705"],["114272.39","0.00234"],["114272.38","2.326089"],["114272.28","1.99406"],["114272.18","2.13242"],["114272.08","2.58405"],["114272.04","0.000065"],["114271.98","1.87113"],["114271.88","2.52181"],["114271.78","1.77345"],["114271.69","0.000065"],["114271.68","2.58441"],["114271.58","1.77336"],["114271.48","2.45058"],["114271.38","2.08248"],["114271.28","1.86725"],["114271.18","1.93208"]],"asks":[["114272.69","15.599025"],["114272.7","1.152021"],["114272.79","2.21336"],["114272.89","1.81351"],["114272.99","1.96704"],["114273.09","2.5608"],["114273.14","0.00013"],["114273.19","2.26946"],["114273.25","0.000195"],["114273.26","0.097916"],["114273.29","2.50632"],["114273.39","2.365"],["114273.49","1.81096"],["114273.59","2.32336"],["114273.69","2.63651"],["114273.79","2.48387"],["114273.88","0.000065"],["114273.89","2.15726"],["114273.9","0.028496"],["114273.99","1.84068"]],"updateTime":1754465456173},"timestamp":1754465456850}
+2025-08-06 13:30:54,896 - pionex_api - INFO - Trying endpoint for positions: /api/v1/account/balances
+2025-08-06 13:30:54,896 - pionex_api - INFO - Request URL: https://api.pionex.com/api/v1/account/balances
+2025-08-06 13:30:54,897 - pionex_api - INFO - Request params: {'timestamp': '1754465454896'}
+2025-08-06 13:30:54,897 - pionex_api - INFO - Signature string: GET/api/v1/account/balances?timestamp=1754465454896
+2025-08-06 13:30:54,897 - pionex_api - INFO - Generated signature: 7af46a4f94d8c6861159403ba32d6ef8f869271640a9f3434066299bcdddd754
+2025-08-06 13:30:54,897 - pionex_api - INFO - Headers: {'Content-Type': 'application/json', 'User-Agent': 'PionexTradingBot/1.0', 'PIONEX-KEY': '3E19KfDSumU6bE7ATuHojy6tNJRSVGJhHDsn8puzk1joKyCBBpyC34d8zMmPWevDup', 'PIONEX-SIGNATURE': '7af46a4f94d8c6861159403ba32d6ef8f869271640a9f3434066299bcdddd754', 'PIONEX-TIMESTAMP': '1754465454896'}
+2025-08-06 13:30:55,154 - pionex_api - INFO - Response status: 200
+2025-08-06 13:30:55,154 - pionex_api - INFO - Response text: {"result":true,"data":{"balances":[]},"timestamp":1754465457113}
+2025-08-06 13:30:55,154 - pionex_api - INFO - Balance API response for positions from /api/v1/account/balances: {'result': True, 'data': {'balances': []}, 'timestamp': 1754465457113}
+2025-08-06 13:30:55,155 - pionex_api - INFO - Successfully got positions from /api/v1/account/balances
+2025-08-06 13:30:55,155 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:30:55,156 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:30:55,434 - pionex_api - INFO - Response status: 200
+2025-08-06 13:30:55,435 - pionex_api - INFO - Response text: {"result":true,"data":{"tickers":[{"symbol":"ETH_USDT","time":1754465456252,"open":"3639.17","close":"3645.00","high":"3694.05","low":"3546.52","volume":"181451.61586","amount":"654980169.93203509","count":901715}]},"timestamp":1754465457396}
+2025-08-06 13:30:55,694 - pionex_api - INFO - Response status: 200
+2025-08-06 13:30:55,695 - pionex_api - INFO - Response text: {"result":true,"data":{"tickers":[{"symbol":"DOT_USDT","time":1754465455166,"open":"3.623","close":"3.641","high":"3.706","low":"3.537","volume":"70183.5403","amount":"253817.01986540","count":31329}]},"timestamp":1754465457656}
+2025-08-06 13:30:55,698 - pionex_api - INFO - Trying endpoint: /api/v1/account/balances
+2025-08-06 13:30:55,698 - pionex_api - INFO - Request URL: https://api.pionex.com/api/v1/account/balances
+2025-08-06 13:30:55,698 - pionex_api - INFO - Request params: {'timestamp': '1754465455698'}
+2025-08-06 13:30:55,699 - pionex_api - INFO - Signature string: GET/api/v1/account/balances?timestamp=1754465455698
+2025-08-06 13:30:55,699 - pionex_api - INFO - Generated signature: 593a61f474a22256b6b3da93650a059a352fa7a9d791b31154256f0e5e2b500f
+2025-08-06 13:30:55,699 - pionex_api - INFO - Headers: {'Content-Type': 'application/json', 'User-Agent': 'PionexTradingBot/1.0', 'PIONEX-KEY': '3E19KfDSumU6bE7ATuHojy6tNJRSVGJhHDsn8puzk1joKyCBBpyC34d8zMmPWevDup', 'PIONEX-SIGNATURE': '593a61f474a22256b6b3da93650a059a352fa7a9d791b31154256f0e5e2b500f', 'PIONEX-TIMESTAMP': '1754465455698'}
+2025-08-06 13:30:55,954 - pionex_api - INFO - Response status: 200
+2025-08-06 13:30:55,955 - pionex_api - INFO - Response text: {"result":true,"data":{"balances":[]},"timestamp":1754465457914}
+2025-08-06 13:30:55,955 - pionex_api - INFO - Balance API response from /api/v1/account/balances: {'result': True, 'data': {'balances': []}, 'timestamp': 1754465457914}
+2025-08-06 13:30:55,955 - pionex_api - INFO - Successfully got balances from /api/v1/account/balances
+2025-08-06 13:30:55,959 - pionex_api - INFO - Trying endpoint for positions: /api/v1/account/balances
+2025-08-06 13:30:55,960 - pionex_api - INFO - Request URL: https://api.pionex.com/api/v1/account/balances
+2025-08-06 13:30:55,960 - pionex_api - INFO - Request params: {'timestamp': '1754465455960'}
+2025-08-06 13:30:55,961 - pionex_api - INFO - Signature string: GET/api/v1/account/balances?timestamp=1754465455960
+2025-08-06 13:30:55,961 - pionex_api - INFO - Generated signature: a9490719497eb61037c07b4768426359bdbc700235f4eb7485c443efb5da4ad9
+2025-08-06 13:30:55,961 - pionex_api - INFO - Headers: {'Content-Type': 'application/json', 'User-Agent': 'PionexTradingBot/1.0', 'PIONEX-KEY': '3E19KfDSumU6bE7ATuHojy6tNJRSVGJhHDsn8puzk1joKyCBBpyC34d8zMmPWevDup', 'PIONEX-SIGNATURE': 'a9490719497eb61037c07b4768426359bdbc700235f4eb7485c443efb5da4ad9', 'PIONEX-TIMESTAMP': '1754465455960'}
+2025-08-06 13:30:56,216 - pionex_api - INFO - Response status: 200
+2025-08-06 13:30:56,217 - pionex_api - INFO - Response text: {"result":true,"data":{"balances":[]},"timestamp":1754465458179}
+2025-08-06 13:30:56,217 - pionex_api - INFO - Balance API response for positions from /api/v1/account/balances: {'result': True, 'data': {'balances': []}, 'timestamp': 1754465458179}
+2025-08-06 13:30:56,217 - pionex_api - INFO - Successfully got positions from /api/v1/account/balances
+2025-08-06 13:30:56,218 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:30:56,218 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:30:56,220 - pionex_api - INFO - Trying endpoint: /api/v1/account/balances
+2025-08-06 13:30:56,221 - pionex_api - INFO - Request URL: https://api.pionex.com/api/v1/account/balances
+2025-08-06 13:30:56,221 - pionex_api - INFO - Request params: {'timestamp': '1754465456221'}
+2025-08-06 13:30:56,221 - pionex_api - INFO - Signature string: GET/api/v1/account/balances?timestamp=1754465456221
+2025-08-06 13:30:56,222 - pionex_api - INFO - Generated signature: 16cdfc4dec1a7a0d1fa6cb7844c254eabafde0d2becfbea423391dcfb4762eb4
+2025-08-06 13:30:56,222 - pionex_api - INFO - Headers: {'Content-Type': 'application/json', 'User-Agent': 'PionexTradingBot/1.0', 'PIONEX-KEY': '3E19KfDSumU6bE7ATuHojy6tNJRSVGJhHDsn8puzk1joKyCBBpyC34d8zMmPWevDup', 'PIONEX-SIGNATURE': '16cdfc4dec1a7a0d1fa6cb7844c254eabafde0d2becfbea423391dcfb4762eb4', 'PIONEX-TIMESTAMP': '1754465456221'}
+2025-08-06 13:30:56,516 - pionex_api - INFO - Response status: 200
+2025-08-06 13:30:56,517 - pionex_api - INFO - Response text: {"result":true,"data":{"balances":[]},"timestamp":1754465458456}
+2025-08-06 13:30:56,517 - pionex_api - INFO - Balance API response from /api/v1/account/balances: {'result': True, 'data': {'balances': []}, 'timestamp': 1754465458456}
+2025-08-06 13:30:56,518 - pionex_api - INFO - Successfully got balances from /api/v1/account/balances
+2025-08-06 13:30:56,520 - pionex_api - INFO - Trying endpoint for positions: /api/v1/account/balances
+2025-08-06 13:30:56,520 - pionex_api - INFO - Request URL: https://api.pionex.com/api/v1/account/balances
+2025-08-06 13:30:56,521 - pionex_api - INFO - Request params: {'timestamp': '1754465456520'}
+2025-08-06 13:30:56,521 - pionex_api - INFO - Signature string: GET/api/v1/account/balances?timestamp=1754465456520
+2025-08-06 13:30:56,521 - pionex_api - INFO - Generated signature: 2c224bc471ba6068303b431670c2c9208ac8d75c9083fb779b2936542377dec9
+2025-08-06 13:30:56,522 - pionex_api - INFO - Headers: {'Content-Type': 'application/json', 'User-Agent': 'PionexTradingBot/1.0', 'PIONEX-KEY': '3E19KfDSumU6bE7ATuHojy6tNJRSVGJhHDsn8puzk1joKyCBBpyC34d8zMmPWevDup', 'PIONEX-SIGNATURE': '2c224bc471ba6068303b431670c2c9208ac8d75c9083fb779b2936542377dec9', 'PIONEX-TIMESTAMP': '1754465456520'}
+2025-08-06 13:30:56,779 - pionex_api - INFO - Response status: 200
+2025-08-06 13:30:56,780 - pionex_api - INFO - Response text: {"result":true,"data":{"balances":[]},"timestamp":1754465458741}
+2025-08-06 13:30:56,780 - pionex_api - INFO - Balance API response for positions from /api/v1/account/balances: {'result': True, 'data': {'balances': []}, 'timestamp': 1754465458741}
+2025-08-06 13:30:56,781 - pionex_api - INFO - Successfully got positions from /api/v1/account/balances
+2025-08-06 13:30:56,781 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:30:56,781 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:31:00,327 - engineio.server - INFO - oZnwLxqc_XcMzNfEAAAA: Sending packet PING data None
+2025-08-06 13:31:00,328 - engineio.server - INFO - oZnwLxqc_XcMzNfEAAAA: Received packet PONG data 
+2025-08-06 13:31:00,508 - engineio.server - INFO - 6EpfGzLkwPTkDC-KAAAC: Sending packet PING data None
+2025-08-06 13:31:00,510 - engineio.server - INFO - PBIbU0wHyrCA0Qe5AAAD: Sending packet PING data None
+2025-08-06 13:31:00,511 - engineio.server - INFO - PBIbU0wHyrCA0Qe5AAAD: Received packet PONG data 
+2025-08-06 13:31:00,513 - engineio.server - INFO - 6EpfGzLkwPTkDC-KAAAC: Received packet PONG data 
