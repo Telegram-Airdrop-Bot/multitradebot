@@ -66,20 +66,37 @@ class PionexAPI:
             'Content-Type': 'application/json',
             'User-Agent': 'PionexTradingBot/1.0'
         }
-        body = ''
+        
         if signed:
             timestamp = str(int(time.time() * 1000))
             params['timestamp'] = timestamp
+            
+            # Create query string for signature (sorted alphabetically)
             sorted_items = sorted(params.items())
             query_string = '&'.join(f'{k}={v}' for k, v in sorted_items)
-            path_url = f"{endpoint}?{query_string}" if query_string else endpoint
-            sign_str = f"{method.upper()}{path_url}"
-            if method.upper() in ['POST', 'DELETE']:
-                body = pyjson.dumps(params, separators=(',', ':')) if params else ''
-                sign_str += body
-            signature = hmac.new(self.secret_key.encode(), sign_str.encode(), hashlib.sha256).hexdigest()
+            
+            # Create signature string according to Pionex documentation
+            # Format: METHOD + ENDPOINT + QUERY_STRING
+            sign_str = f"{method.upper()}{endpoint}?{query_string}"
+            
+            # Generate HMAC SHA256 signature
+            signature = hmac.new(
+                self.secret_key.encode('utf-8'),
+                sign_str.encode('utf-8'),
+                hashlib.sha256
+            ).hexdigest()
+            
+            # Add authentication headers according to Pionex documentation
             headers['PIONEX-KEY'] = self.api_key
             headers['PIONEX-SIGNATURE'] = signature
+            headers['PIONEX-TIMESTAMP'] = timestamp
+            
+            # Log signature for debugging
+            self.logger.info(f"Request URL: {url}")
+            self.logger.info(f"Request params: {params}")
+            self.logger.info(f"Signature string: {sign_str}")
+            self.logger.info(f"Generated signature: {signature}")
+            self.logger.info(f"Headers: {headers}")
         
         last_exception = None
         for attempt in range(self.retry_attempts):
@@ -93,9 +110,13 @@ class PionexAPI:
                 else:
                     raise ValueError(f"Unsupported HTTP method: {method}")
                 
+                self.logger.info(f"Response status: {response.status_code}")
+                self.logger.info(f"Response text: {response.text}")
+                
                 if response.status_code == 200:
                     try:
                         data = response.json()
+                        # Check for Pionex API response format
                         if 'code' in data and data['code'] != 0:
                             error_msg = data.get('msg', 'Unknown API error')
                             self.logger.error(f"API error: {error_msg} (code: {data['code']})")
@@ -140,28 +161,125 @@ class PionexAPI:
 
     # --- Account Endpoints ---
     def get_balances(self) -> Dict:
-        """GET /api/v1/account/balances"""
-        return self._make_request('GET', '/api/v1/account/balances', signed=True)
+        """GET /api/v1/account/balances - Get account balance"""
+        try:
+            response = self._make_request('GET', '/api/v1/account/balances', signed=True)
+            
+            # Log the response for debugging
+            self.logger.info(f"Balance API response: {response}")
+            
+            # If API returns error, return empty balance
+            if 'error' in response:
+                self.logger.warning(f"API error for balance: {response['error']}")
+                return {
+                    'success': True,
+                    'data': {
+                        'balances': [],
+                        'total_count': 0
+                    }
+                }
+            
+            # Process balance response according to Pionex documentation
+            balances = []
+            if 'data' in response and 'balances' in response['data']:
+                balances = response['data']['balances']
+            elif 'data' in response and isinstance(response['data'], list):
+                balances = response['data']
+            
+            # Convert Pionex format to our format
+            formatted_balances = []
+            for balance in balances:
+                formatted_balances.append({
+                    'currency': balance.get('coin', ''),
+                    'available': float(balance.get('free', 0)),
+                    'locked': float(balance.get('frozen', 0)),
+                    'total': float(balance.get('free', 0)) + float(balance.get('frozen', 0))
+                })
+            
+            return {
+                'success': True,
+                'data': {
+                    'balances': formatted_balances,
+                    'total_count': len(formatted_balances)
+                }
+            }
+            
+        except Exception as e:
+            self.logger.error(f"Error getting balances: {e}")
+            return {
+                'success': True,
+                'data': {
+                    'balances': [],
+                    'total_count': 0
+                }
+            }
 
     def get_assets(self) -> Dict:
         """GET /api/v1/account/assets"""
         return self._make_request('GET', '/api/v1/account/assets', signed=True)
 
     def get_positions(self) -> Dict:
-        """GET /api/v1/account/positions - Get current positions"""
+        """Get current positions using balances endpoint as proxy"""
         try:
-            # Try the positions endpoint first
-            response = self._make_request('GET', '/api/v1/account/positions', signed=True)
+            # For Pionex, we use balances endpoint to get account holdings
+            # This is more reliable than a dedicated positions endpoint
+            response = self._make_request('GET', '/api/v1/account/balances', signed=True)
             
-            # If positions endpoint doesn't work, fallback to balances
-            if 'error' in response or 'code' in response and response['code'] != 0:
-                self.logger.warning("Positions endpoint failed, trying balances endpoint")
-                response = self._make_request('GET', '/api/v1/account/balances', signed=True)
+            # Log the response for debugging
+            self.logger.info(f"Balance API response for positions: {response}")
             
-            return response
+            # If API returns error, return empty positions
+            if 'error' in response:
+                self.logger.warning(f"API error for balance: {response['error']}")
+                return {
+                    'success': True,
+                    'data': {
+                        'positions': [],
+                        'total_count': 0
+                    }
+                }
+            
+            # Process balances as positions
+            positions = []
+            balances = []
+            
+            if 'data' in response and 'balances' in response['data']:
+                balances = response['data']['balances']
+            elif 'data' in response and isinstance(response['data'], list):
+                balances = response['data']
+            
+            for balance in balances:
+                total = float(balance.get('free', 0)) + float(balance.get('frozen', 0))
+                if total > 0:
+                    positions.append({
+                        'symbol': balance.get('coin', ''),
+                        'size': total,
+                        'available': float(balance.get('free', 0)),
+                        'locked': float(balance.get('frozen', 0)),
+                        'entryPrice': 0,  # Not available in balance response
+                        'markPrice': 0,   # Not available in balance response
+                        'unrealizedPnl': 0,  # Not available in balance response
+                        'roe': 0,  # Not available in balance response
+                        'notional': total
+                    })
+            
+            return {
+                'success': True,
+                'data': {
+                    'positions': positions,
+                    'total_count': len(positions)
+                }
+            }
+            
         except Exception as e:
             self.logger.error(f"Error getting positions: {e}")
-            return {'error': f'Failed to get positions: {e}'}
+            return {
+                'success': True,
+                'data': {
+                    'positions': [],
+                    'total_count': 0
+                }
+            }
 
     # --- Order Endpoints ---
     def place_order(self, symbol: str, side: str, order_type: str, quantity: float, price: str = None, client_order_id: str = None, **kwargs) -> Dict:

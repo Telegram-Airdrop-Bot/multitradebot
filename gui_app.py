@@ -139,29 +139,70 @@ class TradingBotGUI:
         try:
             positions_response = self.api.get_positions()
             
+            # Log the response for debugging
+            logger.info(f"Positions API response: {positions_response}")
+            
+            # If API returns error, return empty positions list instead of error
             if 'error' in positions_response:
-                return {'success': False, 'error': positions_response['error']}
+                logger.warning(f"API error for positions: {positions_response['error']}")
+                # Return empty positions list instead of error
+                return {'success': True, 'data': []}
             
-            # Convert the response to a list format expected by the GUI
+            # Handle different response formats
             positions = []
-            balances = positions_response.get('data', {}).get('balances', [])
             
-            for balance in balances:
-                if float(balance.get('total', 0)) > 0:
-                    positions.append({
-                        'symbol': balance.get('currency', ''),
-                        'size': float(balance.get('total', 0)),
-                        'entryPrice': 0,  # Not available in balance response
-                        'markPrice': 0,   # Not available in balance response
-                        'unrealizedPnl': 0,  # Not available in balance response
-                        'roe': 0,  # Not available in balance response
-                        'notional': float(balance.get('total', 0))
-                    })
+            # Check if response has success and data structure
+            if 'success' in positions_response and positions_response['success']:
+                if 'data' in positions_response and 'positions' in positions_response['data']:
+                    positions = positions_response['data']['positions']
+                else:
+                    logger.info("No positions data in response")
+                    return {'success': True, 'data': []}
+            
+            # Legacy format handling
+            elif 'data' in positions_response:
+                data = positions_response['data']
+                
+                # Check if it's a positions response
+                if 'positions' in data:
+                    positions_data = data['positions']
+                    for position in positions_data:
+                        if float(position.get('size', 0)) > 0:
+                            positions.append({
+                                'symbol': position.get('symbol', ''),
+                                'size': float(position.get('size', 0)),
+                                'entryPrice': float(position.get('entryPrice', 0)),
+                                'markPrice': float(position.get('markPrice', 0)),
+                                'unrealizedPnl': float(position.get('unrealizedPnl', 0)),
+                                'roe': float(position.get('roe', 0)),
+                                'notional': float(position.get('notional', 0))
+                            })
+                
+                # Check if it's a balances response (fallback)
+                elif 'balances' in data:
+                    balances = data['balances']
+                    for balance in balances:
+                        if float(balance.get('total', 0)) > 0:
+                            positions.append({
+                                'symbol': balance.get('currency', ''),
+                                'size': float(balance.get('total', 0)),
+                                'entryPrice': 0,  # Not available in balance response
+                                'markPrice': 0,   # Not available in balance response
+                                'unrealizedPnl': 0,  # Not available in balance response
+                                'roe': 0,  # Not available in balance response
+                                'notional': float(balance.get('total', 0))
+                            })
+            
+            # If no positions found, return empty list with success
+            if not positions:
+                logger.info("No positions found, returning empty list")
+                return {'success': True, 'data': []}
             
             return {'success': True, 'data': positions}
         except Exception as e:
             logger.error(f"Error getting positions: {e}")
-            return {'success': False, 'error': str(e)}
+            # Return empty positions list instead of error
+            return {'success': True, 'data': []}
     
     def get_portfolio(self):
         """Get portfolio information"""

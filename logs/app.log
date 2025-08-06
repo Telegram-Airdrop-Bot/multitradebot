@@ -206,3 +206,893 @@ NameError: name 'logger' is not defined
 2025-08-06 12:58:33,389 - engineio.server - INFO - U-qKeGunnqK0hCv_AAAG: Received packet PONG data 
 2025-08-06 12:58:33,390 - engineio.server - INFO - GsuUISwrYjMRcjqhAAAC: Received packet PONG data 
 2025-08-06 12:58:33,390 - engineio.server - INFO - dF1FWJT9OnRtSM99AAAB: Received packet PONG data 
+2025-08-06 12:58:46,763 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 12:58:47,998 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 12:58:49,051 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 12:58:49,309 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 12:58:49,561 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 12:58:49,813 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 12:58:50,876 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 12:58:51,128 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 12:58:52,197 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 12:58:52,448 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 12:58:56,476 - engineio.server - INFO - G-I1qzcjkE0yb_klAAAI: Sending packet PING data None
+2025-08-06 12:58:56,477 - engineio.server - INFO - G-I1qzcjkE0yb_klAAAI: Received packet PONG data 
+2025-08-06 12:58:58,362 - engineio.server - INFO - 2-8HwoAyBwPlmPm0AAAA: Sending packet PING data None
+2025-08-06 12:58:58,363 - engineio.server - INFO - 2-8HwoAyBwPlmPm0AAAA: Received packet PONG data 
+2025-08-06 12:58:58,394 - engineio.server - INFO - dF1FWJT9OnRtSM99AAAB: Sending packet PING data None
+2025-08-06 12:58:58,394 - engineio.server - INFO - U-qKeGunnqK0hCv_AAAG: Sending packet PING data None
+2025-08-06 12:58:58,395 - engineio.server - INFO - GsuUISwrYjMRcjqhAAAC: Sending packet PING data None
+2025-08-06 12:58:58,396 - engineio.server - INFO - U-qKeGunnqK0hCv_AAAG: Received packet PONG data 
+2025-08-06 12:58:58,397 - engineio.server - INFO - GsuUISwrYjMRcjqhAAAC: Received packet PONG data 
+2025-08-06 12:58:58,398 - engineio.server - INFO - dF1FWJT9OnRtSM99AAAB: Received packet PONG data 
+2025-08-06 12:59:16,996 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 12:59:18,085 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 12:59:21,490 - engineio.server - INFO - G-I1qzcjkE0yb_klAAAI: Sending packet PING data None
+2025-08-06 12:59:21,491 - engineio.server - INFO - G-I1qzcjkE0yb_klAAAI: Received packet PONG data 
+2025-08-06 12:59:23,373 - engineio.server - INFO - 2-8HwoAyBwPlmPm0AAAA: Sending packet PING data None
+2025-08-06 12:59:23,374 - engineio.server - INFO - 2-8HwoAyBwPlmPm0AAAA: Received packet PONG data 
+2025-08-06 12:59:23,421 - engineio.server - INFO - U-qKeGunnqK0hCv_AAAG: Sending packet PING data None
+2025-08-06 12:59:23,424 - engineio.server - INFO - dF1FWJT9OnRtSM99AAAB: Sending packet PING data None
+2025-08-06 12:59:23,424 - engineio.server - INFO - GsuUISwrYjMRcjqhAAAC: Sending packet PING data None
+2025-08-06 12:59:23,431 - engineio.server - INFO - GsuUISwrYjMRcjqhAAAC: Received packet PONG data 
+2025-08-06 12:59:23,432 - engineio.server - INFO - dF1FWJT9OnRtSM99AAAB: Received packet PONG data 
+2025-08-06 12:59:23,433 - engineio.server - INFO - U-qKeGunnqK0hCv_AAAG: Received packet PONG data 
+2025-08-06 12:59:28,564 - gui_app - INFO - Fetching chart data for symbol: BTC_USDT -> BTC_USDT with timeframe: 5M
+2025-08-06 12:59:28,564 - gui_app - INFO - Trying interval 5M for BTC_USDT
+2025-08-06 12:59:28,565 - pionex_api - INFO - Fetching klines for BTC_USDT with interval 5M
+2025-08-06 12:59:28,880 - pionex_api - INFO - Successfully retrieved klines for BTC_USDT
+2025-08-06 12:59:28,881 - gui_app - INFO - Klines response for BTC_USDT with interval 5M: {'result': True, 'data': {'klines': [{'time': 1754463300000, 'open': '114121.86', 'close': '114068.42', 'high': '114121.87', 'low': '114034.89', 'volume': '9.796211'}, {'time': 1754463000000, 'open': '114146.73', 'close': '114121.86', 'high': '114171.68', 'low': '114106.02', 'volume': '15.814596'}, {'time': 1754462700000, 'open': '114057.55', 'close': '114146.73', 'high': '114200.00', 'low': '114057.55', 'volume': '20.420471'}, {'time': 1754462400000, 'open': '114065.53', 'close': '114057.55', 'high': '114139.75', 'low': '114057.54', 'volume': '20.706482'}, {'time': 1754462100000, 'open': '114009.33', 'close': '114065.53', 'high': '114096.28', 'low': '114006.42', 'volume': '13.956012'}, {'time': 1754461800000, 'open': '113988.00', 'close': '114009.33', 'high': '114058.54', 'low': '113938.00', 'volume': '19.579656'}, {'time': 1754461500000, 'open': '114073.92', 'close': '113988.00', 'high': '114073.92', 'low': '113933.91', 'volume': '17.163753'}, {'time': 1754461200000, 'open': '114060.00', 'close': '114073.92', 'high': '114099.58', 'low': '114051.90', 'volume': '12.184038'}, {'time': 1754460900000, 'open': '113994.15', 'close': '114060.00', 'high': '114082.52', 'low': '113944.96', 'volume': '12.256270'}, {'time': 1754460600000, 'open': '113933.23', 'close': '113994.15', 'high': '114021.42', 'low': '113933.23', 'volume': '11.754456'}, {'time': 1754460300000, 'open': '113986.66', 'close': '113933.23', 'high': '114080.00', 'low': '113933.23', 'volume': '22.256042'}, {'time': 1754460000000, 'open': '114148.01', 'close': '113986.66', 'high': '114180.00', 'low': '113986.65', 'volume': '16.070030'}, {'time': 1754459700000, 'open': '114146.21', 'close': '114148.01', 'high': '114160.03', 'low': '114137.40', 'volume': '17.901952'}, {'time': 1754459400000, 'open': '114211.53', 'close': '114146.21', 'high': '114211.54', 'low': '114117.65', 'volume': '29.415893'}, {'time': 1754459100000, 'open': '114244.54', 'close': '114211.53', 'high': '114320.00', 'low': '114184.53', 'volume': '26.009487'}, {'time': 1754458800000, 'open': '114397.01', 'close': '114244.54', 'high': '114416.00', 'low': '114221.33', 'volume': '55.847249'}, {'time': 1754458500000, 'open': '113986.65', 'close': '114397.01', 'high': '114417.02', 'low': '113971.29', 'volume': '104.453175'}, {'time': 1754458200000, 'open': '113927.19', 'close': '113986.65', 'high': '114016.56', 'low': '113927.19', 'volume': '12.735355'}, {'time': 1754457900000, 'open': '113884.48', 'close': '113927.19', 'high': '113994.25', 'low': '113829.23', 'volume': '17.510738'}, {'time': 1754457600000, 'open': '114057.02', 'close': '113884.48', 'high': '114088.46', 'low': '113810.98', 'volume': '24.838144'}, {'time': 1754457300000, 'open': '113927.69', 'close': '114057.02', 'high': '114138.78', 'low': '113906.83', 'volume': '53.111805'}, {'time': 1754457000000, 'open': '113815.94', 'close': '113927.69', 'high': '113927.69', 'low': '113815.93', 'volume': '37.174508'}, {'time': 1754456700000, 'open': '113517.58', 'close': '113815.94', 'high': '113815.94', 'low': '113517.57', 'volume': '51.640868'}, {'time': 1754456400000, 'open': '113429.22', 'close': '113517.58', 'high': '113517.58', 'low': '113384.81', 'volume': '17.486285'}, {'time': 1754456100000, 'open': '113420.35', 'close': '113429.22', 'high': '113436.90', 'low': '113409.04', 'volume': '24.551201'}, {'time': 1754455800000, 'open': '113420.63', 'close': '113420.35', 'high': '113473.78', 'low': '113420.34', 'volume': '16.624638'}, {'time': 1754455500000, 'open': '113408.66', 'close': '113420.63', 'high': '113441.14', 'low': '113373.91', 'volume': '7.078924'}, {'time': 1754455200000, 'open': '113395.79', 'close': '113408.66', 'high': '113408.67', 'low': '113384.06', 'volume': '10.028633'}, {'time': 1754454900000, 'open': '113467.99', 'close': '113395.79', 'high': '113467.99', 'low': '113355.13', 'volume': '7.956916'}, {'time': 1754454600000, 'open': '113464.21', 'close': '113467.99', 'high': '113479.54', 'low': '113446.23', 'volume': '10.514098'}, {'time': 1754454300000, 'open': '113478.89', 'close': '113464.21', 'high': '113494.11', 'low': '113464.20', 'volume': '4.414943'}, {'time': 1754454000000, 'open': '113436.74', 'close': '113478.89', 'high': '113488.38', 'low': '113427.02', 'volume': '20.823729'}, {'time': 1754453700000, 'open': '113389.17', 'close': '113436.74', 'high': '113459.13', 'low': '113386.89', 'volume': '17.764208'}, {'time': 1754453400000, 'open': '113443.58', 'close': '113389.17', 'high': '113479.18', 'low': '113387.81', 'volume': '20.903752'}, {'time': 1754453100000, 'open': '113468.92', 'close': '113443.58', 'high': '113497.07', 'low': '113430.90', 'volume': '7.491182'}, {'time': 1754452800000, 'open': '113509.98', 'close': '113468.92', 'high': '113582.70', 'low': '113462.38', 'volume': '20.603939'}, {'time': 1754452500000, 'open': '113568.11', 'close': '113509.98', 'high': '113579.96', 'low': '113509.97', 'volume': '18.060395'}, {'time': 1754452200000, 'open': '113611.29', 'close': '113568.11', 'high': '113611.30', 'low': '113548.47', 'volume': '24.061857'}, {'time': 1754451900000, 'open': '113539.99', 'close': '113611.29', 'high': '113611.30', 'low': '113534.02', 'volume': '9.700753'}, {'time': 1754451600000, 'open': '113496.43', 'close': '113539.99', 'high': '113540.00', 'low': '113469.44', 'volume': '13.247545'}, {'time': 1754451300000, 'open': '113448.09', 'close': '113496.43', 'high': '113517.58', 'low': '113448.09', 'volume': '30.702850'}, {'time': 1754451000000, 'open': '113432.02', 'close': '113448.09', 'high': '113487.38', 'low': '113425.37', 'volume': '12.026726'}, {'time': 1754450700000, 'open': '113477.87', 'close': '113432.02', 'high': '113504.63', 'low': '113400.00', 'volume': '24.194408'}, {'time': 1754450400000, 'open': '113574.40', 'close': '113477.87', 'high': '113574.41', 'low': '113463.81', 'volume': '16.186515'}, {'time': 1754450100000, 'open': '113618.39', 'close': '113574.40', 'high': '113618.39', 'low': '113522.54', 'volume': '9.536510'}, {'time': 1754449800000, 'open': '113604.80', 'close': '113618.39', 'high': '113650.00', 'low': '113604.79', 'volume': '8.036122'}, {'time': 1754449500000, 'open': '113523.54', 'close': '113604.80', 'high': '113650.00', 'low': '113500.00', 'volume': '15.020088'}, {'time': 1754449200000, 'open': '113623.23', 'close': '113523.54', 'high': '113658.13', 'low': '113523.53', 'volume': '11.114149'}, {'time': 1754448900000, 'open': '113675.02', 'close': '113623.23', 'high': '113686.33', 'low': '113596.73', 'volume': '7.908324'}, {'time': 1754448600000, 'open': '113613.91', 'close': '113675.02', 'high': '113682.26', 'low': '113604.04', 'volume': '8.259385'}, {'time': 1754448300000, 'open': '113668.03', 'close': '113613.91', 'high': '113668.03', 'low': '113566.35', 'volume': '11.543370'}, {'time': 1754448000000, 'open': '113599.58', 'close': '113668.03', 'high': '113712.61', 'low': '113566.86', 'volume': '11.258469'}, {'time': 1754447700000, 'open': '113692.55', 'close': '113599.58', 'high': '113700.00', 'low': '113542.91', 'volume': '7.772314'}, {'time': 1754447400000, 'open': '113678.30', 'close': '113692.55', 'high': '113729.72', 'low': '113648.44', 'volume': '14.082231'}, {'time': 1754447100000, 'open': '113714.00', 'close': '113678.30', 'high': '113714.00', 'low': '113640.38', 'volume': '6.582962'}, {'time': 1754446800000, 'open': '113695.62', 'close': '113714.00', 'high': '113714.00', 'low': '113662.85', 'volume': '5.211472'}, {'time': 1754446500000, 'open': '113626.23', 'close': '113695.62', 'high': '113739.06', 'low': '113611.29', 'volume': '9.381326'}, {'time': 1754446200000, 'open': '113623.40', 'close': '113626.23', 'high': '113626.24', 'low': '113491.76', 'volume': '18.818197'}, {'time': 1754445900000, 'open': '113772.54', 'close': '113623.40', 'high': '113772.54', 'low': '113623.39', 'volume': '24.038801'}, {'time': 1754445600000, 'open': '113820.78', 'close': '113772.54', 'high': '113833.88', 'low': '113772.54', 'volume': '6.556642'}, {'time': 1754445300000, 'open': '113798.31', 'close': '113820.78', 'high': '113880.00', 'low': '113798.30', 'volume': '14.536186'}, {'time': 1754445000000, 'open': '113673.83', 'close': '113798.31', 'high': '113826.21', 'low': '113673.82', 'volume': '13.927753'}, {'time': 1754444700000, 'open': '113792.91', 'close': '113673.83', 'high': '113853.24', 'low': '113673.82', 'volume': '12.124265'}, {'time': 1754444400000, 'open': '113724.90', 'close': '113792.91', 'high': '113877.50', 'low': '113724.89', 'volume': '12.621730'}, {'time': 1754444100000, 'open': '113674.42', 'close': '113724.90', 'high': '113748.95', 'low': '113604.38', 'volume': '18.541298'}, {'time': 1754443800000, 'open': '113594.10', 'close': '113674.42', 'high': '113737.19', 'low': '113589.92', 'volume': '32.514441'}, {'time': 1754443500000, 'open': '113685.08', 'close': '113594.10', 'high': '113685.08', 'low': '113588.77', 'volume': '17.223968'}, {'time': 1754443200000, 'open': '113732.51', 'close': '113685.08', 'high': '113740.00', 'low': '113620.00', 'volume': '31.792339'}, {'time': 1754442900000, 'open': '113851.45', 'close': '113732.51', 'high': '113893.01', 'low': '113712.60', 'volume': '13.290284'}, {'time': 1754442600000, 'open': '113914.45', 'close': '113851.45', 'high': '113945.14', 'low': '113830.42', 'volume': '16.862752'}, {'time': 1754442300000, 'open': '113899.21', 'close': '113914.45', 'high': '113935.69', 'low': '113860.00', 'volume': '18.799526'}, {'time': 1754442000000, 'open': '113879.69', 'close': '113899.21', 'high': '113899.21', 'low': '113771.39', 'volume': '13.661585'}, {'time': 1754441700000, 'open': '113864.14', 'close': '113879.69', 'high': '113879.70', 'low': '113804.76', 'volume': '11.272107'}, {'time': 1754441400000, 'open': '113760.20', 'close': '113864.14', 'high': '113915.22', 'low': '113748.67', 'volume': '23.326772'}, {'time': 1754441100000, 'open': '113937.28', 'close': '113760.20', 'high': '113937.29', 'low': '113760.20', 'volume': '55.351009'}, {'time': 1754440800000, 'open': '114027.17', 'close': '113937.28', 'high': '114027.17', 'low': '113926.90', 'volume': '22.208780'}, {'time': 1754440500000, 'open': '113882.85', 'close': '114027.17', 'high': '114027.17', 'low': '113871.31', 'volume': '25.958127'}, {'time': 1754440200000, 'open': '113948.54', 'close': '113882.85', 'high': '113953.57', 'low': '113882.85', 'volume': '22.218054'}, {'time': 1754439900000, 'open': '113986.36', 'close': '113948.54', 'high': '114000.00', 'low': '113928.93', 'volume': '20.829638'}, {'time': 1754439600000, 'open': '113997.62', 'close': '113986.36', 'high': '114032.72', 'low': '113970.66', 'volume': '10.088005'}, {'time': 1754439300000, 'open': '114049.90', 'close': '113997.62', 'high': '114049.91', 'low': '113952.60', 'volume': '20.448202'}, {'time': 1754439000000, 'open': '114034.51', 'close': '114049.90', 'high': '114059.21', 'low': '113955.03', 'volume': '20.469349'}, {'time': 1754438700000, 'open': '114100.00', 'close': '114034.51', 'high': '114100.00', 'low': '114016.55', 'volume': '10.037196'}, {'time': 1754438400000, 'open': '114129.76', 'close': '114100.00', 'high': '114139.38', 'low': '114044.12', 'volume': '26.874860'}, {'time': 1754438100000, 'open': '114153.70', 'close': '114129.76', 'high': '114153.70', 'low': '114114.30', 'volume': '9.047377'}, {'time': 1754437800000, 'open': '114136.36', 'close': '114153.70', 'high': '114179.03', 'low': '114131.09', 'volume': '12.060625'}, {'time': 1754437500000, 'open': '114170.42', 'close': '114136.36', 'high': '114171.71', 'low': '114136.36', 'volume': '8.785481'}, {'time': 1754437200000, 'open': '114109.97', 'close': '114170.42', 'high': '114228.43', 'low': '114109.97', 'volume': '25.721037'}, {'time': 1754436900000, 'open': '114080.43', 'close': '114109.97', 'high': '114114.30', 'low': '114080.43', 'volume': '8.921384'}, {'time': 1754436600000, 'open': '114044.63', 'close': '114080.43', 'high': '114098.75', 'low': '114040.00', 'volume': '16.088667'}, {'time': 1754436300000, 'open': '114061.40', 'close': '114044.63', 'high': '114077.56', 'low': '114020.00', 'volume': '9.227087'}, {'time': 1754436000000, 'open': '114085.76', 'close': '114061.40', 'high': '114111.56', 'low': '114022.98', 'volume': '13.582144'}, {'time': 1754435700000, 'open': '114087.19', 'close': '114085.76', 'high': '114140.68', 'low': '114067.21', 'volume': '21.778962'}, {'time': 1754435400000, 'open': '114040.97', 'close': '114087.19', 'high': '114087.52', 'low': '114040.97', 'volume': '24.962399'}, {'time': 1754435100000, 'open': '114072.00', 'close': '114040.97', 'high': '114074.27', 'low': '114040.96', 'volume': '9.363541'}, {'time': 1754434800000, 'open': '113961.24', 'close': '114072.00', 'high': '114072.00', 'low': '113918.40', 'volume': '31.847831'}, {'time': 1754434500000, 'open': '113959.49', 'close': '113961.24', 'high': '113974.54', 'low': '113918.40', 'volume': '17.523648'}, {'time': 1754434200000, 'open': '113959.48', 'close': '113959.49', 'high': '113975.83', 'low': '113959.47', 'volume': '2.603169'}, {'time': 1754433900000, 'open': '113940.48', 'close': '113959.48', 'high': '113989.40', 'low': '113915.72', 'volume': '17.331687'}, {'time': 1754433600000, 'open': '113930.00', 'close': '113940.48', 'high': '113940.48', 'low': '113875.27', 'volume': '15.535855'}]}, 'timestamp': 1754463570822}
+2025-08-06 12:59:28,891 - gui_app - INFO - Successfully got 100 data points with interval 5M
+2025-08-06 12:59:28,892 - gui_app - ERROR - Error getting chart data for BTC_USDT: 0
+2025-08-06 12:59:37,652 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 12:59:46,788 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 12:59:46,789 - engineio.server - INFO - G-I1qzcjkE0yb_klAAAI: Sending packet PING data None
+2025-08-06 12:59:47,940 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 12:59:48,927 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 12:59:49,704 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 12:59:50,225 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 12:59:50,478 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 12:59:51,039 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 12:59:51,296 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 12:59:51,297 - engineio.server - INFO - G-I1qzcjkE0yb_klAAAI: Received packet PONG data 
+2025-08-06 12:59:52,438 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 12:59:52,950 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 12:59:53,461 - engineio.server - INFO - 2-8HwoAyBwPlmPm0AAAA: Sending packet PING data None
+2025-08-06 12:59:53,461 - engineio.server - INFO - dF1FWJT9OnRtSM99AAAB: Sending packet PING data None
+2025-08-06 12:59:53,462 - engineio.server - INFO - GsuUISwrYjMRcjqhAAAC: Sending packet PING data None
+2025-08-06 12:59:53,462 - engineio.server - INFO - U-qKeGunnqK0hCv_AAAG: Sending packet PING data None
+2025-08-06 12:59:53,465 - engineio.server - INFO - U-qKeGunnqK0hCv_AAAG: Received packet PONG data 
+2025-08-06 12:59:53,466 - engineio.server - INFO - 2-8HwoAyBwPlmPm0AAAA: Received packet PONG data 
+2025-08-06 12:59:53,467 - engineio.server - INFO - GsuUISwrYjMRcjqhAAAC: Received packet PONG data 
+2025-08-06 12:59:53,678 - engineio.server - INFO - dF1FWJT9OnRtSM99AAAB: Received packet PONG data 
+2025-08-06 13:00:33,472 - __main__ - INFO - Starting Pionex Trading Bot for Production...
+2025-08-06 13:00:33,473 - __main__ - INFO - Environment variables check passed
+2025-08-06 13:00:33,474 - __main__ - INFO - Directories created successfully
+2025-08-06 13:00:36,717 - gui_app - INFO - Using SQLite database
+2025-08-06 13:00:37,923 - engineio.server - INFO - Server initialized for eventlet.
+2025-08-06 13:00:37,937 - database - INFO - Database initialized in data
+2025-08-06 13:00:37,950 - gui_app - INFO - WebSocket connection started
+2025-08-06 13:00:37,961 - __main__ - INFO - Flask app imported successfully
+2025-08-06 13:00:37,961 - __main__ - INFO - Flask application created successfully
+2025-08-06 13:00:37,961 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-08-06 13:00:38,014 - engineio.server - INFO - kGJW16QkM00SCtCvAAAA: Sending packet OPEN data {'sid': 'kGJW16QkM00SCtCvAAAA', 'upgrades': ['websocket'], 'pingTimeout': 20000, 'pingInterval': 25000, 'maxPayload': 1000000}
+2025-08-06 13:00:38,015 - engineio.server - INFO - tsK_AfmxfpAcm_3yAAAB: Sending packet OPEN data {'sid': 'tsK_AfmxfpAcm_3yAAAB', 'upgrades': ['websocket'], 'pingTimeout': 20000, 'pingInterval': 25000, 'maxPayload': 1000000}
+2025-08-06 13:00:38,017 - engineio.server - INFO - KpPPdK441DTe0zdWAAAC: Sending packet OPEN data {'sid': 'KpPPdK441DTe0zdWAAAC', 'upgrades': ['websocket'], 'pingTimeout': 20000, 'pingInterval': 25000, 'maxPayload': 1000000}
+2025-08-06 13:00:38,021 - engineio.server - INFO - tsK_AfmxfpAcm_3yAAAB: Received packet MESSAGE data 0
+2025-08-06 13:00:38,024 - socketio.server - INFO - emitting event "connected" to 4731X5rSa_lOB1_PAAAD [/]
+2025-08-06 13:00:38,025 - engineio.server - INFO - tsK_AfmxfpAcm_3yAAAB: Sending packet MESSAGE data 2["connected",{"data":"Connected to trading bot"}]
+2025-08-06 13:00:38,027 - engineio.server - INFO - tsK_AfmxfpAcm_3yAAAB: Sending packet MESSAGE data 0{"sid":"4731X5rSa_lOB1_PAAAD"}
+2025-08-06 13:00:38,029 - engineio.server - INFO - kGJW16QkM00SCtCvAAAA: Received packet MESSAGE data 0
+2025-08-06 13:00:38,030 - socketio.server - INFO - emitting event "connected" to giyxVFEhq5yVxLxzAAAE [/]
+2025-08-06 13:00:38,031 - engineio.server - INFO - kGJW16QkM00SCtCvAAAA: Sending packet MESSAGE data 2["connected",{"data":"Connected to trading bot"}]
+2025-08-06 13:00:38,032 - engineio.server - INFO - kGJW16QkM00SCtCvAAAA: Sending packet MESSAGE data 0{"sid":"giyxVFEhq5yVxLxzAAAE"}
+2025-08-06 13:00:38,033 - engineio.server - INFO - tsK_AfmxfpAcm_3yAAAB: Received request to upgrade to websocket
+2025-08-06 13:00:38,035 - engineio.server - INFO - kGJW16QkM00SCtCvAAAA: Received request to upgrade to websocket
+2025-08-06 13:00:38,036 - engineio.server - INFO - KpPPdK441DTe0zdWAAAC: Received packet MESSAGE data 0
+2025-08-06 13:00:38,038 - socketio.server - INFO - emitting event "connected" to P6_7G5dhNGrww-cFAAAF [/]
+2025-08-06 13:00:38,040 - engineio.server - INFO - KpPPdK441DTe0zdWAAAC: Sending packet MESSAGE data 2["connected",{"data":"Connected to trading bot"}]
+2025-08-06 13:00:38,040 - engineio.server - INFO - KpPPdK441DTe0zdWAAAC: Sending packet MESSAGE data 0{"sid":"P6_7G5dhNGrww-cFAAAF"}
+2025-08-06 13:00:38,046 - engineio.server - INFO - KpPPdK441DTe0zdWAAAC: Received request to upgrade to websocket
+2025-08-06 13:00:38,050 - engineio.server - INFO - tsK_AfmxfpAcm_3yAAAB: Upgrade to websocket successful
+2025-08-06 13:00:38,055 - engineio.server - INFO - kGJW16QkM00SCtCvAAAA: Upgrade to websocket successful
+2025-08-06 13:00:38,061 - engineio.server - INFO - C_w0Va7ID2wu3EaTAAAG: Sending packet OPEN data {'sid': 'C_w0Va7ID2wu3EaTAAAG', 'upgrades': ['websocket'], 'pingTimeout': 20000, 'pingInterval': 25000, 'maxPayload': 1000000}
+2025-08-06 13:00:38,064 - engineio.server - INFO - KpPPdK441DTe0zdWAAAC: Upgrade to websocket successful
+2025-08-06 13:00:38,068 - engineio.server - INFO - C_w0Va7ID2wu3EaTAAAG: Received packet MESSAGE data 0
+2025-08-06 13:00:38,071 - socketio.server - INFO - emitting event "connected" to IUqZG-j2-wsPQXDHAAAH [/]
+2025-08-06 13:00:38,072 - engineio.server - INFO - C_w0Va7ID2wu3EaTAAAG: Sending packet MESSAGE data 2["connected",{"data":"Connected to trading bot"}]
+2025-08-06 13:00:38,073 - engineio.server - INFO - C_w0Va7ID2wu3EaTAAAG: Sending packet MESSAGE data 0{"sid":"IUqZG-j2-wsPQXDHAAAH"}
+2025-08-06 13:00:38,374 - engineio.server - INFO - C_w0Va7ID2wu3EaTAAAG: Received request to upgrade to websocket
+2025-08-06 13:00:38,379 - engineio.server - INFO - C_w0Va7ID2wu3EaTAAAG: Upgrade to websocket successful
+2025-08-06 13:00:39,797 - engineio.server - INFO - JBeSgjDXQy6x-9jxAAAI: Sending packet OPEN data {'sid': 'JBeSgjDXQy6x-9jxAAAI', 'upgrades': ['websocket'], 'pingTimeout': 20000, 'pingInterval': 25000, 'maxPayload': 1000000}
+2025-08-06 13:00:40,065 - engineio.server - INFO - JBeSgjDXQy6x-9jxAAAI: Received packet MESSAGE data 0
+2025-08-06 13:00:40,066 - socketio.server - INFO - emitting event "connected" to XaghdMoKpECPNMHlAAAJ [/]
+2025-08-06 13:00:40,067 - engineio.server - INFO - JBeSgjDXQy6x-9jxAAAI: Sending packet MESSAGE data 2["connected",{"data":"Connected to trading bot"}]
+2025-08-06 13:00:40,068 - engineio.server - INFO - JBeSgjDXQy6x-9jxAAAI: Sending packet MESSAGE data 0{"sid":"XaghdMoKpECPNMHlAAAJ"}
+2025-08-06 13:00:40,069 - engineio.server - INFO - JBeSgjDXQy6x-9jxAAAI: Received request to upgrade to websocket
+2025-08-06 13:00:40,079 - engineio.server - INFO - JBeSgjDXQy6x-9jxAAAI: Upgrade to websocket successful
+2025-08-06 13:00:44,478 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:00:44,479 - pionex_api - WARNING - Positions endpoint failed, trying balances endpoint
+2025-08-06 13:00:44,742 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:00:48,012 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:00:48,012 - pionex_api - WARNING - Positions endpoint failed, trying balances endpoint
+2025-08-06 13:00:48,273 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:00:48,521 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:00:48,522 - pionex_api - WARNING - Positions endpoint failed, trying balances endpoint
+2025-08-06 13:00:48,789 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:00:49,056 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:00:49,310 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:00:49,576 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:00:49,577 - pionex_api - WARNING - Positions endpoint failed, trying balances endpoint
+2025-08-06 13:00:49,829 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:00:50,082 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:00:51,429 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:00:51,430 - pionex_api - WARNING - Positions endpoint failed, trying balances endpoint
+2025-08-06 13:00:51,674 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:00:51,950 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:00:52,483 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:00:54,341 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:00:54,342 - pionex_api - WARNING - Positions endpoint failed, trying balances endpoint
+2025-08-06 13:00:54,604 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:01:03,022 - engineio.server - INFO - kGJW16QkM00SCtCvAAAA: Sending packet PING data None
+2025-08-06 13:01:03,023 - engineio.server - INFO - tsK_AfmxfpAcm_3yAAAB: Sending packet PING data None
+2025-08-06 13:01:03,023 - engineio.server - INFO - KpPPdK441DTe0zdWAAAC: Sending packet PING data None
+2025-08-06 13:01:03,025 - engineio.server - INFO - tsK_AfmxfpAcm_3yAAAB: Received packet PONG data 
+2025-08-06 13:01:03,026 - engineio.server - INFO - KpPPdK441DTe0zdWAAAC: Received packet PONG data 
+2025-08-06 13:01:03,028 - engineio.server - INFO - kGJW16QkM00SCtCvAAAA: Received packet PONG data 
+2025-08-06 13:01:03,068 - engineio.server - INFO - C_w0Va7ID2wu3EaTAAAG: Sending packet PING data None
+2025-08-06 13:01:03,069 - engineio.server - INFO - C_w0Va7ID2wu3EaTAAAG: Received packet PONG data 
+2025-08-06 13:01:05,125 - engineio.server - INFO - JBeSgjDXQy6x-9jxAAAI: Sending packet PING data None
+2025-08-06 13:01:05,127 - engineio.server - INFO - JBeSgjDXQy6x-9jxAAAI: Received packet PONG data 
+2025-08-06 13:01:16,764 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:01:17,641 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:01:17,642 - pionex_api - WARNING - Positions endpoint failed, trying balances endpoint
+2025-08-06 13:01:17,912 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:01:28,027 - engineio.server - INFO - KpPPdK441DTe0zdWAAAC: Sending packet PING data None
+2025-08-06 13:01:28,027 - engineio.server - INFO - tsK_AfmxfpAcm_3yAAAB: Sending packet PING data None
+2025-08-06 13:01:28,027 - engineio.server - INFO - kGJW16QkM00SCtCvAAAA: Sending packet PING data None
+2025-08-06 13:01:28,029 - engineio.server - INFO - KpPPdK441DTe0zdWAAAC: Received packet PONG data 
+2025-08-06 13:01:28,030 - engineio.server - INFO - tsK_AfmxfpAcm_3yAAAB: Received packet PONG data 
+2025-08-06 13:01:28,030 - engineio.server - INFO - kGJW16QkM00SCtCvAAAA: Received packet PONG data 
+2025-08-06 13:01:28,090 - engineio.server - INFO - C_w0Va7ID2wu3EaTAAAG: Sending packet PING data None
+2025-08-06 13:01:28,092 - engineio.server - INFO - C_w0Va7ID2wu3EaTAAAG: Received packet PONG data 
+2025-08-06 13:01:30,138 - engineio.server - INFO - JBeSgjDXQy6x-9jxAAAI: Sending packet PING data None
+2025-08-06 13:01:30,140 - engineio.server - INFO - JBeSgjDXQy6x-9jxAAAI: Received packet PONG data 
+2025-08-06 13:01:45,522 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:01:45,522 - pionex_api - WARNING - Positions endpoint failed, trying balances endpoint
+2025-08-06 13:01:45,779 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:01:46,749 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:01:47,876 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:01:47,876 - pionex_api - WARNING - Positions endpoint failed, trying balances endpoint
+2025-08-06 13:01:48,133 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:01:49,197 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:01:49,197 - pionex_api - WARNING - Positions endpoint failed, trying balances endpoint
+2025-08-06 13:01:49,456 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:01:49,720 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:01:49,966 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:01:49,966 - pionex_api - WARNING - Positions endpoint failed, trying balances endpoint
+2025-08-06 13:01:50,225 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:01:50,481 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:01:51,011 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:01:51,012 - pionex_api - WARNING - Positions endpoint failed, trying balances endpoint
+2025-08-06 13:01:51,264 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:01:52,062 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:01:53,948 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:01:53,949 - pionex_api - WARNING - Positions endpoint failed, trying balances endpoint
+2025-08-06 13:01:54,200 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:01:54,203 - engineio.server - INFO - KpPPdK441DTe0zdWAAAC: Sending packet PING data None
+2025-08-06 13:01:54,203 - engineio.server - INFO - kGJW16QkM00SCtCvAAAA: Sending packet PING data None
+2025-08-06 13:01:54,204 - engineio.server - INFO - tsK_AfmxfpAcm_3yAAAB: Sending packet PING data None
+2025-08-06 13:01:54,205 - engineio.server - INFO - C_w0Va7ID2wu3EaTAAAG: Sending packet PING data None
+2025-08-06 13:01:54,463 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:01:54,464 - engineio.server - INFO - kGJW16QkM00SCtCvAAAA: Received packet PONG data 
+2025-08-06 13:01:54,465 - engineio.server - INFO - KpPPdK441DTe0zdWAAAC: Received packet PONG data 
+2025-08-06 13:01:54,466 - engineio.server - INFO - tsK_AfmxfpAcm_3yAAAB: Received packet PONG data 
+2025-08-06 13:01:54,466 - engineio.server - INFO - C_w0Va7ID2wu3EaTAAAG: Received packet PONG data 
+2025-08-06 13:01:55,153 - engineio.server - INFO - JBeSgjDXQy6x-9jxAAAI: Sending packet PING data None
+2025-08-06 13:01:55,155 - engineio.server - INFO - JBeSgjDXQy6x-9jxAAAI: Received packet PONG data 
+2025-08-06 13:02:16,767 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:02:17,907 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:02:17,907 - pionex_api - WARNING - Positions endpoint failed, trying balances endpoint
+2025-08-06 13:02:18,156 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:02:19,476 - engineio.server - INFO - C_w0Va7ID2wu3EaTAAAG: Sending packet PING data None
+2025-08-06 13:02:19,476 - engineio.server - INFO - kGJW16QkM00SCtCvAAAA: Sending packet PING data None
+2025-08-06 13:02:19,477 - engineio.server - INFO - KpPPdK441DTe0zdWAAAC: Sending packet PING data None
+2025-08-06 13:02:19,477 - engineio.server - INFO - tsK_AfmxfpAcm_3yAAAB: Sending packet PING data None
+2025-08-06 13:02:19,478 - engineio.server - INFO - KpPPdK441DTe0zdWAAAC: Received packet PONG data 
+2025-08-06 13:02:19,479 - engineio.server - INFO - kGJW16QkM00SCtCvAAAA: Received packet PONG data 
+2025-08-06 13:02:19,480 - engineio.server - INFO - tsK_AfmxfpAcm_3yAAAB: Received packet PONG data 
+2025-08-06 13:02:19,480 - engineio.server - INFO - C_w0Va7ID2wu3EaTAAAG: Received packet PONG data 
+2025-08-06 13:02:20,162 - engineio.server - INFO - JBeSgjDXQy6x-9jxAAAI: Sending packet PING data None
+2025-08-06 13:02:20,163 - engineio.server - INFO - JBeSgjDXQy6x-9jxAAAI: Received packet PONG data 
+2025-08-06 13:02:44,479 - engineio.server - INFO - kGJW16QkM00SCtCvAAAA: Sending packet PING data None
+2025-08-06 13:02:44,479 - engineio.server - INFO - tsK_AfmxfpAcm_3yAAAB: Sending packet PING data None
+2025-08-06 13:02:44,480 - engineio.server - INFO - C_w0Va7ID2wu3EaTAAAG: Sending packet PING data None
+2025-08-06 13:02:44,480 - engineio.server - INFO - KpPPdK441DTe0zdWAAAC: Sending packet PING data None
+2025-08-06 13:02:44,482 - engineio.server - INFO - kGJW16QkM00SCtCvAAAA: Received packet PONG data 
+2025-08-06 13:02:44,483 - engineio.server - INFO - KpPPdK441DTe0zdWAAAC: Received packet PONG data 
+2025-08-06 13:02:44,484 - engineio.server - INFO - C_w0Va7ID2wu3EaTAAAG: Received packet PONG data 
+2025-08-06 13:02:44,514 - engineio.server - INFO - tsK_AfmxfpAcm_3yAAAB: Received packet PONG data 
+2025-08-06 13:02:45,185 - engineio.server - INFO - JBeSgjDXQy6x-9jxAAAI: Sending packet PING data None
+2025-08-06 13:02:45,186 - engineio.server - INFO - JBeSgjDXQy6x-9jxAAAI: Received packet PONG data 
+2025-08-06 13:02:47,971 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:02:49,027 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:02:49,028 - pionex_api - WARNING - Positions endpoint failed, trying balances endpoint
+2025-08-06 13:02:49,277 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:02:49,530 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:02:49,869 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:02:49,870 - pionex_api - WARNING - Positions endpoint failed, trying balances endpoint
+2025-08-06 13:02:50,126 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:02:50,421 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:02:51,462 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:02:51,462 - pionex_api - WARNING - Positions endpoint failed, trying balances endpoint
+2025-08-06 13:02:51,713 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:02:52,759 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:02:52,760 - pionex_api - WARNING - Positions endpoint failed, trying balances endpoint
+2025-08-06 13:02:53,011 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:02:53,264 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:02:53,519 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:02:54,601 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:02:54,602 - pionex_api - WARNING - Positions endpoint failed, trying balances endpoint
+2025-08-06 13:02:54,855 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:03:08,176 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:03:08,177 - pionex_api - WARNING - Positions endpoint failed, trying balances endpoint
+2025-08-06 13:03:08,429 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:03:09,501 - engineio.server - INFO - C_w0Va7ID2wu3EaTAAAG: Sending packet PING data None
+2025-08-06 13:03:09,501 - engineio.server - INFO - kGJW16QkM00SCtCvAAAA: Sending packet PING data None
+2025-08-06 13:03:09,502 - engineio.server - INFO - KpPPdK441DTe0zdWAAAC: Sending packet PING data None
+2025-08-06 13:03:09,503 - engineio.server - INFO - KpPPdK441DTe0zdWAAAC: Received packet PONG data 
+2025-08-06 13:03:09,504 - engineio.server - INFO - kGJW16QkM00SCtCvAAAA: Received packet PONG data 
+2025-08-06 13:03:09,505 - engineio.server - INFO - C_w0Va7ID2wu3EaTAAAG: Received packet PONG data 
+2025-08-06 13:03:09,506 - engineio.server - INFO - tsK_AfmxfpAcm_3yAAAB: Sending packet PING data None
+2025-08-06 13:03:09,507 - engineio.server - INFO - tsK_AfmxfpAcm_3yAAAB: Received packet PONG data 
+2025-08-06 13:03:10,186 - engineio.server - INFO - JBeSgjDXQy6x-9jxAAAI: Sending packet PING data None
+2025-08-06 13:03:10,187 - engineio.server - INFO - JBeSgjDXQy6x-9jxAAAI: Received packet PONG data 
+2025-08-06 13:03:34,503 - engineio.server - INFO - KpPPdK441DTe0zdWAAAC: Sending packet PING data None
+2025-08-06 13:03:34,505 - engineio.server - INFO - KpPPdK441DTe0zdWAAAC: Received packet PONG data 
+2025-08-06 13:03:34,506 - engineio.server - INFO - C_w0Va7ID2wu3EaTAAAG: Sending packet PING data None
+2025-08-06 13:03:34,507 - engineio.server - INFO - tsK_AfmxfpAcm_3yAAAB: Sending packet PING data None
+2025-08-06 13:03:34,507 - engineio.server - INFO - kGJW16QkM00SCtCvAAAA: Sending packet PING data None
+2025-08-06 13:03:34,509 - engineio.server - INFO - kGJW16QkM00SCtCvAAAA: Received packet PONG data 
+2025-08-06 13:03:34,509 - engineio.server - INFO - C_w0Va7ID2wu3EaTAAAG: Received packet PONG data 
+2025-08-06 13:03:34,510 - engineio.server - INFO - tsK_AfmxfpAcm_3yAAAB: Received packet PONG data 
+2025-08-06 13:03:35,186 - engineio.server - INFO - JBeSgjDXQy6x-9jxAAAI: Sending packet PING data None
+2025-08-06 13:03:35,188 - engineio.server - INFO - JBeSgjDXQy6x-9jxAAAI: Received packet PONG data 
+2025-08-06 13:03:45,235 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:03:45,236 - pionex_api - WARNING - Positions endpoint failed, trying balances endpoint
+2025-08-06 13:03:45,502 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:03:48,980 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:03:48,981 - pionex_api - WARNING - Positions endpoint failed, trying balances endpoint
+2025-08-06 13:03:49,232 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:03:49,486 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:03:49,728 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:03:49,729 - pionex_api - WARNING - Positions endpoint failed, trying balances endpoint
+2025-08-06 13:03:49,975 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:03:50,230 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:03:50,470 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:03:50,472 - pionex_api - WARNING - Positions endpoint failed, trying balances endpoint
+2025-08-06 13:03:50,723 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:03:50,982 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:03:52,579 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:03:52,579 - pionex_api - WARNING - Positions endpoint failed, trying balances endpoint
+2025-08-06 13:03:52,844 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:03:53,098 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:03:54,957 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:03:54,958 - pionex_api - WARNING - Positions endpoint failed, trying balances endpoint
+2025-08-06 13:03:55,209 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:03:55,472 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:03:59,516 - engineio.server - INFO - KpPPdK441DTe0zdWAAAC: Sending packet PING data None
+2025-08-06 13:03:59,516 - engineio.server - INFO - kGJW16QkM00SCtCvAAAA: Sending packet PING data None
+2025-08-06 13:03:59,517 - engineio.server - INFO - C_w0Va7ID2wu3EaTAAAG: Sending packet PING data None
+2025-08-06 13:03:59,517 - engineio.server - INFO - tsK_AfmxfpAcm_3yAAAB: Sending packet PING data None
+2025-08-06 13:03:59,518 - engineio.server - INFO - tsK_AfmxfpAcm_3yAAAB: Received packet PONG data 
+2025-08-06 13:03:59,519 - engineio.server - INFO - KpPPdK441DTe0zdWAAAC: Received packet PONG data 
+2025-08-06 13:03:59,520 - engineio.server - INFO - kGJW16QkM00SCtCvAAAA: Received packet PONG data 
+2025-08-06 13:03:59,520 - engineio.server - INFO - C_w0Va7ID2wu3EaTAAAG: Received packet PONG data 
+2025-08-06 13:04:00,186 - engineio.server - INFO - JBeSgjDXQy6x-9jxAAAI: Sending packet PING data None
+2025-08-06 13:04:00,187 - engineio.server - INFO - JBeSgjDXQy6x-9jxAAAI: Received packet PONG data 
+2025-08-06 13:04:15,914 - __main__ - INFO - Starting Pionex Trading Bot for Production...
+2025-08-06 13:04:15,915 - __main__ - INFO - Environment variables check passed
+2025-08-06 13:04:15,915 - __main__ - INFO - Directories created successfully
+2025-08-06 13:04:17,208 - gui_app - INFO - Using SQLite database
+2025-08-06 13:04:18,042 - engineio.server - INFO - Server initialized for eventlet.
+2025-08-06 13:04:18,055 - database - INFO - Database initialized in data
+2025-08-06 13:04:18,068 - gui_app - INFO - WebSocket connection started
+2025-08-06 13:04:18,080 - __main__ - INFO - Flask app imported successfully
+2025-08-06 13:04:18,080 - __main__ - INFO - Flask application created successfully
+2025-08-06 13:04:18,080 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-08-06 13:04:18,493 - engineio.server - INFO - sXkl9eZD6ARnHp1DAAAA: Sending packet OPEN data {'sid': 'sXkl9eZD6ARnHp1DAAAA', 'upgrades': ['websocket'], 'pingTimeout': 20000, 'pingInterval': 25000, 'maxPayload': 1000000}
+2025-08-06 13:04:18,493 - engineio.server - INFO - 63zYOkCu71uzodsaAAAB: Sending packet OPEN data {'sid': '63zYOkCu71uzodsaAAAB', 'upgrades': ['websocket'], 'pingTimeout': 20000, 'pingInterval': 25000, 'maxPayload': 1000000}
+2025-08-06 13:04:18,496 - engineio.server - INFO - sXkl9eZD6ARnHp1DAAAA: Received packet MESSAGE data 0
+2025-08-06 13:04:18,498 - socketio.server - INFO - emitting event "connected" to EHuOw4kOdTvOdn0pAAAC [/]
+2025-08-06 13:04:18,499 - engineio.server - INFO - sXkl9eZD6ARnHp1DAAAA: Sending packet MESSAGE data 2["connected",{"data":"Connected to trading bot"}]
+2025-08-06 13:04:18,500 - engineio.server - INFO - sXkl9eZD6ARnHp1DAAAA: Sending packet MESSAGE data 0{"sid":"EHuOw4kOdTvOdn0pAAAC"}
+2025-08-06 13:04:18,504 - engineio.server - INFO - 63zYOkCu71uzodsaAAAB: Received packet MESSAGE data 0
+2025-08-06 13:04:18,505 - socketio.server - INFO - emitting event "connected" to X4xfbelxFCbRat34AAAD [/]
+2025-08-06 13:04:18,506 - engineio.server - INFO - 63zYOkCu71uzodsaAAAB: Sending packet MESSAGE data 2["connected",{"data":"Connected to trading bot"}]
+2025-08-06 13:04:18,506 - engineio.server - INFO - 63zYOkCu71uzodsaAAAB: Sending packet MESSAGE data 0{"sid":"X4xfbelxFCbRat34AAAD"}
+2025-08-06 13:04:18,508 - engineio.server - INFO - sXkl9eZD6ARnHp1DAAAA: Received request to upgrade to websocket
+2025-08-06 13:04:18,509 - engineio.server - INFO - 63zYOkCu71uzodsaAAAB: Received request to upgrade to websocket
+2025-08-06 13:04:18,516 - engineio.server - INFO - sXkl9eZD6ARnHp1DAAAA: Upgrade to websocket successful
+2025-08-06 13:04:18,517 - engineio.server - INFO - 63zYOkCu71uzodsaAAAB: Upgrade to websocket successful
+2025-08-06 13:04:19,490 - engineio.server - INFO - BQVPcoVznMG_GxodAAAE: Sending packet OPEN data {'sid': 'BQVPcoVznMG_GxodAAAE', 'upgrades': ['websocket'], 'pingTimeout': 20000, 'pingInterval': 25000, 'maxPayload': 1000000}
+2025-08-06 13:04:19,493 - engineio.server - INFO - p6ed1TBVlNngOVpyAAAF: Sending packet OPEN data {'sid': 'p6ed1TBVlNngOVpyAAAF', 'upgrades': ['websocket'], 'pingTimeout': 20000, 'pingInterval': 25000, 'maxPayload': 1000000}
+2025-08-06 13:04:19,496 - engineio.server - INFO - BQVPcoVznMG_GxodAAAE: Received request to upgrade to websocket
+2025-08-06 13:04:19,497 - engineio.server - INFO - BQVPcoVznMG_GxodAAAE: Received packet MESSAGE data 0
+2025-08-06 13:04:19,498 - socketio.server - INFO - emitting event "connected" to woYkor3rrd3h7qt6AAAG [/]
+2025-08-06 13:04:19,499 - engineio.server - INFO - BQVPcoVznMG_GxodAAAE: Sending packet MESSAGE data 2["connected",{"data":"Connected to trading bot"}]
+2025-08-06 13:04:19,500 - engineio.server - INFO - BQVPcoVznMG_GxodAAAE: Sending packet MESSAGE data 0{"sid":"woYkor3rrd3h7qt6AAAG"}
+2025-08-06 13:04:19,502 - engineio.server - INFO - p6ed1TBVlNngOVpyAAAF: Received packet MESSAGE data 0
+2025-08-06 13:04:19,504 - socketio.server - INFO - emitting event "connected" to TiHMGBw9yij9PoIvAAAH [/]
+2025-08-06 13:04:19,505 - engineio.server - INFO - p6ed1TBVlNngOVpyAAAF: Sending packet MESSAGE data 2["connected",{"data":"Connected to trading bot"}]
+2025-08-06 13:04:19,506 - engineio.server - INFO - p6ed1TBVlNngOVpyAAAF: Sending packet MESSAGE data 0{"sid":"TiHMGBw9yij9PoIvAAAH"}
+2025-08-06 13:04:19,509 - engineio.server - INFO - p6ed1TBVlNngOVpyAAAF: Received request to upgrade to websocket
+2025-08-06 13:04:19,512 - engineio.server - INFO - BQVPcoVznMG_GxodAAAE: Upgrade to websocket successful
+2025-08-06 13:04:19,524 - engineio.server - INFO - p6ed1TBVlNngOVpyAAAF: Upgrade to websocket successful
+2025-08-06 13:04:20,808 - engineio.server - INFO - et2STbIOenFITk-mAAAI: Sending packet OPEN data {'sid': 'et2STbIOenFITk-mAAAI', 'upgrades': ['websocket'], 'pingTimeout': 20000, 'pingInterval': 25000, 'maxPayload': 1000000}
+2025-08-06 13:04:20,813 - engineio.server - INFO - et2STbIOenFITk-mAAAI: Received packet MESSAGE data 0
+2025-08-06 13:04:20,814 - socketio.server - INFO - emitting event "connected" to TWienk6iAfQi1otxAAAJ [/]
+2025-08-06 13:04:20,815 - engineio.server - INFO - et2STbIOenFITk-mAAAI: Sending packet MESSAGE data 2["connected",{"data":"Connected to trading bot"}]
+2025-08-06 13:04:20,816 - engineio.server - INFO - et2STbIOenFITk-mAAAI: Sending packet MESSAGE data 0{"sid":"TWienk6iAfQi1otxAAAJ"}
+2025-08-06 13:04:21,118 - engineio.server - INFO - et2STbIOenFITk-mAAAI: Received request to upgrade to websocket
+2025-08-06 13:04:21,123 - engineio.server - INFO - et2STbIOenFITk-mAAAI: Upgrade to websocket successful
+2025-08-06 13:04:43,513 - engineio.server - INFO - sXkl9eZD6ARnHp1DAAAA: Sending packet PING data None
+2025-08-06 13:04:43,513 - engineio.server - INFO - 63zYOkCu71uzodsaAAAB: Sending packet PING data None
+2025-08-06 13:04:43,515 - engineio.server - INFO - 63zYOkCu71uzodsaAAAB: Received packet PONG data 
+2025-08-06 13:04:43,515 - engineio.server - INFO - sXkl9eZD6ARnHp1DAAAA: Received packet PONG data 
+2025-08-06 13:04:44,508 - engineio.server - INFO - BQVPcoVznMG_GxodAAAE: Sending packet PING data None
+2025-08-06 13:04:44,508 - engineio.server - INFO - p6ed1TBVlNngOVpyAAAF: Sending packet PING data None
+2025-08-06 13:04:44,510 - engineio.server - INFO - BQVPcoVznMG_GxodAAAE: Received packet PONG data 
+2025-08-06 13:04:44,510 - engineio.server - INFO - p6ed1TBVlNngOVpyAAAF: Received packet PONG data 
+2025-08-06 13:04:45,813 - engineio.server - INFO - et2STbIOenFITk-mAAAI: Sending packet PING data None
+2025-08-06 13:04:45,815 - engineio.server - INFO - et2STbIOenFITk-mAAAI: Received packet PONG data 
+2025-08-06 13:04:48,777 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:04:48,778 - gui_app - INFO - Positions API response: {'error': 'Unknown API error', 'code': 'INVALID_SIGNATURE'}
+2025-08-06 13:04:48,778 - gui_app - WARNING - API error for positions: Unknown API error
+2025-08-06 13:04:49,024 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:04:49,024 - gui_app - INFO - Positions API response: {'error': 'Unknown API error', 'code': 'INVALID_SIGNATURE'}
+2025-08-06 13:04:49,025 - gui_app - WARNING - API error for positions: Unknown API error
+2025-08-06 13:04:49,281 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:04:49,534 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:04:51,116 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:04:51,367 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:04:51,367 - gui_app - INFO - Positions API response: {'error': 'Unknown API error', 'code': 'INVALID_SIGNATURE'}
+2025-08-06 13:04:51,367 - gui_app - WARNING - API error for positions: Unknown API error
+2025-08-06 13:04:51,641 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:04:51,641 - gui_app - INFO - Positions API response: {'error': 'Unknown API error', 'code': 'INVALID_SIGNATURE'}
+2025-08-06 13:04:51,641 - gui_app - WARNING - API error for positions: Unknown API error
+2025-08-06 13:04:52,673 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:04:52,924 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:04:52,925 - gui_app - INFO - Positions API response: {'error': 'Unknown API error', 'code': 'INVALID_SIGNATURE'}
+2025-08-06 13:04:52,925 - gui_app - WARNING - API error for positions: Unknown API error
+2025-08-06 13:04:53,431 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:05:08,519 - engineio.server - INFO - sXkl9eZD6ARnHp1DAAAA: Sending packet PING data None
+2025-08-06 13:05:08,520 - engineio.server - INFO - 63zYOkCu71uzodsaAAAB: Sending packet PING data None
+2025-08-06 13:05:08,521 - engineio.server - INFO - 63zYOkCu71uzodsaAAAB: Received packet PONG data 
+2025-08-06 13:05:08,522 - engineio.server - INFO - sXkl9eZD6ARnHp1DAAAA: Received packet PONG data 
+2025-08-06 13:05:09,512 - engineio.server - INFO - BQVPcoVznMG_GxodAAAE: Sending packet PING data None
+2025-08-06 13:05:09,513 - engineio.server - INFO - p6ed1TBVlNngOVpyAAAF: Sending packet PING data None
+2025-08-06 13:05:09,514 - engineio.server - INFO - BQVPcoVznMG_GxodAAAE: Received packet PONG data 
+2025-08-06 13:05:09,515 - engineio.server - INFO - p6ed1TBVlNngOVpyAAAF: Received packet PONG data 
+2025-08-06 13:05:10,820 - engineio.server - INFO - et2STbIOenFITk-mAAAI: Sending packet PING data None
+2025-08-06 13:05:10,823 - engineio.server - INFO - et2STbIOenFITk-mAAAI: Received packet PONG data 
+2025-08-06 13:05:17,509 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:05:17,510 - gui_app - INFO - Positions API response: {'error': 'Unknown API error', 'code': 'INVALID_SIGNATURE'}
+2025-08-06 13:05:17,510 - gui_app - WARNING - API error for positions: Unknown API error
+2025-08-06 13:05:17,763 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:05:33,533 - engineio.server - INFO - 63zYOkCu71uzodsaAAAB: Sending packet PING data None
+2025-08-06 13:05:33,533 - engineio.server - INFO - sXkl9eZD6ARnHp1DAAAA: Sending packet PING data None
+2025-08-06 13:05:33,534 - engineio.server - INFO - 63zYOkCu71uzodsaAAAB: Received packet PONG data 
+2025-08-06 13:05:33,535 - engineio.server - INFO - sXkl9eZD6ARnHp1DAAAA: Received packet PONG data 
+2025-08-06 13:05:34,514 - engineio.server - INFO - p6ed1TBVlNngOVpyAAAF: Sending packet PING data None
+2025-08-06 13:05:34,514 - engineio.server - INFO - BQVPcoVznMG_GxodAAAE: Sending packet PING data None
+2025-08-06 13:05:34,516 - engineio.server - INFO - BQVPcoVznMG_GxodAAAE: Received packet PONG data 
+2025-08-06 13:05:34,516 - engineio.server - INFO - p6ed1TBVlNngOVpyAAAF: Received packet PONG data 
+2025-08-06 13:05:35,839 - engineio.server - INFO - et2STbIOenFITk-mAAAI: Sending packet PING data None
+2025-08-06 13:05:35,840 - engineio.server - INFO - et2STbIOenFITk-mAAAI: Received packet PONG data 
+2025-08-06 13:05:46,751 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:05:47,883 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:05:47,884 - gui_app - INFO - Positions API response: {'error': 'Unknown API error', 'code': 'INVALID_SIGNATURE'}
+2025-08-06 13:05:47,884 - gui_app - WARNING - API error for positions: Unknown API error
+2025-08-06 13:05:48,667 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:05:48,668 - gui_app - INFO - Positions API response: {'error': 'Unknown API error', 'code': 'INVALID_SIGNATURE'}
+2025-08-06 13:05:48,668 - gui_app - WARNING - API error for positions: Unknown API error
+2025-08-06 13:05:49,020 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:05:49,550 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:05:49,551 - gui_app - INFO - Positions API response: {'error': 'Unknown API error', 'code': 'INVALID_SIGNATURE'}
+2025-08-06 13:05:49,551 - gui_app - WARNING - API error for positions: Unknown API error
+2025-08-06 13:05:49,844 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:05:50,106 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:05:50,107 - gui_app - INFO - Positions API response: {'error': 'Unknown API error', 'code': 'INVALID_SIGNATURE'}
+2025-08-06 13:05:50,107 - gui_app - WARNING - API error for positions: Unknown API error
+2025-08-06 13:05:50,360 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:05:52,963 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:05:52,964 - gui_app - INFO - Positions API response: {'error': 'Unknown API error', 'code': 'INVALID_SIGNATURE'}
+2025-08-06 13:05:52,964 - gui_app - WARNING - API error for positions: Unknown API error
+2025-08-06 13:05:53,212 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:05:58,919 - engineio.server - INFO - 63zYOkCu71uzodsaAAAB: Sending packet PING data None
+2025-08-06 13:05:58,919 - engineio.server - INFO - sXkl9eZD6ARnHp1DAAAA: Sending packet PING data None
+2025-08-06 13:05:59,477 - engineio.server - INFO - 63zYOkCu71uzodsaAAAB: Received packet PONG data 
+2025-08-06 13:05:59,478 - engineio.server - INFO - sXkl9eZD6ARnHp1DAAAA: Received packet PONG data 
+2025-08-06 13:05:59,521 - engineio.server - INFO - BQVPcoVznMG_GxodAAAE: Sending packet PING data None
+2025-08-06 13:05:59,522 - engineio.server - INFO - p6ed1TBVlNngOVpyAAAF: Sending packet PING data None
+2025-08-06 13:05:59,523 - engineio.server - INFO - BQVPcoVznMG_GxodAAAE: Received packet PONG data 
+2025-08-06 13:05:59,524 - engineio.server - INFO - p6ed1TBVlNngOVpyAAAF: Received packet PONG data 
+2025-08-06 13:06:00,847 - engineio.server - INFO - et2STbIOenFITk-mAAAI: Sending packet PING data None
+2025-08-06 13:06:00,849 - engineio.server - INFO - et2STbIOenFITk-mAAAI: Received packet PONG data 
+2025-08-06 13:06:16,746 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:06:17,854 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:06:17,854 - gui_app - INFO - Positions API response: {'error': 'Unknown API error', 'code': 'INVALID_SIGNATURE'}
+2025-08-06 13:06:17,854 - gui_app - WARNING - API error for positions: Unknown API error
+2025-08-06 13:06:24,488 - engineio.server - INFO - sXkl9eZD6ARnHp1DAAAA: Sending packet PING data None
+2025-08-06 13:06:24,488 - engineio.server - INFO - 63zYOkCu71uzodsaAAAB: Sending packet PING data None
+2025-08-06 13:06:24,489 - engineio.server - INFO - 63zYOkCu71uzodsaAAAB: Received packet PONG data 
+2025-08-06 13:06:24,490 - engineio.server - INFO - sXkl9eZD6ARnHp1DAAAA: Received packet PONG data 
+2025-08-06 13:06:24,535 - engineio.server - INFO - BQVPcoVznMG_GxodAAAE: Sending packet PING data None
+2025-08-06 13:06:24,535 - engineio.server - INFO - p6ed1TBVlNngOVpyAAAF: Sending packet PING data None
+2025-08-06 13:06:24,537 - engineio.server - INFO - BQVPcoVznMG_GxodAAAE: Received packet PONG data 
+2025-08-06 13:06:24,538 - engineio.server - INFO - p6ed1TBVlNngOVpyAAAF: Received packet PONG data 
+2025-08-06 13:06:25,860 - engineio.server - INFO - et2STbIOenFITk-mAAAI: Sending packet PING data None
+2025-08-06 13:06:25,862 - engineio.server - INFO - et2STbIOenFITk-mAAAI: Received packet PONG data 
+2025-08-06 13:06:46,757 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:06:47,936 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:06:47,937 - gui_app - INFO - Positions API response: {'error': 'Unknown API error', 'code': 'INVALID_SIGNATURE'}
+2025-08-06 13:06:47,937 - gui_app - WARNING - API error for positions: Unknown API error
+2025-08-06 13:06:49,282 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:06:49,282 - gui_app - INFO - Positions API response: {'error': 'Unknown API error', 'code': 'INVALID_SIGNATURE'}
+2025-08-06 13:06:49,282 - gui_app - WARNING - API error for positions: Unknown API error
+2025-08-06 13:06:49,710 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:06:49,976 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:06:49,976 - gui_app - INFO - Positions API response: {'error': 'Unknown API error', 'code': 'INVALID_SIGNATURE'}
+2025-08-06 13:06:49,977 - gui_app - WARNING - API error for positions: Unknown API error
+2025-08-06 13:06:50,242 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:06:51,328 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:06:51,328 - gui_app - INFO - Positions API response: {'error': 'Unknown API error', 'code': 'INVALID_SIGNATURE'}
+2025-08-06 13:06:51,329 - gui_app - WARNING - API error for positions: Unknown API error
+2025-08-06 13:06:51,585 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:06:51,586 - engineio.server - INFO - sXkl9eZD6ARnHp1DAAAA: Sending packet PING data None
+2025-08-06 13:06:51,587 - engineio.server - INFO - 63zYOkCu71uzodsaAAAB: Sending packet PING data None
+2025-08-06 13:06:51,588 - engineio.server - INFO - p6ed1TBVlNngOVpyAAAF: Sending packet PING data None
+2025-08-06 13:06:51,589 - engineio.server - INFO - BQVPcoVznMG_GxodAAAE: Sending packet PING data None
+2025-08-06 13:06:51,590 - engineio.server - INFO - et2STbIOenFITk-mAAAI: Sending packet PING data None
+2025-08-06 13:06:53,467 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:06:53,468 - gui_app - INFO - Positions API response: {'error': 'Unknown API error', 'code': 'INVALID_SIGNATURE'}
+2025-08-06 13:06:53,468 - gui_app - WARNING - API error for positions: Unknown API error
+2025-08-06 13:06:53,717 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:06:53,725 - engineio.server - INFO - BQVPcoVznMG_GxodAAAE: Received packet PONG data 
+2025-08-06 13:06:53,729 - engineio.server - INFO - p6ed1TBVlNngOVpyAAAF: Received packet PONG data 
+2025-08-06 13:06:53,731 - engineio.server - INFO - sXkl9eZD6ARnHp1DAAAA: Received packet PONG data 
+2025-08-06 13:06:53,731 - engineio.server - INFO - et2STbIOenFITk-mAAAI: Received packet PONG data 
+2025-08-06 13:06:53,732 - engineio.server - INFO - 63zYOkCu71uzodsaAAAB: Received packet PONG data 
+2025-08-06 13:07:12,031 - __main__ - INFO - Starting Pionex Trading Bot for Production...
+2025-08-06 13:07:12,032 - __main__ - INFO - Environment variables check passed
+2025-08-06 13:07:12,032 - __main__ - INFO - Directories created successfully
+2025-08-06 13:07:13,786 - gui_app - INFO - Using SQLite database
+2025-08-06 13:07:14,781 - engineio.server - INFO - Server initialized for eventlet.
+2025-08-06 13:07:14,797 - database - INFO - Database initialized in data
+2025-08-06 13:07:14,812 - gui_app - INFO - WebSocket connection started
+2025-08-06 13:07:14,827 - __main__ - INFO - Flask app imported successfully
+2025-08-06 13:07:14,827 - __main__ - INFO - Flask application created successfully
+2025-08-06 13:07:14,827 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-08-06 13:07:14,828 - __main__ - ERROR - Fatal error: [WinError 10048] Only one usage of each socket address (protocol/network address/port) is normally permitted
+2025-08-06 13:07:14,913 - __main__ - ERROR - Traceback: Traceback (most recent call last):
+  File "C:\Users\WIN-10\Downloads\Compressed\pionex-trading-bot-main\pionex-trading-bot-main\main.py", line 103, in main
+    socketio.run(
+  File "C:\Users\WIN-10\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\flask_socketio\__init__.py", line 684, in run
+    run_server()
+  File "C:\Users\WIN-10\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\flask_socketio\__init__.py", line 661, in run_server
+    eventlet_socket = eventlet.listen(addresses[0][4],
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\WIN-10\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\eventlet\convenience.py", line 78, in listen
+    sock.bind(addr)
+OSError: [WinError 10048] Only one usage of each socket address (protocol/network address/port) is normally permitted
+
+2025-08-06 13:07:16,800 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:07:17,846 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:07:17,846 - gui_app - INFO - Positions API response: {'error': 'Unknown API error', 'code': 'INVALID_SIGNATURE'}
+2025-08-06 13:07:17,846 - gui_app - WARNING - API error for positions: Unknown API error
+2025-08-06 13:07:18,756 - engineio.server - INFO - BQVPcoVznMG_GxodAAAE: Sending packet PING data None
+2025-08-06 13:07:18,757 - engineio.server - INFO - et2STbIOenFITk-mAAAI: Sending packet PING data None
+2025-08-06 13:07:18,757 - engineio.server - INFO - 63zYOkCu71uzodsaAAAB: Sending packet PING data None
+2025-08-06 13:07:18,758 - engineio.server - INFO - sXkl9eZD6ARnHp1DAAAA: Sending packet PING data None
+2025-08-06 13:07:18,758 - engineio.server - INFO - p6ed1TBVlNngOVpyAAAF: Sending packet PING data None
+2025-08-06 13:07:19,633 - engineio.server - INFO - 63zYOkCu71uzodsaAAAB: Received packet PONG data 
+2025-08-06 13:07:19,635 - engineio.server - INFO - BQVPcoVznMG_GxodAAAE: Received packet PONG data 
+2025-08-06 13:07:19,642 - engineio.server - INFO - p6ed1TBVlNngOVpyAAAF: Received packet PONG data 
+2025-08-06 13:07:19,645 - engineio.server - INFO - sXkl9eZD6ARnHp1DAAAA: Received packet PONG data 
+2025-08-06 13:07:19,646 - engineio.server - INFO - et2STbIOenFITk-mAAAI: Received packet PONG data 
+2025-08-06 13:07:44,651 - engineio.server - INFO - BQVPcoVznMG_GxodAAAE: Sending packet PING data None
+2025-08-06 13:07:44,651 - engineio.server - INFO - 63zYOkCu71uzodsaAAAB: Sending packet PING data None
+2025-08-06 13:07:44,652 - engineio.server - INFO - p6ed1TBVlNngOVpyAAAF: Sending packet PING data None
+2025-08-06 13:07:44,653 - engineio.server - INFO - et2STbIOenFITk-mAAAI: Sending packet PING data None
+2025-08-06 13:07:44,653 - engineio.server - INFO - sXkl9eZD6ARnHp1DAAAA: Sending packet PING data None
+2025-08-06 13:07:44,655 - engineio.server - INFO - 63zYOkCu71uzodsaAAAB: Received packet PONG data 
+2025-08-06 13:07:44,656 - engineio.server - INFO - BQVPcoVznMG_GxodAAAE: Received packet PONG data 
+2025-08-06 13:07:44,657 - engineio.server - INFO - p6ed1TBVlNngOVpyAAAF: Received packet PONG data 
+2025-08-06 13:07:44,657 - engineio.server - INFO - sXkl9eZD6ARnHp1DAAAA: Received packet PONG data 
+2025-08-06 13:07:44,658 - engineio.server - INFO - et2STbIOenFITk-mAAAI: Received packet PONG data 
+2025-08-06 13:07:46,744 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:07:47,824 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:07:47,826 - gui_app - INFO - Positions API response: {'error': 'Unknown API error', 'code': 'INVALID_SIGNATURE'}
+2025-08-06 13:07:47,827 - gui_app - WARNING - API error for positions: Unknown API error
+2025-08-06 13:07:48,872 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:07:48,872 - gui_app - INFO - Positions API response: {'error': 'Unknown API error', 'code': 'INVALID_SIGNATURE'}
+2025-08-06 13:07:48,873 - gui_app - WARNING - API error for positions: Unknown API error
+2025-08-06 13:07:49,129 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:07:49,386 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:07:49,387 - gui_app - INFO - Positions API response: {'error': 'Unknown API error', 'code': 'INVALID_SIGNATURE'}
+2025-08-06 13:07:49,387 - gui_app - WARNING - API error for positions: Unknown API error
+2025-08-06 13:07:49,641 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:07:50,836 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:07:50,836 - gui_app - INFO - Positions API response: {'error': 'Unknown API error', 'code': 'INVALID_SIGNATURE'}
+2025-08-06 13:07:50,837 - gui_app - WARNING - API error for positions: Unknown API error
+2025-08-06 13:07:51,106 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:07:52,919 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:07:52,920 - gui_app - INFO - Positions API response: {'error': 'Unknown API error', 'code': 'INVALID_SIGNATURE'}
+2025-08-06 13:07:52,920 - gui_app - WARNING - API error for positions: Unknown API error
+2025-08-06 13:07:53,168 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:08:09,652 - engineio.server - INFO - sXkl9eZD6ARnHp1DAAAA: Sending packet PING data None
+2025-08-06 13:08:09,652 - engineio.server - INFO - et2STbIOenFITk-mAAAI: Sending packet PING data None
+2025-08-06 13:08:09,653 - engineio.server - INFO - p6ed1TBVlNngOVpyAAAF: Sending packet PING data None
+2025-08-06 13:08:09,653 - engineio.server - INFO - 63zYOkCu71uzodsaAAAB: Sending packet PING data None
+2025-08-06 13:08:09,654 - engineio.server - INFO - BQVPcoVznMG_GxodAAAE: Sending packet PING data None
+2025-08-06 13:08:09,655 - engineio.server - INFO - et2STbIOenFITk-mAAAI: Received packet PONG data 
+2025-08-06 13:08:09,655 - engineio.server - INFO - 63zYOkCu71uzodsaAAAB: Received packet PONG data 
+2025-08-06 13:08:09,656 - engineio.server - INFO - BQVPcoVznMG_GxodAAAE: Received packet PONG data 
+2025-08-06 13:08:09,657 - engineio.server - INFO - p6ed1TBVlNngOVpyAAAF: Received packet PONG data 
+2025-08-06 13:08:09,658 - engineio.server - INFO - sXkl9eZD6ARnHp1DAAAA: Received packet PONG data 
+2025-08-06 13:08:16,786 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:08:17,845 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:08:17,846 - gui_app - INFO - Positions API response: {'error': 'Unknown API error', 'code': 'INVALID_SIGNATURE'}
+2025-08-06 13:08:17,846 - gui_app - WARNING - API error for positions: Unknown API error
+2025-08-06 13:08:34,646 - engineio.server - INFO - et2STbIOenFITk-mAAAI: Sending packet PING data None
+2025-08-06 13:08:34,646 - engineio.server - INFO - BQVPcoVznMG_GxodAAAE: Sending packet PING data None
+2025-08-06 13:08:34,647 - engineio.server - INFO - p6ed1TBVlNngOVpyAAAF: Sending packet PING data None
+2025-08-06 13:08:34,647 - engineio.server - INFO - 63zYOkCu71uzodsaAAAB: Sending packet PING data None
+2025-08-06 13:08:34,648 - engineio.server - INFO - sXkl9eZD6ARnHp1DAAAA: Sending packet PING data None
+2025-08-06 13:08:34,649 - engineio.server - INFO - BQVPcoVznMG_GxodAAAE: Received packet PONG data 
+2025-08-06 13:08:34,650 - engineio.server - INFO - et2STbIOenFITk-mAAAI: Received packet PONG data 
+2025-08-06 13:08:34,650 - engineio.server - INFO - p6ed1TBVlNngOVpyAAAF: Received packet PONG data 
+2025-08-06 13:08:34,651 - engineio.server - INFO - sXkl9eZD6ARnHp1DAAAA: Received packet PONG data 
+2025-08-06 13:08:34,652 - engineio.server - INFO - 63zYOkCu71uzodsaAAAB: Received packet PONG data 
+2025-08-06 13:08:49,162 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:08:49,163 - gui_app - INFO - Positions API response: {'error': 'Unknown API error', 'code': 'INVALID_SIGNATURE'}
+2025-08-06 13:08:49,163 - gui_app - WARNING - API error for positions: Unknown API error
+2025-08-06 13:08:49,418 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:08:49,678 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:08:49,680 - gui_app - INFO - Positions API response: {'error': 'Unknown API error', 'code': 'INVALID_SIGNATURE'}
+2025-08-06 13:08:49,681 - gui_app - WARNING - API error for positions: Unknown API error
+2025-08-06 13:08:49,971 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:08:51,110 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:08:51,110 - gui_app - INFO - Positions API response: {'error': 'Unknown API error', 'code': 'INVALID_SIGNATURE'}
+2025-08-06 13:08:51,111 - gui_app - WARNING - API error for positions: Unknown API error
+2025-08-06 13:08:51,364 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:08:51,620 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:08:51,621 - gui_app - INFO - Positions API response: {'error': 'Unknown API error', 'code': 'INVALID_SIGNATURE'}
+2025-08-06 13:08:51,621 - gui_app - WARNING - API error for positions: Unknown API error
+2025-08-06 13:08:51,866 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:08:53,777 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:08:54,027 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:08:54,027 - gui_app - INFO - Positions API response: {'error': 'Unknown API error', 'code': 'INVALID_SIGNATURE'}
+2025-08-06 13:08:54,028 - gui_app - WARNING - API error for positions: Unknown API error
+2025-08-06 13:08:59,668 - engineio.server - INFO - BQVPcoVznMG_GxodAAAE: Sending packet PING data None
+2025-08-06 13:08:59,668 - engineio.server - INFO - sXkl9eZD6ARnHp1DAAAA: Sending packet PING data None
+2025-08-06 13:08:59,669 - engineio.server - INFO - et2STbIOenFITk-mAAAI: Sending packet PING data None
+2025-08-06 13:08:59,670 - engineio.server - INFO - p6ed1TBVlNngOVpyAAAF: Sending packet PING data None
+2025-08-06 13:08:59,670 - engineio.server - INFO - 63zYOkCu71uzodsaAAAB: Sending packet PING data None
+2025-08-06 13:08:59,671 - engineio.server - INFO - sXkl9eZD6ARnHp1DAAAA: Received packet PONG data 
+2025-08-06 13:08:59,674 - engineio.server - INFO - BQVPcoVznMG_GxodAAAE: Received packet PONG data 
+2025-08-06 13:08:59,676 - engineio.server - INFO - et2STbIOenFITk-mAAAI: Received packet PONG data 
+2025-08-06 13:08:59,677 - engineio.server - INFO - p6ed1TBVlNngOVpyAAAF: Received packet PONG data 
+2025-08-06 13:08:59,678 - engineio.server - INFO - 63zYOkCu71uzodsaAAAB: Received packet PONG data 
+2025-08-06 13:09:24,682 - engineio.server - INFO - sXkl9eZD6ARnHp1DAAAA: Sending packet PING data None
+2025-08-06 13:09:24,687 - engineio.server - INFO - BQVPcoVznMG_GxodAAAE: Sending packet PING data None
+2025-08-06 13:09:24,688 - engineio.server - INFO - 63zYOkCu71uzodsaAAAB: Sending packet PING data None
+2025-08-06 13:09:24,689 - engineio.server - INFO - p6ed1TBVlNngOVpyAAAF: Sending packet PING data None
+2025-08-06 13:09:24,689 - engineio.server - INFO - et2STbIOenFITk-mAAAI: Sending packet PING data None
+2025-08-06 13:09:24,692 - engineio.server - INFO - BQVPcoVznMG_GxodAAAE: Received packet PONG data 
+2025-08-06 13:09:24,695 - engineio.server - INFO - p6ed1TBVlNngOVpyAAAF: Received packet PONG data 
+2025-08-06 13:09:24,697 - engineio.server - INFO - et2STbIOenFITk-mAAAI: Received packet PONG data 
+2025-08-06 13:09:24,703 - engineio.server - INFO - 63zYOkCu71uzodsaAAAB: Received packet PONG data 
+2025-08-06 13:09:24,728 - engineio.server - INFO - sXkl9eZD6ARnHp1DAAAA: Received packet PONG data 
+2025-08-06 13:09:48,485 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:09:49,690 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:09:49,690 - gui_app - INFO - Positions API response: {'error': 'Unknown API error', 'code': 'INVALID_SIGNATURE'}
+2025-08-06 13:09:49,690 - gui_app - WARNING - API error for positions: Unknown API error
+2025-08-06 13:09:49,939 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:09:50,189 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:09:50,191 - gui_app - INFO - Positions API response: {'error': 'Unknown API error', 'code': 'INVALID_SIGNATURE'}
+2025-08-06 13:09:50,191 - gui_app - WARNING - API error for positions: Unknown API error
+2025-08-06 13:09:50,442 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:09:51,529 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:09:51,534 - gui_app - INFO - Positions API response: {'error': 'Unknown API error', 'code': 'INVALID_SIGNATURE'}
+2025-08-06 13:09:51,535 - gui_app - WARNING - API error for positions: Unknown API error
+2025-08-06 13:09:51,846 - engineio.server - INFO - p6ed1TBVlNngOVpyAAAF: Sending packet PING data None
+2025-08-06 13:09:51,851 - engineio.server - INFO - 63zYOkCu71uzodsaAAAB: Sending packet PING data None
+2025-08-06 13:09:51,852 - engineio.server - INFO - et2STbIOenFITk-mAAAI: Sending packet PING data None
+2025-08-06 13:09:51,852 - engineio.server - INFO - BQVPcoVznMG_GxodAAAE: Sending packet PING data None
+2025-08-06 13:09:51,853 - engineio.server - INFO - sXkl9eZD6ARnHp1DAAAA: Sending packet PING data None
+2025-08-06 13:09:52,105 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:09:52,352 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:09:52,352 - gui_app - INFO - Positions API response: {'error': 'Unknown API error', 'code': 'INVALID_SIGNATURE'}
+2025-08-06 13:09:52,352 - gui_app - WARNING - API error for positions: Unknown API error
+2025-08-06 13:09:52,597 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:09:54,235 - pionex_api - ERROR - API error: Unknown API error (code: INVALID_SIGNATURE)
+2025-08-06 13:09:54,237 - gui_app - INFO - Positions API response: {'error': 'Unknown API error', 'code': 'INVALID_SIGNATURE'}
+2025-08-06 13:09:54,237 - gui_app - WARNING - API error for positions: Unknown API error
+2025-08-06 13:09:55,562 - engineio.server - INFO - BQVPcoVznMG_GxodAAAE: Received packet PONG data 
+2025-08-06 13:09:55,563 - engineio.server - INFO - p6ed1TBVlNngOVpyAAAF: Received packet PONG data 
+2025-08-06 13:09:55,564 - engineio.server - INFO - et2STbIOenFITk-mAAAI: Received packet PONG data 
+2025-08-06 13:09:55,564 - engineio.server - INFO - 63zYOkCu71uzodsaAAAB: Received packet PONG data 
+2025-08-06 13:09:55,565 - engineio.server - INFO - sXkl9eZD6ARnHp1DAAAA: Received packet PONG data 
+2025-08-06 13:10:20,571 - engineio.server - INFO - p6ed1TBVlNngOVpyAAAF: Sending packet PING data None
+2025-08-06 13:10:20,572 - engineio.server - INFO - BQVPcoVznMG_GxodAAAE: Sending packet PING data None
+2025-08-06 13:10:20,573 - engineio.server - INFO - sXkl9eZD6ARnHp1DAAAA: Sending packet PING data None
+2025-08-06 13:10:20,574 - engineio.server - INFO - et2STbIOenFITk-mAAAI: Sending packet PING data None
+2025-08-06 13:10:20,574 - engineio.server - INFO - 63zYOkCu71uzodsaAAAB: Sending packet PING data None
+2025-08-06 13:10:20,576 - engineio.server - INFO - p6ed1TBVlNngOVpyAAAF: Received packet PONG data 
+2025-08-06 13:10:20,577 - engineio.server - INFO - BQVPcoVznMG_GxodAAAE: Received packet PONG data 
+2025-08-06 13:10:20,578 - engineio.server - INFO - sXkl9eZD6ARnHp1DAAAA: Received packet PONG data 
+2025-08-06 13:10:20,579 - engineio.server - INFO - et2STbIOenFITk-mAAAI: Received packet PONG data 
+2025-08-06 13:10:20,580 - engineio.server - INFO - 63zYOkCu71uzodsaAAAB: Received packet PONG data 
+2025-08-06 13:12:21,637 - __main__ - INFO - Starting Pionex Trading Bot for Production...
+2025-08-06 13:12:21,637 - __main__ - INFO - Environment variables check passed
+2025-08-06 13:12:21,639 - __main__ - INFO - Directories created successfully
+2025-08-06 13:12:23,857 - gui_app - INFO - Using SQLite database
+2025-08-06 13:12:25,218 - engineio.server - INFO - Server initialized for eventlet.
+2025-08-06 13:12:25,233 - database - INFO - Database initialized in data
+2025-08-06 13:12:25,247 - gui_app - INFO - WebSocket connection started
+2025-08-06 13:12:25,260 - __main__ - INFO - Flask app imported successfully
+2025-08-06 13:12:25,260 - __main__ - INFO - Flask application created successfully
+2025-08-06 13:12:25,260 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-08-06 13:16:14,314 - __main__ - INFO - Starting Pionex Trading Bot for Production...
+2025-08-06 13:16:14,314 - __main__ - INFO - Environment variables check passed
+2025-08-06 13:16:14,314 - __main__ - INFO - Directories created successfully
+2025-08-06 13:16:16,346 - gui_app - INFO - Using SQLite database
+2025-08-06 13:16:17,877 - engineio.server - INFO - Server initialized for eventlet.
+2025-08-06 13:16:17,891 - database - INFO - Database initialized in data
+2025-08-06 13:16:17,903 - gui_app - INFO - WebSocket connection started
+2025-08-06 13:16:17,915 - __main__ - INFO - Flask app imported successfully
+2025-08-06 13:16:17,916 - __main__ - INFO - Flask application created successfully
+2025-08-06 13:16:17,916 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-08-06 13:17:53,995 - __main__ - INFO - Starting Pionex Trading Bot for Production...
+2025-08-06 13:17:53,995 - __main__ - INFO - Environment variables check passed
+2025-08-06 13:17:53,996 - __main__ - INFO - Directories created successfully
+2025-08-06 13:17:55,781 - gui_app - INFO - Using SQLite database
+2025-08-06 13:17:56,904 - engineio.server - INFO - Server initialized for eventlet.
+2025-08-06 13:17:56,919 - database - INFO - Database initialized in data
+2025-08-06 13:17:56,933 - gui_app - INFO - WebSocket connection started
+2025-08-06 13:17:56,946 - __main__ - INFO - Flask app imported successfully
+2025-08-06 13:17:56,947 - __main__ - INFO - Flask application created successfully
+2025-08-06 13:17:56,947 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-08-06 13:19:54,503 - engineio.server - INFO - Bk4W1Xgg1uyAhjOPAAAA: Sending packet OPEN data {'sid': 'Bk4W1Xgg1uyAhjOPAAAA', 'upgrades': ['websocket'], 'pingTimeout': 20000, 'pingInterval': 25000, 'maxPayload': 1000000}
+2025-08-06 13:19:54,506 - engineio.server - INFO - 4jcMdFvByahyau4oAAAB: Sending packet OPEN data {'sid': '4jcMdFvByahyau4oAAAB', 'upgrades': ['websocket'], 'pingTimeout': 20000, 'pingInterval': 25000, 'maxPayload': 1000000}
+2025-08-06 13:19:54,513 - engineio.server - INFO - Bk4W1Xgg1uyAhjOPAAAA: Received packet MESSAGE data 0
+2025-08-06 13:19:54,515 - socketio.server - INFO - emitting event "connected" to To_HMfjgDwi-BYpyAAAC [/]
+2025-08-06 13:19:54,516 - engineio.server - INFO - Bk4W1Xgg1uyAhjOPAAAA: Sending packet MESSAGE data 2["connected",{"data":"Connected to trading bot"}]
+2025-08-06 13:19:54,518 - engineio.server - INFO - Bk4W1Xgg1uyAhjOPAAAA: Sending packet MESSAGE data 0{"sid":"To_HMfjgDwi-BYpyAAAC"}
+2025-08-06 13:19:54,520 - engineio.server - INFO - 4jcMdFvByahyau4oAAAB: Received packet MESSAGE data 0
+2025-08-06 13:19:54,522 - socketio.server - INFO - emitting event "connected" to 6538DkemBHL3JHBTAAAD [/]
+2025-08-06 13:19:54,522 - engineio.server - INFO - 4jcMdFvByahyau4oAAAB: Sending packet MESSAGE data 2["connected",{"data":"Connected to trading bot"}]
+2025-08-06 13:19:54,525 - engineio.server - INFO - 4jcMdFvByahyau4oAAAB: Sending packet MESSAGE data 0{"sid":"6538DkemBHL3JHBTAAAD"}
+2025-08-06 13:19:54,527 - engineio.server - INFO - Bk4W1Xgg1uyAhjOPAAAA: Received request to upgrade to websocket
+2025-08-06 13:19:54,530 - engineio.server - INFO - 4jcMdFvByahyau4oAAAB: Received request to upgrade to websocket
+2025-08-06 13:19:54,536 - engineio.server - INFO - Bk4W1Xgg1uyAhjOPAAAA: Upgrade to websocket successful
+2025-08-06 13:19:54,564 - engineio.server - INFO - VBa2Qxgd5UUzoJJyAAAE: Sending packet OPEN data {'sid': 'VBa2Qxgd5UUzoJJyAAAE', 'upgrades': ['websocket'], 'pingTimeout': 20000, 'pingInterval': 25000, 'maxPayload': 1000000}
+2025-08-06 13:19:54,582 - engineio.server - INFO - 4jcMdFvByahyau4oAAAB: Upgrade to websocket successful
+2025-08-06 13:19:54,586 - engineio.server - INFO - VBa2Qxgd5UUzoJJyAAAE: Received packet MESSAGE data 0
+2025-08-06 13:19:54,587 - socketio.server - INFO - emitting event "connected" to k7SY_3TlG0fL1V_qAAAF [/]
+2025-08-06 13:19:54,588 - engineio.server - INFO - VBa2Qxgd5UUzoJJyAAAE: Sending packet MESSAGE data 2["connected",{"data":"Connected to trading bot"}]
+2025-08-06 13:19:54,589 - engineio.server - INFO - VBa2Qxgd5UUzoJJyAAAE: Sending packet MESSAGE data 0{"sid":"k7SY_3TlG0fL1V_qAAAF"}
+2025-08-06 13:19:54,599 - engineio.server - INFO - VBa2Qxgd5UUzoJJyAAAE: Received request to upgrade to websocket
+2025-08-06 13:19:54,673 - engineio.server - INFO - VBa2Qxgd5UUzoJJyAAAE: Upgrade to websocket successful
+2025-08-06 13:19:55,508 - engineio.server - INFO - CuykTOzvmsTnNtRkAAAG: Sending packet OPEN data {'sid': 'CuykTOzvmsTnNtRkAAAG', 'upgrades': ['websocket'], 'pingTimeout': 20000, 'pingInterval': 25000, 'maxPayload': 1000000}
+2025-08-06 13:19:55,514 - engineio.server - INFO - XeJ1HFddgiMsUgM6AAAH: Sending packet OPEN data {'sid': 'XeJ1HFddgiMsUgM6AAAH', 'upgrades': ['websocket'], 'pingTimeout': 20000, 'pingInterval': 25000, 'maxPayload': 1000000}
+2025-08-06 13:19:55,520 - engineio.server - INFO - CuykTOzvmsTnNtRkAAAG: Received packet MESSAGE data 0
+2025-08-06 13:19:55,522 - socketio.server - INFO - emitting event "connected" to lXB8ORiIq8VM8CCCAAAI [/]
+2025-08-06 13:19:55,523 - engineio.server - INFO - CuykTOzvmsTnNtRkAAAG: Sending packet MESSAGE data 2["connected",{"data":"Connected to trading bot"}]
+2025-08-06 13:19:55,525 - engineio.server - INFO - CuykTOzvmsTnNtRkAAAG: Sending packet MESSAGE data 0{"sid":"lXB8ORiIq8VM8CCCAAAI"}
+2025-08-06 13:19:55,528 - engineio.server - INFO - CuykTOzvmsTnNtRkAAAG: Received request to upgrade to websocket
+2025-08-06 13:19:55,544 - engineio.server - INFO - XeJ1HFddgiMsUgM6AAAH: Received packet MESSAGE data 0
+2025-08-06 13:19:55,545 - socketio.server - INFO - emitting event "connected" to CNpBkEzW0vR4Qf7-AAAJ [/]
+2025-08-06 13:19:55,546 - engineio.server - INFO - XeJ1HFddgiMsUgM6AAAH: Sending packet MESSAGE data 2["connected",{"data":"Connected to trading bot"}]
+2025-08-06 13:19:55,547 - engineio.server - INFO - XeJ1HFddgiMsUgM6AAAH: Sending packet MESSAGE data 0{"sid":"CNpBkEzW0vR4Qf7-AAAJ"}
+2025-08-06 13:19:55,551 - engineio.server - INFO - XeJ1HFddgiMsUgM6AAAH: Received request to upgrade to websocket
+2025-08-06 13:19:55,572 - engineio.server - INFO - CuykTOzvmsTnNtRkAAAG: Upgrade to websocket successful
+2025-08-06 13:19:55,585 - engineio.server - INFO - XeJ1HFddgiMsUgM6AAAH: Upgrade to websocket successful
+2025-08-06 13:19:55,821 - engineio.server - INFO - IL2hlmZXGR6gNq6UAAAK: Sending packet OPEN data {'sid': 'IL2hlmZXGR6gNq6UAAAK', 'upgrades': ['websocket'], 'pingTimeout': 20000, 'pingInterval': 25000, 'maxPayload': 1000000}
+2025-08-06 13:19:55,832 - engineio.server - INFO - IL2hlmZXGR6gNq6UAAAK: Received packet MESSAGE data 0
+2025-08-06 13:19:55,834 - socketio.server - INFO - emitting event "connected" to VassLLHmUS2RB1QvAAAL [/]
+2025-08-06 13:19:55,834 - engineio.server - INFO - IL2hlmZXGR6gNq6UAAAK: Sending packet MESSAGE data 2["connected",{"data":"Connected to trading bot"}]
+2025-08-06 13:19:55,835 - engineio.server - INFO - IL2hlmZXGR6gNq6UAAAK: Sending packet MESSAGE data 0{"sid":"VassLLHmUS2RB1QvAAAL"}
+2025-08-06 13:19:56,136 - engineio.server - INFO - IL2hlmZXGR6gNq6UAAAK: Received request to upgrade to websocket
+2025-08-06 13:19:56,144 - engineio.server - INFO - IL2hlmZXGR6gNq6UAAAK: Upgrade to websocket successful
+2025-08-06 13:20:06,514 - engineio.server - INFO - RaicZSry7tsdHUH7AAAM: Sending packet OPEN data {'sid': 'RaicZSry7tsdHUH7AAAM', 'upgrades': ['websocket'], 'pingTimeout': 20000, 'pingInterval': 25000, 'maxPayload': 1000000}
+2025-08-06 13:20:08,517 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:20:08,518 - pionex_api - INFO - Balance API response: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:20:08,518 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:20:09,246 - engineio.server - INFO - ArUIfe8_kGzTpUXJAAAN: Sending packet OPEN data {'sid': 'ArUIfe8_kGzTpUXJAAAN', 'upgrades': ['websocket'], 'pingTimeout': 20000, 'pingInterval': 25000, 'maxPayload': 1000000}
+2025-08-06 13:20:09,250 - engineio.server - INFO - ArUIfe8_kGzTpUXJAAAN: Received packet MESSAGE data 0
+2025-08-06 13:20:09,251 - socketio.server - INFO - emitting event "connected" to 6Rqa3aaluUV06kX4AAAO [/]
+2025-08-06 13:20:09,252 - engineio.server - INFO - ArUIfe8_kGzTpUXJAAAN: Sending packet MESSAGE data 2["connected",{"data":"Connected to trading bot"}]
+2025-08-06 13:20:09,253 - engineio.server - INFO - ArUIfe8_kGzTpUXJAAAN: Sending packet MESSAGE data 0{"sid":"6Rqa3aaluUV06kX4AAAO"}
+2025-08-06 13:20:19,527 - engineio.server - INFO - Bk4W1Xgg1uyAhjOPAAAA: Sending packet PING data None
+2025-08-06 13:20:19,544 - engineio.server - INFO - 4jcMdFvByahyau4oAAAB: Sending packet PING data None
+2025-08-06 13:20:19,574 - engineio.server - INFO - VBa2Qxgd5UUzoJJyAAAE: Sending packet PING data None
+2025-08-06 13:20:19,609 - engineio.server - INFO - Bk4W1Xgg1uyAhjOPAAAA: Received packet PONG data 
+2025-08-06 13:20:19,611 - engineio.server - INFO - 4jcMdFvByahyau4oAAAB: Received packet PONG data 
+2025-08-06 13:20:19,613 - engineio.server - INFO - VBa2Qxgd5UUzoJJyAAAE: Received packet PONG data 
+2025-08-06 13:20:20,510 - engineio.server - INFO - CuykTOzvmsTnNtRkAAAG: Sending packet PING data None
+2025-08-06 13:20:20,511 - engineio.server - INFO - XeJ1HFddgiMsUgM6AAAH: Sending packet PING data None
+2025-08-06 13:20:20,554 - engineio.server - INFO - XeJ1HFddgiMsUgM6AAAH: Received packet PONG data 
+2025-08-06 13:20:20,595 - engineio.server - INFO - CuykTOzvmsTnNtRkAAAG: Received packet PONG data 
+2025-08-06 13:20:20,837 - engineio.server - INFO - IL2hlmZXGR6gNq6UAAAK: Sending packet PING data None
+2025-08-06 13:20:20,873 - engineio.server - INFO - IL2hlmZXGR6gNq6UAAAK: Received packet PONG data 
+2025-08-06 13:20:31,512 - engineio.server - INFO - RaicZSry7tsdHUH7AAAM: Sending packet PING data None
+2025-08-06 13:20:34,258 - engineio.server - INFO - ArUIfe8_kGzTpUXJAAAN: Sending packet PING data None
+2025-08-06 13:20:34,266 - engineio.server - INFO - ArUIfe8_kGzTpUXJAAAN: Received packet PONG data 
+2025-08-06 13:20:44,602 - engineio.server - INFO - Bk4W1Xgg1uyAhjOPAAAA: Sending packet PING data None
+2025-08-06 13:20:44,602 - engineio.server - INFO - 4jcMdFvByahyau4oAAAB: Sending packet PING data None
+2025-08-06 13:20:44,604 - engineio.server - INFO - Bk4W1Xgg1uyAhjOPAAAA: Received packet PONG data 
+2025-08-06 13:20:44,604 - engineio.server - INFO - 4jcMdFvByahyau4oAAAB: Received packet PONG data 
+2025-08-06 13:20:44,633 - engineio.server - INFO - VBa2Qxgd5UUzoJJyAAAE: Sending packet PING data None
+2025-08-06 13:20:44,634 - engineio.server - INFO - VBa2Qxgd5UUzoJJyAAAE: Received packet PONG data 
+2025-08-06 13:20:45,566 - engineio.server - INFO - XeJ1HFddgiMsUgM6AAAH: Sending packet PING data None
+2025-08-06 13:20:45,568 - engineio.server - INFO - XeJ1HFddgiMsUgM6AAAH: Received packet PONG data 
+2025-08-06 13:20:45,597 - engineio.server - INFO - CuykTOzvmsTnNtRkAAAG: Sending packet PING data None
+2025-08-06 13:20:45,598 - engineio.server - INFO - CuykTOzvmsTnNtRkAAAG: Received packet PONG data 
+2025-08-06 13:20:45,879 - engineio.server - INFO - IL2hlmZXGR6gNq6UAAAK: Sending packet PING data None
+2025-08-06 13:20:45,880 - engineio.server - INFO - IL2hlmZXGR6gNq6UAAAK: Received packet PONG data 
+2025-08-06 13:20:47,798 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:20:47,798 - pionex_api - INFO - Balance API response: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:20:47,799 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:20:48,043 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:20:48,044 - pionex_api - INFO - Balance API response: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:20:48,044 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:20:48,605 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:20:48,606 - pionex_api - INFO - Balance API response for positions: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:20:48,607 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:20:48,608 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:20:48,608 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:20:49,505 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:20:49,506 - pionex_api - INFO - Balance API response: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:20:49,506 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:20:49,851 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:20:49,851 - pionex_api - INFO - Balance API response for positions: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:20:49,852 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:20:49,852 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:20:49,852 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:20:59,280 - engineio.server - INFO - ArUIfe8_kGzTpUXJAAAN: Sending packet PING data None
+2025-08-06 13:21:06,722 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:21:06,723 - pionex_api - INFO - Balance API response: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:21:06,723 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:21:09,616 - engineio.server - INFO - 4jcMdFvByahyau4oAAAB: Sending packet PING data None
+2025-08-06 13:21:09,616 - engineio.server - INFO - Bk4W1Xgg1uyAhjOPAAAA: Sending packet PING data None
+2025-08-06 13:21:09,618 - engineio.server - INFO - 4jcMdFvByahyau4oAAAB: Received packet PONG data 
+2025-08-06 13:21:09,618 - engineio.server - INFO - Bk4W1Xgg1uyAhjOPAAAA: Received packet PONG data 
+2025-08-06 13:21:09,648 - engineio.server - INFO - VBa2Qxgd5UUzoJJyAAAE: Sending packet PING data None
+2025-08-06 13:21:09,649 - engineio.server - INFO - VBa2Qxgd5UUzoJJyAAAE: Received packet PONG data 
+2025-08-06 13:21:09,917 - engineio.server - INFO - RaicZSry7tsdHUH7AAAM: Client is gone, closing socket
+2025-08-06 13:21:09,918 - engineio.server - INFO - RaicZSry7tsdHUH7AAAM: Client is gone, closing socket
+2025-08-06 13:21:10,585 - engineio.server - INFO - XeJ1HFddgiMsUgM6AAAH: Sending packet PING data None
+2025-08-06 13:21:10,586 - engineio.server - INFO - XeJ1HFddgiMsUgM6AAAH: Received packet PONG data 
+2025-08-06 13:21:10,616 - engineio.server - INFO - CuykTOzvmsTnNtRkAAAG: Sending packet PING data None
+2025-08-06 13:21:10,617 - engineio.server - INFO - CuykTOzvmsTnNtRkAAAG: Received packet PONG data 
+2025-08-06 13:21:10,895 - engineio.server - INFO - IL2hlmZXGR6gNq6UAAAK: Sending packet PING data None
+2025-08-06 13:21:10,896 - engineio.server - INFO - IL2hlmZXGR6gNq6UAAAK: Received packet PONG data 
+2025-08-06 13:21:32,498 - engineio.server - INFO - ArUIfe8_kGzTpUXJAAAN: Client is gone, closing socket
+2025-08-06 13:21:32,500 - engineio.server - INFO - ArUIfe8_kGzTpUXJAAAN: Client is gone, closing socket
+2025-08-06 13:21:34,630 - engineio.server - INFO - Bk4W1Xgg1uyAhjOPAAAA: Sending packet PING data None
+2025-08-06 13:21:34,630 - engineio.server - INFO - 4jcMdFvByahyau4oAAAB: Sending packet PING data None
+2025-08-06 13:21:34,631 - engineio.server - INFO - Bk4W1Xgg1uyAhjOPAAAA: Received packet PONG data 
+2025-08-06 13:21:34,632 - engineio.server - INFO - 4jcMdFvByahyau4oAAAB: Received packet PONG data 
+2025-08-06 13:21:34,661 - engineio.server - INFO - VBa2Qxgd5UUzoJJyAAAE: Sending packet PING data None
+2025-08-06 13:21:34,662 - engineio.server - INFO - VBa2Qxgd5UUzoJJyAAAE: Received packet PONG data 
+2025-08-06 13:21:35,609 - engineio.server - INFO - XeJ1HFddgiMsUgM6AAAH: Sending packet PING data None
+2025-08-06 13:21:35,610 - engineio.server - INFO - XeJ1HFddgiMsUgM6AAAH: Received packet PONG data 
+2025-08-06 13:21:35,639 - engineio.server - INFO - CuykTOzvmsTnNtRkAAAG: Sending packet PING data None
+2025-08-06 13:21:35,642 - engineio.server - INFO - CuykTOzvmsTnNtRkAAAG: Received packet PONG data 
+2025-08-06 13:21:35,918 - engineio.server - INFO - IL2hlmZXGR6gNq6UAAAK: Sending packet PING data None
+2025-08-06 13:21:35,919 - engineio.server - INFO - IL2hlmZXGR6gNq6UAAAK: Received packet PONG data 
+2025-08-06 13:21:47,775 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:21:47,776 - pionex_api - INFO - Balance API response for positions: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:21:47,776 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:21:47,776 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:21:47,777 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:21:48,295 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:21:48,296 - pionex_api - INFO - Balance API response for positions: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:21:48,296 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:21:48,297 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:21:48,297 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:21:48,537 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:21:48,537 - pionex_api - INFO - Balance API response for positions: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:21:48,537 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:21:48,538 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:21:48,539 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:21:49,397 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:21:49,397 - pionex_api - INFO - Balance API response: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:21:49,397 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:21:49,660 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:21:49,661 - pionex_api - INFO - Balance API response for positions: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:21:49,661 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:21:49,662 - gui_app - INFO - Positions API response: {'success': True, 'data': {'positions': [], 'total_count': 0}}
+2025-08-06 13:21:49,662 - gui_app - INFO - No positions found, returning empty list
+2025-08-06 13:21:59,641 - engineio.server - INFO - 4jcMdFvByahyau4oAAAB: Sending packet PING data None
+2025-08-06 13:21:59,641 - engineio.server - INFO - Bk4W1Xgg1uyAhjOPAAAA: Sending packet PING data None
+2025-08-06 13:21:59,646 - engineio.server - INFO - 4jcMdFvByahyau4oAAAB: Received packet PONG data 
+2025-08-06 13:21:59,647 - engineio.server - INFO - Bk4W1Xgg1uyAhjOPAAAA: Received packet PONG data 
+2025-08-06 13:21:59,671 - engineio.server - INFO - VBa2Qxgd5UUzoJJyAAAE: Sending packet PING data None
+2025-08-06 13:21:59,673 - engineio.server - INFO - VBa2Qxgd5UUzoJJyAAAE: Received packet PONG data 
+2025-08-06 13:22:00,604 - engineio.server - INFO - XeJ1HFddgiMsUgM6AAAH: Sending packet PING data None
+2025-08-06 13:22:00,605 - engineio.server - INFO - XeJ1HFddgiMsUgM6AAAH: Received packet PONG data 
+2025-08-06 13:22:00,651 - engineio.server - INFO - CuykTOzvmsTnNtRkAAAG: Sending packet PING data None
+2025-08-06 13:22:00,655 - engineio.server - INFO - CuykTOzvmsTnNtRkAAAG: Received packet PONG data 
+2025-08-06 13:22:00,929 - engineio.server - INFO - IL2hlmZXGR6gNq6UAAAK: Sending packet PING data None
+2025-08-06 13:22:00,930 - engineio.server - INFO - IL2hlmZXGR6gNq6UAAAK: Received packet PONG data 
+2025-08-06 13:22:06,752 - pionex_api - ERROR - HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:22:06,753 - pionex_api - INFO - Balance API response: {'error': 'HTTP 404: {"error_msg":"404 Route Not Found"}\n'}
+2025-08-06 13:22:06,753 - pionex_api - WARNING - API error for balance: HTTP 404: {"error_msg":"404 Route Not Found"}
+
+2025-08-06 13:22:24,661 - engineio.server - INFO - Bk4W1Xgg1uyAhjOPAAAA: Sending packet PING data None
+2025-08-06 13:22:24,661 - engineio.server - INFO - 4jcMdFvByahyau4oAAAB: Sending packet PING data None
+2025-08-06 13:22:24,663 - engineio.server - INFO - 4jcMdFvByahyau4oAAAB: Received packet PONG data 
+2025-08-06 13:22:24,664 - engineio.server - INFO - Bk4W1Xgg1uyAhjOPAAAA: Received packet PONG data 
+2025-08-06 13:22:24,693 - engineio.server - INFO - VBa2Qxgd5UUzoJJyAAAE: Sending packet PING data None
+2025-08-06 13:22:24,695 - engineio.server - INFO - VBa2Qxgd5UUzoJJyAAAE: Received packet PONG data 
+2025-08-06 13:22:25,615 - engineio.server - INFO - XeJ1HFddgiMsUgM6AAAH: Sending packet PING data None
+2025-08-06 13:22:25,616 - engineio.server - INFO - XeJ1HFddgiMsUgM6AAAH: Received packet PONG data 
+2025-08-06 13:22:25,662 - engineio.server - INFO - CuykTOzvmsTnNtRkAAAG: Sending packet PING data None
+2025-08-06 13:22:25,663 - engineio.server - INFO - CuykTOzvmsTnNtRkAAAG: Received packet PONG data 
+2025-08-06 13:22:25,945 - engineio.server - INFO - IL2hlmZXGR6gNq6UAAAK: Sending packet PING data None
+2025-08-06 13:22:25,946 - engineio.server - INFO - IL2hlmZXGR6gNq6UAAAK: Received packet PONG data 
