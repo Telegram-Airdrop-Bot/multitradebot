@@ -1,3 +1,16 @@
+#!/usr/bin/env python3
+"""
+Pionex Trading Bot - Web GUI Application
+Copyright © 2024 Telegram-Airdrop-Bot
+https://github.com/Telegram-Airdrop-Bot/autotradebot
+
+A comprehensive web-based GUI for the Pionex Trading Bot with real-time
+market data, automated trading, and advanced analytics.
+
+This software is provided "as is" without warranty. Trading involves
+significant financial risk. Use at your own risk.
+"""
+
 import os
 import sys
 import logging

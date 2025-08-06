@@ -2,6 +2,33 @@
 
 A comprehensive automated trading bot for the Pionex cryptocurrency exchange with advanced features, real-time market data, and a modern web interface.
 
+## 📄 Copyright Notice
+
+**Copyright © 2024 Telegram-Airdrop-Bot**
+
+All rights reserved. This software and associated documentation files (the "Software") are the property of Telegram-Airdrop-Bot.
+
+### **License Terms**
+- **Commercial Use**: Allowed with attribution
+- **Modification**: Allowed for personal use
+- **Distribution**: Allowed with source code
+- **Attribution**: Required - must include copyright notice
+
+### **Attribution Requirements**
+When using this software, you must include:
+```
+Copyright © 2024 Telegram-Airdrop-Bot
+https://github.com/Telegram-Airdrop-Bot/autotradebot
+```
+
+### **Restrictions**
+- **No Warranty**: Software provided "as is" without warranty
+- **Risk Disclaimer**: Trading involves significant financial risk
+- **No Liability**: Authors not liable for trading losses
+- **Educational Use**: Intended for educational purposes
+
+---
+
 ## 🚀 Features
 
 ### **Core Trading Features**
@@ -265,3 +292,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 **🎉 Happy Trading!**
 
 *Remember: Trade responsibly and never invest more than you can afford to lose.*
+
+---
+
+**Copyright © 2024 Telegram-Airdrop-Bot. All rights reserved.**
