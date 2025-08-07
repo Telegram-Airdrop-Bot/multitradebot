@@ -8,6 +8,37 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .price-update {
+            animation: priceUpdate 1s ease-in-out;
+        }
+        
+        @keyframes priceUpdate {
+            0% { background-color: transparent; }
+            50% { background-color: rgba(255, 193, 7, 0.2); }
+            100% { background-color: transparent; }
+        }
+        
+        .card.border-primary .card-header {
+            background: linear-gradient(45deg, #007bff, #0056b3) !important;
+        }
+        
+        .card.border-success .card-header {
+            background: linear-gradient(45deg, #28a745, #1e7e34) !important;
+        }
+        
+        .card.border-warning .card-header {
+            background: linear-gradient(45deg, #ffc107, #e0a800) !important;
+        }
+        
+        .card.border-info .card-header {
+            background: linear-gradient(45deg, #17a2b8, #138496) !important;
+        }
+        
+        .card.border-danger .card-header {
+            background: linear-gradient(45deg, #dc3545, #c82333) !important;
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -90,6 +121,18 @@
                             <span class="status-indicator status-offline" id="auto-trading-status"></span>
                             <span id="auto-trading-text">Disabled</span>
                         </div>
+                        
+                        <!-- Trading Pair Display -->
+                        <div class="alert alert-info mb-3" id="trading-pair-display">
+                            <div class="d-flex align-items-center justify-content-center">
+                                <i class="fas fa-chart-line me-2"></i>
+                                <div>
+                                    <small class="text-muted d-block">Trading Pair</small>
+                                    <strong id="current-trading-pair">BTC_USDT</strong>
+                                </div>
+                            </div>
+                        </div>
+                        
                         <div class="btn-group" role="group">
                             <button type="button" class="btn btn-success btn-sm" id="enable-auto-trading">
                                 <span class="loading" style="display: none;">
@@ -102,6 +145,13 @@
                                     <span class="spinner-border spinner-border-sm me-1"></span>
                                 </span>
                                 <i class="fas fa-stop me-1"></i>Disable
+                            </button>
+                        </div>
+                        
+                        <!-- Change Trading Pair Button -->
+                        <div class="mt-2">
+                            <button type="button" class="btn btn-outline-primary btn-sm" id="change-trading-pair-btn">
+                                <i class="fas fa-edit me-1"></i>Change Pair
                             </button>
                         </div>
                     </div>
@@ -260,6 +310,8 @@
                                                             <option value="BTC_USDT">BTC/USDT</option>
                                                             <option value="ETH_USDT">ETH/USDT</option>
                                                             <option value="DOT_USDT">DOT/USDT</option>
+                                                            <option value="ADA_USDT">ADA/USDT</option>
+                                                            <option value="SOL_USDT">SOL/USDT</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -273,24 +325,116 @@
                                 
                                 <!-- Real-time Market Data -->
                                 <div class="row mt-4">
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                         <div class="card">
                                             <div class="card-header">
-                                                <h6 class="mb-0">Live Market Data</h6>
+                                                <h6 class="mb-0">Live Market Data - Top 5 Cryptocurrencies</h6>
                                             </div>
                                             <div class="card-body">
-                                                <div id="market-data-BTC_USDT">
-                                                    <div class="text-center">
-                                                        <div class="spinner-border spinner-border-sm" role="status">
-                                                            <span class="visually-hidden">Loading...</span>
+                                                <div class="row" id="top-crypto-market-data">
+                                                    <!-- BTC Market Data -->
+                                                    <div class="col-md-6 col-lg-4 mb-3">
+                                                        <div class="card border-primary">
+                                                            <div class="card-header bg-primary text-white">
+                                                                <h6 class="mb-0">Bitcoin (BTC)</h6>
+                                                            </div>
+                                                            <div class="card-body">
+                                                                <div id="market-data-BTC_USDT">
+                                                                    <div class="text-center">
+                                                                        <div class="spinner-border spinner-border-sm" role="status">
+                                                                            <span class="visually-hidden">Loading...</span>
+                                                                        </div>
+                                                                        <p class="mt-2">Loading market data...</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                        <p class="mt-2">Loading market data...</p>
+                                                    </div>
+                                                    
+                                                    <!-- ETH Market Data -->
+                                                    <div class="col-md-6 col-lg-4 mb-3">
+                                                        <div class="card border-success">
+                                                            <div class="card-header bg-success text-white">
+                                                                <h6 class="mb-0">Ethereum (ETH)</h6>
+                                                            </div>
+                                                            <div class="card-body">
+                                                                <div id="market-data-ETH_USDT">
+                                                                    <div class="text-center">
+                                                                        <div class="spinner-border spinner-border-sm" role="status">
+                                                                            <span class="visually-hidden">Loading...</span>
+                                                                        </div>
+                                                                        <p class="mt-2">Loading market data...</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <!-- DOT Market Data -->
+                                                    <div class="col-md-6 col-lg-4 mb-3">
+                                                        <div class="card border-warning">
+                                                            <div class="card-header bg-warning text-dark">
+                                                                <h6 class="mb-0">Polkadot (DOT)</h6>
+                                                            </div>
+                                                            <div class="card-body">
+                                                                <div id="market-data-DOT_USDT">
+                                                                    <div class="text-center">
+                                                                        <div class="spinner-border spinner-border-sm" role="status">
+                                                                            <span class="visually-hidden">Loading...</span>
+                                                                        </div>
+                                                                        <p class="mt-2">Loading market data...</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <!-- ADA Market Data -->
+                                                    <div class="col-md-6 col-lg-4 mb-3">
+                                                        <div class="card border-info">
+                                                            <div class="card-header bg-info text-white">
+                                                                <h6 class="mb-0">Cardano (ADA)</h6>
+                                                            </div>
+                                                            <div class="card-body">
+                                                                <div id="market-data-ADA_USDT">
+                                                                    <div class="text-center">
+                                                                        <div class="spinner-border spinner-border-sm" role="status">
+                                                                            <span class="visually-hidden">Loading...</span>
+                                                                        </div>
+                                                                        <p class="mt-2">Loading market data...</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <!-- SOL Market Data -->
+                                                    <div class="col-md-6 col-lg-4 mb-3">
+                                                        <div class="card border-danger">
+                                                            <div class="card-header bg-danger text-white">
+                                                                <h6 class="mb-0">Solana (SOL)</h6>
+                                                            </div>
+                                                            <div class="card-body">
+                                                                <div id="market-data-SOL_USDT">
+                                                                    <div class="text-center">
+                                                                        <div class="spinner-border spinner-border-sm" role="status">
+                                                                            <span class="visually-hidden">Loading...</span>
+                                                                        </div>
+                                                                        <p class="mt-2">Loading market data...</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                </div>
+                                
+                                <!-- Live Trades -->
+                                <div class="row mt-4">
+                                    <div class="col-md-12">
                                         <div class="card">
                                             <div class="card-header">
                                                 <h6 class="mb-0">Live Trades</h6>
@@ -372,6 +516,8 @@
                                 <option value="BTC_USDT">BTC/USDT</option>
                                 <option value="ETH_USDT">ETH/USDT</option>
                                 <option value="DOT_USDT">DOT/USDT</option>
+                                <option value="ADA_USDT">ADA/USDT</option>
+                                <option value="SOL_USDT">SOL/USDT</option>
                             </select>
                         </div>
                         <div class="mb-3">
@@ -429,6 +575,8 @@
                                 <option value="BTC_USDT">BTC/USDT</option>
                                 <option value="ETH_USDT">ETH/USDT</option>
                                 <option value="DOT_USDT">DOT/USDT</option>
+                                <option value="ADA_USDT">ADA/USDT</option>
+                                <option value="SOL_USDT">SOL/USDT</option>
                             </select>
                         </div>
                         <div class="col-md-6">

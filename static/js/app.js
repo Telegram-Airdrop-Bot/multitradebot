@@ -11,6 +11,170 @@ document.addEventListener('DOMContentLoaded', function() {
     startAutoUpdate();
 });
 
+// Add event listener for change trading pair button
+document.addEventListener('DOMContentLoaded', function() {
+    const changePairBtn = document.getElementById('change-trading-pair-btn');
+    if (changePairBtn) {
+        changePairBtn.addEventListener('click', function() {
+            showTradingPairModal();
+        });
+    }
+});
+
+// Show trading pair selection modal
+function showTradingPairModal() {
+    const modal = `
+        <div class="modal fade" id="tradingPairModal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Select Trading Pair</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle me-2"></i>
+                            <strong>Current Pair:</strong> <span id="current-pair-display">BTC_USDT</span>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-6 mb-2">
+                                <button class="btn btn-outline-primary w-100 trading-pair-btn" data-pair="BTC_USDT">
+                                    <strong>BTC/USDT</strong><br><small>Bitcoin</small>
+                                </button>
+                            </div>
+                            <div class="col-6 mb-2">
+                                <button class="btn btn-outline-primary w-100 trading-pair-btn" data-pair="ETH_USDT">
+                                    <strong>ETH/USDT</strong><br><small>Ethereum</small>
+                                </button>
+                            </div>
+                            <div class="col-6 mb-2">
+                                <button class="btn btn-outline-primary w-100 trading-pair-btn" data-pair="DOT_USDT">
+                                    <strong>DOT/USDT</strong><br><small>Polkadot</small>
+                                </button>
+                            </div>
+                            <div class="col-6 mb-2">
+                                <button class="btn btn-outline-primary w-100 trading-pair-btn" data-pair="ADA_USDT">
+                                    <strong>ADA/USDT</strong><br><small>Cardano</small>
+                                </button>
+                            </div>
+                            <div class="col-6 mb-2">
+                                <button class="btn btn-outline-primary w-100 trading-pair-btn" data-pair="SOL_USDT">
+                                    <strong>SOL/USDT</strong><br><small>Solana</small>
+                                </button>
+                            </div>
+                            <div class="col-6 mb-2">
+                                <button class="btn btn-outline-primary w-100 trading-pair-btn" data-pair="XRP_USDT">
+                                    <strong>XRP/USDT</strong><br><small>Ripple</small>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-3">
+                            <label class="form-label">Or enter custom pair:</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="custom-trading-pair" placeholder="e.g., LINK_USDT">
+                                <button class="btn btn-primary" type="button" id="set-custom-pair">Set</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    // Remove existing modal if any
+    const existingModal = document.getElementById('tradingPairModal');
+    if (existingModal) {
+        existingModal.remove();
+    }
+    
+    // Add modal to body
+    document.body.insertAdjacentHTML('beforeend', modal);
+    
+    // Show current pair
+    const currentPairDisplay = document.getElementById('current-pair-display');
+    if (currentPairDisplay) {
+        const currentPair = document.getElementById('current-trading-pair');
+        if (currentPair) {
+            currentPairDisplay.textContent = currentPair.textContent;
+        }
+    }
+    
+    // Add event listeners
+    const tradingPairBtns = document.querySelectorAll('.trading-pair-btn');
+    tradingPairBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const pair = this.getAttribute('data-pair');
+            updateTradingPair(pair);
+        });
+    });
+    
+    // Custom pair input
+    const setCustomPairBtn = document.getElementById('set-custom-pair');
+    if (setCustomPairBtn) {
+        setCustomPairBtn.addEventListener('click', function() {
+            const customPair = document.getElementById('custom-trading-pair').value.trim().toUpperCase();
+            if (customPair) {
+                updateTradingPair(customPair);
+            }
+        });
+    }
+    
+    // Show modal
+    const modalElement = document.getElementById('tradingPairModal');
+    const bsModal = new bootstrap.Modal(modalElement);
+    bsModal.show();
+}
+
+// Update trading pair
+function updateTradingPair(newPair) {
+    fetch('/api/update-trading-pair', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            trading_pair: newPair
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Update display
+            const currentPairElement = document.getElementById('current-trading-pair');
+            if (currentPairElement) {
+                currentPairElement.textContent = newPair;
+            }
+            
+            // Update trading pair display
+            updateAutoTradingStatus({
+                current_pair: newPair,
+                auto_trading_enabled: data.auto_trading_enabled || false
+            });
+            
+            // Show success message
+            showNotification('✅ Trading pair updated successfully!', 'success');
+            
+            // Close modal
+            const modal = document.getElementById('tradingPairModal');
+            const bsModal = bootstrap.Modal.getInstance(modal);
+            if (bsModal) {
+                bsModal.hide();
+            }
+        } else {
+            showNotification('❌ Failed to update trading pair: ' + (data.error || 'Unknown error'), 'error');
+        }
+    })
+    .catch(error => {
+        console.error('Error updating trading pair:', error);
+        showNotification('❌ Error updating trading pair', 'error');
+    });
+}
+
 // Initialize WebSocket connection
 function initializeSocket() {
     socket = io();
@@ -101,13 +265,13 @@ function initializeEventListeners() {
         }, 100);
         
         // Load real-time market data
-        loadRealTimeMarketData(symbol);
+        loadAllMarketData();
         loadLiveTrades(symbol);
         loadMarketDepth(symbol);
         
         // Set up real-time updates
         setInterval(() => {
-            loadRealTimeMarketData(symbol);
+            loadAllMarketData();
             loadLiveTrades(symbol);
             loadMarketDepth(symbol);
         }, 10000); // Update every 10 seconds
@@ -184,6 +348,40 @@ function updatePriceDisplay(symbol, price) {
     }
 }
 
+// Wait for container to be available
+function waitForContainer(containerId, maxAttempts = 10) {
+    return new Promise((resolve, reject) => {
+        let attempts = 0;
+        
+        const checkContainer = () => {
+            attempts++;
+            const container = document.getElementById(containerId);
+            
+            if (container) {
+                resolve(container);
+            } else if (attempts >= maxAttempts) {
+                reject(new Error(`Container ${containerId} not found after ${maxAttempts} attempts`));
+            } else {
+                setTimeout(checkContainer, 100);
+            }
+        };
+        
+        checkContainer();
+    });
+}
+
+// Load real-time market data for all top cryptocurrencies
+function loadAllMarketData() {
+    const topCryptos = ['BTC_USDT', 'ETH_USDT', 'DOT_USDT', 'ADA_USDT', 'SOL_USDT'];
+    
+    // Add a small delay to ensure DOM is fully loaded
+    setTimeout(() => {
+        topCryptos.forEach(symbol => {
+            loadRealTimeMarketData(symbol);
+        });
+    }, 100);
+}
+
 // Load real-time market data
 function loadRealTimeMarketData(symbol) {
     console.log(`Loading market data for ${symbol}...`);
@@ -193,70 +391,90 @@ function loadRealTimeMarketData(symbol) {
         .then(data => {
             console.log(`Market data response for ${symbol}:`, data);
             if (data.success) {
-                updateMarketDataDisplay(symbol, data.data);
+                // Wait for container to be available before updating
+                waitForContainer(`market-data-${symbol}`)
+                    .then(() => {
+                        updateMarketDataDisplay(symbol, data.data);
+                    })
+                    .catch(error => {
+                        console.error(`Container not found for ${symbol}:`, error);
+                        // Try to create the container if it doesn't exist
+                        createMarketDataContainer(symbol);
+                    });
             } else {
                 console.error(`Error loading market data for ${symbol}:`, data.error);
-                // Show error in the container
-                const container = document.getElementById(`market-data-${symbol}`);
-                if (container) {
-                    container.innerHTML = `
-                        <div class="alert alert-warning">
-                            <i class="fas fa-exclamation-triangle me-2"></i>
-                            Failed to load market data: ${data.error}
-                        </div>
-                    `;
-                }
+                // Show error in the container if available
+                waitForContainer(`market-data-${symbol}`)
+                    .then(container => {
+                        container.innerHTML = `
+                            <div class="alert alert-warning">
+                                <i class="fas fa-exclamation-triangle me-2"></i>
+                                Failed to load market data: ${data.error}
+                            </div>
+                        `;
+                    })
+                    .catch(error => {
+                        console.error(`Container not found for ${symbol}:`, error);
+                    });
             }
         })
         .catch(error => {
             console.error(`Error loading market data for ${symbol}:`, error);
-            // Show error in the container
-            const container = document.getElementById(`market-data-${symbol}`);
-            if (container) {
-                container.innerHTML = `
-                    <div class="alert alert-danger">
-                        <i class="fas fa-exclamation-circle me-2"></i>
-                        Network error: ${error.message}
-                    </div>
-                `;
-            }
+            // Show error in the container if available
+            waitForContainer(`market-data-${symbol}`)
+                .then(container => {
+                    container.innerHTML = `
+                        <div class="alert alert-danger">
+                            <i class="fas fa-exclamation-circle me-2"></i>
+                            Network error: ${error.message}
+                        </div>
+                    `;
+                })
+                .catch(containerError => {
+                    console.error(`Container not found for ${symbol}:`, containerError);
+                });
         });
 }
 
 // Update market data display
 function updateMarketDataDisplay(symbol, marketData) {
     const container = document.getElementById(`market-data-${symbol}`);
+    
     if (container) {
         try {
             const priceChange = marketData.priceChangePercent || 0;
             const priceChangeClass = priceChange >= 0 ? 'text-success' : 'text-danger';
             const priceChangeIcon = priceChange >= 0 ? '▲' : '▼';
+            const currentPrice = marketData.price || 0;
+            const high = marketData.high || 0;
+            const low = marketData.low || 0;
+            const volume = marketData.volume || 0;
             
             container.innerHTML = `
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="metric-value">$${(marketData.price || 0).toFixed(2)}</div>
-                        <div class="metric-label">Current Price</div>
+                <div class="text-center">
+                    <div class="h4 mb-2 fw-bold">$${currentPrice.toFixed(2)}</div>
+                    <div class="h6 ${priceChangeClass} mb-2">
+                        ${priceChangeIcon} ${Math.abs(priceChange).toFixed(2)}%
                     </div>
-                    <div class="col-md-6">
-                        <div class="metric-value ${priceChangeClass}">
-                            ${priceChangeIcon} ${Math.abs(priceChange).toFixed(2)}%
+                    <div class="row text-muted small">
+                        <div class="col-6">
+                            <div>High: $${high.toFixed(2)}</div>
+                            <div>Low: $${low.toFixed(2)}</div>
                         </div>
-                        <div class="metric-label">24h Change</div>
-                    </div>
-                </div>
-                <div class="row mt-2">
-                    <div class="col-md-4">
-                        <small class="text-muted">High: $${(marketData.high || 0).toFixed(2)}</small>
-                    </div>
-                    <div class="col-md-4">
-                        <small class="text-muted">Low: $${(marketData.low || 0).toFixed(2)}</small>
-                    </div>
-                    <div class="col-md-4">
-                        <small class="text-muted">Volume: ${(marketData.volume || 0).toFixed(2)}</small>
+                        <div class="col-6">
+                            <div>Vol: ${volume.toFixed(0)}</div>
+                            <div class="text-truncate">${symbol.replace('_USDT', '')}</div>
+                        </div>
                     </div>
                 </div>
             `;
+            
+            // Add price change animation
+            container.classList.add('price-update');
+            setTimeout(() => {
+                container.classList.remove('price-update');
+            }, 1000);
+            
         } catch (error) {
             console.error(`Error updating market data display for ${symbol}:`, error);
             container.innerHTML = `
@@ -290,22 +508,35 @@ function loadLiveTrades(symbol, limit = 20) {
 // Update live trades display
 function updateLiveTradesDisplay(symbol, trades) {
     const container = document.getElementById(`live-trades-${symbol}`);
-    if (container && trades.length > 0) {
-        const tradesHtml = trades.slice(0, 10).map(trade => {
-            const side = trade.side === 'BUY' ? 'text-success' : 'text-danger';
-            const sideIcon = trade.side === 'BUY' ? '▲' : '▼';
-            const time = new Date(trade.time).toLocaleTimeString();
+    if (container) {
+        // Check if trades is an array and has data
+        if (trades && Array.isArray(trades) && trades.length > 0) {
+            const tradesHtml = trades.slice(0, 10).map(trade => {
+                const side = trade.side === 'BUY' ? 'text-success' : 'text-danger';
+                const sideIcon = trade.side === 'BUY' ? '▲' : '▼';
+                const time = new Date(trade.time || trade.timestamp || Date.now()).toLocaleTimeString();
+                
+                return `
+                    <div class="d-flex justify-content-between align-items-center py-1">
+                        <span class="${side}">${sideIcon} $${parseFloat(trade.price || 0).toFixed(2)}</span>
+                        <span class="text-muted">${parseFloat(trade.qty || trade.quantity || 0).toFixed(4)}</span>
+                        <small class="text-muted">${time}</small>
+                    </div>
+                `;
+            }).join('');
             
-            return `
-                <div class="d-flex justify-content-between align-items-center py-1">
-                    <span class="${side}">${sideIcon} $${parseFloat(trade.price).toFixed(2)}</span>
-                    <span class="text-muted">${parseFloat(trade.qty).toFixed(4)}</span>
-                    <small class="text-muted">${time}</small>
+            container.innerHTML = tradesHtml;
+        } else {
+            // Show no trades message
+            container.innerHTML = `
+                <div class="text-center text-muted">
+                    <i class="fas fa-info-circle me-2"></i>
+                    No recent trades available
                 </div>
             `;
-        }).join('');
-        
-        container.innerHTML = tradesHtml;
+        }
+    } else {
+        console.error(`Live trades container not found for ${symbol}`);
     }
 }
 
@@ -664,14 +895,40 @@ function loadAutoTradingStatus() {
 function updateAutoTradingStatus(status) {
     const statusElement = document.getElementById('auto-trading-status');
     const textElement = document.getElementById('auto-trading-text');
+    const currentPairElement = document.getElementById('current-trading-pair');
     
     if (statusElement && textElement) {
-        if (status && status.is_running) {
+        if (status.auto_trading_enabled) {
             statusElement.className = 'status-indicator status-online';
             textElement.textContent = 'Enabled';
         } else {
             statusElement.className = 'status-indicator status-offline';
             textElement.textContent = 'Disabled';
+        }
+    }
+    
+    // Update trading pair display
+    if (currentPairElement) {
+        const tradingPair = status.current_pair || 'BTC_USDT';
+        currentPairElement.textContent = tradingPair;
+        
+        // Update the trading pair display with more info
+        const tradingPairDisplay = document.getElementById('trading-pair-display');
+        if (tradingPairDisplay) {
+            const pairInfo = tradingPair.split('_');
+            const baseCurrency = pairInfo[0];
+            const quoteCurrency = pairInfo[1] || 'USDT';
+            
+            tradingPairDisplay.innerHTML = `
+                <div class="d-flex align-items-center justify-content-center">
+                    <i class="fas fa-chart-line me-2"></i>
+                    <div>
+                        <small class="text-muted d-block">Trading Pair</small>
+                        <strong>${baseCurrency}/${quoteCurrency}</strong>
+                        <br><small class="text-muted">${tradingPair}</small>
+                    </div>
+                </div>
+            `;
         }
     }
 }
@@ -1901,6 +2158,92 @@ function testChartLoading(symbol = 'BTC_USDT') {
 // Make test function available globally
 window.testChartLoading = testChartLoading;
 
+// Create market data container if it doesn't exist
+function createMarketDataContainer(symbol) {
+    const containerId = `market-data-${symbol}`;
+    const existingContainer = document.getElementById(containerId);
+    
+    if (existingContainer) {
+        console.log(`Container ${containerId} already exists`);
+        return existingContainer;
+    }
+    
+    // Find the top-crypto-market-data container
+    const topCryptoContainer = document.getElementById('top-crypto-market-data');
+    if (!topCryptoContainer) {
+        console.error('top-crypto-market-data container not found');
+        return null;
+    }
+    
+    // Create the container dynamically
+    const cryptoName = symbol.replace('_USDT', '');
+    const colorClass = getCryptoColorClass(symbol);
+    const headerClass = getCryptoHeaderClass(symbol);
+    const headerText = getCryptoDisplayName(symbol);
+    
+    const containerHtml = `
+        <div class="col-md-6 col-lg-4 mb-3">
+            <div class="card ${colorClass}">
+                <div class="card-header ${headerClass}">
+                    <h6 class="mb-0">${headerText}</h6>
+                </div>
+                <div class="card-body">
+                    <div id="${containerId}">
+                        <div class="text-center">
+                            <div class="spinner-border spinner-border-sm" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                            <p class="mt-2">Loading market data...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    // Insert the new container
+    topCryptoContainer.insertAdjacentHTML('beforeend', containerHtml);
+    
+    console.log(`Created container for ${symbol}`);
+    return document.getElementById(containerId);
+}
+
+// Get crypto color class
+function getCryptoColorClass(symbol) {
+    const colorMap = {
+        'BTC_USDT': 'border-primary',
+        'ETH_USDT': 'border-success',
+        'DOT_USDT': 'border-warning',
+        'ADA_USDT': 'border-info',
+        'SOL_USDT': 'border-danger'
+    };
+    return colorMap[symbol] || 'border-secondary';
+}
+
+// Get crypto header class
+function getCryptoHeaderClass(symbol) {
+    const headerMap = {
+        'BTC_USDT': 'bg-primary text-white',
+        'ETH_USDT': 'bg-success text-white',
+        'DOT_USDT': 'bg-warning text-dark',
+        'ADA_USDT': 'bg-info text-white',
+        'SOL_USDT': 'bg-danger text-white'
+    };
+    return headerMap[symbol] || 'bg-secondary text-white';
+}
+
+// Get crypto display name
+function getCryptoDisplayName(symbol) {
+    const nameMap = {
+        'BTC_USDT': 'Bitcoin (BTC)',
+        'ETH_USDT': 'Ethereum (ETH)',
+        'DOT_USDT': 'Polkadot (DOT)',
+        'ADA_USDT': 'Cardano (ADA)',
+        'SOL_USDT': 'Solana (SOL)'
+    };
+    return nameMap[symbol] || symbol;
+}
+
 // Cleanup on page unload
 window.addEventListener('beforeunload', function() {
     if (updateInterval) {
@@ -1909,4 +2252,26 @@ window.addEventListener('beforeunload', function() {
     if (socket) {
         socket.disconnect();
     }
-}); 
+});
+
+// Show notification
+function showNotification(message, type = 'info') {
+    // Create notification element
+    const notification = document.createElement('div');
+    notification.className = `alert alert-${type} alert-dismissible fade show position-fixed`;
+    notification.style.cssText = 'top: 20px; right: 20px; z-index: 9999; min-width: 300px;';
+    notification.innerHTML = `
+        ${message}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    `;
+    
+    // Add to body
+    document.body.appendChild(notification);
+    
+    // Auto remove after 5 seconds
+    setTimeout(() => {
+        if (notification.parentNode) {
+            notification.remove();
+        }
+    }, 5000);
+} 

@@ -1341,6 +1341,34 @@ def api_test_api_response(symbol):
         logger.error(f"Error testing API response for {symbol}: {e}")
         return jsonify({'success': False, 'error': str(e)})
 
+@app.route('/api/update-trading-pair', methods=['POST'])
+def api_update_trading_pair():
+    """API endpoint to update trading pair"""
+    try:
+        data = request.get_json()
+        new_pair = data.get('trading_pair', '').upper()
+        
+        if not new_pair:
+            return jsonify({'success': False, 'error': 'Trading pair is required'})
+        
+        # Update the trading pair in the auto trader
+        auto_trader = get_auto_trader(trading_bot.current_user or 1)
+        auto_trader.set_trading_pair(new_pair)
+        
+        # Get updated status
+        status = get_auto_trading_status(trading_bot.current_user or 1)
+        
+        return jsonify({
+            'success': True,
+            'message': f'Trading pair updated to {new_pair}',
+            'current_pair': new_pair,
+            'auto_trading_enabled': status.get('auto_trading_enabled', False)
+        })
+        
+    except Exception as e:
+        logger.error(f"Error updating trading pair: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+
 # WebSocket events
 @socketio.on('connect')
 def handle_connect():
