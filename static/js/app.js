@@ -292,6 +292,32 @@ function initializeEventListeners() {
     }
 }
 
+// Initialize trading pair display with default values
+function initializeTradingPairDisplay() {
+    const currentPairElement = document.getElementById('current-trading-pair');
+    const tradingPairDisplay = document.getElementById('trading-pair-display');
+    
+    if (currentPairElement && tradingPairDisplay) {
+        const defaultPair = 'BTC_USDT';
+        currentPairElement.textContent = defaultPair;
+        
+        const pairInfo = defaultPair.split('_');
+        const baseCurrency = pairInfo[0];
+        const quoteCurrency = pairInfo[1] || 'USDT';
+        
+        tradingPairDisplay.innerHTML = `
+            <div class="d-flex align-items-center justify-content-center">
+                <i class="fas fa-chart-line me-2"></i>
+                <div>
+                    <small class="text-muted d-block">Trading Pair</small>
+                    <strong>${baseCurrency}/${quoteCurrency}</strong>
+                    <br><small class="text-muted">${defaultPair}</small>
+                </div>
+            </div>
+        `;
+    }
+}
+
 // Load initial data
 function loadInitialData() {
     loadBalance();
@@ -300,9 +326,7 @@ function loadInitialData() {
     loadSettings();
     loadAutoTradingStatus();
     loadActiveStrategies();
-    
-    // Note: Chart data will be loaded when charts tab is clicked
-    // to avoid "Price chart canvas not found" error
+    initializeTradingPairDisplay(); // Initialize trading pair display
 }
 
 // Start auto update
@@ -907,7 +931,7 @@ function updateAutoTradingStatus(status) {
         }
     }
     
-    // Update trading pair display
+    // Update trading pair display - always update this
     if (currentPairElement) {
         const tradingPair = status.current_pair || 'BTC_USDT';
         currentPairElement.textContent = tradingPair;
@@ -930,6 +954,11 @@ function updateAutoTradingStatus(status) {
                 </div>
             `;
         }
+    }
+    
+    // If no status provided, still initialize the display
+    if (!status || Object.keys(status).length === 0) {
+        initializeTradingPairDisplay();
     }
 }
 
