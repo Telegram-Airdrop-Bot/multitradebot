@@ -150,17 +150,42 @@ function updateTradingPair(newPair) {
     .then(data => {
         console.log('Response data:', data);
         if (data.success) {
-            // Update display
+            // Update the trading pair display directly
             const currentPairElement = document.getElementById('current-trading-pair');
+            const tradingPairDisplay = document.getElementById('trading-pair-display');
+            
+            console.log('Found currentPairElement:', currentPairElement);
+            console.log('Found tradingPairDisplay:', tradingPairDisplay);
+            
             if (currentPairElement) {
                 currentPairElement.textContent = newPair;
+                console.log('Updated current-trading-pair element to:', newPair);
+            } else {
+                console.error('current-trading-pair element not found!');
             }
             
-            // Update trading pair display
-            updateAutoTradingStatus({
-                current_pair: newPair,
-                auto_trading_enabled: data.auto_trading_enabled || false
-            });
+            if (tradingPairDisplay) {
+                const pairInfo = newPair.split('_');
+                const baseCurrency = pairInfo[0];
+                const quoteCurrency = pairInfo[1] || 'USDT';
+                
+                tradingPairDisplay.innerHTML = `
+                    <div class="d-flex align-items-center justify-content-center">
+                        <i class="fas fa-chart-line me-2"></i>
+                        <div>
+                            <small class="text-muted d-block">Trading Pair</small>
+                            <strong>${baseCurrency}/${quoteCurrency}</strong>
+                            <br><small class="text-muted">${newPair}</small>
+                        </div>
+                    </div>
+                `;
+                console.log('Updated trading-pair-display element');
+            } else {
+                console.error('trading-pair-display element not found!');
+            }
+            
+            // Also update the auto trading status to refresh everything
+            loadAutoTradingStatus();
             
             // Show success message
             showNotification('✅ Trading pair updated successfully!', 'success');

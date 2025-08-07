@@ -75,3 +75,9 @@
 2025-08-08 04:34:35,239 - AutoTrader_user_1 - INFO - AutoTrader instance initialized for user_1
 2025-08-08 04:34:35,314 - AutoTrader_user_1 - INFO - Trading pair changed from BTC_USDT to ETH_USDT
 2025-08-08 04:34:50,351 - AutoTrader_user_1 - INFO - Trading pair changed from ETH_USDT to ETH_USDT
+2025-08-08 04:37:03,687 - AutoTrader_user_1 - INFO - Trading pair changed from ETH_USDT to ETH_USDT
+2025-08-08 04:37:44,956 - AutoTrader_user_1 - INFO - AutoTrader instance initialized for user_1
+2025-08-08 04:37:45,003 - AutoTrader_user_1 - INFO - Trading pair changed from ETH_USDT to DOT_USDT
+2025-08-08 04:38:13,536 - AutoTrader_user_1 - INFO - Trading pair changed from DOT_USDT to ETH_USDT
+2025-08-08 04:38:36,298 - AutoTrader_user_1 - INFO - Trading pair changed from ETH_USDT to DOT_USDT
+2025-08-08 04:38:59,035 - AutoTrader_user_1 - INFO - Trading pair changed from DOT_USDT to ETH_USDT
