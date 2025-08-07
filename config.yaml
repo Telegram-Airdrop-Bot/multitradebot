@@ -135,7 +135,7 @@ trading_hours:
   exclude_weekends: false
   start: '19:30'
   timezone: UTC-5
-trading_pair: BTC_USDT
+trading_pair: ETH_USDT
 trailing_stop:
   dynamic_mobile_sl: true
   enable_after_tp: true

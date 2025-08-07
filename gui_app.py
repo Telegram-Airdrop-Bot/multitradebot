@@ -1348,15 +1348,21 @@ def api_update_trading_pair():
         data = request.get_json()
         new_pair = data.get('trading_pair', '').upper()
         
+        logger.info(f"Updating trading pair to: {new_pair}")
+        
         if not new_pair:
             return jsonify({'success': False, 'error': 'Trading pair is required'})
         
         # Update the trading pair in the auto trader
         auto_trader = get_auto_trader(trading_bot.current_user or 1)
+        logger.info(f"Got auto trader: {auto_trader}")
+        
         auto_trader.set_trading_pair(new_pair)
+        logger.info(f"Set trading pair to: {new_pair}")
         
         # Get updated status
         status = get_auto_trading_status(trading_bot.current_user or 1)
+        logger.info(f"Updated status: {status}")
         
         return jsonify({
             'success': True,
@@ -1367,6 +1373,23 @@ def api_update_trading_pair():
         
     except Exception as e:
         logger.error(f"Error updating trading pair: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+
+@app.route('/api/test-auto-trader')
+def api_test_auto_trader():
+    """Test endpoint to check if auto trader is working"""
+    try:
+        user_id = trading_bot.current_user or 1
+        auto_trader = get_auto_trader(user_id)
+        
+        return jsonify({
+            'success': True,
+            'auto_trader_exists': auto_trader is not None,
+            'current_pair': getattr(auto_trader, 'current_pair', 'N/A'),
+            'user_id': user_id
+        })
+    except Exception as e:
+        logger.error(f"Error testing auto trader: {e}")
         return jsonify({'success': False, 'error': str(e)})
 
 # WebSocket events

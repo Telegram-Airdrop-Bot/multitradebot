@@ -72,3 +72,6 @@
 2025-08-08 04:29:28,195 - AutoTrader_user_1 - INFO - Auto trading stopped
 2025-08-08 04:29:28,195 - AutoTrader_user_1 - INFO - Auto trading stopped
 2025-08-08 04:29:28,195 - AutoTrader_user_1 - INFO - Auto trading stopped
+2025-08-08 04:34:35,239 - AutoTrader_user_1 - INFO - AutoTrader instance initialized for user_1
+2025-08-08 04:34:35,314 - AutoTrader_user_1 - INFO - Trading pair changed from BTC_USDT to ETH_USDT
+2025-08-08 04:34:50,351 - AutoTrader_user_1 - INFO - Trading pair changed from ETH_USDT to ETH_USDT

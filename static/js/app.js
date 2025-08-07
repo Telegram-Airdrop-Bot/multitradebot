@@ -132,6 +132,8 @@ function showTradingPairModal() {
 
 // Update trading pair
 function updateTradingPair(newPair) {
+    console.log('Updating trading pair to:', newPair);
+    
     fetch('/api/update-trading-pair', {
         method: 'POST',
         headers: {
@@ -141,8 +143,12 @@ function updateTradingPair(newPair) {
             trading_pair: newPair
         })
     })
-    .then(response => response.json())
+    .then(response => {
+        console.log('Response status:', response.status);
+        return response.json();
+    })
     .then(data => {
+        console.log('Response data:', data);
         if (data.success) {
             // Update display
             const currentPairElement = document.getElementById('current-trading-pair');
@@ -166,6 +172,7 @@ function updateTradingPair(newPair) {
                 bsModal.hide();
             }
         } else {
+            console.error('Failed to update trading pair:', data.error);
             showNotification('❌ Failed to update trading pair: ' + (data.error || 'Unknown error'), 'error');
         }
     })
