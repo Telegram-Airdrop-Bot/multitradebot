@@ -142,6 +142,26 @@ class Database:
         """Update user setting (alias for save_user_setting)"""
         return self.save_user_setting(user_id, key, value)
     
+    def update_user_settings(self, user_id, settings_dict):
+        """Update multiple user settings at once"""
+        try:
+            settings = self._read_json(self.settings_file) or {}
+            
+            if str(user_id) not in settings:
+                settings[str(user_id)] = {}
+            
+            # Update multiple settings
+            for key, value in settings_dict.items():
+                settings[str(user_id)][key] = value
+            
+            if self._write_json(self.settings_file, settings):
+                logger.info(f"Updated {len(settings_dict)} settings for user {user_id}")
+                return True
+            return False
+        except Exception as e:
+            logger.error(f"Error updating user settings: {e}")
+            return False
+    
     def save_portfolio_snapshot(self, portfolio_data):
         """Save portfolio snapshot"""
         try:
