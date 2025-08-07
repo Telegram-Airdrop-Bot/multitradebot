@@ -151,18 +151,9 @@ function updateTradingPair(newPair) {
         console.log('Response data:', data);
         if (data.success) {
             // Update the trading pair display directly
-            const currentPairElement = document.getElementById('current-trading-pair');
             const tradingPairDisplay = document.getElementById('trading-pair-display');
             
-            console.log('Found currentPairElement:', currentPairElement);
             console.log('Found tradingPairDisplay:', tradingPairDisplay);
-            
-            if (currentPairElement) {
-                currentPairElement.textContent = newPair;
-                console.log('Updated current-trading-pair element to:', newPair);
-            } else {
-                console.error('current-trading-pair element not found!');
-            }
             
             if (tradingPairDisplay) {
                 const pairInfo = newPair.split('_');
@@ -174,12 +165,12 @@ function updateTradingPair(newPair) {
                         <i class="fas fa-chart-line me-2"></i>
                         <div>
                             <small class="text-muted d-block">Trading Pair</small>
-                            <strong>${baseCurrency}/${quoteCurrency}</strong>
+                            <strong id="current-trading-pair">${baseCurrency}/${quoteCurrency}</strong>
                             <br><small class="text-muted">${newPair}</small>
                         </div>
                     </div>
                 `;
-                console.log('Updated trading-pair-display element');
+                console.log('Updated trading-pair-display element with new pair:', newPair);
             } else {
                 console.error('trading-pair-display element not found!');
             }
@@ -326,13 +317,10 @@ function initializeEventListeners() {
 
 // Initialize trading pair display with default values
 function initializeTradingPairDisplay() {
-    const currentPairElement = document.getElementById('current-trading-pair');
     const tradingPairDisplay = document.getElementById('trading-pair-display');
     
-    if (currentPairElement && tradingPairDisplay) {
+    if (tradingPairDisplay) {
         const defaultPair = 'BTC_USDT';
-        currentPairElement.textContent = defaultPair;
-        
         const pairInfo = defaultPair.split('_');
         const baseCurrency = pairInfo[0];
         const quoteCurrency = pairInfo[1] || 'USDT';
@@ -342,11 +330,14 @@ function initializeTradingPairDisplay() {
                 <i class="fas fa-chart-line me-2"></i>
                 <div>
                     <small class="text-muted d-block">Trading Pair</small>
-                    <strong>${baseCurrency}/${quoteCurrency}</strong>
+                    <strong id="current-trading-pair">${baseCurrency}/${quoteCurrency}</strong>
                     <br><small class="text-muted">${defaultPair}</small>
                 </div>
             </div>
         `;
+        console.log('Initialized trading pair display with default pair:', defaultPair);
+    } else {
+        console.error('trading-pair-display element not found during initialization!');
     }
 }
 
@@ -951,7 +942,6 @@ function loadAutoTradingStatus() {
 function updateAutoTradingStatus(status) {
     const statusElement = document.getElementById('auto-trading-status');
     const textElement = document.getElementById('auto-trading-text');
-    const currentPairElement = document.getElementById('current-trading-pair');
     
     if (statusElement && textElement) {
         if (status.auto_trading_enabled) {
@@ -964,28 +954,24 @@ function updateAutoTradingStatus(status) {
     }
     
     // Update trading pair display - always update this
-    if (currentPairElement) {
+    const tradingPairDisplay = document.getElementById('trading-pair-display');
+    if (tradingPairDisplay) {
         const tradingPair = status.current_pair || 'BTC_USDT';
-        currentPairElement.textContent = tradingPair;
+        const pairInfo = tradingPair.split('_');
+        const baseCurrency = pairInfo[0];
+        const quoteCurrency = pairInfo[1] || 'USDT';
         
-        // Update the trading pair display with more info
-        const tradingPairDisplay = document.getElementById('trading-pair-display');
-        if (tradingPairDisplay) {
-            const pairInfo = tradingPair.split('_');
-            const baseCurrency = pairInfo[0];
-            const quoteCurrency = pairInfo[1] || 'USDT';
-            
-            tradingPairDisplay.innerHTML = `
-                <div class="d-flex align-items-center justify-content-center">
-                    <i class="fas fa-chart-line me-2"></i>
-                    <div>
-                        <small class="text-muted d-block">Trading Pair</small>
-                        <strong>${baseCurrency}/${quoteCurrency}</strong>
-                        <br><small class="text-muted">${tradingPair}</small>
-                    </div>
+        tradingPairDisplay.innerHTML = `
+            <div class="d-flex align-items-center justify-content-center">
+                <i class="fas fa-chart-line me-2"></i>
+                <div>
+                    <small class="text-muted d-block">Trading Pair</small>
+                    <strong id="current-trading-pair">${baseCurrency}/${quoteCurrency}</strong>
+                    <br><small class="text-muted">${tradingPair}</small>
                 </div>
-            `;
-        }
+            </div>
+        `;
+        console.log('Updated trading pair display from status:', tradingPair);
     }
     
     // If no status provided, still initialize the display

@@ -11045,3 +11045,54 @@ OSError: [WinError 10048] Only one usage of each socket address (protocol/networ
 2025-08-08 04:40:41,763 - gui_app - INFO - No positions found, returning empty list
 2025-08-08 04:40:59,619 - engineio.server - INFO - 4-JqWzon5ZG-RVb3AAAC: Sending packet PING data None
 2025-08-08 04:40:59,620 - engineio.server - INFO - 4-JqWzon5ZG-RVb3AAAC: Received packet PONG data 
+2025-08-08 04:41:24,618 - engineio.server - INFO - 4-JqWzon5ZG-RVb3AAAC: Sending packet PING data None
+2025-08-08 04:41:24,619 - engineio.server - INFO - 4-JqWzon5ZG-RVb3AAAC: Received packet PONG data 
+2025-08-08 04:41:47,773 - __main__ - INFO - Starting Pionex Trading Bot for Production...
+2025-08-08 04:41:47,773 - __main__ - INFO - Environment variables check passed
+2025-08-08 04:41:47,774 - __main__ - INFO - Directories created successfully
+2025-08-08 04:41:49,995 - gui_app - INFO - Using SQLite database
+2025-08-08 04:41:51,260 - engineio.server - INFO - Server initialized for eventlet.
+2025-08-08 04:41:51,272 - database - INFO - Database initialized in data
+2025-08-08 04:41:51,287 - gui_app - INFO - WebSocket connection started
+2025-08-08 04:41:51,345 - __main__ - INFO - Flask app imported successfully
+2025-08-08 04:41:51,345 - __main__ - INFO - Flask application created successfully
+2025-08-08 04:41:51,345 - __main__ - INFO - Starting server on 0.0.0.0:5000
+2025-08-08 04:41:53,495 - engineio.server - INFO - ssr9h5KWC3pUoRG0AAAA: Sending packet OPEN data {'sid': 'ssr9h5KWC3pUoRG0AAAA', 'upgrades': ['websocket'], 'pingTimeout': 20000, 'pingInterval': 25000, 'maxPayload': 1000000}
+2025-08-08 04:41:53,500 - engineio.server - INFO - ssr9h5KWC3pUoRG0AAAA: Received packet MESSAGE data 0
+2025-08-08 04:41:53,501 - socketio.server - INFO - emitting event "connected" to zHi__o5taRys30q-AAAB [/]
+2025-08-08 04:41:53,502 - engineio.server - INFO - ssr9h5KWC3pUoRG0AAAA: Sending packet MESSAGE data 2["connected",{"data":"Connected to trading bot"}]
+2025-08-08 04:41:53,502 - engineio.server - INFO - ssr9h5KWC3pUoRG0AAAA: Sending packet MESSAGE data 0{"sid":"zHi__o5taRys30q-AAAB"}
+2025-08-08 04:41:53,803 - engineio.server - INFO - ssr9h5KWC3pUoRG0AAAA: Received request to upgrade to websocket
+2025-08-08 04:41:53,820 - engineio.server - INFO - ssr9h5KWC3pUoRG0AAAA: Upgrade to websocket successful
+2025-08-08 04:42:01,484 - engineio.server - INFO - ssr9h5KWC3pUoRG0AAAA: Received packet MESSAGE data 1
+2025-08-08 04:42:02,071 - engineio.server - INFO - Tn0A3n8iebFW9YhoAAAC: Sending packet OPEN data {'sid': 'Tn0A3n8iebFW9YhoAAAC', 'upgrades': ['websocket'], 'pingTimeout': 20000, 'pingInterval': 25000, 'maxPayload': 1000000}
+2025-08-08 04:42:03,598 - gui_app - INFO - Positions API response: {'result': True, 'data': {'balances': [{'coin': 'ETH', 'free': '0.000010085', 'frozen': '0'}, {'coin': 'USDC', 'free': '0.417064', 'frozen': '0'}, {'coin': 'USDT', 'free': '432.9702914656948024', 'frozen': '0'}]}, 'timestamp': 1754606526886}
+2025-08-08 04:42:03,599 - gui_app - INFO - No positions found, returning empty list
+2025-08-08 04:42:03,606 - engineio.server - INFO - Tn0A3n8iebFW9YhoAAAC: Received request to upgrade to websocket
+2025-08-08 04:42:03,612 - engineio.server - INFO - Tn0A3n8iebFW9YhoAAAC: Received packet MESSAGE data 0
+2025-08-08 04:42:03,614 - socketio.server - INFO - emitting event "connected" to 2nUzwMOxQnLr096WAAAD [/]
+2025-08-08 04:42:03,615 - engineio.server - INFO - Tn0A3n8iebFW9YhoAAAC: Sending packet MESSAGE data 2["connected",{"data":"Connected to trading bot"}]
+2025-08-08 04:42:03,616 - engineio.server - INFO - Tn0A3n8iebFW9YhoAAAC: Sending packet MESSAGE data 0{"sid":"2nUzwMOxQnLr096WAAAD"}
+2025-08-08 04:42:03,630 - engineio.server - INFO - Tn0A3n8iebFW9YhoAAAC: Upgrade to websocket successful
+2025-08-08 04:42:11,992 - gui_app - INFO - Updating trading pair to: ETH_USDT
+2025-08-08 04:42:12,010 - database - INFO - Database initialized in data
+2025-08-08 04:42:12,030 - AutoTrader_user_1 - INFO - AutoTrader instance initialized for user_1
+2025-08-08 04:42:12,033 - gui_app - INFO - Got auto trader: <auto_trader.AutoTrader object at 0x0000020F728B8190>
+2025-08-08 04:42:12,089 - AutoTrader_user_1 - INFO - Trading pair changed from ETH_USDT to ETH_USDT
+2025-08-08 04:42:12,141 - gui_app - INFO - Set trading pair to: ETH_USDT
+2025-08-08 04:42:12,252 - gui_app - INFO - Updated status: {'is_running': False, 'auto_trading_enabled': False, 'current_pair': 'ETH_USDT', 'restart_count': 0, 'last_restart': None, 'trading_hours_active': False, 'user_id': 1}
+2025-08-08 04:42:27,089 - engineio.server - INFO - Tn0A3n8iebFW9YhoAAAC: Sending packet PING data None
+2025-08-08 04:42:27,090 - engineio.server - INFO - Tn0A3n8iebFW9YhoAAAC: Received packet PONG data 
+2025-08-08 04:42:29,384 - gui_app - INFO - Updating trading pair to: XRP_USDT
+2025-08-08 04:42:29,384 - gui_app - INFO - Got auto trader: <auto_trader.AutoTrader object at 0x0000020F728B8190>
+2025-08-08 04:42:29,456 - AutoTrader_user_1 - INFO - Trading pair changed from ETH_USDT to XRP_USDT
+2025-08-08 04:42:29,485 - gui_app - INFO - Set trading pair to: XRP_USDT
+2025-08-08 04:42:29,485 - gui_app - INFO - Updated status: {'is_running': False, 'auto_trading_enabled': False, 'current_pair': 'XRP_USDT', 'restart_count': 0, 'last_restart': None, 'trading_hours_active': False, 'user_id': 1}
+2025-08-08 04:42:33,723 - gui_app - INFO - Positions API response: {'result': True, 'data': {'balances': [{'coin': 'ETH', 'free': '0.000010085', 'frozen': '0'}, {'coin': 'USDC', 'free': '0.417064', 'frozen': '0'}, {'coin': 'USDT', 'free': '432.9702914656948024', 'frozen': '0'}]}, 'timestamp': 1754606557005}
+2025-08-08 04:42:33,723 - gui_app - INFO - No positions found, returning empty list
+2025-08-08 04:42:52,101 - engineio.server - INFO - Tn0A3n8iebFW9YhoAAAC: Sending packet PING data None
+2025-08-08 04:42:52,101 - engineio.server - INFO - Tn0A3n8iebFW9YhoAAAC: Received packet PONG data 
+2025-08-08 04:43:03,857 - gui_app - INFO - Positions API response: {'result': True, 'data': {'balances': [{'coin': 'ETH', 'free': '0.000010085', 'frozen': '0'}, {'coin': 'USDC', 'free': '0.417064', 'frozen': '0'}, {'coin': 'USDT', 'free': '432.9702914656948024', 'frozen': '0'}]}, 'timestamp': 1754606587140}
+2025-08-08 04:43:03,858 - gui_app - INFO - No positions found, returning empty list
+2025-08-08 04:43:17,104 - engineio.server - INFO - Tn0A3n8iebFW9YhoAAAC: Sending packet PING data None
+2025-08-08 04:43:17,105 - engineio.server - INFO - Tn0A3n8iebFW9YhoAAAC: Received packet PONG data 

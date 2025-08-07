@@ -81,3 +81,6 @@
 2025-08-08 04:38:13,536 - AutoTrader_user_1 - INFO - Trading pair changed from DOT_USDT to ETH_USDT
 2025-08-08 04:38:36,298 - AutoTrader_user_1 - INFO - Trading pair changed from ETH_USDT to DOT_USDT
 2025-08-08 04:38:59,035 - AutoTrader_user_1 - INFO - Trading pair changed from DOT_USDT to ETH_USDT
+2025-08-08 04:42:12,030 - AutoTrader_user_1 - INFO - AutoTrader instance initialized for user_1
+2025-08-08 04:42:12,089 - AutoTrader_user_1 - INFO - Trading pair changed from ETH_USDT to ETH_USDT
+2025-08-08 04:42:29,456 - AutoTrader_user_1 - INFO - Trading pair changed from ETH_USDT to XRP_USDT
