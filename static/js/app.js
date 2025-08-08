@@ -725,11 +725,13 @@ function updatePositionsTable(positions) {
     }
 
     if (!positions || positions.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="7" class="text-center">No open positions</td></tr>';
+        tbody.innerHTML = '<tr><td colspan="8" class="text-center">No open positions</td></tr>';
         return;
     }
     
     let html = '';
+    let totalInvestment = 0;
+    
     positions.forEach(position => {
         const size = parseFloat(position.size || 0);
         const entryPrice = parseFloat(position.entryPrice || 0);
@@ -737,6 +739,10 @@ function updatePositionsTable(positions) {
         const pnl = parseFloat(position.unrealizedPnl || 0);
         const roe = parseFloat(position.roe || 0);
         const symbol = position.symbol || '';
+        
+        // Calculate investment amount (size * entry price)
+        const investmentAmount = size * entryPrice;
+        totalInvestment += investmentAmount;
         
         const pnlClass = pnl >= 0 ? 'text-success' : 'text-danger';
         const roeClass = roe >= 0 ? 'text-success' : 'text-danger';
@@ -747,6 +753,7 @@ function updatePositionsTable(positions) {
                 <td>${size.toFixed(4)}</td>
                 <td>$${entryPrice.toFixed(4)}</td>
                 <td>$${markPrice.toFixed(4)}</td>
+                <td><span class="investment-amount">$${investmentAmount.toFixed(2)}</span></td>
                 <td class="${pnlClass}">$${pnl.toFixed(2)}</td>
                 <td class="${roeClass}">${roe.toFixed(2)}%</td>
                 <td>
@@ -757,6 +764,17 @@ function updatePositionsTable(positions) {
             </tr>
         `;
     });
+    
+    // Add total investment summary row
+    if (totalInvestment > 0) {
+        html += `
+            <tr class="total-investment-row">
+                <td colspan="4"><strong>Total Investment:</strong></td>
+                <td><span class="investment-amount">$${totalInvestment.toFixed(2)}</span></td>
+                <td colspan="3"></td>
+            </tr>
+        `;
+    }
     
     tbody.innerHTML = html;
 }

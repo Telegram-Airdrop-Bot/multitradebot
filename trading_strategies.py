@@ -334,28 +334,39 @@ class TradingStrategies:
         return rsi
     
     def rsi_multi_timeframe_strategy(self, symbol: str, balance: float, position_size: float = None) -> Dict:
-        """RSI Multi-Timeframe Strategy"""
+        """RSI Multi-timeframe Strategy"""
         config = get_config()
         try:
-            # Get market data for both timeframes - use working intervals
+            # Get market data for different timeframes
             df_5m = self.get_market_data(symbol, '5M', 100)
-            df_15m = self.get_market_data(symbol, '15M', 100)
+            df_1h = self.get_market_data(symbol, '1H', 100)
             
-            if df_5m.empty or df_15m.empty:
+            if df_5m.empty or df_1h.empty:
                 return {"action": "HOLD", "reason": "No market data available"}
             
-            # Calculate RSI for both timeframes
+            # Calculate RSI for different timeframes
             rsi_5m_list = self.calculate_rsi(df_5m['close'].tolist(), config['rsi']['period'])
-            rsi_15m_list = self.calculate_rsi(df_15m['close'].tolist(), config['rsi']['period'])
-            rsi_5m = rsi_5m_list[-1] if rsi_5m_list else 50.0
-            rsi_15m = rsi_15m_list[-1] if rsi_15m_list else 50.0
+            rsi_1h_list = self.calculate_rsi(df_1h['close'].tolist(), config['rsi']['period'])
             
-            # Get current price
-            ticker = self.api.get_ticker_price(symbol)
-            current_price = float(ticker.get('data', {}).get('price', 0)) if 'data' in ticker else 0
+            rsi_5m = rsi_5m_list[-1] if rsi_5m_list else 50.0
+            rsi_1h = rsi_1h_list[-1] if rsi_1h_list else 50.0
+            
+            # Get current price - fix the response handling
+            ticker_response = self.api.get_ticker_price(symbol)
+            current_price = 0
+            
+            if 'error' not in ticker_response and 'data' in ticker_response:
+                price_data = ticker_response['data']
+                if isinstance(price_data, dict) and 'price' in price_data:
+                    current_price = float(price_data['price'])
+                elif isinstance(price_data, str):
+                    current_price = float(price_data)
             
             if current_price == 0:
-                return {"action": "HOLD", "reason": "Unable to get current price"}
+                # Fallback to last close price from market data
+                current_price = df_5m['close'].iloc[-1] if not df_5m.empty else 0
+                if current_price == 0:
+                    return {"action": "HOLD", "reason": "Unable to get current price"}
             
             # Calculate position size
             if position_size is None:
@@ -363,38 +374,57 @@ class TradingStrategies:
             position_value = balance * position_size
             quantity = position_value / current_price
             
-            # RSI Multi-Timeframe Logic
-            if rsi_5m < config['rsi']['oversold'] and rsi_15m < config['rsi']['overbought']:
+            # Multi-timeframe RSI logic
+            buy_signals = 0
+            sell_signals = 0
+            
+            # 5M RSI signals
+            if rsi_5m < config['rsi']['oversold']:
+                buy_signals += 1
+            elif rsi_5m > config['rsi']['overbought']:
+                sell_signals += 1
+            
+            # 1H RSI signals
+            if rsi_1h < config['rsi']['oversold']:
+                buy_signals += 1
+            elif rsi_1h > config['rsi']['overbought']:
+                sell_signals += 1
+            
+            # Decision logic
+            if buy_signals >= 2:
                 return {
                     "action": "BUY",
                     "symbol": symbol,
                     "quantity": quantity,
                     "price": current_price,
                     "rsi_5m": rsi_5m,
-                    "rsi_15m": rsi_15m,
-                    "reason": f"RSI Multi-TF: 5m({rsi_5m:.2f}) < 30, 15m({rsi_15m:.2f}) < 50"
+                    "rsi_1h": rsi_1h,
+                    "signals": buy_signals,
+                    "reason": f"Multi-TF RSI: {buy_signals}/2 buy signals (5M:{rsi_5m:.2f}, 1H:{rsi_1h:.2f})"
                 }
-            elif rsi_5m > config['rsi']['overbought'] and rsi_15m > config['rsi']['overbought']:
+            elif sell_signals >= 2:
                 return {
                     "action": "SELL",
                     "symbol": symbol,
                     "quantity": quantity,
                     "price": current_price,
                     "rsi_5m": rsi_5m,
-                    "rsi_15m": rsi_15m,
-                    "reason": f"RSI Multi-TF: 5m({rsi_5m:.2f}) > 70, 15m({rsi_15m:.2f}) > 70"
+                    "rsi_1h": rsi_1h,
+                    "signals": sell_signals,
+                    "reason": f"Multi-TF RSI: {sell_signals}/2 sell signals (5M:{rsi_5m:.2f}, 1H:{rsi_1h:.2f})"
                 }
             else:
                 return {
                     "action": "HOLD",
                     "symbol": symbol,
                     "rsi_5m": rsi_5m,
-                    "rsi_15m": rsi_15m,
-                    "reason": f"RSI Multi-TF: No clear signal - 5m({rsi_5m:.2f}), 15m({rsi_15m:.2f})"
+                    "rsi_1h": rsi_1h,
+                    "signals": max(buy_signals, sell_signals),
+                    "reason": f"Multi-TF RSI: Mixed signals - {buy_signals} buy, {sell_signals} sell"
                 }
                 
         except Exception as e:
-            return {"action": "HOLD", "reason": f"Error in RSI Multi-TF strategy: {str(e)}"}
+            return {"action": "HOLD", "reason": f"Error in Multi-TF RSI strategy: {str(e)}"}
 
     def volume_filter_strategy(self, symbol: str, balance: float, position_size: float = None) -> Dict:
         """Volume Filter Strategy"""
@@ -406,21 +436,29 @@ class TradingStrategies:
             if df.empty:
                 return {"action": "HOLD", "reason": "No market data available"}
             
-            # Calculate volume metrics
-            avg_volume = df['volume'].mean()
-            current_volume = df['volume'].iloc[-1]
-            volume_ratio = current_volume / avg_volume if avg_volume > 0 else 1.0
+            # Calculate volume EMA
+            volume_ema_list = self.calculate_ema(df['volume'].tolist(), config['volume_filter']['ema_period'])
+            volume_ema = volume_ema_list[-1] if volume_ema_list else df['volume'].iloc[-1]
             
-            # Calculate RSI
-            rsi_list = self.calculate_rsi(df['close'].tolist(), config['rsi']['period'])
-            rsi = rsi_list[-1] if rsi_list else 50.0
+            # Get current volume
+            current_volume = df['volume'].iloc[-1] if not df.empty else 0
             
-            # Get current price
-            ticker = self.api.get_ticker_price(symbol)
-            current_price = float(ticker.get('data', {}).get('price', 0)) if 'data' in ticker else 0
+            # Get current price - fix the response handling
+            ticker_response = self.api.get_ticker_price(symbol)
+            current_price = 0
+            
+            if 'error' not in ticker_response and 'data' in ticker_response:
+                price_data = ticker_response['data']
+                if isinstance(price_data, dict) and 'price' in price_data:
+                    current_price = float(price_data['price'])
+                elif isinstance(price_data, str):
+                    current_price = float(price_data)
             
             if current_price == 0:
-                return {"action": "HOLD", "reason": "Unable to get current price"}
+                # Fallback to last close price from market data
+                current_price = df['close'].iloc[-1] if not df.empty else 0
+                if current_price == 0:
+                    return {"action": "HOLD", "reason": "Unable to get current price"}
             
             # Calculate position size
             if position_size is None:
@@ -429,33 +467,27 @@ class TradingStrategies:
             quantity = position_value / current_price
             
             # Volume Filter Logic
-            if volume_ratio > 1.5 and rsi < config['rsi']['oversold']:
+            volume_multiplier = config['volume_filter']['multiplier']
+            volume_threshold = volume_ema * volume_multiplier
+            
+            if current_volume > volume_threshold:
+                # High volume - potential trend continuation
                 return {
                     "action": "BUY",
                     "symbol": symbol,
                     "quantity": quantity,
                     "price": current_price,
-                    "volume_ratio": volume_ratio,
-                    "rsi": rsi,
-                    "reason": f"Volume Filter: High volume({volume_ratio:.2f}x) + Oversold RSI({rsi:.2f})"
-                }
-            elif volume_ratio > 1.5 and rsi > config['rsi']['overbought']:
-                return {
-                    "action": "SELL",
-                    "symbol": symbol,
-                    "quantity": quantity,
-                    "price": current_price,
-                    "volume_ratio": volume_ratio,
-                    "rsi": rsi,
-                    "reason": f"Volume Filter: High volume({volume_ratio:.2f}x) + Overbought RSI({rsi:.2f})"
+                    "volume": current_volume,
+                    "volume_ema": volume_ema,
+                    "reason": f"Volume Filter: High volume ({current_volume:.2f} > {volume_threshold:.2f})"
                 }
             else:
                 return {
                     "action": "HOLD",
                     "symbol": symbol,
-                    "volume_ratio": volume_ratio,
-                    "rsi": rsi,
-                    "reason": f"Volume Filter: Normal volume({volume_ratio:.2f}x), RSI({rsi:.2f})"
+                    "volume": current_volume,
+                    "volume_ema": volume_ema,
+                    "reason": f"Volume Filter: Low volume ({current_volume:.2f} < {volume_threshold:.2f})"
                 }
                 
         except Exception as e:
@@ -482,12 +514,22 @@ class TradingStrategies:
             macd_current = macd_line[-1] if macd_line else 0
             macd_signal_current = macd_signal[-1] if macd_signal else 0
             
-            # Get current price
-            ticker = self.api.get_ticker_price(symbol)
-            current_price = float(ticker.get('data', {}).get('price', 0)) if 'data' in ticker else 0
+            # Get current price - fix the response handling
+            ticker_response = self.api.get_ticker_price(symbol)
+            current_price = 0
+            
+            if 'error' not in ticker_response and 'data' in ticker_response:
+                price_data = ticker_response['data']
+                if isinstance(price_data, dict) and 'price' in price_data:
+                    current_price = float(price_data['price'])
+                elif isinstance(price_data, str):
+                    current_price = float(price_data)
             
             if current_price == 0:
-                return {"action": "HOLD", "reason": "Unable to get current price"}
+                # Fallback to last close price from market data
+                current_price = df['close'].iloc[-1] if not df.empty else 0
+                if current_price == 0:
+                    return {"action": "HOLD", "reason": "Unable to get current price"}
             
             # Calculate position size
             if position_size is None:

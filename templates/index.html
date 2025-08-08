@@ -38,6 +38,21 @@
         .card.border-danger .card-header {
             background: linear-gradient(45deg, #dc3545, #c82333) !important;
         }
+        
+        /* Investment Amount Styling */
+        .investment-amount {
+            background: linear-gradient(45deg, #007bff, #0056b3);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        
+        .total-investment-row {
+            background-color: #f8f9fa;
+            font-weight: bold;
+            border-top: 2px solid #007bff;
+        }
     </style>
 </head>
 <body>
@@ -117,6 +132,16 @@
                         <h6 class="mb-0"><i class="fas fa-robot me-2"></i>Auto Trading</h6>
                     </div>
                     <div class="card-body text-center">
+                        <!-- TRADING LIVE Indicator -->
+                        <div class="mb-3">
+                            <div class="alert alert-danger mb-2" id="trading-live-indicator" style="font-weight: bold; font-size: 1.1em;">
+                                <div class="trading-live-content">
+                                    <i class="fas fa-broadcast-tower me-2"></i>
+                                    <span class="trading-live-text">TRADING LIVE</span>
+                                </div>
+                            </div>
+                        </div>
+                        
                         <div class="mb-3">
                             <span class="status-indicator status-offline" id="auto-trading-status"></span>
                             <span id="auto-trading-text">Disabled</span>
@@ -221,6 +246,7 @@
                                                 <th>Size</th>
                                                 <th>Entry Price</th>
                                                 <th>Mark Price</th>
+                                                <th>Investment Amount</th>
                                                 <th>P&L</th>
                                                 <th>ROE %</th>
                                                 <th>Actions</th>
@@ -228,7 +254,7 @@
                                         </thead>
                                         <tbody id="positions-table">
                                             <tr>
-                                                <td colspan="7" class="text-center">Loading positions...</td>
+                                                <td colspan="8" class="text-center">Loading positions...</td>
                                             </tr>
                                         </tbody>
                                     </table>

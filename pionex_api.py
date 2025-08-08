@@ -68,13 +68,15 @@ class PionexAPI:
         }
         body = ''
         if signed:
-            timestamp = str(int(time.time() * 1000))
-            params['timestamp'] = timestamp
+            # Get exact server timestamp
+            server_timestamp = self._get_exact_server_timestamp()
+            params['timestamp'] = str(server_timestamp)
             sorted_items = sorted(params.items())
             query_string = '&'.join(f'{k}={v}' for k, v in sorted_items)
             path_url = f"{endpoint}?{query_string}" if query_string else endpoint
             sign_str = f"{method.upper()}{path_url}"
             if method.upper() in ['POST', 'DELETE']:
+                # For POST requests, include timestamp in body for signature
                 body = pyjson.dumps(params, separators=(',', ':')) if params else ''
                 sign_str += body
             signature = hmac.new(self.secret_key.encode(), sign_str.encode(), hashlib.sha256).hexdigest()
@@ -93,7 +95,15 @@ class PionexAPI:
                 if method.upper() == 'GET':
                     response = self.session.get(url, params=params, headers=headers, timeout=self.timeout)
                 elif method.upper() == 'POST':
-                    response = self.session.post(url, data=pyjson.dumps(params), headers=headers, timeout=self.timeout)
+                    # For POST requests, include timestamp in URL for Pionex API
+                    if signed and 'timestamp' in params:
+                        url_with_params = f"{url}?timestamp={params['timestamp']}"
+                        # Keep timestamp in body for POST
+                        body = pyjson.dumps(params, separators=(',', ':')) if params else ''
+                    else:
+                        url_with_params = url
+                        body = pyjson.dumps(params, separators=(',', ':')) if params else ''
+                    response = self.session.post(url_with_params, data=body, headers=headers, timeout=self.timeout)
                 elif method.upper() == 'DELETE':
                     response = self.session.delete(url, data=pyjson.dumps(params), headers=headers, timeout=self.timeout)
                 else:
@@ -139,6 +149,23 @@ class PionexAPI:
                 continue
         return {'error': f"All retry attempts failed. Last error: {last_exception}"}
 
+    def _get_exact_server_timestamp(self) -> int:
+        """Get exact server timestamp in milliseconds"""
+        try:
+            # Get server time from the ticker endpoint (public)
+            response = self.session.get(f"{self.base_url}/api/v1/market/tickers", timeout=5)
+            if response.status_code == 200:
+                data = response.json()
+                if 'data' in data and 'timestamp' in data['data']:
+                    return data['data']['timestamp']  # Return as milliseconds
+                elif 'timestamp' in data:
+                    return data['timestamp']  # Return as milliseconds
+        except Exception as e:
+            self.logger.warning(f"Failed to get server time from ticker: {e}")
+        
+        # Fallback to local time in milliseconds
+        return int(time.time() * 1000)
+
     # --- Account Endpoints ---
     def get_balances(self) -> Dict:
         """GET /api/v1/account/balances"""
@@ -159,7 +186,7 @@ class PionexAPI:
             'symbol': symbol,
             'side': side.upper(),
             'type': order_type.upper(),
-            'quantity': quantity
+            'size': str(quantity)  # Use 'size' instead of 'quantity'
         }
         if price:
             params['price'] = price
@@ -172,6 +199,11 @@ class PionexAPI:
         """GET /api/v1/trade/order"""
         params = {'orderId': order_id, 'symbol': symbol}
         return self._make_request('GET', '/api/v1/trade/order', params, signed=True)
+
+    def get_order_by_client_order_id(self, client_order_id: str, symbol: str) -> Dict:
+        """GET /api/v1/trade/orderByClientOrderId"""
+        params = {'clientOrderId': client_order_id, 'symbol': symbol}
+        return self._make_request('GET', '/api/v1/trade/orderByClientOrderId', params, signed=True)
 
     def cancel_order(self, order_id: int, symbol: str) -> Dict:
         """DELETE /api/v1/trade/order"""
@@ -307,6 +339,10 @@ class PionexAPI:
 
         # If not found in list, return error
         return {'error': f"Symbol {symbol} not found in ticker data"}
+
+    def get_real_time_price(self, symbol: str) -> Dict:
+        """Get real-time price for a symbol (alias for get_ticker_price)"""
+        return self.get_ticker_price(symbol)
 
     def get_trading_pairs(self) -> Dict:
         """Get trading pairs"""
@@ -583,95 +619,6 @@ class PionexAPI:
 
     def get_real_time_market_data(self, symbol: str) -> Dict:
         """Get comprehensive real-time market data including price, volume, 24h change"""
-        try:
-            # Get ticker data
-            ticker_response = self.get_ticker(symbol)
-            
-            if 'error' in ticker_response:
-                return {'error': ticker_response['error']}
-            
-            # Handle different response formats
-            ticker_data = None
-            
-            if 'data' in ticker_response:
-                if isinstance(ticker_response['data'], dict):
-                    # If data is a dict, it might contain tickers array
-                    if 'tickers' in ticker_response['data']:
-                        # Find the specific symbol in tickers array
-                        for ticker in ticker_response['data']['tickers']:
-                            if isinstance(ticker, dict) and ticker.get('symbol') == symbol:
-                                ticker_data = ticker
-                                break
-                    else:
-                        # Data might be the ticker itself
-                        ticker_data = ticker_response['data']
-                elif isinstance(ticker_response['data'], list):
-                    # If data is a list, find the specific symbol
-                    for ticker in ticker_response['data']:
-                        if isinstance(ticker, dict) and ticker.get('symbol') == symbol:
-                            ticker_data = ticker
-                            break
-            
-            if not ticker_data:
-                # Try to get basic price data as fallback
-                price_response = self.get_ticker_price(symbol)
-                if 'data' in price_response and 'price' in price_response['data']:
-                    current_price = float(price_response['data']['price'])
-                    return {
-                        'symbol': symbol,
-                        'price': current_price,
-                        'volume': 0,
-                        'quoteVolume': 0,
-                        'priceChange': 0,
-                        'priceChangePercent': 0,
-                        'high': current_price,
-                        'low': current_price,
-                        'open': current_price,
-                        'close': current_price,
-                        'timestamp': int(time.time() * 1000)
-                    }
-                else:
-                    return {'error': 'No data available'}
-            
-            return {
-                'symbol': symbol,
-                'price': float(ticker_data.get('price', ticker_data.get('close', 0))),
-                'volume': float(ticker_data.get('volume', 0)),
-                'quoteVolume': float(ticker_data.get('quoteVolume', 0)),
-                'priceChange': float(ticker_data.get('priceChange', 0)),
-                'priceChangePercent': float(ticker_data.get('priceChangePercent', 0)),
-                'high': float(ticker_data.get('high', 0)),
-                'low': float(ticker_data.get('low', 0)),
-                'open': float(ticker_data.get('open', 0)),
-                'close': float(ticker_data.get('close', 0)),
-                'timestamp': int(ticker_data.get('closeTime', time.time() * 1000))
-            }
-                
-        except Exception as e:
-            self.logger.error(f"Error getting real-time market data for {symbol}: {e}")
-            return {'error': str(e)}
-
-    def get_real_time_price(self, symbol: str) -> float:
-        """Get real-time price for a symbol"""
-        try:
-            ticker_response = self.get_ticker_price(symbol)
-            
-            if 'error' in ticker_response:
-                self.logger.error(f"Error getting real-time price for {symbol}: {ticker_response['error']}")
-                return 0.0
-            
-            if 'data' in ticker_response and 'price' in ticker_response['data']:
-                return float(ticker_response['data']['price'])
-            else:
-                self.logger.warning(f"No price data in response for {symbol}")
-                return 0.0
-                
-        except Exception as e:
-            self.logger.error(f"Error getting real-time price for {symbol}: {e}")
-            return 0.0
-
-    def get_market_data(self, symbol: str) -> Dict:
-        """Get comprehensive market data for a symbol"""
         try:
             # Get ticker data
             ticker_response = self.get_ticker(symbol)

@@ -358,3 +358,124 @@ body {
     color: #6c757d;
     font-size: 0.9rem;
 } 
+
+/* TRADING LIVE Indicator Animations */
+.trading-live-indicator {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.trading-live-active {
+    background: linear-gradient(135deg, #e74c3c, #c0392b) !important;
+    border-color: #e74c3c !important;
+    animation: tradingLivePulse 2s infinite;
+}
+
+.trading-live-inactive {
+    background: linear-gradient(135deg, #95a5a6, #7f8c8d) !important;
+    border-color: #95a5a6 !important;
+    opacity: 0.7;
+}
+
+.trading-live-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.trading-live-text {
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.trading-live-dots {
+    display: flex;
+    gap: 4px;
+    margin-left: 8px;
+}
+
+.trading-live-dots .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #fff;
+    animation: dotPulse 1.5s infinite;
+}
+
+.trading-live-dots .dot:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.trading-live-dots .dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.trading-live-dots .dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes tradingLivePulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(231, 76, 60, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(231, 76, 60, 0);
+    }
+}
+
+@keyframes dotPulse {
+    0%, 100% {
+        opacity: 0.3;
+        transform: scale(0.8);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+.animate-pulse {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/* Trading Live State Transitions */
+.trading-live-indicator.trading-live-active {
+    transform: scale(1.02);
+}
+
+.trading-live-indicator.trading-live-inactive {
+    transform: scale(1);
+}
+
+/* Hover effects */
+.trading-live-indicator:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s ease;
+}
+
+/* Responsive animations */
+@media (max-width: 768px) {
+    .trading-live-indicator {
+        font-size: 0.9em !important;
+    }
+    
+    .trading-live-dots .dot {
+        width: 4px;
+        height: 4px;
+    }
+} 
