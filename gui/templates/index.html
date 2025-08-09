@@ -206,6 +206,22 @@
             </div>
         </div>
 
+        <!-- Live Pairs Section -->
+        <div class="row">
+            <div class="col-12 mb-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h6 class="mb-0"><i class="fas fa-stream me-2"></i>Live Pairs</h6>
+                    </div>
+                    <div class="card-body">
+                        <div id="live-pairs-list" class="d-flex flex-wrap gap-2">
+                            <span class="text-muted">No live pairs</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Main Content Tabs -->
         <div class="row">
             <div class="col-12">
@@ -466,12 +482,14 @@
                                                 <h6 class="mb-0">Live Trades</h6>
                                             </div>
                                             <div class="card-body">
-                                                <div id="live-trades-BTC_USDT">
-                                                    <div class="text-center">
-                                                        <div class="spinner-border spinner-border-sm" role="status">
-                                                            <span class="visually-hidden">Loading...</span>
+                                                <div id="live-trades-container">
+                                                    <div id="live-trades-BTC_USDT">
+                                                        <div class="text-center">
+                                                            <div class="spinner-border spinner-border-sm" role="status">
+                                                                <span class="visually-hidden">Loading...</span>
+                                                            </div>
+                                                            <p class="mt-2">Loading live trades...</p>
                                                         </div>
-                                                        <p class="mt-2">Loading live trades...</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -486,7 +504,7 @@
                                             <div class="card-header">
                                                 <h6 class="mb-0">Market Depth (Order Book)</h6>
                                             </div>
-                                            <div class="card-body">
+                                            <div class="card-body" id="market-depth-container">
                                                 <div id="market-depth-BTC_USDT">
                                                     <div class="text-center">
                                                         <div class="spinner-border spinner-border-sm" role="status">

@@ -2,6 +2,29 @@
 let socket;
 let charts = {};
 let updateInterval;
+let livePairs = new Set();
+
+function renderLivePairs() {
+    const container = document.getElementById('live-pairs-list');
+    if (!container) return;
+    const pairs = Array.from(livePairs);
+    container.innerHTML = pairs.length
+        ? pairs.map(p => `<span class="badge bg-secondary d-flex align-items-center"><i class="fas fa-circle me-1" style="font-size:8px"></i>${p}<button class="btn btn-sm btn-link text-light ms-2 p-0" onclick="removeLivePair('${p}')" title="Remove"><i class="fas fa-times"></i></button></span>`).join(' ')
+        : '<span class="text-muted">No live pairs</span>';
+}
+
+function addLivePair(pair) {
+    if (!pair) return;
+    livePairs.add(pair.toUpperCase());
+    renderLivePairs();
+}
+
+function removeLivePair(pair) {
+    livePairs.delete(pair.toUpperCase());
+    renderLivePairs();
+}
+
+window.removeLivePair = removeLivePair;
 
 // Initialize the application
 document.addEventListener('DOMContentLoaded', function() {
@@ -9,6 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeEventListeners();
     loadInitialData();
     startAutoUpdate();
+    ['BTC_USDT','ETH_USDT','DOT_USDT'].forEach(addLivePair);
 });
 
 // Add event listener for change trading pair button
@@ -171,6 +195,12 @@ function updateTradingPair(newPair) {
                     </div>
                 `;
                 console.log('Updated trading-pair-display element with new pair:', newPair);
+                addLivePair(newPair);
+                // Keep Settings -> trading pair in sync
+                const settingPairInput = document.getElementById('setting-trading-pair');
+                if (settingPairInput) {
+                    settingPairInput.value = newPair;
+                }
             } else {
                 console.error('trading-pair-display element not found!');
             }
@@ -990,6 +1020,11 @@ function updateAutoTradingStatus(status) {
             </div>
         `;
         console.log('Updated trading pair display from status:', tradingPair);
+        // Sync Settings field with current pair
+        const settingPairInput = document.getElementById('setting-trading-pair');
+        if (settingPairInput) {
+            settingPairInput.value = tradingPair;
+        }
     }
     
     // If no status provided, still initialize the display
@@ -1467,6 +1502,10 @@ function saveSettings() {
             bootstrap.Modal.getInstance(document.getElementById('settingsModal')).hide();
             // Reload active strategies after saving settings
             loadActiveStrategies();
+            // Enforce trading pair consistency with AutoTrader
+            if (settings.trading_pair) {
+                updateTradingPair(settings.trading_pair);
+            }
         } else {
             showToast('Error', 'Failed to save settings: ' + data.error, 'error');
         }

@@ -2,6 +2,7 @@
 let socket;
 let charts = {};
 let updateInterval;
+let livePairs = new Set();
 
 // Initialize the application
 document.addEventListener('DOMContentLoaded', function() {
@@ -9,6 +10,8 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeEventListeners();
     loadInitialData();
     startAutoUpdate();
+    // Seed with default/top symbols to show some live pairs initially
+    ['BTC_USDT','ETH_USDT','DOT_USDT'].forEach(addLivePair);
 });
 
 // Add event listener for change trading pair button
@@ -171,6 +174,7 @@ function updateTradingPair(newPair) {
                     </div>
                 `;
                 console.log('Updated trading-pair-display element with new pair:', newPair);
+                addLivePair(newPair);
             } else {
                 console.error('trading-pair-display element not found!');
             }
@@ -298,6 +302,9 @@ function initializeEventListeners() {
             loadLiveTrades(symbol);
             loadMarketDepth(symbol);
         }, 10000); // Update every 10 seconds
+        
+        // Ensure the selected symbol is tracked as live
+        addLivePair(symbol);
     });
     
     // Update modal balance when trade modal opens
@@ -419,11 +426,10 @@ function waitForContainer(containerId, maxAttempts = 10) {
 
 // Load real-time market data for all top cryptocurrencies
 function loadAllMarketData() {
-    const topCryptos = ['BTC_USDT', 'ETH_USDT', 'DOT_USDT', 'ADA_USDT', 'SOL_USDT'];
-    
+    const symbols = Array.from(livePairs.size ? livePairs : new Set(['BTC_USDT', 'ETH_USDT', 'DOT_USDT', 'ADA_USDT', 'SOL_USDT']));
     // Add a small delay to ensure DOM is fully loaded
     setTimeout(() => {
-        topCryptos.forEach(symbol => {
+        symbols.forEach(symbol => {
             loadRealTimeMarketData(symbol);
         });
     }, 100);
@@ -538,6 +544,18 @@ function updateMarketDataDisplay(symbol, marketData) {
 
 // Load live trades
 function loadLiveTrades(symbol, limit = 20) {
+    // Ensure container exists
+    const containerId = `live-trades-${symbol}`;
+    if (!document.getElementById(containerId)) {
+        const parent = document.getElementById('live-trades-container');
+        if (parent) {
+            const div = document.createElement('div');
+            div.id = containerId;
+            div.innerHTML = `<div class="text-center"><div class="spinner-border spinner-border-sm" role="status"><span class="visually-hidden">Loading...</span></div><p class="mt-2">Loading live trades...</p></div>`;
+            parent.innerHTML = '';
+            parent.appendChild(div);
+        }
+    }
     fetch(`/api/live-trades/${symbol}?limit=${limit}`)
         .then(response => response.json())
         .then(data => {
@@ -589,6 +607,18 @@ function updateLiveTradesDisplay(symbol, trades) {
 
 // Load market depth
 function loadMarketDepth(symbol, limit = 20) {
+    // Ensure container exists
+    const containerId = `market-depth-${symbol}`;
+    if (!document.getElementById(containerId)) {
+        const parent = document.getElementById('market-depth-container');
+        if (parent) {
+            const div = document.createElement('div');
+            div.id = containerId;
+            div.innerHTML = `<div class="text-center"><div class="spinner-border spinner-border-sm" role="status"><span class="visually-hidden">Loading...</span></div><p class="mt-2">Loading market depth...</p></div>`;
+            parent.innerHTML = '';
+            parent.appendChild(div);
+        }
+    }
     fetch(`/api/market-depth/${symbol}?limit=${limit}`)
         .then(response => response.json())
         .then(data => {
@@ -1030,6 +1060,7 @@ function updateAutoTradingStatus(status) {
             </div>
         `;
         console.log('Updated trading pair display from status:', tradingPair);
+        addLivePair(tradingPair);
     }
     
     // If no status provided, still initialize the display
@@ -1596,13 +1627,13 @@ function createChart(ctx, chartData, symbol, chartContainer) {
     // Check if we have OHLC data for candlestick chart
     const hasOHLC = chartData.high && chartData.low && chartData.open && chartData.prices;
     
-    if (hasOHLC && chartData.high.length > 0) {
-        // Create candlestick chart
-        createCandlestickChart(newCtx, chartData, symbol, chartContainer);
-    } else {
-        // Create line chart as fallback
-        createLineChart(newCtx, chartData, symbol, chartContainer);
-    }
+    runWhenConnected(newCanvas, () => {
+        if (hasOHLC && chartData.high.length > 0) {
+            createCandlestickChart(newCtx, chartData, symbol, chartContainer);
+        } else {
+            createLineChart(newCtx, chartData, symbol, chartContainer);
+        }
+    });
 }
 
 // Create candlestick chart
@@ -1814,61 +1845,63 @@ function createSampleChart(ctx, symbol, errorMessage, chartContainer) {
     
     const chartTitle = `${symbol} Price (Sample Data)`;
     
-    charts.priceChart = new Chart(newCtx, {
-        type: 'line',
-        data: {
-            labels: labels,
-            datasets: [{
-                label: chartTitle,
-                data: prices,
-                borderColor: '#e74c3c',
-                backgroundColor: 'rgba(231, 76, 60, 0.1)',
-                tension: 0.4,
-                fill: true,
-                pointRadius: 2,
-                pointHoverRadius: 5
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    labels: {
-                        color: '#ffffff'
-                    }
-                },
-                tooltip: {
-                    backgroundColor: 'rgba(0, 0, 0, 0.8)',
-                    titleColor: '#ffffff',
-                    bodyColor: '#ffffff',
+    runWhenConnected(newCanvas, () => {
+        charts.priceChart = new Chart(newCtx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: chartTitle,
+                    data: prices,
                     borderColor: '#e74c3c',
-                    borderWidth: 1
-                }
+                    backgroundColor: 'rgba(231, 76, 60, 0.1)',
+                    tension: 0.4,
+                    fill: true,
+                    pointRadius: 2,
+                    pointHoverRadius: 5
+                }]
             },
-            scales: {
-                x: {
-                    ticks: {
-                        color: '#ffffff',
-                        maxTicksLimit: 10
-                    },
-                    grid: {
-                        color: 'rgba(255, 255, 255, 0.1)'
-                    }
-                },
-                y: {
-                    ticks: {
-                        color: '#ffffff',
-                        callback: function(value) {
-                            return '$' + value.toFixed(2);
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: '#ffffff'
                         }
                     },
-                    grid: {
-                        color: 'rgba(255, 255, 255, 0.1)'
+                    tooltip: {
+                        backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                        titleColor: '#ffffff',
+                        bodyColor: '#ffffff',
+                        borderColor: '#e74c3c',
+                        borderWidth: 1
+                    }
+                },
+                scales: {
+                    x: {
+                        ticks: {
+                            color: '#ffffff',
+                            maxTicksLimit: 10
+                        },
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.1)'
+                        }
+                    },
+                    y: {
+                        ticks: {
+                            color: '#ffffff',
+                            callback: function(value) {
+                                return '$' + value.toFixed(2);
+                            }
+                        },
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.1)'
+                        }
                     }
                 }
             }
-        }
+        });
     });
 }
 
@@ -2379,4 +2412,46 @@ function showNotification(message, type = 'info') {
             notification.remove();
         }
     }, 5000);
+}
+
+function renderLivePairs() {
+    const container = document.getElementById('live-pairs-list');
+    if (!container) return;
+    const pairs = Array.from(livePairs);
+    if (pairs.length === 0) {
+        container.innerHTML = '<span class="text-muted">No live pairs</span>';
+        return;
+    }
+    container.innerHTML = pairs.map(p => `
+        <span class="badge bg-secondary d-flex align-items-center">
+            <i class="fas fa-circle me-1" style="font-size:8px"></i>${p}
+            <button class="btn btn-sm btn-link text-light ms-2 p-0" onclick="removeLivePair('${p}')" title="Remove">
+                <i class="fas fa-times"></i>
+            </button>
+        </span>
+    `).join(' ');
+}
+
+function addLivePair(pair) {
+    if (!pair) return;
+    livePairs.add(pair.toUpperCase());
+    renderLivePairs();
+}
+
+function removeLivePair(pair) {
+    livePairs.delete(pair.toUpperCase());
+    renderLivePairs();
+}
+
+window.removeLivePair = removeLivePair;
+
+function runWhenConnected(node, fn, attempts = 20) {
+    if (node && node.isConnected) {
+        fn();
+    } else if (attempts > 0) {
+        setTimeout(() => runWhenConnected(node, fn, attempts - 1), 50);
+    } else {
+        // Fallback: run anyway to avoid stalling
+        fn();
+    }
 } 
