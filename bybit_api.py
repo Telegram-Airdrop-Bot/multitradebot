@@ -1,29 +1,24 @@
-import hashlib
-import hmac
-import time
 import requests
+import hmac
+import hashlib
+import time
 import json
-from typing import Dict, List, Optional
 import logging
+from typing import Dict, List, Optional
+from urllib.parse import urlencode
 
-# Import the official Bybit SDK
+# Try to import pybit, fallback to manual implementation if not available
 try:
-    from pybit.unified_trading import HTTP
+    import pybit
+    from pybit.unified import HTTP
     PYBIT_AVAILABLE = True
+    logging.info("✅ Pybit library imported successfully")
 except ImportError:
     PYBIT_AVAILABLE = False
-    print("⚠️  pybit library not installed. Installing...")
-    import subprocess
-    import sys
-    subprocess.check_call([sys.executable, "-m", "pip", "install", "pybit"])
-    try:
-        from pybit.unified_trading import HTTP
-        PYBIT_AVAILABLE = True
-        print("✅ pybit library installed successfully!")
-    except ImportError:
-        PYBIT_AVAILABLE = False
-        print("❌ Failed to install pybit library")
+    logging.warning("⚠️ Pybit library not available, using manual API implementation")
 
+# Configure logging
+logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 class BybitAPI:
@@ -508,9 +503,9 @@ class BybitAPI:
             return self.place_futures_order(
                 symbol=symbol,
                 side=opposite_side,
-                order_type='Market',
+                orderType='Market',
                 qty=qty,
-                reduce_only=True
+                reduceOnly=True
             )
     
     def get_futures_ticker(self, symbol: str) -> Dict:
