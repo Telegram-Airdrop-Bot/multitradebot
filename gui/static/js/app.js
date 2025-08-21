@@ -1628,11 +1628,11 @@ function createChart(ctx, chartData, symbol, chartContainer) {
     const hasOHLC = chartData.high && chartData.low && chartData.open && chartData.prices;
     
     runWhenConnected(newCanvas, () => {
-        if (hasOHLC && chartData.high.length > 0) {
-            createCandlestickChart(newCtx, chartData, symbol, chartContainer);
-        } else {
-            createLineChart(newCtx, chartData, symbol, chartContainer);
-        }
+    if (hasOHLC && chartData.high.length > 0) {
+        createCandlestickChart(newCtx, chartData, symbol, chartContainer);
+    } else {
+        createLineChart(newCtx, chartData, symbol, chartContainer);
+    }
     });
 }
 
@@ -1846,61 +1846,61 @@ function createSampleChart(ctx, symbol, errorMessage, chartContainer) {
     const chartTitle = `${symbol} Price (Sample Data)`;
     
     runWhenConnected(newCanvas, () => {
-        charts.priceChart = new Chart(newCtx, {
-            type: 'line',
-            data: {
-                labels: labels,
-                datasets: [{
-                    label: chartTitle,
-                    data: prices,
-                    borderColor: '#e74c3c',
-                    backgroundColor: 'rgba(231, 76, 60, 0.1)',
-                    tension: 0.4,
-                    fill: true,
-                    pointRadius: 2,
-                    pointHoverRadius: 5
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        labels: {
-                            color: '#ffffff'
-                        }
-                    },
-                    tooltip: {
-                        backgroundColor: 'rgba(0, 0, 0, 0.8)',
-                        titleColor: '#ffffff',
-                        bodyColor: '#ffffff',
-                        borderColor: '#e74c3c',
-                        borderWidth: 1
+    charts.priceChart = new Chart(newCtx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: chartTitle,
+                data: prices,
+                borderColor: '#e74c3c',
+                backgroundColor: 'rgba(231, 76, 60, 0.1)',
+                tension: 0.4,
+                fill: true,
+                pointRadius: 2,
+                pointHoverRadius: 5
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    labels: {
+                        color: '#ffffff'
                     }
                 },
-                scales: {
-                    x: {
-                        ticks: {
-                            color: '#ffffff',
-                            maxTicksLimit: 10
-                        },
-                        grid: {
-                            color: 'rgba(255, 255, 255, 0.1)'
+                tooltip: {
+                    backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                    titleColor: '#ffffff',
+                    bodyColor: '#ffffff',
+                    borderColor: '#e74c3c',
+                    borderWidth: 1
+                }
+            },
+            scales: {
+                x: {
+                    ticks: {
+                        color: '#ffffff',
+                        maxTicksLimit: 10
+                    },
+                    grid: {
+                        color: 'rgba(255, 255, 255, 0.1)'
+                    }
+                },
+                y: {
+                    ticks: {
+                        color: '#ffffff',
+                        callback: function(value) {
+                            return '$' + value.toFixed(2);
                         }
                     },
-                    y: {
-                        ticks: {
-                            color: '#ffffff',
-                            callback: function(value) {
-                                return '$' + value.toFixed(2);
-                            }
-                        },
-                        grid: {
-                            color: 'rgba(255, 255, 255, 0.1)'
-                        }
+                    grid: {
+                        color: 'rgba(255, 255, 255, 0.1)'
                     }
                 }
             }
+        }
         });
     });
 }

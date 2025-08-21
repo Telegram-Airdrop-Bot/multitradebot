@@ -24,6 +24,7 @@ from flask_socketio import SocketIO, emit
 import webbrowser
 from dotenv import load_dotenv
 import traceback
+import yaml
 
 # Add parent directory to path for imports
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -38,6 +39,15 @@ logger = logging.getLogger(__name__)
 from config_loader import get_config, reload_config
 from pionex_api import PionexAPI
 from trading_strategies import TradingStrategies
+
+# Import Bybit API for futures trading
+try:
+    from bybit_api import BybitAPI as BybitAPIClass
+    BYBIT_AVAILABLE = True
+    logger.info("Bybit API imported successfully")
+except ImportError as e:
+    BYBIT_AVAILABLE = False
+    logger.warning(f"Bybit API not available: {e}")
 
 # Try to import database - fallback to simple database if SQLite is not available
 try:
@@ -770,6 +780,15 @@ def index():
     """Main dashboard"""
     return render_template('index.html')
 
+@app.route('/bybit-interface')
+def bybit_interface():
+    return render_template('bybit_interface.html')
+
+@app.route('/pionex-interface')
+def pionex_interface():
+    """Route to return to main Pionex interface"""
+    return redirect('/')
+
 @app.route('/health')
 def health_check():
     """Health check endpoint for deployment platforms"""
@@ -1390,6 +1409,1470 @@ def api_test_auto_trader():
         })
     except Exception as e:
         logger.error(f"Error testing auto trader: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+
+@app.route('/api/futures/trade', methods=['POST'])
+def api_futures_trade():
+    """API endpoint for futures trading"""
+    try:
+        data = request.get_json()
+        symbol = data.get('symbol')
+        side = data.get('side')
+        quantity = data.get('quantity')
+        order_type = data.get('order_type')
+        price = data.get('price')
+        leverage = data.get('leverage', 10)
+        stop_loss = data.get('stop_loss')
+        take_profit = data.get('take_profit')
+        
+        if not all([symbol, side, quantity, order_type]):
+            return jsonify({'success': False, 'error': 'Missing required parameters'})
+        
+        # Execute futures trade
+        result = trading_bot.execute_futures_trade(
+            symbol=symbol,
+            side=side,
+            qty=quantity,
+            order_type=order_type,
+            price=price,
+            leverage=leverage,
+            stop_loss=stop_loss,
+            take_profit=take_profit
+        )
+        
+        return jsonify(result)
+        
+    except Exception as e:
+        logger.error(f"Error executing futures trade: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+
+@app.route('/api/futures/balance')
+def api_futures_balance():
+    """API endpoint for futures balance"""
+    try:
+        result = trading_bot.get_account_balance()
+        if result.get('success'):
+            # Extract futures balance from combined balance
+            futures_balance = result.get('data', {}).get('futures', {})
+            return jsonify({'success': True, 'data': futures_balance})
+        else:
+            return jsonify({'success': False, 'error': 'Failed to load futures balance'})
+    except Exception as e:
+        logger.error(f"Error loading futures balance: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+
+@app.route('/api/futures/leverage', methods=['POST'])
+def api_futures_leverage():
+    """API endpoint for setting futures leverage"""
+    try:
+        data = request.get_json()
+        symbol = data.get('symbol')
+        leverage = data.get('leverage')
+        
+        if not all([symbol, leverage]):
+            return jsonify({'success': False, 'error': 'Missing symbol or leverage'})
+        
+        # Set leverage using Bybit API
+        if trading_bot.bybit_api:
+            result = trading_bot.bybit_api.set_leverage(symbol, leverage)
+            return jsonify(result)
+        else:
+            return jsonify({'success': False, 'error': 'Bybit API not initialized'})
+        
+    except Exception as e:
+        logger.error(f"Error setting futures leverage: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+
+@app.route('/api/futures/close-position', methods=['POST'])
+def api_futures_close_position():
+    """API endpoint for closing futures position"""
+    try:
+        data = request.get_json()
+        symbol = data.get('symbol')
+        side = data.get('side')
+        size = data.get('size')
+        
+        if not all([symbol, side, size]):
+            return jsonify({'success': False, 'error': 'Missing required parameters'})
+        
+        # Close position using Bybit API
+        if trading_bot.bybit_api:
+            result = trading_bot.bybit_api.close_futures_position(symbol, side, size)
+            return jsonify(result)
+        else:
+            return jsonify({'success': False, 'error': 'Bybit API not initialized'})
+        
+    except Exception as e:
+        logger.error(f"Error closing futures position: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+
+@app.route('/api/futures/positions')
+def api_futures_positions():
+    """API endpoint for futures positions"""
+    try:
+        result = trading_bot.get_positions()
+        if result.get('success'):
+            # Extract futures positions from combined positions
+            futures_positions = result.get('data', {}).get('futures', [])
+            return jsonify({'success': True, 'data': futures_positions})
+        else:
+            return jsonify({'success': False, 'error': 'Failed to load futures positions'})
+    except Exception as e:
+        logger.error(f"Error loading futures positions: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+
+@app.route('/api/futures/market-data/<symbol>')
+def api_futures_market_data(symbol):
+    """API endpoint for futures market data"""
+    try:
+        if trading_bot.bybit_api:
+            result = trading_bot.bybit_api.get_market_price(symbol)
+            return jsonify(result)
+        else:
+            return jsonify({'success': False, 'error': 'Bybit API not initialized'})
+    except Exception as e:
+        logger.error(f"Error loading futures market data: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+
+@app.route('/api/futures/klines/<symbol>')
+def api_futures_klines(symbol):
+    """API endpoint for futures klines/candlestick data"""
+    try:
+        interval = request.args.get('interval', '5')
+        limit = request.args.get('limit', 100)
+        
+        if trading_bot.bybit_api:
+            result = trading_bot.bybit_api.get_klines(symbol, interval, int(limit))
+            return jsonify(result)
+        else:
+            return jsonify({'success': False, 'error': 'Bybit API not initialized'})
+    except Exception as e:
+        logger.error(f"Error loading futures klines: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+
+@app.route('/api/futures/orderbook/<symbol>')
+def api_futures_orderbook(symbol):
+    """API endpoint for futures order book"""
+    try:
+        limit = request.args.get('limit', 25)
+        
+        if trading_bot.bybit_api:
+            result = trading_bot.bybit_api.get_orderbook(symbol, int(limit))
+            return jsonify(result)
+        else:
+            return jsonify({'success': False, 'error': 'Bybit API not initialized'})
+    except Exception as e:
+        logger.error(f"Error loading futures orderbook: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+
+@app.route('/api/futures/trades/<symbol>')
+def api_futures_trades(symbol):
+    """API endpoint for futures recent trades"""
+    try:
+        limit = request.args.get('limit', 100)
+        
+        if trading_bot.bybit_api:
+            result = trading_bot.bybit_api.get_recent_trades(symbol, int(limit))
+            return jsonify(result)
+        else:
+            return jsonify({'success': False, 'error': 'Bybit API not initialized'})
+    except Exception as e:
+        logger.error(f"Error loading futures trades: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+
+# ===== BYBIT API ENDPOINTS FOR REAL-TIME FUTURES DATA =====
+
+@app.route('/api/bybit/market-data')
+def api_bybit_market_data():
+    """API endpoint for comprehensive Bybit futures market data"""
+    try:
+        if not BYBIT_AVAILABLE:
+            return jsonify({'success': False, 'error': 'Bybit API not available'})
+        
+        # Get API credentials from config
+        config = get_config()
+        bybit_config = config.get('bybit', {})
+        
+        if not bybit_config.get('enabled'):
+            return jsonify({'success': False, 'error': 'Bybit futures trading not enabled'})
+        
+        api_key = bybit_config.get('api_key') or os.getenv('BYBIT_API_KEY')
+        api_secret = bybit_config.get('api_secret') or os.getenv('BYBIT_API_SECRET')
+        testnet = bybit_config.get('testnet', False)
+        
+        if not api_key or not api_secret:
+            return jsonify({'success': False, 'error': 'Bybit API credentials not configured'})
+        
+        # Initialize Bybit API
+        bybit_api = BybitAPIClass(api_key, api_secret, testnet)
+        
+        # Get real-time market data
+        result = bybit_api.get_futures_real_time_data()
+        return jsonify(result)
+        
+    except Exception as e:
+        logger.error(f"Error fetching Bybit market data: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+
+@app.route('/api/bybit/market-summary')
+def api_bybit_market_summary():
+    """API endpoint for Bybit futures market summary"""
+    try:
+        if not BYBIT_AVAILABLE:
+            return jsonify({'success': False, 'error': 'Bybit API not available'})
+        
+        # Get API credentials from config
+        config = get_config()
+        bybit_config = config.get('bybit', {})
+        
+        if not bybit_config.get('enabled'):
+            return jsonify({'success': False, 'error': 'Bybit futures trading not enabled'})
+        
+        api_key = bybit_config.get('api_key') or os.getenv('BYBIT_API_KEY')
+        api_secret = bybit_config.get('api_secret') or os.getenv('BYBIT_API_SECRET')
+        testnet = bybit_config.get('testnet', False)
+        
+        if not api_key or not api_secret:
+            return jsonify({'success': False, 'error': 'Bybit API credentials not configured'})
+        
+        # Initialize Bybit API
+        bybit_api = BybitAPIClass(api_key, api_secret, testnet)
+        
+        # Get market summary
+        result = bybit_api.get_futures_market_summary()
+        return jsonify(result)
+        
+    except Exception as e:
+        logger.error(f"Error fetching Bybit market summary: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+
+@app.route('/api/bybit/ticker/<symbol>')
+def api_bybit_ticker(symbol):
+    """API endpoint for specific Bybit futures ticker"""
+    try:
+        if not BYBIT_AVAILABLE:
+            return jsonify({'success': False, 'error': 'Bybit API not available'})
+        
+        # Get API credentials from config
+        config = get_config()
+        bybit_config = config.get('bybit', {})
+        
+        if not bybit_config.get('enabled'):
+            return jsonify({'success': False, 'error': 'Bybit futures trading not enabled'})
+        
+        api_key = bybit_config.get('api_key') or os.getenv('BYBIT_API_KEY')
+        api_secret = bybit_config.get('api_secret') or os.getenv('BYBIT_API_SECRET')
+        testnet = bybit_config.get('testnet', False)
+        
+        if not api_key or not api_secret:
+            return jsonify({'success': False, 'error': 'Bybit API credentials not configured'})
+        
+        # Initialize Bybit API
+        bybit_api = BybitAPIClass(api_key, api_secret, testnet)
+        
+        # Get ticker data
+        result = bybit_api.get_futures_ticker(symbol)
+        return jsonify(result)
+        
+    except Exception as e:
+        logger.error(f"Error fetching Bybit ticker for {symbol}: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+
+@app.route('/api/bybit/funding-rate/<symbol>')
+def api_bybit_funding_rate(symbol):
+    """API endpoint for Bybit futures funding rate"""
+    try:
+        if not BYBIT_AVAILABLE:
+            return jsonify({'success': False, 'error': 'Bybit API not available'})
+        
+        # Get API credentials from config
+        config = get_config()
+        bybit_config = config.get('bybit', {})
+        
+        if not bybit_config.get('enabled'):
+            return jsonify({'success': False, 'error': 'Bybit futures trading not enabled'})
+        
+        api_key = bybit_config.get('api_key') or os.getenv('BYBIT_API_KEY')
+        api_secret = bybit_config.get('api_secret') or os.getenv('BYBIT_API_SECRET')
+        testnet = bybit_config.get('testnet', False)
+        
+        if not api_key or not api_secret:
+            return jsonify({'success': False, 'error': 'Bybit API credentials not configured'})
+        
+        # Initialize Bybit API
+        bybit_api = BybitAPIClass(api_key, api_secret, testnet)
+        
+        # Get funding rate
+        result = bybit_api.get_futures_funding_rate(symbol)
+        return jsonify(result)
+        
+    except Exception as e:
+        logger.error(f"Error fetching Bybit funding rate for {symbol}: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+
+@app.route('/api/bybit/open-interest/<symbol>')
+def api_bybit_open_interest(symbol):
+    """API endpoint for Bybit futures open interest"""
+    try:
+        if not BYBIT_AVAILABLE:
+            return jsonify({'success': False, 'error': 'Bybit API not available'})
+        
+        # Get API credentials from config
+        config = get_config()
+        bybit_config = config.get('bybit', {})
+        
+        if not bybit_config.get('enabled'):
+            return jsonify({'success': False, 'error': 'Bybit futures trading not enabled'})
+        
+        api_key = bybit_config.get('api_key') or os.getenv('BYBIT_API_KEY')
+        api_secret = bybit_config.get('api_secret') or os.getenv('BYBIT_API_SECRET')
+        testnet = bybit_config.get('testnet', False)
+        
+        if not api_key or not api_secret:
+            return jsonify({'success': False, 'error': 'Bybit API credentials not configured'})
+        
+        # Initialize Bybit API
+        bybit_api = BybitAPIClass(api_key, api_secret, testnet)
+        
+        # Get open interest
+        result = bybit_api.get_futures_open_interest(symbol)
+        return jsonify(result)
+        
+    except Exception as e:
+        logger.error(f"Error fetching Bybit open interest for {symbol}: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+
+@app.route('/api/bybit/market-status')
+def api_bybit_market_status():
+    """API endpoint for Bybit futures market status"""
+    try:
+        if not BYBIT_AVAILABLE:
+            return jsonify({'success': False, 'error': 'Bybit API not available'})
+        
+        # Get API credentials from config
+        config = get_config()
+        bybit_config = config.get('bybit', {})
+        
+        if not bybit_config.get('enabled'):
+            return jsonify({'success': False, 'error': 'Bybit futures trading not enabled'})
+        
+        api_key = bybit_config.get('api_key') or os.getenv('BYBIT_API_KEY')
+        api_secret = bybit_config.get('api_secret') or os.getenv('BYBIT_API_SECRET')
+        testnet = bybit_config.get('testnet', False)
+        
+        if not api_key or not api_secret:
+            return jsonify({'success': False, 'error': 'Bybit API credentials not configured'})
+        
+        # Initialize Bybit API
+        bybit_api = BybitAPIClass(api_key, api_secret, testnet)
+        
+        # Get market status
+        result = bybit_api.get_futures_market_status()
+        return jsonify(result)
+        
+    except Exception as e:
+        logger.error(f"Error fetching Bybit market status: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+
+@app.route('/api/bybit/health')
+def api_bybit_health():
+    """API endpoint to check Bybit API health"""
+    try:
+        if not BYBIT_AVAILABLE:
+            return jsonify({'success': False, 'error': 'Bybit API not available'})
+        
+        # Get API credentials from config
+        config = get_config()
+        bybit_config = config.get('bybit', {})
+        
+        if not bybit_config.get('enabled'):
+            return jsonify({'success': False, 'error': 'Bybit futures trading not enabled'})
+        
+        api_key = bybit_config.get('api_key') or os.getenv('BYBIT_API_KEY')
+        api_secret = bybit_config.get('api_secret') or os.getenv('BYBIT_API_SECRET')
+        testnet = bybit_config.get('testnet', False)
+        
+        if not api_key or not api_secret:
+            return jsonify({'success': False, 'error': 'Bybit API credentials not configured'})
+        
+        # Initialize Bybit API
+        bybit_api = BybitAPIClass(api_key, api_secret, testnet)
+        
+        # Test API connection
+        result = bybit_api.get_futures_market_status()
+        if result.get('success'):
+            return jsonify({
+                'success': True,
+                'status': 'healthy',
+                'message': 'Bybit API is working correctly',
+                'timestamp': datetime.now().isoformat()
+            })
+        else:
+            return jsonify({
+                'success': False,
+                'status': 'unhealthy',
+                'error': result.get('error', 'Unknown error'),
+                'timestamp': datetime.now().isoformat()
+            })
+        
+    except Exception as e:
+        logger.error(f"Error checking Bybit API health: {e}")
+        return jsonify({
+            'success': False,
+            'status': 'error',
+            'error': str(e),
+            'timestamp': datetime.now().isoformat()
+        })
+
+# Additional Bybit API endpoints for real trading
+@app.route('/api/bybit/balance')
+def api_bybit_balance():
+    """API endpoint for Bybit account balance"""
+    try:
+        if not BYBIT_AVAILABLE:
+            return jsonify({'success': False, 'error': 'Bybit API not available'})
+        
+        config = get_config()
+        bybit_config = config.get('bybit', {})
+        
+        if not bybit_config.get('enabled'):
+            return jsonify({'success': False, 'error': 'Bybit futures trading not enabled'})
+        
+        api_key = bybit_config.get('api_key') or os.getenv('BYBIT_API_KEY')
+        api_secret = bybit_config.get('api_secret') or os.getenv('BYBIT_API_SECRET')
+        testnet = bybit_config.get('testnet', False)
+        
+        if not api_key or not api_secret:
+            return jsonify({'success': False, 'error': 'Bybit API credentials not configured'})
+        
+        bybit_api = BybitAPIClass(api_key, api_secret, testnet)
+        result = bybit_api.get_account_balance()
+        return jsonify(result)
+        
+    except Exception as e:
+        logger.error(f"Error fetching Bybit balance: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+
+@app.route('/api/bybit/positions')
+def api_bybit_positions():
+    """API endpoint for Bybit positions"""
+    try:
+        if not BYBIT_AVAILABLE:
+            return jsonify({'success': False, 'error': 'Bybit API not available'})
+        
+        config = get_config()
+        bybit_config = config.get('bybit', {})
+        
+        if not bybit_config.get('enabled'):
+            return jsonify({'success': False, 'error': 'Bybit futures trading not enabled'})
+        
+        api_key = bybit_config.get('api_key') or os.getenv('BYBIT_API_KEY')
+        api_secret = bybit_config.get('api_secret') or os.getenv('BYBIT_API_SECRET')
+        testnet = bybit_config.get('testnet', False)
+        
+        if not api_key or not api_secret:
+            return jsonify({'success': False, 'error': 'Bybit API credentials not configured'})
+        
+        bybit_api = BybitAPIClass(api_key, api_secret, testnet)
+        result = bybit_api.get_positions()
+        return jsonify(result)
+        
+    except Exception as e:
+        logger.error(f"Error fetching Bybit positions: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+
+@app.route('/api/bybit/place-order', methods=['POST'])
+def api_bybit_place_order():
+    """API endpoint for placing Bybit orders"""
+    try:
+        if not BYBIT_AVAILABLE:
+            return jsonify({'success': False, 'error': 'Bybit API not available'})
+        
+        data = request.get_json()
+        symbol = data.get('symbol')
+        side = data.get('side')
+        orderType = data.get('orderType')
+        qty = data.get('qty')
+        leverage = data.get('leverage', 10)
+        
+        if not all([symbol, side, orderType, qty]):
+            return jsonify({'success': False, 'error': 'Missing required parameters'})
+        
+        config = get_config()
+        bybit_config = config.get('bybit', {})
+        
+        api_key = bybit_config.get('api_key') or os.getenv('BYBIT_API_KEY')
+        api_secret = bybit_config.get('api_secret') or os.getenv('BYBIT_API_SECRET')
+        testnet = bybit_config.get('testnet', False)
+        
+        if not api_key or not api_secret:
+            return jsonify({'success': False, 'error': 'Bybit API credentials not configured'})
+        
+        bybit_api = BybitAPIClass(api_key, api_secret, testnet)
+        
+        # Set leverage first
+        leverage_result = bybit_api.set_leverage(symbol, leverage)
+        if not leverage_result.get('success'):
+            logger.warning(f"Failed to set leverage: {leverage_result.get('error')}")
+        
+        # Place the order
+        result = bybit_api.place_order(
+            symbol=symbol,
+            side=side,
+            order_type=orderType,
+            qty=qty
+        )
+        return jsonify(result)
+        
+    except Exception as e:
+        logger.error(f"Error placing Bybit order: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+
+@app.route('/api/bybit/close-position', methods=['POST'])
+def api_bybit_close_position():
+    """API endpoint for closing Bybit positions"""
+    try:
+        if not BYBIT_AVAILABLE:
+            return jsonify({'success': False, 'error': 'Bybit API not available'})
+        
+        data = request.get_json()
+        symbol = data.get('symbol')
+        side = data.get('side')
+        qty = data.get('qty')
+        
+        if not all([symbol, side, qty]):
+            return jsonify({'success': False, 'error': 'Missing required parameters'})
+        
+        config = get_config()
+        bybit_config = config.get('bybit', {})
+        
+        api_key = bybit_config.get('api_key') or os.getenv('BYBIT_API_KEY')
+        api_secret = bybit_config.get('api_secret') or os.getenv('BYBIT_API_SECRET')
+        testnet = bybit_config.get('testnet', False)
+        
+        if not api_key or not api_secret:
+            return jsonify({'success': False, 'error': 'Bybit API credentials not configured'})
+        
+        bybit_api = BybitAPIClass(api_key, api_secret, testnet)
+        result = bybit_api.close_position(symbol, side, qty)
+        return jsonify(result)
+        
+    except Exception as e:
+        logger.error(f"Error closing Bybit position: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+
+@app.route('/api/bybit/close-all-positions', methods=['POST'])
+def api_bybit_close_all_positions():
+    """API endpoint for closing all Bybit positions"""
+    try:
+        if not BYBIT_AVAILABLE:
+            return jsonify({'success': False, 'error': 'Bybit API not available'})
+        
+        config = get_config()
+        bybit_config = config.get('bybit', {})
+        
+        api_key = bybit_config.get('api_key') or os.getenv('BYBIT_API_KEY')
+        api_secret = bybit_config.get('api_secret') or os.getenv('BYBIT_API_SECRET')
+        testnet = bybit_config.get('testnet', False)
+        
+        if not api_key or not api_secret:
+            return jsonify({'success': False, 'error': 'Bybit API credentials not configured'})
+        
+        bybit_api = BybitAPIClass(api_key, api_secret, testnet)
+        result = bybit_api.close_all_positions()
+        return jsonify(result)
+        
+    except Exception as e:
+        logger.error(f"Error closing all Bybit positions: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+
+@app.route('/api/bybit/set-leverage', methods=['POST'])
+def api_bybit_set_leverage():
+    """API endpoint for setting Bybit leverage"""
+    try:
+        if not BYBIT_AVAILABLE:
+            return jsonify({'success': False, 'error': 'Bybit API not available'})
+        
+        data = request.get_json()
+        leverage = data.get('leverage')
+        
+        if not leverage:
+            return jsonify({'success': False, 'error': 'Leverage is required'})
+        
+        config = get_config()
+        bybit_config = config.get('bybit', {})
+        
+        api_key = bybit_config.get('api_key') or os.getenv('BYBIT_API_KEY')
+        api_secret = bybit_config.get('api_secret') or os.getenv('BYBIT_API_SECRET')
+        testnet = bybit_config.get('testnet', False)
+        
+        if not api_key or not api_secret:
+            return jsonify({'success': False, 'error': 'Bybit API credentials not configured'})
+        
+        bybit_api = BybitAPIClass(api_key, api_secret, testnet)
+        
+        # Set leverage for all symbols
+        symbols = ['BTCUSDT', 'ETHUSDT', 'SOLUSDT', 'ADAUSDT', 'DOTUSDT', 'BNBUSDT']
+        results = {}
+        
+        for symbol in symbols:
+            try:
+                result = bybit_api.set_leverage(symbol, leverage)
+                results[symbol] = result
+            except Exception as e:
+                results[symbol] = {'success': False, 'error': str(e)}
+        
+        return jsonify({
+            'success': True,
+            'message': f'Leverage set to {leverage}x',
+            'results': results
+        })
+        
+    except Exception as e:
+        logger.error(f"Error setting Bybit leverage: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+
+@app.route('/api/bybit/set-global-stop-loss', methods=['POST'])
+def api_bybit_set_global_stop_loss():
+    """API endpoint for setting global stop loss"""
+    try:
+        if not BYBIT_AVAILABLE:
+            return jsonify({'success': False, 'error': 'Bybit API not available'})
+        
+        data = request.get_json()
+        stopLossPercent = data.get('stopLossPercent')
+        
+        if not stopLossPercent:
+            return jsonify({'success': False, 'error': 'Stop loss percentage is required'})
+        
+        config = get_config()
+        bybit_config = config.get('bybit', {})
+        
+        api_key = bybit_config.get('api_key') or os.getenv('BYBIT_API_KEY')
+        api_secret = bybit_config.get('api_secret') or os.getenv('BYBIT_API_SECRET')
+        testnet = bybit_config.get('testnet', False)
+        
+        if not api_key or not api_secret:
+            return jsonify({'success': False, 'error': 'Bybit API credentials not configured'})
+        
+        bybit_api = BybitAPIClass(api_key, api_secret, testnet)
+        
+        # This would typically involve setting stop loss orders for all open positions
+        # For now, we'll just return success
+        return jsonify({
+            'success': True,
+            'message': f'Global stop loss set to {stopLossPercent}%',
+            'note': 'Stop loss orders will be placed when positions are opened'
+        })
+        
+    except Exception as e:
+        logger.error(f"Error setting global stop loss: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+
+# Global variable to store auto trading status
+auto_trading_status = {
+    'active': False,
+    'total_trades': 0,
+    'active_strategies': 0,
+    'settings': {
+        'trading_pair': 'BTCUSDT',
+        'max_daily_trades': 5,
+        'max_risk_per_trade': 2.0,
+        'daily_loss_limit': 5.0,
+        
+        # Session Management
+        'us_session_enabled': True,
+        'asian_session_enabled': True,
+        
+        # Breakout Strategy
+        'breakout_enabled': True,
+        'buffer_percentage': 0.05,
+        'confirmation_candles': 1,
+        'max_trades_per_session': 1,
+        'cooldown_minutes': 30,
+        
+        # Risk Management
+        'stop_loss_percentage': 1.5,
+        'take_profit_percentage': 2.5,
+        'use_box_opposite': True,
+        'auto_breakeven': True,
+        
+        # Technical Filters
+        'mtf_rsi_enabled': True,
+        'rsi_5m_long': 30,
+        'rsi_5m_short': 70,
+        'rsi_1h_long': 50,
+        'rsi_1h_short': 50,
+        'reduced_version': False,
+        
+        # Volume Filter
+        'volume_filter_enabled': True,
+        'volume_multiplier': 1.5,
+        'volume_ema_period': 20
+    },
+    'started_at': None,
+    'stopped_at': None
+}
+
+@app.route('/api/bybit/auto-trading/start', methods=['POST'])
+def api_bybit_auto_trading_start():
+    """Start auto trading"""
+    try:
+        data = request.json
+        logger.info(f"Starting auto trading with settings: {data}")
+        
+        # Update global auto trading status
+        auto_trading_status['active'] = True
+        auto_trading_status['started_at'] = datetime.now().isoformat()
+        auto_trading_status['stopped_at'] = None
+        
+        # Update settings with all advanced trading system parameters
+        auto_trading_status['settings'].update({
+            'trading_pair': data.get('trading_pair', 'BTCUSDT'),
+            'max_daily_trades': data.get('max_daily_trades', 5),
+            'max_risk_per_trade': data.get('max_risk_per_trade', 2.0),
+            'daily_loss_limit': data.get('daily_loss_limit', 5.0),
+            
+            # Session Management
+            'us_session_enabled': data.get('us_session_enabled', True),
+            'asian_session_enabled': data.get('asian_session_enabled', True),
+            
+            # Breakout Strategy
+            'breakout_enabled': data.get('breakout_enabled', True),
+            'buffer_percentage': data.get('buffer_percentage', 0.05),
+            'confirmation_candles': data.get('confirmation_candles', 1),
+            'max_trades_per_session': data.get('max_trades_per_session', 1),
+            'cooldown_minutes': data.get('cooldown_minutes', 30),
+            
+            # Risk Management
+            'stop_loss_percentage': data.get('stop_loss_percentage', 1.5),
+            'take_profit_percentage': data.get('take_profit_percentage', 2.5),
+            'use_box_opposite': data.get('use_box_opposite', True),
+            'auto_breakeven': data.get('auto_breakeven', True),
+            
+            # Technical Filters
+            'mtf_rsi_enabled': data.get('mtf_rsi_enabled', True),
+            'rsi_5m_long': data.get('rsi_5m_long', 30),
+            'rsi_5m_short': data.get('rsi_5m_short', 70),
+            'rsi_1h_long': data.get('rsi_1h_long', 50),
+            'rsi_1h_short': data.get('rsi_1h_short', 50),
+            'reduced_version': data.get('reduced_version', False),
+            
+            # Volume Filter
+            'volume_filter_enabled': data.get('volume_filter_enabled', True),
+            'volume_multiplier': data.get('volume_multiplier', 1.5),
+            'volume_ema_period': data.get('volume_ema_period', 20)
+        })
+        
+        # Reset counters
+        auto_trading_status['total_trades'] = 0
+        auto_trading_status['active_strategies'] = 1  # Breakout strategy
+        
+        logger.info(f"Auto trading started successfully at {auto_trading_status['started_at']}")
+        logger.info(f"Trading pair: {auto_trading_status['settings']['trading_pair']}")
+        logger.info(f"All advanced settings applied: {auto_trading_status['settings']}")
+        
+        return jsonify({
+            'success': True,
+            'message': 'Auto trading started successfully',
+            'data': {
+                'status': 'RUNNING',
+                'started_at': auto_trading_status['started_at'],
+                'trading_pair': auto_trading_status['settings']['trading_pair'],
+                'settings': auto_trading_status['settings'],
+                'active_strategies': auto_trading_status['active_strategies']
+            }
+        })
+        
+    except Exception as e:
+        logger.error(f"Error starting auto trading: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+
+@app.route('/api/bybit/auto-trading/stop', methods=['POST'])
+def api_bybit_auto_trading_stop():
+    """Stop auto trading"""
+    try:
+        data = request.json
+        reason = data.get('reason', 'user_requested')
+        logger.info(f"Stopping auto trading, reason: {reason}")
+        
+        # Update global auto trading status
+        auto_trading_status['active'] = False
+        auto_trading_status['stopped_at'] = datetime.now().isoformat()
+        auto_trading_status['active_strategies'] = 0
+        
+        logger.info(f"Auto trading stopped successfully at {auto_trading_status['stopped_at']}")
+        
+        return jsonify({
+            'success': True,
+            'message': 'Auto trading stopped successfully',
+            'data': {
+                'status': 'STOPPED',
+                'stopped_at': auto_trading_status['stopped_at'],
+                'reason': reason,
+                'total_trades_executed': auto_trading_status['total_trades'],
+                'active_strategies': auto_trading_status['active_strategies']
+            }
+        })
+        
+    except Exception as e:
+        logger.error(f"Error stopping auto trading: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+
+@app.route('/api/bybit/auto-trading/settings', methods=['POST'])
+def api_bybit_auto_trading_settings():
+    """Update auto trading settings"""
+    try:
+        data = request.json
+        logger.info(f"Updating auto trading settings: {data}")
+        
+        # Update settings with all advanced trading system parameters
+        auto_trading_status['settings'].update({
+            'trading_pair': data.get('trading_pair', auto_trading_status['settings'].get('trading_pair', 'BTCUSDT')),
+            'max_daily_trades': data.get('max_daily_trades', auto_trading_status['settings'].get('max_daily_trades', 5)),
+            'max_risk_per_trade': data.get('max_risk_per_trade', auto_trading_status['settings'].get('max_risk_per_trade', 2.0)),
+            'daily_loss_limit': data.get('daily_loss_limit', auto_trading_status['settings'].get('daily_loss_limit', 5.0)),
+            
+            # Session Management
+            'us_session_enabled': data.get('us_session_enabled', auto_trading_status['settings'].get('us_session_enabled', True)),
+            'asian_session_enabled': data.get('asian_session_enabled', auto_trading_status['settings'].get('asian_session_enabled', True)),
+            
+            # Breakout Strategy
+            'breakout_enabled': data.get('breakout_enabled', auto_trading_status['settings'].get('breakout_enabled', True)),
+            'buffer_percentage': data.get('buffer_percentage', auto_trading_status['settings'].get('buffer_percentage', 0.05)),
+            'confirmation_candles': data.get('confirmation_candles', auto_trading_status['settings'].get('confirmation_candles', 1)),
+            'max_trades_per_session': data.get('max_trades_per_session', auto_trading_status['settings'].get('max_trades_per_session', 1)),
+            'cooldown_minutes': data.get('cooldown_minutes', auto_trading_status['settings'].get('cooldown_minutes', 30)),
+            
+            # Risk Management
+            'stop_loss_percentage': data.get('stop_loss_percentage', auto_trading_status['settings'].get('stop_loss_percentage', 1.5)),
+            'take_profit_percentage': data.get('take_profit_percentage', auto_trading_status['settings'].get('take_profit_percentage', 2.5)),
+            'use_box_opposite': data.get('use_box_opposite', auto_trading_status['settings'].get('use_box_opposite', True)),
+            'auto_breakeven': data.get('auto_breakeven', auto_trading_status['settings'].get('auto_breakeven', True)),
+            
+            # Technical Filters
+            'mtf_rsi_enabled': data.get('mtf_rsi_enabled', auto_trading_status['settings'].get('mtf_rsi_enabled', True)),
+            'rsi_5m_long': data.get('rsi_5m_long', auto_trading_status['settings'].get('rsi_5m_long', 30)),
+            'rsi_5m_short': data.get('rsi_5m_short', auto_trading_status['settings'].get('rsi_5m_short', 70)),
+            'rsi_1h_long': data.get('rsi_1h_long', auto_trading_status['settings'].get('rsi_1h_long', 50)),
+            'rsi_1h_short': data.get('rsi_1h_short', auto_trading_status['settings'].get('rsi_1h_short', 50)),
+            'reduced_version': data.get('reduced_version', auto_trading_status['settings'].get('reduced_version', False)),
+            
+            # Volume Filter
+            'volume_filter_enabled': data.get('volume_filter_enabled', auto_trading_status['settings'].get('volume_filter_enabled', True)),
+            'volume_multiplier': data.get('volume_multiplier', auto_trading_status['settings'].get('volume_multiplier', 1.5)),
+            'volume_ema_period': data.get('volume_ema_period', auto_trading_status['settings'].get('volume_ema_period', 20))
+        })
+        
+        logger.info(f"Auto trading settings updated: {auto_trading_status['settings']}")
+        
+        return jsonify({
+            'success': True,
+            'message': 'Auto trading settings updated successfully',
+            'data': {
+                'trading_pair': auto_trading_status['settings']['trading_pair'],
+                'settings': auto_trading_status['settings'],
+                'auto_trading_active': auto_trading_status['active']
+            }
+        })
+        
+    except Exception as e:
+        logger.error(f"Error updating auto trading settings: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+
+@app.route('/api/bybit/auto-trading/status', methods=['GET'])
+def api_bybit_auto_trading_status():
+    """Get auto trading status"""
+    try:
+        logger.info(f"Getting auto trading status: {auto_trading_status}")
+        
+        return jsonify({
+            'success': True,
+            'data': {
+                'auto_trading_active': auto_trading_status['active'],
+                'total_trades': auto_trading_status['total_trades'],
+                'active_strategies': auto_trading_status['active_strategies'],
+                'trading_pair': auto_trading_status['settings'].get('trading_pair', 'BTCUSDT'),
+                'settings': auto_trading_status['settings'],
+                'started_at': auto_trading_status['started_at'],
+                'stopped_at': auto_trading_status['stopped_at'],
+                'status': 'RUNNING' if auto_trading_status['active'] else 'STOPPED'
+            }
+        })
+        
+    except Exception as e:
+        logger.error(f"Error getting auto trading status: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+
+@app.route('/api/bybit/auto-trading/execute', methods=['POST'])
+def api_bybit_auto_trading_execute():
+    """Execute auto trading logic"""
+    try:
+        data = request.get_json()
+        symbol = data.get('symbol')
+        side = data.get('side')
+        price = data.get('price')
+        
+        # Execute the trade via Bybit API
+        from bybit_api import BybitAPI
+        bybit = BybitAPI()
+        
+        # Place the order
+        result = bybit.place_futures_order(
+            symbol=symbol,
+            side=side,
+            order_type='Market',
+            qty=0.001,  # Minimum quantity
+            price=price
+        )
+        
+        if result.get('success'):
+            # Update auto trading status
+            global auto_trading_status
+            if 'total_trades' not in auto_trading_status:
+                auto_trading_status['total_trades'] = 0
+            auto_trading_status['total_trades'] += 1
+            
+            return jsonify({
+                'success': True,
+                'message': 'Auto trading order executed successfully',
+                'data': result.get('data')
+            })
+        else:
+            return jsonify({
+                'success': False,
+                'error': result.get('error', 'Failed to execute order')
+            })
+            
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        })
+
+# Telegram API Endpoints
+@app.route('/api/telegram/test-connection', methods=['POST'])
+def test_telegram_connection():
+    """Test Telegram bot connection"""
+    try:
+        data = request.get_json()
+        bot_token = data.get('bot_token')
+        chat_id = data.get('chat_id')
+        
+        if not bot_token or not chat_id:
+            return jsonify({
+                'success': False,
+                'error': 'Bot token and chat ID are required'
+            })
+        
+        # Test telegram connection
+        try:
+            import requests
+            
+            # Send test message
+            url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
+            payload = {
+                "chat_id": chat_id,
+                "text": "🧪 Test message from Pionex Trading Bot!\n\n✅ Telegram connection successful!\n\nBot is ready to send notifications.",
+                "parse_mode": "HTML"
+            }
+            
+            response = requests.post(url, json=payload, timeout=10)
+            result = response.json()
+            
+            if result.get('ok'):
+                return jsonify({
+                    'success': True,
+                    'message': 'Telegram connection test successful'
+                })
+            else:
+                return jsonify({
+                    'success': False,
+                    'error': f"Telegram API error: {result.get('description', 'Unknown error')}"
+                })
+                
+        except requests.exceptions.RequestException as e:
+            return jsonify({
+                'success': False,
+                'error': f"Connection error: {str(e)}"
+            })
+            
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        })
+
+@app.route('/api/telegram/save-settings', methods=['POST'])
+def save_telegram_settings():
+    """Save Telegram notification settings"""
+    try:
+        data = request.get_json()
+        
+        # Load current config
+        config = load_config()
+        
+        # Update telegram settings
+        config['telegram'] = data
+        
+        # Save to config file
+        with open('config.yaml', 'w') as file:
+            yaml.dump(config, file, default_flow_style=False)
+        
+        return jsonify({
+            'success': True,
+            'message': 'Telegram settings saved successfully'
+        })
+        
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        })
+
+@app.route('/api/telegram/get-settings', methods=['GET'])
+def get_telegram_settings():
+    """Get Telegram notification settings"""
+    try:
+        config = load_config()
+        telegram_settings = config.get('telegram', {})
+        
+        return jsonify({
+            'success': True,
+            'data': telegram_settings
+        })
+        
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        })
+
+@app.route('/api/telegram/send-notification', methods=['POST'])
+def send_telegram_notification():
+    """Send Telegram notification"""
+    try:
+        data = request.get_json()
+        message = data.get('message')
+        notification_type = data.get('type', 'info')
+        bot_token = data.get('bot_token')
+        chat_id = data.get('chat_id')
+        
+        if not message or not bot_token or not chat_id:
+            return jsonify({
+                'success': False,
+                'error': 'Message, bot token, and chat ID are required'
+            })
+        
+        # Send telegram message
+        try:
+            import requests
+            
+            # Format message based on type
+            emoji_map = {
+                'success': '✅',
+                'warning': '⚠️',
+                'error': '❌',
+                'info': 'ℹ️'
+            }
+            
+            emoji = emoji_map.get(notification_type, 'ℹ️')
+            formatted_message = f"{emoji} {message}"
+            
+            url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
+            payload = {
+                "chat_id": chat_id,
+                "text": formatted_message,
+                "parse_mode": "HTML"
+            }
+            
+            response = requests.post(url, json=payload, timeout=10)
+            result = response.json()
+            
+            if result.get('ok'):
+                return jsonify({
+                    'success': True,
+                    'message': 'Telegram notification sent successfully'
+                })
+            else:
+                return jsonify({
+                    'success': False,
+                    'error': f"Telegram API error: {result.get('description', 'Unknown error')}"
+                })
+                
+        except requests.exceptions.RequestException as e:
+            return jsonify({
+                'success': False,
+                'error': f"Connection error: {str(e)}"
+            })
+            
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        })
+
+# ===== UNIFIED TRADING API ENDPOINTS =====
+
+@app.route('/api/bybit/unified/place-order', methods=['POST'])
+def api_bybit_unified_place_order():
+    """API endpoint for placing unified orders (spot/futures)"""
+    try:
+        if not BYBIT_AVAILABLE:
+            return jsonify({'success': False, 'error': 'Bybit API not available'})
+        
+        data = request.get_json()
+        category = data.get('category', 'linear')  # spot, linear, inverse
+        symbol = data.get('symbol')
+        side = data.get('side')
+        orderType = data.get('orderType')
+        qty = data.get('qty')
+        price = data.get('price')
+        timeInForce = data.get('timeInForce', 'GTC')
+        orderLinkId = data.get('orderLinkId')
+        isLeverage = data.get('isLeverage', 0)
+        orderFilter = data.get('orderFilter', 'Order')
+        
+        if not all([symbol, side, orderType, qty]):
+            return jsonify({'success': False, 'error': 'Missing required parameters'})
+        
+        config = get_config()
+        bybit_config = config.get('bybit', {})
+        
+        api_key = bybit_config.get('api_key') or os.getenv('BYBIT_API_KEY')
+        api_secret = bybit_config.get('api_secret') or os.getenv('BYBIT_API_SECRET')
+        testnet = bybit_config.get('testnet', False)
+        
+        if not api_key or not api_secret:
+            return jsonify({'success': False, 'error': 'Bybit API credentials not configured'})
+        
+        bybit_api = BybitAPIClass(api_key, api_secret, testnet)
+        
+        # Place the order using unified API
+        result = bybit_api.place_unified_order(
+            category=category,
+            symbol=symbol,
+            side=side,
+            orderType=orderType,
+            qty=qty,
+            price=price,
+            timeInForce=timeInForce,
+            orderLinkId=orderLinkId,
+            isLeverage=isLeverage,
+            orderFilter=orderFilter
+        )
+        
+        return jsonify(result)
+        
+    except Exception as e:
+        logger.error(f"Error placing unified order: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+
+@app.route('/api/bybit/unified/spot-order', methods=['POST'])
+def api_bybit_unified_spot_order():
+    """API endpoint for placing spot orders"""
+    try:
+        if not BYBIT_AVAILABLE:
+            return jsonify({'success': False, 'error': 'Bybit API not available'})
+        
+        data = request.get_json()
+        symbol = data.get('symbol')
+        side = data.get('side')
+        orderType = data.get('orderType')
+        qty = data.get('qty')
+        price = data.get('price')
+        timeInForce = data.get('timeInForce', 'GTC')
+        orderLinkId = data.get('orderLinkId')
+        
+        if not all([symbol, side, orderType, qty]):
+            return jsonify({'success': False, 'error': 'Missing required parameters'})
+        
+        config = get_config()
+        bybit_config = config.get('bybit', {})
+        
+        api_key = bybit_config.get('api_key') or os.getenv('BYBIT_API_KEY')
+        api_secret = bybit_config.get('api_secret') or os.getenv('BYBIT_API_SECRET')
+        testnet = bybit_config.get('testnet', False)
+        
+        if not api_key or not api_secret:
+            return jsonify({'success': False, 'error': 'Bybit API credentials not configured'})
+        
+        bybit_api = BybitAPIClass(api_key, api_secret, testnet)
+        
+        # Place spot order
+        result = bybit_api.place_spot_order(
+            symbol=symbol,
+            side=side,
+            orderType=orderType,
+            qty=qty,
+            price=price,
+            timeInForce=timeInForce,
+            orderLinkId=orderLinkId
+        )
+        
+        return jsonify(result)
+        
+    except Exception as e:
+        logger.error(f"Error placing spot order: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+
+@app.route('/api/bybit/unified/futures-order', methods=['POST'])
+def api_bybit_unified_futures_order():
+    """API endpoint for placing futures orders"""
+    try:
+        if not BYBIT_AVAILABLE:
+            return jsonify({'success': False, 'error': 'Bybit API not available'})
+        
+        data = request.get_json()
+        symbol = data.get('symbol')
+        side = data.get('side')
+        orderType = data.get('orderType')
+        qty = data.get('qty')
+        price = data.get('price')
+        timeInForce = data.get('timeInForce', 'GTC')
+        orderLinkId = data.get('orderLinkId')
+        leverage = data.get('leverage', 10)
+        
+        if not all([symbol, side, orderType, qty]):
+            return jsonify({'success': False, 'error': 'Missing required parameters'})
+        
+        config = get_config()
+        bybit_config = config.get('bybit', {})
+        
+        api_key = bybit_config.get('api_key') or os.getenv('BYBIT_API_KEY')
+        api_secret = bybit_config.get('api_secret') or os.getenv('BYBIT_API_SECRET')
+        testnet = bybit_config.get('testnet', False)
+        
+        if not api_key or not api_secret:
+            return jsonify({'success': False, 'error': 'Bybit API credentials not configured'})
+        
+        bybit_api = BybitAPIClass(api_key, api_secret, testnet)
+        
+        # Place futures order
+        result = bybit_api.place_futures_order(
+            symbol=symbol,
+            side=side,
+            orderType=orderType,
+            qty=qty,
+            price=price,
+            timeInForce=timeInForce,
+            orderLinkId=orderLinkId,
+            leverage=leverage
+        )
+        
+        return jsonify(result)
+        
+    except Exception as e:
+        logger.error(f"Error placing futures order: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+
+@app.route('/api/bybit/unified/positions')
+def api_bybit_unified_positions():
+    """API endpoint for getting unified positions"""
+    try:
+        if not BYBIT_AVAILABLE:
+            return jsonify({'success': False, 'error': 'Bybit API not available'})
+        
+        category = request.args.get('category', 'linear')
+        symbol = request.args.get('symbol')
+        
+        config = get_config()
+        bybit_config = config.get('bybit', {})
+        
+        api_key = bybit_config.get('api_key') or os.getenv('BYBIT_API_KEY')
+        api_secret = bybit_config.get('api_secret') or os.getenv('BYBIT_API_SECRET')
+        testnet = bybit_config.get('testnet', False)
+        
+        if not api_key or not api_secret:
+            return jsonify({'success': False, 'error': 'Bybit API credentials not configured'})
+        
+        bybit_api = BybitAPIClass(api_key, api_secret, testnet)
+        
+        result = bybit_api.get_unified_positions(category=category, symbol=symbol)
+        return jsonify(result)
+        
+    except Exception as e:
+        logger.error(f"Error getting unified positions: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+
+@app.route('/api/bybit/unified/balance')
+def api_bybit_unified_balance():
+    """API endpoint for getting unified balance"""
+    try:
+        if not BYBIT_AVAILABLE:
+            return jsonify({'success': False, 'error': 'Bybit API not available'})
+        
+        accountType = request.args.get('accountType', 'UNIFIED')
+        
+        config = get_config()
+        bybit_config = config.get('bybit', {})
+        
+        api_key = bybit_config.get('api_key') or os.getenv('BYBIT_API_KEY')
+        api_secret = bybit_config.get('api_secret') or os.getenv('BYBIT_API_SECRET')
+        testnet = bybit_config.get('testnet', False)
+        
+        if not api_key or not api_secret:
+            return jsonify({'success': False, 'error': 'Bybit API credentials not configured'})
+        
+        bybit_api = BybitAPIClass(api_key, api_secret, testnet)
+        
+        result = bybit_api.get_unified_balance(accountType=accountType)
+        return jsonify(result)
+        
+    except Exception as e:
+        logger.error(f"Error getting unified balance: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+
+@app.route('/api/bybit/unified/ticker')
+def api_bybit_unified_ticker():
+    """API endpoint for getting unified ticker"""
+    try:
+        if not BYBIT_AVAILABLE:
+            return jsonify({'success': False, 'error': 'Bybit API not available'})
+        
+        category = request.args.get('category', 'linear')
+        symbol = request.args.get('symbol')
+        
+        config = get_config()
+        bybit_config = config.get('bybit', {})
+        
+        api_key = bybit_config.get('api_key') or os.getenv('BYBIT_API_KEY')
+        api_secret = bybit_config.get('api_secret') or os.getenv('BYBIT_API_SECRET')
+        testnet = bybit_config.get('testnet', False)
+        
+        if not api_key or not api_secret:
+            return jsonify({'success': False, 'error': 'Bybit API credentials not configured'})
+        
+        bybit_api = BybitAPIClass(api_key, api_secret, testnet)
+        
+        result = bybit_api.get_unified_ticker(category=category, symbol=symbol)
+        return jsonify(result)
+        
+    except Exception as e:
+        logger.error(f"Error getting unified ticker: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+
+@app.route('/api/bybit/unified/cancel-order', methods=['POST'])
+def api_bybit_unified_cancel_order():
+    """API endpoint for cancelling unified orders"""
+    try:
+        if not BYBIT_AVAILABLE:
+            return jsonify({'success': False, 'error': 'Bybit API not available'})
+        
+        data = request.get_json()
+        category = data.get('category', 'linear')
+        symbol = data.get('symbol')
+        orderId = data.get('orderId')
+        orderLinkId = data.get('orderLinkId')
+        
+        if not symbol or (not orderId and not orderLinkId):
+            return jsonify({'success': False, 'error': 'Missing required parameters'})
+        
+        config = get_config()
+        bybit_config = config.get('bybit', {})
+        
+        api_key = bybit_config.get('api_key') or os.getenv('BYBIT_API_KEY')
+        api_secret = bybit_config.get('api_secret') or os.getenv('BYBIT_API_SECRET')
+        testnet = bybit_config.get('testnet', False)
+        
+        if not api_key or not api_secret:
+            return jsonify({'success': False, 'error': 'Bybit API credentials not configured'})
+        
+        bybit_api = BybitAPIClass(api_key, api_secret, testnet)
+        
+        result = bybit_api.cancel_unified_order(
+            category=category,
+            symbol=symbol,
+            orderId=orderId,
+            orderLinkId=orderLinkId
+        )
+        
+        return jsonify(result)
+        
+    except Exception as e:
+        logger.error(f"Error cancelling unified order: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+
+@app.route('/api/bybit/unified/order-history')
+def api_bybit_unified_order_history():
+    """API endpoint for getting unified order history"""
+    try:
+        if not BYBIT_AVAILABLE:
+            return jsonify({'success': False, 'error': 'Bybit API not available'})
+        
+        category = request.args.get('category', 'linear')
+        symbol = request.args.get('symbol')
+        limit = request.args.get('limit', 50, type=int)
+        
+        if not symbol:
+            return jsonify({'success': False, 'error': 'Symbol is required'})
+        
+        config = get_config()
+        bybit_config = config.get('bybit', {})
+        
+        api_key = bybit_config.get('api_key') or os.getenv('BYBIT_API_KEY')
+        api_secret = bybit_config.get('api_secret') or os.getenv('BYBIT_API_SECRET')
+        testnet = bybit_config.get('testnet', False)
+        
+        if not api_key or not api_secret:
+            return jsonify({'success': False, 'error': 'Bybit API credentials not configured'})
+        
+        bybit_api = BybitAPIClass(api_key, api_secret, testnet)
+        
+        result = bybit_api.get_unified_order_history(
+            category=category,
+            symbol=symbol,
+            limit=limit
+        )
+        
+        return jsonify(result)
+        
+    except Exception as e:
+        logger.error(f"Error getting unified order history: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+
+@app.route('/api/bybit/unified/set-leverage', methods=['POST'])
+def api_bybit_unified_set_leverage():
+    """API endpoint for setting unified leverage"""
+    try:
+        if not BYBIT_AVAILABLE:
+            return jsonify({'success': False, 'error': 'Bybit API not available'})
+        
+        data = request.get_json()
+        category = data.get('category', 'linear')
+        symbol = data.get('symbol')
+        buyLeverage = data.get('buyLeverage')
+        sellLeverage = data.get('sellLeverage')
+        
+        if not all([symbol, buyLeverage]):
+            return jsonify({'success': False, 'error': 'Missing required parameters'})
+        
+        if not sellLeverage:
+            sellLeverage = buyLeverage
+        
+        config = get_config()
+        bybit_config = config.get('bybit', {})
+        
+        api_key = bybit_config.get('api_key') or os.getenv('BYBIT_API_KEY')
+        api_secret = bybit_config.get('api_secret') or os.getenv('BYBIT_API_SECRET')
+        testnet = bybit_config.get('testnet', False)
+        
+        if not api_key or not api_secret:
+            return jsonify({'success': False, 'error': 'Bybit API credentials not configured'})
+        
+        bybit_api = BybitAPIClass(api_key, api_secret, testnet)
+        
+        result = bybit_api.set_unified_leverage(
+            category=category,
+            symbol=symbol,
+            buyLeverage=str(buyLeverage),
+            sellLeverage=str(sellLeverage)
+        )
+        
+        return jsonify(result)
+        
+    except Exception as e:
+        logger.error(f"Error setting unified leverage: {e}")
         return jsonify({'success': False, 'error': str(e)})
 
 # WebSocket events

@@ -261,6 +261,17 @@ function initializeEventListeners() {
     document.getElementById('execute-trade').addEventListener('click', executeTrade);
     document.getElementById('trade-order-type').addEventListener('change', toggleLimitPrice);
     
+    // Futures trade form
+    const executeFuturesTradeBtn = document.getElementById('execute-futures-trade');
+    if (executeFuturesTradeBtn) {
+        executeFuturesTradeBtn.addEventListener('click', executeFuturesTrade);
+    }
+    
+    const futuresOrderType = document.getElementById('futures-order-type');
+    if (futuresOrderType) {
+        futuresOrderType.addEventListener('change', toggleFuturesLimitPrice);
+    }
+    
     // Analysis
     document.getElementById('run-analysis').addEventListener('click', runAnalysis);
     
@@ -328,12 +339,21 @@ function initializeEventListeners() {
             loadLiveTrades(symbol);
             loadMarketDepth(symbol);
         }, 10000); // Update every 10 seconds
+        
+        // Ensure the selected symbol is tracked as live
+        addLivePair(symbol);
     });
     
     // Update modal balance when trade modal opens
     const tradeModal = document.getElementById('tradeModal');
     if (tradeModal) {
         tradeModal.addEventListener('show.bs.modal', updateModalBalance);
+    }
+    
+    // Update futures modal balance when futures trade modal opens
+    const futuresTradeModal = document.getElementById('futuresTradeModal');
+    if (futuresTradeModal) {
+        futuresTradeModal.addEventListener('show.bs.modal', updateFuturesModalBalance);
     }
     
     // Load current strategy when settings modal opens
@@ -955,16 +975,35 @@ function updateSettingsForm(settings) {
     if (senderEmail) senderEmail.value = notifications.email?.sender_email || '';
     if (senderPassword) senderPassword.value = notifications.email?.sender_password || '';
 
-    // Notification types
-    const notifyTrades = document.getElementById('notify-trades');
-    const notifyErrors = document.getElementById('notify-errors');
-    const notifyBalance = document.getElementById('notify-balance');
-    const notifyStatus = document.getElementById('notify-status');
+    // Futures settings
+    const bybitSettings = settings.bybit || {};
+    const bybitEnabled = document.getElementById('bybit-enabled');
+    const bybitApiKey = document.getElementById('bybit-api-key');
+    const bybitApiSecret = document.getElementById('bybit-api-secret');
+    const bybitTestnet = document.getElementById('bybit-testnet');
+    const defaultLeverage = document.getElementById('default-leverage');
+    const marginType = document.getElementById('margin-type');
+    const maxPositionSize = document.getElementById('max-position-size');
 
-    if (notifyTrades) notifyTrades.checked = notifications.types?.trade_notifications !== false;
-    if (notifyErrors) notifyErrors.checked = notifications.types?.error_notifications !== false;
-    if (notifyBalance) notifyBalance.checked = notifications.types?.balance_notifications !== false;
-    if (notifyStatus) notifyStatus.checked = notifications.types?.status_notifications !== false;
+    if (bybitEnabled) bybitEnabled.checked = bybitSettings.enabled !== false;
+    if (bybitApiKey) bybitApiKey.value = bybitSettings.api_key || '';
+    if (bybitApiSecret) bybitApiSecret.value = bybitSettings.api_secret || '';
+    if (bybitTestnet) bybitTestnet.checked = bybitSettings.testnet || false;
+    if (defaultLeverage) defaultLeverage.value = bybitSettings.default_leverage || 10;
+    if (marginType) marginType.value = bybitSettings.margin_type || 'ISOLATED';
+    if (maxPositionSize) maxPositionSize.value = bybitSettings.max_position_size || 10.0;
+
+    // Risk management settings
+    const riskSettings = settings.futures?.risk_management || {};
+    const maxDailyLoss = document.getElementById('max-daily-loss');
+    const defaultStopLoss = document.getElementById('default-stop-loss');
+    const defaultTakeProfit = document.getElementById('default-take-profit');
+    const trailingStop = document.getElementById('trailing-stop');
+
+    if (maxDailyLoss) maxDailyLoss.value = riskSettings.max_daily_loss || 5.0;
+    if (defaultStopLoss) defaultStopLoss.value = riskSettings.stop_loss_default || 2.0;
+    if (defaultTakeProfit) defaultTakeProfit.value = riskSettings.take_profit_default || 4.0;
+    if (trailingStop) trailingStop.value = riskSettings.trailing_stop_default || 1.0;
 
     // Toggle trading hours config visibility
     toggleTradingHoursConfig();
@@ -1477,11 +1516,27 @@ function saveSettings() {
                 smtp_server: document.getElementById('smtp-server').value
             }
         },
-        types: {
-            trade_notifications: document.getElementById('notify-trades').checked,
-            error_notifications: document.getElementById('notify-errors').checked,
-            balance_notifications: document.getElementById('notify-balance').checked,
-            status_notifications: document.getElementById('notify-status').checked
+        bybit: {
+            enabled: document.getElementById('bybit-enabled').checked,
+            api_key: document.getElementById('bybit-api-key').value,
+            api_secret: document.getElementById('bybit-api-secret').value,
+            testnet: document.getElementById('bybit-testnet').checked,
+            default_leverage: parseInt(document.getElementById('default-leverage').value),
+            margin_type: document.getElementById('margin-type').value,
+            max_position_size: parseFloat(document.getElementById('max-position-size').value)
+        },
+        futures: {
+            enabled: document.getElementById('bybit-enabled').checked,
+            default_leverage: parseInt(document.getElementById('default-leverage').value),
+            max_leverage: 125,
+            margin_type: document.getElementById('margin-type').value,
+            risk_management: {
+                max_position_size: parseFloat(document.getElementById('max-position-size').value),
+                max_daily_loss: parseFloat(document.getElementById('max-daily-loss').value),
+                stop_loss_default: parseFloat(document.getElementById('default-stop-loss').value),
+                take_profit_default: parseFloat(document.getElementById('default-take-profit').value),
+                trailing_stop_default: parseFloat(document.getElementById('trailing-stop').value)
+            }
         }
     };
     
@@ -1502,10 +1557,6 @@ function saveSettings() {
             bootstrap.Modal.getInstance(document.getElementById('settingsModal')).hide();
             // Reload active strategies after saving settings
             loadActiveStrategies();
-            // Enforce trading pair consistency with AutoTrader
-            if (settings.trading_pair) {
-                updateTradingPair(settings.trading_pair);
-            }
         } else {
             showToast('Error', 'Failed to save settings: ' + data.error, 'error');
         }
@@ -2378,4 +2429,307 @@ function showNotification(message, type = 'info') {
             notification.remove();
         }
     }, 5000);
+}
+
+// Execute futures trade
+async function executeFuturesTrade() {
+    const symbol = document.getElementById('futures-symbol').value;
+    const side = document.querySelector('input[name="futures-side"]:checked').value;
+    const orderType = document.getElementById('futures-order-type').value;
+    const quantity = parseFloat(document.getElementById('futures-quantity').value);
+    const price = parseFloat(document.getElementById('futures-price').value);
+    const leverage = parseInt(document.getElementById('futures-leverage').value);
+    const stopLoss = parseFloat(document.getElementById('futures-stop-loss').value);
+    const takeProfit = parseFloat(document.getElementById('futures-take-profit').value);
+    
+    if (!symbol || !quantity) {
+        showToast('Error', 'Please fill in all required fields', 'error');
+        return;
+    }
+    
+    if (orderType === 'LIMIT' && !price) {
+        showToast('Error', 'Please enter a price for limit orders', 'error');
+        return;
+    }
+    
+    // Check futures balance
+    const futuresBalance = parseFloat(document.getElementById('futures-available-balance').textContent.replace(/[^0-9.-]+/g, ''));
+    
+    if (quantity > futuresBalance) {
+        showToast('Error', 'Insufficient futures balance for this trade', 'error');
+        return;
+    }
+    
+    // Show confirmation for high leverage trades
+    if (leverage > 20) {
+        const confirmTrade = confirm(
+            `You are about to open a ${leverage}x leveraged position. This is extremely risky and you can lose more than your initial investment. Do you want to proceed?`
+        );
+        if (!confirmTrade) {
+            return;
+        }
+    }
+    
+    showLoading('execute-futures-trade');
+    
+    try {
+        const tradeData = {
+            symbol: symbol,
+            side: side,
+            quantity: quantity,
+            order_type: orderType,
+            leverage: leverage,
+            stop_loss: stopLoss,
+            take_profit: takeProfit
+        };
+        
+        if (price) {
+            tradeData.price = price;
+        }
+        
+        const response = await fetch('/api/futures/trade', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(tradeData)
+        });
+        
+        const data = await response.json();
+        
+        hideLoading('execute-futures-trade');
+        
+        if (data.success) {
+            showToast('Success', 'Futures trade executed successfully', 'success');
+            document.getElementById('futures-trade-form').reset();
+            bootstrap.Modal.getInstance(document.getElementById('futuresTradeModal')).hide();
+            loadPositions();
+            loadBalance();
+        } else {
+            showToast('Error', 'Failed to execute futures trade: ' + data.error, 'error');
+        }
+    } catch (error) {
+        hideLoading('execute-futures-trade');
+        console.error('Error executing futures trade:', error);
+        showToast('Error', 'Failed to execute futures trade', 'error');
+    }
+}
+
+// Toggle futures limit price field
+function toggleFuturesLimitPrice() {
+    const orderType = document.getElementById('futures-order-type').value;
+    const limitPriceGroup = document.getElementById('futures-limit-price-group');
+    
+    if (limitPriceGroup) {
+        if (orderType === 'LIMIT') {
+            limitPriceGroup.style.display = 'block';
+            document.getElementById('futures-price').required = true;
+        } else {
+            limitPriceGroup.style.display = 'none';
+            document.getElementById('futures-price').required = false;
+        }
+    }
+}
+
+// Update futures modal balance display
+function updateFuturesModalBalance() {
+    try {
+        // Get futures balance from the main balance display
+        const futuresBalanceElement = document.getElementById('futures-available-balance');
+        const estimatedPositionElement = document.getElementById('estimated-position-value');
+        
+        if (futuresBalanceElement && estimatedPositionElement) {
+            // For now, use a placeholder value - this should be updated with actual futures balance
+            futuresBalanceElement.textContent = '$0.00';
+            estimatedPositionElement.textContent = '$0.00';
+            
+            // TODO: Load actual futures balance from API
+            loadFuturesBalance();
+        }
+    } catch (error) {
+        console.error('Error updating futures modal balance:', error);
+    }
+}
+
+// Load futures balance
+function loadFuturesBalance() {
+    fetch('/api/futures/balance')
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                updateFuturesBalanceDisplay(data.data);
+            } else {
+                console.error('Failed to load futures balance:', data.error);
+            }
+        })
+        .catch(error => {
+            console.error('Error loading futures balance:', error);
+        });
+}
+
+// Update futures balance display
+function updateFuturesBalanceDisplay(balanceData) {
+    const futuresBalanceElement = document.getElementById('futures-available-balance');
+    const currentLeverageElement = document.getElementById('current-leverage');
+    
+    if (futuresBalanceElement && balanceData) {
+        // Extract USDT balance from Bybit response
+        let usdtBalance = 0;
+        if (balanceData.list) {
+            for (const account of balanceData.list) {
+                if (account.coin === 'USDT') {
+                    usdtBalance = parseFloat(account.availableToWithdraw || 0);
+                    break;
+                }
+            }
+        }
+        
+        futuresBalanceElement.textContent = formatCurrency(usdtBalance);
+    }
+    
+    if (currentLeverageElement) {
+        // Get current leverage from config or default
+        const leverage = balanceData?.leverage || 10;
+        currentLeverageElement.textContent = `${leverage}x`;
+    }
+}
+
+// Set futures leverage
+function setFuturesLeverage() {
+    const symbol = document.getElementById('futures-symbol')?.value || 'BTCUSDT';
+    const leverage = parseInt(document.getElementById('futures-leverage')?.value || 10);
+    
+    if (!symbol || !leverage) {
+        showToast('Error', 'Please select symbol and leverage', 'error');
+        return;
+    }
+    
+    showToast('Info', `Setting leverage to ${leverage}x for ${symbol}...`, 'info');
+    
+    fetch('/api/futures/leverage', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            symbol: symbol,
+            leverage: leverage
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            showToast('Success', `Leverage set to ${leverage}x for ${symbol}`, 'success');
+            // Update current leverage display
+            const currentLeverageElement = document.getElementById('current-leverage');
+            if (currentLeverageElement) {
+                currentLeverageElement.textContent = `${leverage}x`;
+            }
+        } else {
+            showToast('Error', 'Failed to set leverage: ' + data.error, 'error');
+        }
+    })
+    .catch(error => {
+        console.error('Error setting leverage:', error);
+        showToast('Error', 'Failed to set leverage', 'error');
+    });
+}
+
+// Close futures position
+function closeFuturesPosition() {
+    // Get current positions to show selection
+    fetch('/api/positions')
+        .then(response => response.json())
+        .then(data => {
+            if (data.success && data.data.futures && data.data.futures.length > 0) {
+                showClosePositionModal(data.data.futures);
+            } else {
+                showToast('Info', 'No open futures positions to close', 'info');
+            }
+        })
+        .catch(error => {
+            console.error('Error loading positions:', error);
+            showToast('Error', 'Failed to load positions', 'error');
+        });
+}
+
+// Show close position modal
+function showClosePositionModal(positions) {
+    const modal = `
+        <div class="modal fade" id="closePositionModal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Close Futures Position</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Select position to close:</p>
+                        <div class="list-group">
+                            ${positions.map(pos => `
+                                <div class="list-group-item">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <strong>${pos.symbol}</strong> (${pos.side})
+                                            <br><small class="text-muted">Size: ${pos.size} | Entry: $${pos.entryPrice}</small>
+                                        </div>
+                                        <button class="btn btn-sm btn-danger" onclick="closeSpecificPosition('${pos.symbol}', '${pos.side}', ${pos.size})">
+                                            Close
+                                        </button>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    // Remove existing modal if any
+    const existingModal = document.getElementById('closePositionModal');
+    if (existingModal) {
+        existingModal.remove();
+    }
+    
+    // Add modal to body
+    document.body.insertAdjacentHTML('beforeend', modal);
+    
+    // Show modal
+    const modalElement = document.getElementById('closePositionModal');
+    const bsModal = new bootstrap.Modal(modalElement);
+    bsModal.show();
+}
+
+// Close specific futures position
+function closeSpecificPosition(symbol, side, size) {
+    if (confirm(`Are you sure you want to close the ${side} position for ${symbol}?`)) {
+        fetch('/api/futures/close-position', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                symbol: symbol,
+                side: side,
+                size: size
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                showToast('Success', 'Position closed successfully', 'success');
+                // Close modal and refresh positions
+                bootstrap.Modal.getInstance(document.getElementById('closePositionModal')).hide();
+                loadPositions();
+                loadBalance();
+            } else {
+                showToast('Error', 'Failed to close position: ' + data.error, 'error');
+            }
+        })
+        .catch(error => {
+            console.error('Error closing position:', error);
+            showToast('Error', 'Failed to close position', 'error');
+        });
+    }
 } 

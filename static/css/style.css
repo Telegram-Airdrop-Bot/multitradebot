@@ -479,3 +479,182 @@ body {
         height: 4px;
     }
 } 
+
+/* Exchange Switch Styling */
+.exchange-switch {
+    margin: 0 15px;
+}
+
+.btn-group .btn {
+    border-radius: 20px;
+    margin: 0 2px;
+    transition: all 0.3s ease;
+}
+
+.btn-group .btn.active {
+    background: linear-gradient(135deg, #28a745, #20c997);
+    border-color: #28a745;
+    color: white;
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(40, 167, 69, 0.3);
+}
+
+.btn-group .btn:not(.active) {
+    background: transparent;
+    border-color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.btn-group .btn:not(.active):hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.8);
+    color: white;
+}
+
+/* Exchange Interface Styling */
+#exchange-info {
+    background: linear-gradient(135deg, #17a2b8, #138496);
+    border: none;
+    color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(23, 162, 184, 0.3);
+}
+
+#exchange-info i {
+    color: #b3e5fc;
+}
+
+/* Pionex Interface Specific */
+#pionex-interface .card-header {
+    background: linear-gradient(135deg, #007bff, #0056b3);
+}
+
+#pionex-interface .btn-primary {
+    background: linear-gradient(135deg, #007bff, #0056b3);
+}
+
+/* Bybit Interface Specific */
+#bybit-interface .card-header {
+    background: linear-gradient(135deg, #fd7e14, #e55a00);
+}
+
+#bybit-interface .btn-warning {
+    background: linear-gradient(135deg, #fd7e14, #e55a00);
+    border: none;
+    color: white;
+}
+
+#bybit-interface .btn-info {
+    background: linear-gradient(135deg, #17a2b8, #138496);
+    border: none;
+    color: white;
+}
+
+#bybit-interface .btn-danger {
+    background: linear-gradient(135deg, #dc3545, #c82333);
+    border: none;
+    color: white;
+}
+
+/* Futures Trading Specific Styles */
+.futures-balance-card {
+    background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+    border: 2px solid #ffc107;
+}
+
+.futures-pnl-card {
+    background: linear-gradient(135deg, #d1ecf1, #bee5eb);
+    border: 2px solid #17a2b8;
+}
+
+.risk-management-card {
+    background: linear-gradient(135deg, #f8d7da, #f5c6cb);
+    border: 2px solid #dc3545;
+}
+
+.futures-actions-card {
+    background: linear-gradient(135deg, #d4edda, #c3e6cb);
+    border: 2px solid #28a745;
+}
+
+/* Toast Styling */
+.toast-success {
+    background: linear-gradient(135deg, #28a745, #20c997);
+    color: white;
+}
+
+.toast-info {
+    background: linear-gradient(135deg, #17a2b8, #138496);
+    color: white;
+}
+
+.toast-warning {
+    background: linear-gradient(135deg, #ffc107, #e0a800);
+    color: #212529;
+}
+
+.toast-danger {
+    background: linear-gradient(135deg, #dc3545, #c82333);
+    color: white;
+}
+
+/* Responsive Design for Exchange Switch */
+@media (max-width: 768px) {
+    .btn-group .btn {
+        font-size: 0.8rem;
+        padding: 8px 12px;
+    }
+    
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+    
+    #exchange-info {
+        font-size: 0.9rem;
+    }
+}
+
+/* Animation for Exchange Switch */
+.exchange-interface-transition {
+    transition: all 0.3s ease-in-out;
+}
+
+.exchange-interface-transition.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.exchange-interface-transition.fade-out {
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+/* Exchange Button Hover Effects */
+.btn-group .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Active Exchange Indicator */
+.exchange-active-indicator {
+    position: relative;
+}
+
+.exchange-active-indicator::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 3px;
+    background: linear-gradient(135deg, #28a745, #20c997);
+    border-radius: 2px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+} 

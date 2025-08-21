@@ -11,6 +11,159 @@ bollinger_bands:
   n_std: 2.0
   squeeze_detection: true
   window: 20
+bot_2025:
+  anti_fake:
+    max_slippage: 0.05
+    min_distance_from_box: 0.02
+    retest_enabled: true
+  breakout:
+    buffer_percentage: 0.05
+    confirmation_candles: 1
+    cooldown_minutes: 30
+    enabled: true
+    max_trades_per_session: 1
+  control_panel:
+    editable_box_lookback: true
+    editable_buffer: true
+    editable_session_times: true
+    editable_sl_tp: true
+    editable_trailing: true
+    enable_pair_duplication: true
+    manual_price_entry: true
+    pair_selection: true
+    show_active_pairs: true
+    show_box_trading_toggle: true
+    show_filters_toggle: true
+    show_session_toggles: true
+  enabled: true
+  exchanges:
+    binance:
+      enabled: false
+      post_only: false
+      reduce_only: true
+      symbols: []
+    bybit:
+      enabled: true
+      post_only: false
+      reduce_only: true
+      symbols:
+      - BTCUSDT
+      - ETHUSDT
+      - SOLUSDT
+      - ADAUSDT
+      - DOTUSDT
+      - BNBUSDT
+  logging:
+    level: INFO
+    log_box_levels: true
+    log_filters: true
+    log_no_trade_reasons: true
+    telegram_alerts: false
+    telegram_bot_token: ''
+    telegram_chat_id: ''
+  mtf_rsi:
+    enabled: true
+    reduced_version: false
+    thresholds:
+      long_conditions:
+        long_tf: 50
+        short_tf: 30
+      short_conditions:
+        long_tf: 50
+        short_tf: 70
+    timeframes:
+      long: 1h
+      short: 5m
+  risk_management:
+    auto_breakeven:
+      enabled: true
+      percentage: 1.0
+    stop_loss:
+      percentage: 1.5
+      use_box_opposite: true
+    take_profit:
+      percentage: 2.5
+      risk_reward_ratio: 2.0
+    trailing_stop:
+      after_tp1: true
+      distance_percentage: 0.8
+      enabled: true
+      step_percentage: 0.3
+  sessions:
+    asian_session:
+      enabled: true
+      end_time: 01:30
+      name: Asian Session
+      range_box_lookback: 90
+      start_time: '19:30'
+      timezone: UTC-5
+    us_session:
+      daylight_saving:
+        end_time: '15:00'
+        months:
+        - 3
+        - 4
+        - 5
+        - 6
+        - 7
+        - 8
+        - 9
+        - 10
+        - 11
+        start_time: 08:30
+      enabled: true
+      name: US Session (New York)
+      range_box_lookback: 90
+      standard_time:
+        end_time: '16:00'
+        months:
+        - 12
+        - 1
+        - 2
+        start_time: 09:30
+      timezone: UTC-5
+  volume_filter:
+    ema_period: 20
+    enabled: true
+    multiplier: 1.5
+bybit:
+  api_key: qqpuYWmzZkyCqrypZ4
+  api_secret: csfTAQDzRkyGESGZsCbWhxL0KolI19NQZMCm
+  enabled: true
+  futures:
+    default_leverage: 10
+    default_stop_loss: 2.0
+    default_take_profit: 4.0
+    margin_type: ISOLATED
+    market_data:
+      include_funding_rate: true
+      include_long_short_ratio: true
+      include_open_interest: true
+      symbols:
+      - BTCUSDT
+      - ETHUSDT
+      - SOLUSDT
+      - ADAUSDT
+      - DOTUSDT
+      update_interval: 30
+    max_daily_loss: 5.0
+    max_leverage: 125
+    max_position_size: 10.0
+    rate_limits:
+      requests_per_hour: 36000
+      requests_per_minute: 600
+      requests_per_second: 10
+    trading_rules:
+      max_orders: 100
+      min_order_size: 1.0
+      price_precision: 2
+      quantity_precision: 4
+  testnet: false
+  v5_api:
+    account_type: UNIFIED
+    base_url_mainnet: https://api.bybit.com
+    base_url_testnet: https://api-testnet.bybit.com
+    category: linear
 candlestick_analysis:
   enabled: true
   patterns:
@@ -36,6 +189,10 @@ dynamic_sl_tp:
   min_tp_percentage: 2.5
   sl_multiplier: 2.0
   tp_multiplier: 3.0
+exchange_priority:
+  backup: BINANCE
+  futures: BYBIT
+  spot: PIONEX
 futures:
   enabled: true
   grid:
@@ -45,6 +202,7 @@ futures:
   hedging:
     enabled: true
     max_positions: 5
+futures_exchange: BYBIT
 grid_trading:
   enabled: true
   levels: 10
@@ -105,6 +263,7 @@ rsi:
   overbought: 50
   oversold: 20
   period: 7
+spot_exchange: PIONEX
 stop_loss_percentage: 1.5
 strategy_descriptions:
   ADVANCED_STRATEGY: Combined strategy using multiple indicators with dynamic SL/TP
@@ -135,6 +294,7 @@ trading_hours:
   exclude_weekends: false
   start: '19:30'
   timezone: UTC-5
+trading_mode: HYBRID
 trading_pair: ETH_USDT
 trailing_stop:
   dynamic_mobile_sl: true
@@ -154,3 +314,15 @@ watchdog:
   heartbeat_interval: 60
   max_failures: 3
   memory_threshold: 200
+
+# Telegram Notifications Configuration
+telegram:
+  enabled: false
+  bot_token: ""
+  chat_id: ""
+  notifications:
+    trades: true
+    breakouts: true
+    risk: true
+    sessions: true
+    system: true
