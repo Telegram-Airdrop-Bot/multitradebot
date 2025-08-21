@@ -6,3 +6,7 @@ pandas==2.0.3
 PyYAML==6.0.1
 pybit==5.7.0
 pybit-unified==0.0.1 
+matplotlib>=3.5.0
+requests>=2.25.0
+numpy>=1.21.0
+tkinter 
