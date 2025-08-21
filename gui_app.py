@@ -2898,7 +2898,7 @@ def main():
     """Main function to run the Flask application"""
     try:
         # Get port from Railway environment or use default
-        port = int(os.environ.get('PORT', 5000))
+        port = int(os.environ.get('PORT', 8080))
         
         # Run the Flask application
         socketio.run(
