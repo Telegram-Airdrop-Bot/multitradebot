@@ -379,7 +379,7 @@ BdYEZDM5weQKHqweDdts6bNVMpEGwWbfRjccoHz2tXtu
 
 ### **🔒 Copyright Protection**
 ```
-Copyright (c) 2024 Md Mushfiqur Rahman
+Copyright (c) 2025 Md Mushfiqur Rahman
 All Rights Reserved
 
 This software is protected by copyright law and international treaties.

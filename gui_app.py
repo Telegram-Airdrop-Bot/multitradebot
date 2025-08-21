@@ -2895,22 +2895,23 @@ def handle_subscribe_price(data):
         emit('price_update', {'symbol': symbol, 'price': trading_bot.get_real_time_price(symbol)})
 
 def main():
-    """Main entry point"""
-    print("🚀 Starting Pionex Trading Bot GUI...")
-    
-    # Check environment
-    api_key = os.getenv('PIONEX_API_KEY')
-    api_secret = os.getenv('PIONEX_SECRET_KEY')
-    
-    if not api_key or not api_secret:
-        print("❌ Missing required environment variables: PIONEX_API_KEY, PIONEX_SECRET_KEY")
-        print("Please set these variables in your .env file")
-        return
-    
-    print("✅ Environment variables check passed")
-    
-    # Start Flask app with production settings
-    socketio.run(app, host='0.0.0.0', port=int(os.environ.get('PORT', 5000)), debug=False, allow_unsafe_werkzeug=True)
+    """Main function to run the Flask application"""
+    try:
+        # Get port from Railway environment or use default
+        port = int(os.environ.get('PORT', 5000))
+        
+        # Run the Flask application
+        socketio.run(
+            app,
+            host='0.0.0.0',  # Allow external connections
+            port=port,
+            debug=False,  # Disable debug mode for production
+            allow_unsafe_werkzeug=True
+        )
+        
+    except Exception as e:
+        logger.error(f"Failed to start application: {e}")
+        sys.exit(1)
 
 if __name__ == '__main__':
     main() 
