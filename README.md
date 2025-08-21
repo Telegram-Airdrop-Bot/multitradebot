@@ -295,4 +295,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-**Copyright © 2025 Telegram-Airdrop-Bot. All rights reserved.**
+**Copyright © 2025 Telegram-Airdrop-Bot. All rights reserved.**#   m u l t i t r a d e b o t  
+ 
